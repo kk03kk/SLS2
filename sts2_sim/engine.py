@@ -249,6 +249,7 @@ class CombatEnv:
             for card_instance in pile:
                 card_instance.free_this_turn = False
         self._trigger_after_player_turn_end()
+        self._tick_player_end_of_turn_debuffs()
         self._enemy_turn()
         if not self.is_done():
             self._start_player_turn()
@@ -531,19 +532,20 @@ class CombatEnv:
         self.current_side = "player"
 
     def _perform_enemy_move(self, enemy: EnemyState, move: EnemyMove) -> None:
-        if move.block:
+        if move.block and not move.damage:
             self.enemy_gain_block(enemy.creature, move.block, source=move.id)
         if move.apply_power and not move.apply_power_after_damage:
             enemy.creature.add_power(move.apply_power, move.apply_power_amount)
             if move.apply_power == "ritual":
                 enemy.ritual_just_applied = True
             self.log.append(f"{enemy.creature.name} gains {move.apply_power} {move.apply_power_amount}")
-        if move.apply_player_power:
+        if move.apply_player_power and not move.damage:
             self.player.add_power(move.apply_player_power, move.apply_player_power_amount)
             self.log.append(f"Ironclad gains {move.apply_player_power} {move.apply_player_power_amount}")
-        for power, amount in move.extra_player_powers:
-            self.player.add_power(power, amount)
-            self.log.append(f"Ironclad gains {power} {amount}")
+        if not move.damage:
+            for power, amount in move.extra_player_powers:
+                self.player.add_power(power, amount)
+                self.log.append(f"Ironclad gains {power} {amount}")
         if move.heal:
             before = enemy.creature.hp
             enemy.creature.hp = min(enemy.creature.max_hp, enemy.creature.hp + move.heal)
@@ -571,9 +573,6 @@ class CombatEnv:
             self._add_card_to_draw_random(CardInstance("beckon"))
             self.discard_pile.append(CardInstance("beckon"))
             self.log.append(f"{enemy.creature.name} adds 2 Beckon")
-        elif move.id == "gaze":
-            self.discard_pile.append(CardInstance("beckon"))
-            self.log.append(f"{enemy.creature.name} adds 1 Beckon")
         if move.id == "call_for_backup":
             next_count = max(
                 (rat.vars.get("call_for_backup_count", 0) for rat in self.enemies if rat.definition.ai == "rat_backup"),
@@ -597,11 +596,23 @@ class CombatEnv:
                 if dealt > 0 and suck:
                     enemy.creature.add_power("strength", suck)
                     self.log.append(f"{enemy.creature.name}'s Suck grants {suck} Strength")
+        if move.block and move.damage:
+            self.enemy_gain_block(enemy.creature, move.block, source=move.id)
+        if move.apply_player_power and move.damage:
+            self.player.add_power(move.apply_player_power, move.apply_player_power_amount)
+            self.log.append(f"Ironclad gains {move.apply_player_power} {move.apply_player_power_amount}")
+        if move.damage:
+            for power, amount in move.extra_player_powers:
+                self.player.add_power(power, amount)
+                self.log.append(f"Ironclad gains {power} {amount}")
         if move.apply_power and move.apply_power_after_damage:
             enemy.creature.add_power(move.apply_power, move.apply_power_amount)
             if move.apply_power == "ritual":
                 enemy.ritual_just_applied = True
             self.log.append(f"{enemy.creature.name} gains {move.apply_power} {move.apply_power_amount}")
+        if move.id == "gaze":
+            self.discard_pile.append(CardInstance("beckon"))
+            self.log.append(f"{enemy.creature.name} adds 1 Beckon")
         if move.self_kill and enemy.alive:
             enemy.creature.hp = 0
             self.log.append(f"{enemy.creature.name} dies after {move.id}")
@@ -720,14 +731,16 @@ class CombatEnv:
                 if enemy.creature.power_amount("asleep") <= 0 and enemy.definition.ai == "lagavulin_matriarch":
                     enemy.move_index = 1
                     self.log.append(f"{enemy.creature.name} wakes up naturally")
-        self._tick_power(self.player, "vulnerable")
-        self._tick_power(self.player, "weak")
-        self._tick_power(self.player, "frail")
         for enemy in self.enemies:
             self._tick_power(enemy.creature, "vulnerable")
             self._tick_power(enemy.creature, "weak")
             self._tick_power(enemy.creature, "frail")
         self._trigger_after_enemy_turn_end()
+
+    def _tick_player_end_of_turn_debuffs(self) -> None:
+        self._tick_power(self.player, "vulnerable")
+        self._tick_power(self.player, "weak")
+        self._tick_power(self.player, "frail")
 
     def _tick_power(self, creature: Creature, power: str) -> None:
         if creature.power_amount(power) > 0:

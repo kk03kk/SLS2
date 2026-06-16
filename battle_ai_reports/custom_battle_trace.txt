@@ -1,100 +1,197 @@
-Seed: 12
+Custom Battle Trace
+===================
+Seed: 999
+Model: battle_ai_models/ppo_generic_battle.zip
+Policy: deterministic
 Player HP: 80/80
-Encounter: seapunk_weak
-Enemies: ['Seapunk']
-Deck(10): ['Strike', 'Strike', 'Strike', 'Strike', 'Strike', 'Defend', 'Defend', 'Defend', 'Defend', 'Bash']
+Encounter: sludge_spinner_weak
+Enemies: ['Sludge Spinner']
+Deck (10): ['Strike', 'Strike', 'Strike', 'Strike', 'Body Slam', 'Stomp', 'Defend', 'Defend', 'Defend', 'Bash']
 
-Step 0: play hand[2] Defend
-  Player plays Defend
-  Ironclad gains 5 block from Defend
-  reward=-0.003, player=80/80, block=5, energy=2, enemies=['0:Seapunk 46/46 alive']
+Turn 1 Start
+------------
+  Log:
+    - -- Turn 1 --
+    - Draw Strike
+    - Draw Defend
+    - Draw Defend
+    - Draw Strike
+    - Draw Bash
+After opening draw:
+  Player: HP 80/80, block 0, energy 3, powers [-]
+  Enemies:
+    [0] Sludge Spinner: HP 37/37, block 0, powers [-], intent attack 8 + weak 1 (oil_spray)
+  Hand: [0] Strike cost=1 | [1] Defend cost=1 | [2] Defend cost=1 | [3] Strike cost=1 | [4] Bash cost=2
+  Piles: draw=5 [Stomp, Defend, Body Slam, Strike, Strike]; discard=0 [(empty)]; exhaust=0 [(empty)]
 
-Step 1: play hand[0] Defend
-  Player plays Defend
-  Ironclad gains 5 block from Defend
-  reward=-0.003, player=80/80, block=10, energy=1, enemies=['0:Seapunk 46/46 alive']
+Turn 1, Action 1: play hand[2] Defend
+  Log:
+    - Player plays Defend
+    - Ironclad gains 5 block from Defend
+  Reward: -0.003
+After action:
+  Player: HP 80/80, block 5, energy 2, powers [-]
+  Enemies:
+    [0] Sludge Spinner: HP 37/37, block 0, powers [-], intent attack 8 + weak 1 (oil_spray)
+  Hand: [0] Strike cost=1 | [1] Defend cost=1 | [2] Strike cost=1 | [3] Bash cost=2
+  Piles: draw=5 [Stomp, Defend, Body Slam, Strike, Strike]; discard=1 [Defend]; exhaust=0 [(empty)]
 
-Step 2: play hand[1] Strike, target=Seapunk
-  Player plays Strike -> Seapunk
-  Strike deals 6 to Seapunk
-  reward=0.087, player=80/80, block=10, energy=0, enemies=['0:Seapunk 40/46 alive']
+Turn 1, Action 2: play hand[1] Defend
+  Log:
+    - Player plays Defend
+    - Ironclad gains 5 block from Defend
+  Reward: -0.003
+After action:
+  Player: HP 80/80, block 10, energy 1, powers [-]
+  Enemies:
+    [0] Sludge Spinner: HP 37/37, block 0, powers [-], intent attack 8 + weak 1 (oil_spray)
+  Hand: [0] Strike cost=1 | [1] Strike cost=1 | [2] Bash cost=2
+  Piles: draw=5 [Stomp, Defend, Body Slam, Strike, Strike]; discard=2 [Defend, Defend]; exhaust=0 [(empty)]
 
-Step 3: end turn
-  Player ends turn
-  Seapunk uses sea_kick
-  Seapunk hits player for 1
-  -- Turn 2 --
-  Draw Strike
-  Draw Strike
-  Draw Defend
-  Draw Bash
-  Draw Defend
-  reward=-0.253, player=79/80, block=0, energy=3, enemies=['0:Seapunk 40/46 alive']
+Turn 1, Action 3: play hand[1] Strike, target=Sludge Spinner
+  Log:
+    - Player plays Strike -> Sludge Spinner
+    - Strike deals 6 to Sludge Spinner
+  Reward: 0.087
+After action:
+  Player: HP 80/80, block 10, energy 0, powers [-]
+  Enemies:
+    [0] Sludge Spinner: HP 31/37, block 0, powers [-], intent attack 8 + weak 1 (oil_spray)
+  Hand: [0] Strike cost=1 | [1] Bash cost=2
+  Piles: draw=5 [Stomp, Defend, Body Slam, Strike, Strike]; discard=3 [Defend, Defend, Strike]; exhaust=0 [(empty)]
 
-Step 4: play hand[2] Defend
-  Player plays Defend
-  Ironclad gains 5 block from Defend
-  reward=-0.003, player=79/80, block=5, energy=2, enemies=['0:Seapunk 40/46 alive']
+Turn 1, Action 4: end turn
+  Log:
+    - Player ends turn
+    - Sludge Spinner uses oil_spray
+    - Sludge Spinner hits player for 0
+    - Ironclad gains weak 1
+    - -- Turn 2 --
+    - Draw Strike
+    - Draw Strike
+    - Draw Body Slam
+    - Draw Defend
+    - Draw Stomp
+  Reward: -0.003
+After action:
+  Player: HP 80/80, block 0, energy 3, powers [weak:1]
+  Enemies:
+    [0] Sludge Spinner: HP 31/37, block 0, powers [-], intent attack 6 + strength 3 (rage)
+  Hand: [0] Strike cost=1 | [1] Strike cost=1 | [2] Body Slam cost=1 | [3] Defend cost=1 | [4] Stomp cost=3
+  Piles: draw=0 [(empty)]; discard=5 [Defend, Defend, Strike, Strike, Bash]; exhaust=0 [(empty)]
 
-Step 5: play hand[2] Bash, target=Seapunk
-  Player plays Bash -> Seapunk
-  Bash deals 8 to Seapunk
-  Seapunk gains vulnerable 2
-  reward=0.117, player=79/80, block=5, energy=0, enemies=['0:Seapunk 32/46 alive']
+Turn 2 Start
+------------
+Start state:
+  Player: HP 80/80, block 0, energy 3, powers [weak:1]
+  Enemies:
+    [0] Sludge Spinner: HP 31/37, block 0, powers [-], intent attack 6 + strength 3 (rage)
+  Hand: [0] Strike cost=1 | [1] Strike cost=1 | [2] Body Slam cost=1 | [3] Defend cost=1 | [4] Stomp cost=3
+  Piles: draw=0 [(empty)]; discard=5 [Defend, Defend, Strike, Strike, Bash]; exhaust=0 [(empty)]
 
-Step 6: end turn
-  Player ends turn
-  Seapunk uses spinning_kick
-  Seapunk hits player for 0
-  Seapunk hits player for 0
-  Seapunk hits player for 1
-  Seapunk hits player for 2
-  -- Turn 3 --
-  Discard pile shuffled into draw pile
-  Draw Strike
-  Draw Strike
-  Draw Defend
-  Draw Defend
-  Draw Strike
-  reward=-0.753, player=76/80, block=0, energy=3, enemies=['0:Seapunk 32/46 alive']
+Turn 2, Action 5: play hand[2] Body Slam, target=Sludge Spinner
+  Log:
+    - Player plays Body Slam -> Sludge Spinner
+    - Body Slam deals 0 to Sludge Spinner
+  Reward: -0.003
+After action:
+  Player: HP 80/80, block 0, energy 2, powers [weak:1]
+  Enemies:
+    [0] Sludge Spinner: HP 31/37, block 0, powers [-], intent attack 6 + strength 3 (rage)
+  Hand: [0] Strike cost=1 | [1] Strike cost=1 | [2] Defend cost=1 | [3] Stomp cost=2
+  Piles: draw=0 [(empty)]; discard=6 [Defend, Defend, Strike, Strike, Bash, Body Slam]; exhaust=0 [(empty)]
 
-Step 7: play hand[0] Strike, target=Seapunk
-  Player plays Strike -> Seapunk
-  Strike deals 9 to Seapunk
-  reward=0.132, player=76/80, block=0, energy=2, enemies=['0:Seapunk 23/46 alive']
+Turn 2, Action 6: play hand[1] Strike, target=Sludge Spinner
+  Log:
+    - Player plays Strike -> Sludge Spinner
+    - Strike deals 4 to Sludge Spinner
+  Reward: 0.057
+After action:
+  Player: HP 80/80, block 0, energy 1, powers [weak:1]
+  Enemies:
+    [0] Sludge Spinner: HP 27/37, block 0, powers [-], intent attack 6 + strength 3 (rage)
+  Hand: [0] Strike cost=1 | [1] Defend cost=1 | [2] Stomp cost=1
+  Piles: draw=0 [(empty)]; discard=7 [Defend, Defend, Strike, Strike, Bash, Body Slam, Strike]; exhaust=0 [(empty)]
 
-Step 8: play hand[0] Strike, target=Seapunk
-  Player plays Strike -> Seapunk
-  Strike deals 9 to Seapunk
-  reward=0.132, player=76/80, block=0, energy=1, enemies=['0:Seapunk 14/46 alive']
+Turn 2, Action 7: play hand[0] Strike, target=Sludge Spinner
+  Log:
+    - Player plays Strike -> Sludge Spinner
+    - Strike deals 4 to Sludge Spinner
+  Reward: 0.057
+After action:
+  Player: HP 80/80, block 0, energy 0, powers [weak:1]
+  Enemies:
+    [0] Sludge Spinner: HP 23/37, block 0, powers [-], intent attack 6 + strength 3 (rage)
+  Hand: [0] Defend cost=1 | [1] Stomp cost=0
+  Piles: draw=0 [(empty)]; discard=8 [Defend, Defend, Strike, Strike, Bash, Body Slam, Strike, Strike]; exhaust=0 [(empty)]
 
-Step 9: play hand[2] Strike, target=Seapunk
-  Player plays Strike -> Seapunk
-  Strike deals 9 to Seapunk
-  reward=0.132, player=76/80, block=0, energy=0, enemies=['0:Seapunk 5/46 alive']
+Turn 2, Action 8: play hand[1] Stomp
+  Log:
+    - Player plays Stomp
+    - Stomp deals 9 to Sludge Spinner
+  Reward: 0.132
+After action:
+  Player: HP 80/80, block 0, energy 0, powers [weak:1]
+  Enemies:
+    [0] Sludge Spinner: HP 14/37, block 0, powers [-], intent attack 6 + strength 3 (rage)
+  Hand: [0] Defend cost=1
+  Piles: draw=0 [(empty)]; discard=9 [Defend, Defend, Strike, Strike, Bash, Body Slam, Strike, Strike, Stomp]; exhaust=0 [(empty)]
 
-Step 10: end turn
-  Player ends turn
-  Seapunk uses bubble
-  Seapunk gains 7 block from bubble
-  Seapunk gains strength 1
-  -- Turn 4 --
-  Draw Defend
-  Draw Strike
-  Draw Bash
-  Draw Defend
-  Draw Strike
-  reward=-0.003, player=76/80, block=0, energy=3, enemies=['0:Seapunk 5/46 alive']
+Turn 2, Action 9: end turn
+  Log:
+    - Player ends turn
+    - Sludge Spinner uses rage
+    - Sludge Spinner hits player for 6
+    - Sludge Spinner gains strength 3
+    - -- Turn 3 --
+    - Discard pile shuffled into draw pile
+    - Draw Bash
+    - Draw Strike
+    - Draw Strike
+    - Draw Stomp
+    - Draw Body Slam
+  Reward: -1.503
+After action:
+  Player: HP 74/80, block 0, energy 3, powers [-]
+  Enemies:
+    [0] Sludge Spinner: HP 14/37, block 0, powers [strength:3], intent attack 8 + weak 1 (oil_spray)
+  Hand: [0] Bash cost=2 | [1] Strike cost=1 | [2] Strike cost=1 | [3] Stomp cost=3 | [4] Body Slam cost=1
+  Piles: draw=5 [Strike, Defend, Defend, Defend, Strike]; discard=0 [(empty)]; exhaust=0 [(empty)]
 
-Step 11: play hand[2] Bash, target=Seapunk
-  Player plays Bash -> Seapunk
-  Bash deals 1 to Seapunk
-  Seapunk gains vulnerable 2
-  reward=0.012, player=76/80, block=0, energy=1, enemies=['0:Seapunk 4/46 alive']
+Turn 3 Start
+------------
+Start state:
+  Player: HP 74/80, block 0, energy 3, powers [-]
+  Enemies:
+    [0] Sludge Spinner: HP 14/37, block 0, powers [strength:3], intent attack 8 + weak 1 (oil_spray)
+  Hand: [0] Bash cost=2 | [1] Strike cost=1 | [2] Strike cost=1 | [3] Stomp cost=3 | [4] Body Slam cost=1
+  Piles: draw=5 [Strike, Defend, Defend, Defend, Strike]; discard=0 [(empty)]; exhaust=0 [(empty)]
 
-Step 12: play hand[1] Strike, target=Seapunk
-  Player plays Strike -> Seapunk
-  Strike deals 9 to Seapunk
-  reward=133.577, player=76/80, block=0, energy=0, enemies=['0:Seapunk 0/46 dead']
+Turn 3, Action 10: play hand[0] Bash, target=Sludge Spinner
+  Log:
+    - Player plays Bash -> Sludge Spinner
+    - Bash deals 8 to Sludge Spinner
+    - Sludge Spinner gains vulnerable 2
+  Reward: 0.117
+After action:
+  Player: HP 74/80, block 0, energy 1, powers [-]
+  Enemies:
+    [0] Sludge Spinner: HP 6/37, block 0, powers [strength:3, vulnerable:2], intent attack 8 + weak 1 (oil_spray)
+  Hand: [0] Strike cost=1 | [1] Strike cost=1 | [2] Stomp cost=2 | [3] Body Slam cost=1
+  Piles: draw=5 [Strike, Defend, Defend, Defend, Strike]; discard=1 [Bash]; exhaust=0 [(empty)]
 
-Result: won=True, hp_lost=4, final_hp=76, turns=4, enemies_killed=1
+Turn 3, Action 11: play hand[1] Strike, target=Sludge Spinner
+  Log:
+    - Player plays Strike -> Sludge Spinner
+    - Strike deals 9 to Sludge Spinner
+  Reward: 128.727
+After action:
+  Player: HP 74/80, block 0, energy 0, powers [-]
+  Enemies:
+    [0] Sludge Spinner: HP 0/37, block 0, powers [strength:3, vulnerable:2], dead
+  Hand: [0] Strike cost=1 | [1] Stomp cost=1 | [2] Body Slam cost=1
+  Piles: draw=5 [Strike, Defend, Defend, Defend, Strike]; discard=2 [Bash, Strike]; exhaust=0 [(empty)]
+
+Final Result
+------------
+Won: True; HP lost: 6; final HP: 74; turns: 3; enemies killed: 1; actions: 11
