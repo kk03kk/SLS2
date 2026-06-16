@@ -1,0 +1,192 @@
+stage=regular, encounter=living_fog_normal, hp=80/80, enemies=Living Fog, deck=[Strike, Strike, Strike, Strike, Strike, Defend, Defend, Defend, Defend, Bash, Vicious+, Rage, Bloodletting, Thunderclap, Thunderclap, Body Slam+, Flame Barrier, Cascade, Havoc, Blood Wall, Headbutt, Burning Pact, Dark Embrace, Feel No Pain, True Grit, Offering, Whirlwind, Impervious]
+
+Step 0: play hand[2] Strike, target=Living Fog
+  Player plays Strike -> Living Fog
+  Strike deals 6 to Living Fog
+  reward=0.087, hp=80/80, block=0, energy=2
+
+Step 1: play hand[1] Body Slam+, target=Living Fog
+  Player plays Body Slam+ -> Living Fog
+  Body Slam+ deals 0 to Living Fog
+  reward=-0.003, hp=80/80, block=0, energy=2
+
+Step 2: play hand[2] Strike, target=Living Fog
+  Player plays Strike -> Living Fog
+  Strike deals 6 to Living Fog
+  reward=0.087, hp=80/80, block=0, energy=1
+
+Step 3: play hand[1] Defend
+  Player plays Defend
+  Ironclad gains 5 block from Defend
+  reward=-0.003, hp=80/80, block=5, energy=0
+
+Step 4: end turn
+  Player ends turn
+  Living Fog uses advanced_gas
+  Ironclad gains smoggy 1
+  Living Fog hits player for 3
+  -- Turn 2 --
+  Draw Vicious+
+  Draw Blood Wall
+  Draw Impervious
+  Draw Bloodletting
+  Draw Feel No Pain
+  reward=-0.753, hp=77/80, block=0, energy=3
+
+Step 5: play hand[4] Feel No Pain
+  Player plays Feel No Pain
+  Ironclad gains feel_no_pain 3
+  Feel No Pain leaves combat
+  reward=-0.003, hp=77/80, block=0, energy=2
+
+Step 6: play hand[1] Blood Wall
+  Player plays Blood Wall
+  Player loses 2 HP
+  Ironclad gains 16 block from Blood Wall
+  Smoggy clouds the remaining skills
+  reward=-0.503, hp=75/80, block=16, energy=0
+
+Step 7: end turn
+  Player ends turn
+  Living Fog uses bloat
+  Living Fog summons Gas Bomb
+  Living Fog hits player for 0
+  Gas Bomb uses explode
+  Gas Bomb hits player for 0
+  Gas Bomb dies after explode
+  -- Turn 3 --
+  Draw Strike
+  Draw Flame Barrier
+  Draw Burning Pact
+  Draw Headbutt
+  Draw Dark Embrace
+  reward=-0.003, hp=75/80, block=0, energy=3
+
+Step 8: play hand[0] Strike, target=Living Fog
+  Player plays Strike -> Living Fog
+  Strike deals 6 to Living Fog
+  reward=0.087, hp=75/80, block=0, energy=2
+
+Step 9: play hand[1] Burning Pact, choice=2
+  Player plays Burning Pact
+  Dark Embrace exhausts
+  Ironclad gains 3 block from Feel No Pain
+  Draw Strike
+  Draw Whirlwind
+  Smoggy clouds the remaining skills
+  reward=-0.003, hp=75/80, block=3, energy=1
+
+Step 10: play hand[2] Strike, target=Living Fog
+  Player plays Strike -> Living Fog
+  Strike deals 6 to Living Fog
+  reward=0.087, hp=75/80, block=3, energy=0
+
+Step 11: play hand[2] Whirlwind
+  Player plays Whirlwind
+  Whirlwind has no energy to spend
+  reward=-0.003, hp=75/80, block=3, energy=0
+
+Step 12: end turn
+  Player ends turn
+  Living Fog uses super_gas_blast
+  Living Fog hits player for 5
+  -- Turn 4 --
+  Draw Thunderclap
+  Draw Strike
+  Draw Offering
+  Draw Thunderclap
+  Draw Havoc
+  reward=-1.253, hp=70/80, block=0, energy=3
+
+Step 13: play hand[1] Strike, target=Living Fog
+  Player plays Strike -> Living Fog
+  Strike deals 6 to Living Fog
+  reward=0.087, hp=70/80, block=0, energy=2
+
+Step 14: play hand[1] Offering
+  Player plays Offering
+  Player loses 6 HP
+  Offering grants 2 energy
+  Draw Defend
+  Draw Bash
+  Draw True Grit
+  Smoggy clouds the remaining skills
+  Offering exhausts
+  Ironclad gains 3 block from Feel No Pain
+  reward=-1.503, hp=64/80, block=3, energy=4
+
+Step 15: play hand[4] Bash, target=Living Fog
+  Player plays Bash -> Living Fog
+  Bash deals 8 to Living Fog
+  Living Fog gains vulnerable 2
+  reward=0.117, hp=64/80, block=3, energy=2
+
+Step 16: play hand[1] Thunderclap
+  Player plays Thunderclap
+  Thunderclap deals 6 to Living Fog
+  Living Fog gains vulnerable 1
+  reward=0.087, hp=64/80, block=3, energy=1
+
+Step 17: play hand[0] Thunderclap
+  Player plays Thunderclap
+  Thunderclap deals 6 to Living Fog
+  Living Fog gains vulnerable 1
+  reward=0.087, hp=64/80, block=3, energy=0
+
+Step 18: end turn
+  Player ends turn
+  Living Fog uses bloat
+  Living Fog summons Gas Bomb
+  Living Fog hits player for 2
+  Gas Bomb uses explode
+  Gas Bomb hits player for 8
+  Gas Bomb dies after explode
+  -- Turn 5 --
+  Draw Rage
+  Draw Defend
+  Draw Cascade
+  Discard pile shuffled into draw pile
+  Draw Strike
+  Draw Whirlwind
+  reward=-2.503, hp=54/80, block=0, energy=3
+
+Step 19: play hand[3] Strike, target=Living Fog
+  Player plays Strike -> Living Fog
+  Strike deals 9 to Living Fog
+  reward=0.132, hp=54/80, block=0, energy=2
+
+Step 20: play hand[1] Defend
+  Player plays Defend
+  Ironclad gains 5 block from Defend
+  Smoggy clouds the remaining skills
+  reward=-0.003, hp=54/80, block=5, energy=1
+
+Step 21: play hand[2] Whirlwind
+  Player plays Whirlwind
+  Whirlwind deals 7 to Living Fog
+  reward=0.102, hp=54/80, block=5, energy=0
+
+Step 22: end turn
+  Player ends turn
+  Living Fog uses super_gas_blast
+  Living Fog hits player for 3
+  -- Turn 6 --
+  Draw Strike
+  Draw Vicious+
+  Draw Bash
+  Draw Havoc
+  Draw Thunderclap
+  reward=-0.753, hp=51/80, block=0, energy=3
+
+Step 23: play hand[0] Strike, target=Living Fog
+  Player plays Strike -> Living Fog
+  Strike deals 9 to Living Fog
+  reward=0.132, hp=51/80, block=0, energy=2
+
+Step 24: play hand[1] Bash, target=Living Fog
+  Player plays Bash -> Living Fog
+  Bash deals 12 to Living Fog
+  Living Fog gains vulnerable 2
+  reward=70.852, hp=51/80, block=0, energy=0
+
+Result: won=True, hp_lost=29, final_hp=51, turns=6, enemies_killed=3

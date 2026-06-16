@@ -296,7 +296,7 @@ def _juggernaut_after_block(env: "CombatEnv", owner: Creature, amount: int, bloc
 
 @register_after_damage_received("flame_barrier")
 def _flame_barrier_after_damage(env: "CombatEnv", owner: Creature, amount: int, hp_loss: int, dealer: Creature | None) -> None:
-    if dealer is None or hp_loss <= 0:
+    if dealer is None:
         return
     dealt = env.deal_damage_from(dealer, amount, dealer=None)
     env.log.append(f"Flame Barrier deals {dealt} to {dealer.name}")
@@ -341,7 +341,7 @@ def _skittish_after_damage(env: "CombatEnv", owner: Creature, amount: int, hp_lo
 
 @register_after_damage_received("thorns")
 def _thorns_after_damage(env: "CombatEnv", owner: Creature, amount: int, hp_loss: int, dealer: Creature | None) -> None:
-    if dealer is None or hp_loss <= 0:
+    if dealer is None:
         return
     dealt = env.deal_damage_from(dealer, amount, dealer=None)
     env.log.append(f"{owner.name}'s Thorns deals {dealt} to {dealer.name}")

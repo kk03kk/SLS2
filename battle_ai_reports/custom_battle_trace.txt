@@ -1,0 +1,100 @@
+Seed: 12
+Player HP: 80/80
+Encounter: seapunk_weak
+Enemies: ['Seapunk']
+Deck(10): ['Strike', 'Strike', 'Strike', 'Strike', 'Strike', 'Defend', 'Defend', 'Defend', 'Defend', 'Bash']
+
+Step 0: play hand[2] Defend
+  Player plays Defend
+  Ironclad gains 5 block from Defend
+  reward=-0.003, player=80/80, block=5, energy=2, enemies=['0:Seapunk 46/46 alive']
+
+Step 1: play hand[0] Defend
+  Player plays Defend
+  Ironclad gains 5 block from Defend
+  reward=-0.003, player=80/80, block=10, energy=1, enemies=['0:Seapunk 46/46 alive']
+
+Step 2: play hand[1] Strike, target=Seapunk
+  Player plays Strike -> Seapunk
+  Strike deals 6 to Seapunk
+  reward=0.087, player=80/80, block=10, energy=0, enemies=['0:Seapunk 40/46 alive']
+
+Step 3: end turn
+  Player ends turn
+  Seapunk uses sea_kick
+  Seapunk hits player for 1
+  -- Turn 2 --
+  Draw Strike
+  Draw Strike
+  Draw Defend
+  Draw Bash
+  Draw Defend
+  reward=-0.253, player=79/80, block=0, energy=3, enemies=['0:Seapunk 40/46 alive']
+
+Step 4: play hand[2] Defend
+  Player plays Defend
+  Ironclad gains 5 block from Defend
+  reward=-0.003, player=79/80, block=5, energy=2, enemies=['0:Seapunk 40/46 alive']
+
+Step 5: play hand[2] Bash, target=Seapunk
+  Player plays Bash -> Seapunk
+  Bash deals 8 to Seapunk
+  Seapunk gains vulnerable 2
+  reward=0.117, player=79/80, block=5, energy=0, enemies=['0:Seapunk 32/46 alive']
+
+Step 6: end turn
+  Player ends turn
+  Seapunk uses spinning_kick
+  Seapunk hits player for 0
+  Seapunk hits player for 0
+  Seapunk hits player for 1
+  Seapunk hits player for 2
+  -- Turn 3 --
+  Discard pile shuffled into draw pile
+  Draw Strike
+  Draw Strike
+  Draw Defend
+  Draw Defend
+  Draw Strike
+  reward=-0.753, player=76/80, block=0, energy=3, enemies=['0:Seapunk 32/46 alive']
+
+Step 7: play hand[0] Strike, target=Seapunk
+  Player plays Strike -> Seapunk
+  Strike deals 9 to Seapunk
+  reward=0.132, player=76/80, block=0, energy=2, enemies=['0:Seapunk 23/46 alive']
+
+Step 8: play hand[0] Strike, target=Seapunk
+  Player plays Strike -> Seapunk
+  Strike deals 9 to Seapunk
+  reward=0.132, player=76/80, block=0, energy=1, enemies=['0:Seapunk 14/46 alive']
+
+Step 9: play hand[2] Strike, target=Seapunk
+  Player plays Strike -> Seapunk
+  Strike deals 9 to Seapunk
+  reward=0.132, player=76/80, block=0, energy=0, enemies=['0:Seapunk 5/46 alive']
+
+Step 10: end turn
+  Player ends turn
+  Seapunk uses bubble
+  Seapunk gains 7 block from bubble
+  Seapunk gains strength 1
+  -- Turn 4 --
+  Draw Defend
+  Draw Strike
+  Draw Bash
+  Draw Defend
+  Draw Strike
+  reward=-0.003, player=76/80, block=0, energy=3, enemies=['0:Seapunk 5/46 alive']
+
+Step 11: play hand[2] Bash, target=Seapunk
+  Player plays Bash -> Seapunk
+  Bash deals 1 to Seapunk
+  Seapunk gains vulnerable 2
+  reward=0.012, player=76/80, block=0, energy=1, enemies=['0:Seapunk 4/46 alive']
+
+Step 12: play hand[1] Strike, target=Seapunk
+  Player plays Strike -> Seapunk
+  Strike deals 9 to Seapunk
+  reward=133.577, player=76/80, block=0, energy=0, enemies=['0:Seapunk 0/46 dead']
+
+Result: won=True, hp_lost=4, final_hp=76, turns=4, enemies_killed=1

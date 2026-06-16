@@ -1,0 +1,371 @@
+stage=boss, encounter=soul_fysh_boss, hp=80/80, enemies=Soul Fysh, deck=[Strike, Strike, Strike, Strike, Strike, Defend, Defend, Defend, Defend, Bash, Vicious+, Rage, Bloodletting, Thunderclap, Thunderclap, Body Slam+, Flame Barrier, Cascade, Havoc, Blood Wall, Headbutt, Burning Pact, Dark Embrace, Feel No Pain, True Grit, Offering, Whirlwind, Impervious]
+
+Step 0: play hand[0] Bash, target=Soul Fysh
+  Player plays Bash -> Soul Fysh
+  Bash deals 8 to Soul Fysh
+  Soul Fysh gains vulnerable 2
+  reward=0.117, hp=80/80, block=0, energy=1
+
+Step 1: play hand[2] Strike, target=Soul Fysh
+  Player plays Strike -> Soul Fysh
+  Strike deals 9 to Soul Fysh
+  reward=0.132, hp=80/80, block=0, energy=0
+
+Step 2: play hand[0] Whirlwind
+  Player plays Whirlwind
+  Whirlwind has no energy to spend
+  reward=-0.003, hp=80/80, block=0, energy=0
+
+Step 3: end turn
+  Player ends turn
+  Soul Fysh uses beckon
+  Soul Fysh adds 2 Beckon
+  -- Turn 2 --
+  Draw Strike
+  Draw Defend
+  Draw Thunderclap
+  Draw Strike
+  Draw Vicious+
+  reward=-0.003, hp=80/80, block=0, energy=3
+
+Step 4: play hand[0] Strike, target=Soul Fysh
+  Player plays Strike -> Soul Fysh
+  Strike deals 9 to Soul Fysh
+  reward=0.132, hp=80/80, block=0, energy=2
+
+Step 5: play hand[2] Strike, target=Soul Fysh
+  Player plays Strike -> Soul Fysh
+  Strike deals 9 to Soul Fysh
+  reward=0.132, hp=80/80, block=0, energy=1
+
+Step 6: play hand[1] Thunderclap
+  Player plays Thunderclap
+  Thunderclap deals 6 to Soul Fysh
+  Soul Fysh gains vulnerable 1
+  reward=0.087, hp=80/80, block=0, energy=0
+
+Step 7: end turn
+  Player ends turn
+  Soul Fysh uses de_gas
+  Soul Fysh hits player for 16
+  -- Turn 3 --
+  Draw Dark Embrace
+  Draw Body Slam+
+  Draw Rage
+  Draw Blood Wall
+  Draw True Grit
+  reward=-4.003, hp=64/80, block=0, energy=3
+
+Step 8: play hand[1] Body Slam+, target=Soul Fysh
+  Player plays Body Slam+ -> Soul Fysh
+  Body Slam+ deals 0 to Soul Fysh
+  reward=-0.003, hp=64/80, block=0, energy=3
+
+Step 9: play hand[1] Rage
+  Player plays Rage
+  Ironclad gains rage 3
+  reward=-0.003, hp=64/80, block=0, energy=3
+
+Step 10: play hand[1] Blood Wall
+  Player plays Blood Wall
+  Player loses 2 HP
+  Ironclad gains 16 block from Blood Wall
+  reward=-0.503, hp=62/80, block=16, energy=1
+
+Step 11: play hand[1] True Grit
+  Player plays True Grit
+  Ironclad gains 7 block from True Grit
+  Dark Embrace exhausts
+  reward=-0.003, hp=62/80, block=23, energy=0
+
+Step 12: end turn
+  Player ends turn
+  Rage wears off
+  Soul Fysh uses gaze
+  Soul Fysh adds 1 Beckon
+  Soul Fysh hits player for 0
+  -- Turn 4 --
+  Draw Feel No Pain
+  Draw Strike
+  Draw Offering
+  Draw Beckon
+  Draw Cascade
+  reward=-0.003, hp=62/80, block=0, energy=3
+
+Step 13: play hand[1] Strike, target=Soul Fysh
+  Player plays Strike -> Soul Fysh
+  Strike deals 6 to Soul Fysh
+  reward=0.087, hp=62/80, block=0, energy=2
+
+Step 14: play hand[1] Offering
+  Player plays Offering
+  Player loses 6 HP
+  Offering grants 2 energy
+  Draw Defend
+  Draw Bloodletting
+  Draw Strike
+  Offering exhausts
+  reward=-1.503, hp=56/80, block=0, energy=4
+
+Step 15: play hand[5] Strike, target=Soul Fysh
+  Player plays Strike -> Soul Fysh
+  Strike deals 6 to Soul Fysh
+  reward=0.087, hp=56/80, block=0, energy=3
+
+Step 16: play hand[4] Bloodletting
+  Player plays Bloodletting
+  Player loses 3 HP
+  Bloodletting grants 2 energy
+  reward=-0.753, hp=53/80, block=0, energy=5
+
+Step 17: play hand[1] Beckon
+  Player plays Beckon
+  reward=-0.003, hp=53/80, block=0, energy=4
+
+Step 18: play hand[1] Cascade
+  Player plays Cascade
+  Player plays Defend
+  Ironclad gains 5 block from Defend
+  Player plays Impervious
+  Ironclad gains 30 block from Impervious
+  Impervious exhausts
+  Player plays Burning Pact
+  Defend exhausts
+  Draw Headbutt
+  Draw Flame Barrier
+  Player plays Havoc
+  Discard pile shuffled into draw pile
+  Player plays Beckon
+  Beckon exhausts
+  reward=-0.003, hp=53/80, block=35, energy=0
+
+Step 19: end turn
+  Player ends turn
+  Soul Fysh uses fade
+  Soul Fysh gains intangible 2
+  -- Turn 5 --
+  Draw Thunderclap
+  Draw Beckon
+  Draw Bash
+  Draw Strike
+  Draw Bloodletting
+  reward=-0.003, hp=53/80, block=0, energy=3
+
+Step 20: play hand[2] Bash, target=Soul Fysh
+  Player plays Bash -> Soul Fysh
+  Intangible reduces HP loss to 1
+  Bash deals 1 to Soul Fysh
+  Soul Fysh gains vulnerable 2
+  reward=0.012, hp=53/80, block=0, energy=1
+
+Step 21: play hand[2] Strike, target=Soul Fysh
+  Player plays Strike -> Soul Fysh
+  Intangible reduces HP loss to 1
+  Strike deals 1 to Soul Fysh
+  reward=0.012, hp=53/80, block=0, energy=0
+
+Step 22: play hand[2] Bloodletting
+  Player plays Bloodletting
+  Player loses 3 HP
+  Bloodletting grants 2 energy
+  reward=-0.753, hp=50/80, block=0, energy=2
+
+Step 23: play hand[1] Beckon
+  Player plays Beckon
+  reward=-0.003, hp=50/80, block=0, energy=1
+
+Step 24: play hand[0] Thunderclap
+  Player plays Thunderclap
+  Intangible reduces HP loss to 1
+  Thunderclap deals 1 to Soul Fysh
+  Soul Fysh gains vulnerable 1
+  reward=0.012, hp=50/80, block=0, energy=0
+
+Step 25: end turn
+  Player ends turn
+  Soul Fysh uses scream
+  Ironclad gains vulnerable 3
+  Soul Fysh hits player for 19
+  -- Turn 6 --
+  Draw Defend
+  Draw Thunderclap
+  Draw Strike
+  Draw Whirlwind
+  Draw Burning Pact
+  reward=-4.753, hp=31/80, block=0, energy=3
+
+Step 26: play hand[2] Strike, target=Soul Fysh
+  Player plays Strike -> Soul Fysh
+  Strike deals 9 to Soul Fysh
+  reward=0.132, hp=31/80, block=0, energy=2
+
+Step 27: play hand[3] Burning Pact, choice=1
+  Player plays Burning Pact
+  Thunderclap exhausts
+  Draw Rage
+  Draw Strike
+  reward=-0.003, hp=31/80, block=0, energy=1
+
+Step 28: play hand[3] Strike, target=Soul Fysh
+  Player plays Strike -> Soul Fysh
+  Strike deals 9 to Soul Fysh
+  reward=0.132, hp=31/80, block=0, energy=0
+
+Step 29: play hand[1] Whirlwind
+  Player plays Whirlwind
+  Whirlwind has no energy to spend
+  reward=-0.003, hp=31/80, block=0, energy=0
+
+Step 30: play hand[1] Rage
+  Player plays Rage
+  Ironclad gains rage 3
+  reward=-0.003, hp=31/80, block=0, energy=0
+
+Step 31: end turn
+  Player ends turn
+  Rage wears off
+  Soul Fysh uses beckon
+  Soul Fysh adds 2 Beckon
+  -- Turn 7 --
+  Draw Blood Wall
+  Draw Vicious+
+  Draw Strike
+  Draw Defend
+  Draw Defend
+  reward=-0.003, hp=31/80, block=0, energy=3
+
+Step 32: play hand[2] Strike, target=Soul Fysh
+  Player plays Strike -> Soul Fysh
+  Strike deals 9 to Soul Fysh
+  reward=0.132, hp=31/80, block=0, energy=2
+
+Step 33: play hand[1] Vicious+
+  Player plays Vicious+
+  Ironclad gains vicious 2
+  Vicious+ leaves combat
+  reward=-0.003, hp=31/80, block=0, energy=1
+
+Step 34: play hand[1] Defend
+  Player plays Defend
+  Ironclad gains 5 block from Defend
+  reward=-0.003, hp=31/80, block=5, energy=0
+
+Step 35: end turn
+  Player ends turn
+  Soul Fysh uses de_gas
+  Soul Fysh hits player for 19
+  -- Turn 8 --
+  Draw Beckon
+  Draw Beckon
+  Draw True Grit
+  Draw Strike
+  Draw Body Slam+
+  reward=-4.753, hp=12/80, block=0, energy=3
+
+Step 36: play hand[3] Strike, target=Soul Fysh
+  Player plays Strike -> Soul Fysh
+  Strike deals 6 to Soul Fysh
+  reward=0.087, hp=12/80, block=0, energy=2
+
+Step 37: play hand[3] Body Slam+, target=Soul Fysh
+  Player plays Body Slam+ -> Soul Fysh
+  Body Slam+ deals 0 to Soul Fysh
+  reward=-0.003, hp=12/80, block=0, energy=2
+
+Step 38: play hand[1] Beckon
+  Player plays Beckon
+  reward=-0.003, hp=12/80, block=0, energy=1
+
+Step 39: play hand[1] True Grit
+  Player plays True Grit
+  Ironclad gains 7 block from True Grit
+  Beckon exhausts
+  reward=-0.003, hp=12/80, block=7, energy=0
+
+Step 40: end turn
+  Player ends turn
+  Soul Fysh uses gaze
+  Soul Fysh adds 1 Beckon
+  Soul Fysh hits player for 0
+  -- Turn 9 --
+  Discard pile shuffled into draw pile
+  Draw Thunderclap
+  Draw Bloodletting
+  Draw Strike
+  Draw Headbutt
+  Draw Defend
+  reward=-0.003, hp=12/80, block=0, energy=3
+
+Step 41: play hand[2] Strike, target=Soul Fysh
+  Player plays Strike -> Soul Fysh
+  Strike deals 6 to Soul Fysh
+  reward=0.087, hp=12/80, block=0, energy=2
+
+Step 42: play hand[2] Headbutt, target=Soul Fysh, choice=0
+  Player plays Headbutt -> Soul Fysh
+  Headbutt deals 9 to Soul Fysh
+  Headbutt puts Strike on top of draw pile
+  reward=0.132, hp=12/80, block=0, energy=1
+
+Step 43: play hand[1] Bloodletting
+  Player plays Bloodletting
+  Player loses 3 HP
+  Bloodletting grants 2 energy
+  reward=-0.753, hp=9/80, block=0, energy=3
+
+Step 44: play hand[1] Defend
+  Player plays Defend
+  Ironclad gains 5 block from Defend
+  reward=-0.003, hp=9/80, block=5, energy=2
+
+Step 45: play hand[0] Thunderclap
+  Player plays Thunderclap
+  Thunderclap deals 4 to Soul Fysh
+  Soul Fysh gains vulnerable 1
+  Draw Strike
+  Draw True Grit
+  reward=0.057, hp=9/80, block=5, energy=1
+
+Step 46: play hand[0] Strike, target=Soul Fysh
+  Player plays Strike -> Soul Fysh
+  Strike deals 9 to Soul Fysh
+  reward=0.132, hp=9/80, block=5, energy=0
+
+Step 47: end turn
+  Player ends turn
+  Soul Fysh uses fade
+  Soul Fysh gains intangible 2
+  -- Turn 10 --
+  Draw Strike
+  Draw Flame Barrier
+  Draw Feel No Pain
+  Draw Whirlwind
+  Draw Defend
+  reward=-0.003, hp=9/80, block=0, energy=3
+
+Step 48: play hand[0] Strike, target=Soul Fysh
+  Player plays Strike -> Soul Fysh
+  Intangible reduces HP loss to 1
+  Strike deals 1 to Soul Fysh
+  reward=0.012, hp=9/80, block=0, energy=2
+
+Step 49: play hand[1] Feel No Pain
+  Player plays Feel No Pain
+  Ironclad gains feel_no_pain 3
+  Feel No Pain leaves combat
+  reward=-0.003, hp=9/80, block=0, energy=1
+
+Step 50: play hand[1] Whirlwind
+  Player plays Whirlwind
+  Intangible reduces HP loss to 1
+  Whirlwind deals 1 to Soul Fysh
+  reward=0.012, hp=9/80, block=0, energy=0
+
+Step 51: end turn
+  Player ends turn
+  Soul Fysh uses scream
+  Ironclad gains vulnerable 3
+  Soul Fysh hits player for 19
+  reward=-79.874, hp=0/80, block=0, energy=0
+
+Result: won=False, hp_lost=80, final_hp=0, turns=10, enemies_killed=0

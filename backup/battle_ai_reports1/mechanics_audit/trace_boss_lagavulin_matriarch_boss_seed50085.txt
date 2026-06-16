@@ -1,0 +1,421 @@
+stage=boss, encounter=lagavulin_matriarch_boss, hp=80/80, enemies=Lagavulin Matriarch, deck=[Strike, Strike, Strike, Strike, Strike, Defend, Defend, Defend, Defend, Bash, Vicious+, Rage, Bloodletting, Thunderclap, Thunderclap, Body Slam+, Flame Barrier, Cascade, Havoc, Blood Wall, Headbutt, Burning Pact, Dark Embrace, Feel No Pain, True Grit, Offering, Whirlwind, Impervious]
+
+Step 0: play hand[0] Strike, target=Lagavulin Matriarch
+  Player plays Strike -> Lagavulin Matriarch
+  Strike deals 0 to Lagavulin Matriarch
+  reward=-0.003, hp=80/80, block=0, energy=2
+
+Step 1: play hand[2] Strike, target=Lagavulin Matriarch
+  Player plays Strike -> Lagavulin Matriarch
+  Strike deals 0 to Lagavulin Matriarch
+  reward=-0.003, hp=80/80, block=0, energy=1
+
+Step 2: play hand[1] Burning Pact, choice=1
+  Player plays Burning Pact
+  Defend exhausts
+  Draw Defend
+  Draw Dark Embrace
+  reward=-0.003, hp=80/80, block=0, energy=0
+
+Step 3: play hand[0] Cascade
+  Player plays Cascade
+  reward=-0.003, hp=80/80, block=0, energy=0
+
+Step 4: end turn
+  Player ends turn
+  Lagavulin Matriarch uses sleep
+  Lagavulin Matriarch gains 12 block from Plating
+  -- Turn 2 --
+  Draw Offering
+  Draw Whirlwind
+  Draw Impervious
+  Draw Body Slam+
+  Draw Bash
+  reward=-0.003, hp=80/80, block=0, energy=3
+
+Step 5: play hand[3] Body Slam+, target=Lagavulin Matriarch
+  Player plays Body Slam+ -> Lagavulin Matriarch
+  Body Slam+ deals 0 to Lagavulin Matriarch
+  reward=-0.003, hp=80/80, block=0, energy=3
+
+Step 6: play hand[3] Bash, target=Lagavulin Matriarch
+  Player plays Bash -> Lagavulin Matriarch
+  Bash deals 0 to Lagavulin Matriarch
+  Lagavulin Matriarch gains vulnerable 2
+  reward=-0.003, hp=80/80, block=0, energy=1
+
+Step 7: play hand[1] Whirlwind
+  Player plays Whirlwind
+  Lagavulin Matriarch wakes up
+  Whirlwind deals 3 to Lagavulin Matriarch
+  reward=0.042, hp=80/80, block=0, energy=0
+
+Step 8: play hand[0] Offering
+  Player plays Offering
+  Player loses 6 HP
+  Offering grants 2 energy
+  Draw Feel No Pain
+  Draw Vicious+
+  Draw Strike
+  Offering exhausts
+  reward=-1.503, hp=74/80, block=0, energy=2
+
+Step 9: play hand[3] Strike, target=Lagavulin Matriarch
+  Player plays Strike -> Lagavulin Matriarch
+  Strike deals 9 to Lagavulin Matriarch
+  reward=0.132, hp=74/80, block=0, energy=1
+
+Step 10: play hand[1] Feel No Pain
+  Player plays Feel No Pain
+  Ironclad gains feel_no_pain 3
+  Feel No Pain leaves combat
+  reward=-0.003, hp=74/80, block=0, energy=0
+
+Step 11: end turn
+  Player ends turn
+  Lagavulin Matriarch wakes up stunned
+  -- Turn 3 --
+  Draw Flame Barrier
+  Draw Blood Wall
+  Draw Strike
+  Draw Defend
+  Draw Rage
+  reward=-0.003, hp=74/80, block=0, energy=3
+
+Step 12: play hand[2] Strike, target=Lagavulin Matriarch
+  Player plays Strike -> Lagavulin Matriarch
+  Strike deals 9 to Lagavulin Matriarch
+  reward=0.132, hp=74/80, block=0, energy=2
+
+Step 13: play hand[1] Blood Wall
+  Player plays Blood Wall
+  Player loses 2 HP
+  Ironclad gains 16 block from Blood Wall
+  reward=-0.503, hp=72/80, block=16, energy=0
+
+Step 14: play hand[2] Rage
+  Player plays Rage
+  Ironclad gains rage 3
+  reward=-0.003, hp=72/80, block=16, energy=0
+
+Step 15: end turn
+  Player ends turn
+  Rage wears off
+  Lagavulin Matriarch uses slash
+  Lagavulin Matriarch hits player for 3
+  -- Turn 4 --
+  Draw Thunderclap
+  Draw Strike
+  Draw Bloodletting
+  Draw True Grit
+  Draw Havoc
+  reward=-0.753, hp=69/80, block=0, energy=3
+
+Step 16: play hand[1] Strike, target=Lagavulin Matriarch
+  Player plays Strike -> Lagavulin Matriarch
+  Strike deals 6 to Lagavulin Matriarch
+  reward=0.087, hp=69/80, block=0, energy=2
+
+Step 17: play hand[1] Bloodletting
+  Player plays Bloodletting
+  Player loses 3 HP
+  Bloodletting grants 2 energy
+  reward=-0.753, hp=66/80, block=0, energy=4
+
+Step 18: play hand[1] True Grit
+  Player plays True Grit
+  Ironclad gains 7 block from True Grit
+  Havoc exhausts
+  Ironclad gains 3 block from Feel No Pain
+  reward=-0.003, hp=66/80, block=10, energy=3
+
+Step 19: play hand[0] Thunderclap
+  Player plays Thunderclap
+  Thunderclap deals 4 to Lagavulin Matriarch
+  Lagavulin Matriarch gains vulnerable 1
+  reward=0.057, hp=66/80, block=10, energy=2
+
+Step 20: end turn
+  Player ends turn
+  Lagavulin Matriarch uses disembowel
+  Lagavulin Matriarch hits player for 0
+  Lagavulin Matriarch hits player for 8
+  -- Turn 5 --
+  Draw Headbutt
+  Draw Thunderclap
+  Draw Defend
+  Discard pile shuffled into draw pile
+  Draw Strike
+  Draw Rage
+  reward=-2.003, hp=58/80, block=0, energy=3
+
+Step 21: play hand[0] Headbutt, target=Lagavulin Matriarch
+  Player plays Headbutt -> Lagavulin Matriarch
+  Headbutt deals 9 to Lagavulin Matriarch
+  reward=0.132, hp=58/80, block=0, energy=2
+
+Step 22: play hand[2] Strike, target=Lagavulin Matriarch
+  Player plays Strike -> Lagavulin Matriarch
+  Strike deals 6 to Lagavulin Matriarch
+  reward=0.087, hp=58/80, block=0, energy=1
+
+Step 23: play hand[1] Defend
+  Player plays Defend
+  Ironclad gains 5 block from Defend
+  reward=-0.003, hp=58/80, block=5, energy=0
+
+Step 24: play hand[1] Rage
+  Player plays Rage
+  Ironclad gains rage 3
+  reward=-0.003, hp=58/80, block=5, energy=0
+
+Step 25: end turn
+  Player ends turn
+  Rage wears off
+  Lagavulin Matriarch uses slash2
+  Lagavulin Matriarch gains 12 block from slash2
+  Lagavulin Matriarch hits player for 7
+  -- Turn 6 --
+  Draw Dark Embrace
+  Draw Cascade
+  Draw Strike
+  Draw Strike
+  Draw Blood Wall
+  reward=-1.753, hp=51/80, block=0, energy=3
+
+Step 26: play hand[2] Strike, target=Lagavulin Matriarch
+  Player plays Strike -> Lagavulin Matriarch
+  Strike deals 0 to Lagavulin Matriarch
+  reward=-0.003, hp=51/80, block=0, energy=2
+
+Step 27: play hand[2] Strike, target=Lagavulin Matriarch
+  Player plays Strike -> Lagavulin Matriarch
+  Strike deals 0 to Lagavulin Matriarch
+  reward=-0.003, hp=51/80, block=0, energy=1
+
+Step 28: play hand[1] Cascade
+  Player plays Cascade
+  Player plays Vicious+
+  Ironclad gains vicious 2
+  Vicious+ leaves combat
+  reward=-0.003, hp=51/80, block=0, energy=0
+
+Step 29: end turn
+  Player ends turn
+  Lagavulin Matriarch uses soul_siphon
+  Lagavulin Matriarch gains strength 2
+  Ironclad gains strength -2
+  Ironclad gains dexterity -2
+  -- Turn 7 --
+  Draw Flame Barrier
+  Draw Bloodletting
+  Draw Strike
+  Draw Impervious
+  Draw Whirlwind
+  reward=-0.003, hp=51/80, block=0, energy=3
+
+Step 30: play hand[2] Strike, target=Lagavulin Matriarch
+  Player plays Strike -> Lagavulin Matriarch
+  Strike deals 4 to Lagavulin Matriarch
+  reward=0.057, hp=51/80, block=0, energy=2
+
+Step 31: play hand[1] Bloodletting
+  Player plays Bloodletting
+  Player loses 3 HP
+  Bloodletting grants 2 energy
+  reward=-0.753, hp=48/80, block=0, energy=4
+
+Step 32: play hand[1] Impervious
+  Player plays Impervious
+  Ironclad gains 28 block from Impervious
+  Impervious exhausts
+  Ironclad gains 3 block from Feel No Pain
+  reward=-0.003, hp=48/80, block=31, energy=2
+
+Step 33: play hand[1] Whirlwind
+  Player plays Whirlwind
+  Whirlwind deals 3 to Lagavulin Matriarch
+  Whirlwind deals 3 to Lagavulin Matriarch
+  reward=0.087, hp=48/80, block=31, energy=0
+
+Step 34: end turn
+  Player ends turn
+  Lagavulin Matriarch uses slash
+  Lagavulin Matriarch hits player for 0
+  -- Turn 8 --
+  Draw Strike
+  Draw Defend
+  Draw True Grit
+  Draw Bash
+  Draw Thunderclap
+  reward=-0.003, hp=48/80, block=0, energy=3
+
+Step 35: play hand[0] Strike, target=Lagavulin Matriarch
+  Player plays Strike -> Lagavulin Matriarch
+  Strike deals 4 to Lagavulin Matriarch
+  reward=0.057, hp=48/80, block=0, energy=2
+
+Step 36: play hand[2] Bash, target=Lagavulin Matriarch
+  Player plays Bash -> Lagavulin Matriarch
+  Bash deals 6 to Lagavulin Matriarch
+  Lagavulin Matriarch gains vulnerable 2
+  Draw Defend
+  Draw Burning Pact
+  reward=0.087, hp=48/80, block=0, energy=0
+
+Step 37: end turn
+  Player ends turn
+  Lagavulin Matriarch uses disembowel
+  Lagavulin Matriarch hits player for 11
+  Lagavulin Matriarch hits player for 11
+  -- Turn 9 --
+  Draw Body Slam+
+  Discard pile shuffled into draw pile
+  Draw Bash
+  Draw Headbutt
+  Draw Strike
+  Draw Defend
+  reward=-5.503, hp=26/80, block=0, energy=3
+
+Step 38: play hand[0] Body Slam+, target=Lagavulin Matriarch
+  Player plays Body Slam+ -> Lagavulin Matriarch
+  Body Slam+ deals 0 to Lagavulin Matriarch
+  reward=-0.003, hp=26/80, block=0, energy=3
+
+Step 39: play hand[0] Bash, target=Lagavulin Matriarch
+  Player plays Bash -> Lagavulin Matriarch
+  Bash deals 9 to Lagavulin Matriarch
+  Lagavulin Matriarch gains vulnerable 2
+  Draw Cascade
+  Draw Strike
+  reward=0.132, hp=26/80, block=0, energy=1
+
+Step 40: play hand[1] Strike, target=Lagavulin Matriarch
+  Player plays Strike -> Lagavulin Matriarch
+  Strike deals 6 to Lagavulin Matriarch
+  reward=0.087, hp=26/80, block=0, energy=0
+
+Step 41: play hand[2] Cascade
+  Player plays Cascade
+  reward=-0.003, hp=26/80, block=0, energy=0
+
+Step 42: end turn
+  Player ends turn
+  Lagavulin Matriarch uses slash2
+  Lagavulin Matriarch gains 12 block from slash2
+  Lagavulin Matriarch hits player for 14
+  -- Turn 10 --
+  Draw Flame Barrier
+  Draw Burning Pact
+  Draw Whirlwind
+  Draw Strike
+  Draw Strike
+  reward=-3.503, hp=12/80, block=0, energy=3
+
+Step 43: play hand[3] Strike, target=Lagavulin Matriarch
+  Player plays Strike -> Lagavulin Matriarch
+  Strike deals 0 to Lagavulin Matriarch
+  reward=-0.003, hp=12/80, block=0, energy=2
+
+Step 44: play hand[3] Strike, target=Lagavulin Matriarch
+  Player plays Strike -> Lagavulin Matriarch
+  Strike deals 0 to Lagavulin Matriarch
+  reward=-0.003, hp=12/80, block=0, energy=1
+
+Step 45: play hand[1] Burning Pact, choice=1
+  Player plays Burning Pact
+  Whirlwind exhausts
+  Ironclad gains 3 block from Feel No Pain
+  Draw Strike
+  Draw Defend
+  reward=-0.003, hp=12/80, block=3, energy=0
+
+Step 46: end turn
+  Player ends turn
+  Lagavulin Matriarch uses soul_siphon
+  Lagavulin Matriarch gains strength 2
+  Ironclad gains strength -2
+  Ironclad gains dexterity -2
+  -- Turn 11 --
+  Draw Defend
+  Draw Bloodletting
+  Draw Dark Embrace
+  Draw Thunderclap
+  Draw True Grit
+  reward=-0.003, hp=12/80, block=0, energy=3
+
+Step 47: play hand[4] True Grit
+  Player plays True Grit
+  Ironclad gains 3 block from True Grit
+  Dark Embrace exhausts
+  Ironclad gains 3 block from Feel No Pain
+  reward=-0.003, hp=12/80, block=6, energy=2
+
+Step 48: play hand[1] Bloodletting
+  Player plays Bloodletting
+  Player loses 3 HP
+  Bloodletting grants 2 energy
+  reward=-0.753, hp=9/80, block=6, energy=4
+
+Step 49: play hand[1] Thunderclap
+  Player plays Thunderclap
+  Thunderclap deals 0 to Lagavulin Matriarch
+  Lagavulin Matriarch gains vulnerable 1
+  Draw Blood Wall
+  Draw Thunderclap
+  reward=-0.003, hp=9/80, block=6, energy=3
+
+Step 50: play hand[1] Blood Wall
+  Player plays Blood Wall
+  Player loses 2 HP
+  Ironclad gains 16 block from Blood Wall
+  reward=-0.503, hp=7/80, block=22, energy=1
+
+Step 51: play hand[1] Thunderclap
+  Player plays Thunderclap
+  Thunderclap deals 0 to Lagavulin Matriarch
+  Lagavulin Matriarch gains vulnerable 1
+  Draw Rage
+  Discard pile shuffled into draw pile
+  Draw Strike
+  reward=-0.003, hp=7/80, block=22, energy=0
+
+Step 52: play hand[1] Rage
+  Player plays Rage
+  Ironclad gains rage 3
+  reward=-0.003, hp=7/80, block=22, energy=0
+
+Step 53: end turn
+  Player ends turn
+  Rage wears off
+  Lagavulin Matriarch uses slash
+  Lagavulin Matriarch hits player for 1
+  -- Turn 12 --
+  Draw Flame Barrier
+  Draw Strike
+  Draw Burning Pact
+  Draw Defend
+  Draw Bash
+  reward=-0.253, hp=6/80, block=0, energy=3
+
+Step 54: play hand[1] Strike, target=Lagavulin Matriarch
+  Player plays Strike -> Lagavulin Matriarch
+  Strike deals 3 to Lagavulin Matriarch
+  reward=0.042, hp=6/80, block=0, energy=2
+
+Step 55: play hand[3] Bash, target=Lagavulin Matriarch
+  Player plays Bash -> Lagavulin Matriarch
+  Bash deals 6 to Lagavulin Matriarch
+  Lagavulin Matriarch gains vulnerable 2
+  Draw Headbutt
+  Draw Blood Wall
+  reward=0.087, hp=6/80, block=0, energy=0
+
+Step 56: end turn
+  Player ends turn
+  Lagavulin Matriarch uses disembowel
+  Lagavulin Matriarch hits player for 13
+  Lagavulin Matriarch hits player for 13
+  reward=-86.260, hp=0/80, block=0, energy=0
+
+Result: won=False, hp_lost=80, final_hp=0, turns=12, enemies_killed=0

@@ -949,8 +949,16 @@ class CombatEnv:
         hand_index = len(self.hand) - 1
         old_energy = self.energy
         self.energy = max(self.energy, self.effective_cost(card, card_instance))
-        self.play_card(hand_index, target_index)
-        self.energy = old_energy
+        if not self.can_play(card, card_instance):
+            self.energy = old_energy
+            self.hand.pop(hand_index)
+            self.move_auto_play_result_without_playing(card_instance, force_exhaust=force_exhaust)
+            self.log.append(f"Auto-play cannot play {card.name}")
+            return
+        try:
+            self.play_card(hand_index, target_index)
+        finally:
+            self.energy = old_energy
         if force_exhaust and card_instance in self.discard_pile:
             self.discard_pile.remove(card_instance)
             self.exhaust_card(card_instance, caused_by_ethereal=False)

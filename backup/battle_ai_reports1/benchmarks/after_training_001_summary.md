@@ -1,0 +1,9 @@
+# Battle Model Benchmark: after_training_001
+
+| Stage | Episodes | Win Rate | Avg HP Lost | Avg Final HP | Avg Turns |
+|---|---:|---:|---:|---:|---:|
+| weak | 120 | 100.0% | 12.65 | 38.81 | 3.15 |
+| regular | 120 | 89.2% | 26.96 | 25.09 | 4.73 |
+| elite | 80 | 36.2% | 45.49 | 5.51 | 4.74 |
+| boss | 80 | 1.2% | 49.39 | 0.03 | 6.34 |
+| all | 120 | 77.5% | 25.48 | 26.21 | 4.15 |

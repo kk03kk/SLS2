@@ -1,9 +1,0 @@
-Episodes: 500
-Wins: 0
-Win rate: 0.00%
-Average total HP loss: 79.99
-Average final HP: 0.01
-Average combats won: 4.14/7
-Combats won distribution: {3: 250, 4: 33, 5: 112, 6: 105}
-Upgrade count distribution: {0: 500}
-First win seed: none
