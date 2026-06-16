@@ -2847,6 +2847,10 @@ def ironclad_a10_starting_deck() -> list[str]:
     )
 
 
+def ironclad_a0_starting_deck() -> list[str]:
+    return ["strike_ironclad"] * 5 + ["defend_ironclad"] * 4 + ["bash"]
+
+
 IRONCLAD_MULTIPLAYER_ONLY = frozenset({"demonic_shield", "tank"})
 IRONCLAD_BASIC_CARDS = frozenset({"strike_ironclad", "defend_ironclad", "bash"})
 IRONCLAD_ANCIENT_CARDS = frozenset({"break", "corruption"})
@@ -2957,4 +2961,109 @@ def ironclad_singleplayer_generation_pool() -> list[str]:
         if card_id not in IRONCLAD_BASIC_CARDS
         and card_id not in IRONCLAD_ANCIENT_CARDS
         and card_id not in IRONCLAD_NOT_GENERATED_IN_COMBAT
+    ]
+
+
+IRONCLAD_CARD_RARITIES = {
+    "aggression": "rare",
+    "anger": "common",
+    "armaments": "common",
+    "ashen_strike": "uncommon",
+    "barricade": "rare",
+    "bash": "basic",
+    "battle_trance": "uncommon",
+    "blood_wall": "common",
+    "bloodletting": "common",
+    "bludgeon": "uncommon",
+    "body_slam": "common",
+    "brand": "rare",
+    "break": "ancient",
+    "breakthrough": "common",
+    "bully": "uncommon",
+    "burning_pact": "uncommon",
+    "cascade": "rare",
+    "cinder": "common",
+    "colossus": "uncommon",
+    "conflagration": "rare",
+    "corruption": "ancient",
+    "crimson_mantle": "rare",
+    "cruelty": "rare",
+    "dark_embrace": "rare",
+    "defend_ironclad": "basic",
+    "demon_form": "rare",
+    "dismantle": "uncommon",
+    "dominate": "uncommon",
+    "drum_of_battle": "uncommon",
+    "evil_eye": "uncommon",
+    "expect_a_fight": "uncommon",
+    "feed": "rare",
+    "feel_no_pain": "uncommon",
+    "fiend_fire": "rare",
+    "fight_me": "uncommon",
+    "flame_barrier": "uncommon",
+    "forgotten_ritual": "uncommon",
+    "havoc": "common",
+    "headbutt": "common",
+    "hellraiser": "rare",
+    "hemokinesis": "uncommon",
+    "howl_from_beyond": "uncommon",
+    "impervious": "rare",
+    "infernal_blade": "uncommon",
+    "inferno": "uncommon",
+    "inflame": "uncommon",
+    "iron_wave": "common",
+    "juggernaut": "rare",
+    "juggling": "uncommon",
+    "mangle": "rare",
+    "molten_fist": "common",
+    "not_yet": "rare",
+    "offering": "rare",
+    "one_two_punch": "rare",
+    "pacts_end": "rare",
+    "perfected_strike": "common",
+    "pillage": "uncommon",
+    "pommel_strike": "common",
+    "primal_force": "rare",
+    "pyre": "rare",
+    "rage": "uncommon",
+    "rampage": "uncommon",
+    "rupture": "uncommon",
+    "second_wind": "uncommon",
+    "setup_strike": "common",
+    "shrug_it_off": "common",
+    "spite": "uncommon",
+    "stampede": "uncommon",
+    "stoke": "rare",
+    "stomp": "uncommon",
+    "stone_armor": "uncommon",
+    "strike_ironclad": "basic",
+    "sword_boomerang": "common",
+    "taunt": "uncommon",
+    "tear_asunder": "rare",
+    "thrash": "rare",
+    "thunderclap": "common",
+    "tremble": "common",
+    "true_grit": "common",
+    "twin_strike": "common",
+    "unmovable": "rare",
+    "unrelenting": "uncommon",
+    "uppercut": "uncommon",
+    "vicious": "uncommon",
+    "whirlwind": "uncommon",
+}
+
+
+for _card_id, _rarity in IRONCLAD_CARD_RARITIES.items():
+    if _card_id in CARD_LIBRARY:
+        object.__setattr__(CARD_LIBRARY[_card_id], "rarity", _rarity)
+        upgraded_id = CARD_LIBRARY[_card_id].upgraded_id
+        if upgraded_id is not None and upgraded_id in CARD_LIBRARY:
+            object.__setattr__(CARD_LIBRARY[upgraded_id], "rarity", _rarity)
+
+
+def ironclad_singleplayer_reward_pool() -> list[str]:
+    return [
+        card_id
+        for card_id in IRONCLAD_SINGLEPLAYER_POOL
+        if IRONCLAD_CARD_RARITIES.get(card_id) in {"common", "uncommon", "rare"}
     ]

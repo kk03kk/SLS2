@@ -40,6 +40,7 @@ class CardDef:
     keywords: frozenset[str] = frozenset()
     exhausts_when_played: bool = False
     upgraded_id: str | None = None
+    rarity: str = "common"
 
 
 @dataclass

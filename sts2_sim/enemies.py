@@ -377,7 +377,7 @@ ENEMY_LIBRARY: dict[str, EnemyDef] = {
         name="Terror Eel",
         min_hp=140,
         max_hp=140,
-        ai="cycle",
+        ai="terror_eel",
         moves=(
             EnemyMove(id="crash", intent="attack 16", damage=16),
             EnemyMove(
@@ -389,8 +389,10 @@ ENEMY_LIBRARY: dict[str, EnemyDef] = {
                 apply_power_amount=6,
                 apply_power_after_damage=True,
             ),
+            EnemyMove(id="stun", intent="stunned"),
             EnemyMove(id="terror", intent="vulnerable 99", apply_player_power="vulnerable", apply_player_power_amount=99),
         ),
+        initial_powers=(("shriek", 70),),
     ),
     "terror_eel_a9": EnemyDef(
         id="terror_eel_a9",
@@ -503,7 +505,6 @@ UNDERDOCKS_ELITE_ENCOUNTERS: dict[str, list[str]] = {
     ],
     "skulking_colony_elite": ["skulking_colony"],
     "terror_eel_elite": ["terror_eel"],
-    "terror_eel_a9_elite": ["terror_eel_a9"],
 }
 
 
@@ -523,4 +524,5 @@ ENCOUNTERS: dict[str, list[str]] = {
     **UNDERDOCKS_REGULAR_ENCOUNTERS,
     **UNDERDOCKS_ELITE_ENCOUNTERS,
     **UNDERDOCKS_BOSS_ENCOUNTERS,
+    "terror_eel_a9_elite": ["terror_eel_a9"],
 }

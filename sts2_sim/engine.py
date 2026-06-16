@@ -34,6 +34,7 @@ class CombatEnv:
         enemies: list[EnemyDef],
         *,
         player_hp: int = 80,
+        player_max_hp: int | None = None,
         seed: int | None = None,
         draw_per_turn: int = 5,
         energy_per_turn: int = 3,
@@ -43,6 +44,7 @@ class CombatEnv:
         self.deck_ids = list(deck)
         self.enemy_defs = list(enemies)
         self.starting_hp = player_hp
+        self.player_max_hp = player_hp if player_max_hp is None else player_max_hp
         self.draw_per_turn = draw_per_turn
         self.energy_per_turn = energy_per_turn
         self.max_turns = max_turns
@@ -58,7 +60,7 @@ class CombatEnv:
         self.reset()
 
     def reset(self) -> dict:
-        self.player = Creature("Ironclad", self.starting_hp, self.starting_hp)
+        self.player = Creature("Ironclad", self.player_max_hp, self.starting_hp)
         self.energy = self.energy_per_turn
         self.turn = 0
         self.hp_lost_this_turn = 0
