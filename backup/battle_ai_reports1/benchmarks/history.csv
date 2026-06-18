@@ -1,6 +1,0 @@
-﻿time,label,model_path,stage,episodes,win_rate,avg_hp_lost,avg_final_hp,avg_turns
-2026-06-16T15:06:04,after_training_001,battle_ai_models/ppo_generic_battle.zip,weak,120,1.000000,12.650000,38.808333,3.150000
-2026-06-16T15:06:04,after_training_001,battle_ai_models/ppo_generic_battle.zip,regular,120,0.891667,26.958333,25.091667,4.733333
-2026-06-16T15:06:04,after_training_001,battle_ai_models/ppo_generic_battle.zip,elite,80,0.362500,45.487500,5.512500,4.737500
-2026-06-16T15:06:04,after_training_001,battle_ai_models/ppo_generic_battle.zip,boss,80,0.012500,49.387500,0.025000,6.337500
-2026-06-16T15:06:04,after_training_001,battle_ai_models/ppo_generic_battle.zip,all,120,0.775000,25.475000,26.208333,4.150000
