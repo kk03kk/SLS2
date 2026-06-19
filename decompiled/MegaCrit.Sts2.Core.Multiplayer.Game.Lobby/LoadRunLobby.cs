@@ -14,6 +14,12 @@ using MegaCrit.Sts2.Core.Saves.Runs;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Game.Lobby;
 
+/// <summary>
+/// Class which handles the connection flow for players resuming a run from a save file.
+/// This exists before Run, giving players an opportunity to all join before the run is resumed.
+/// Only connections from players in the loaded save file will be accepted; all other connections will be denied.
+/// <see cref="T:MegaCrit.Sts2.Core.Multiplayer.Game.Lobby.RunLobby" /> handles player connection and disconnection after the run begins.
+/// </summary>
 public class LoadRunLobby
 {
 	private struct ConnectingPlayer : IEquatable<ConnectingPlayer>
@@ -66,6 +72,10 @@ public class LoadRunLobby
 
 	public GameMode GameMode => Run.GameMode;
 
+	/// <summary>
+	/// If we are the host, this is the amount of time we give clients to send the handshake response in milliseconds.
+	/// Public for tests.
+	/// </summary>
 	public int HandshakeTimeout { get; set; } = 10000;
 
 	public LoadRunLobby(INetGameService netService, ILoadRunLobbyListener lobbyListener, SerializableRun runSave)
@@ -100,6 +110,14 @@ public class LoadRunLobby
 		}
 	}
 
+	/// <summary>
+	/// This should be called to cleanup the lobby before exiting the lobby screen.
+	/// </summary>
+	/// <param name="disconnectSession">
+	/// If true, the net service will be disconnected. Pass true if the lobby is being closed rather than transitioning
+	/// to a run.
+	/// </param>
+	/// <param name="error">If disconnectSession is true, this is the error that is sent to clients.</param>
 	public void CleanUp(bool disconnectSession, NetError error = NetError.Quit)
 	{
 		NetService.UnregisterMessageHandler<ClientLoadJoinRequestMessage>(HandleClientLoadJoinRequestMessage);
@@ -126,6 +144,9 @@ public class LoadRunLobby
 		}
 	}
 
+	/// <summary>
+	/// Should be called when the lobby opens on the host player's side to generate the host's lobby player.
+	/// </summary>
 	public void AddLocalHostPlayer()
 	{
 		if (NetService.Type == NetGameType.Client)

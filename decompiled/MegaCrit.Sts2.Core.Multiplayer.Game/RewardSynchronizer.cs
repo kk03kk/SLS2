@@ -20,6 +20,10 @@ using MegaCrit.Sts2.Core.Runs.History;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Game;
 
+/// <summary>
+/// Temporary synchronizer that tells other players about rewards that a player receives in non-deterministic contexts
+/// Currently only used at the merchant.
+/// </summary>
 public class RewardSynchronizer : IDisposable
 {
 	private struct BufferedMessage
@@ -314,6 +318,11 @@ public class RewardSynchronizer : IDisposable
 		_bufferedMessages.Clear();
 	}
 
+	/// <summary>
+	/// Does card removal for the given player WITHOUT syncing it.
+	/// This is a temporary bridge method for things that already execute deterministically (card removal rewards) and
+	/// things that don't (merchant card removal).
+	/// </summary>
 	public async Task<bool> DoUnsyncedCardRemoval(Player player)
 	{
 		CardSelectorPrefs prefs = new CardSelectorPrefs(new LocString("gameplay_ui", "COMBAT_REWARD_CARD_REMOVAL.selectionScreenPrompt"), 1)

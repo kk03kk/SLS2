@@ -8,6 +8,9 @@ using MegaCrit.Sts2.Core.TestSupport;
 
 namespace MegaCrit.Sts2.Core.Nodes.Vfx;
 
+/// <summary>
+/// Creates fullscreen VFX that occurs when healing at an event.
+/// </summary>
 public static class PlayerFullscreenHealVfx
 {
 	private static readonly string _scenePath = SceneHelper.GetScenePath("vfx/vfx_cross_heal_fullscreen");

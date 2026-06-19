@@ -6,6 +6,15 @@ namespace MegaCrit.Sts2.Core.Helpers.Models;
 
 public static class CardCostHelper
 {
+	/// <summary>
+	/// Get the color that should be used for the text in a card's energy cost.
+	/// Depends on a whole bunch of tricky rules, see comments and tests for details.
+	/// WARNING: If you make a change to this method, you should probably make a similar change to
+	/// <see cref="M:MegaCrit.Sts2.Core.Helpers.Models.CardCostHelper.GetStarCostColor(MegaCrit.Sts2.Core.Models.CardModel,MegaCrit.Sts2.Core.Combat.ICombatState)" />, or write a comment explaining why the two methods are different.
+	/// </summary>
+	/// <param name="card">Card whose energy cost color we want.</param>
+	/// <param name="state">Combat state that the color depends on. Null outside of combat (like in the Card Library).</param>
+	/// <returns>Energy cost color for the specified card in the specified combat state.</returns>
 	public static CardCostColor GetEnergyCostColor(CardModel card, ICombatState? state)
 	{
 		if (state == null)
@@ -31,6 +40,15 @@ public static class CardCostHelper
 		return CardCostColor.Unmodified;
 	}
 
+	/// <summary>
+	/// Get the color that should be used for the text in a card's star cost.
+	/// Depends on a whole bunch of tricky rules, see comments and tests for details.
+	/// WARNING: If you make a change to this method, you should probably make a similar change to
+	/// <see cref="M:MegaCrit.Sts2.Core.Helpers.Models.CardCostHelper.GetEnergyCostColor(MegaCrit.Sts2.Core.Models.CardModel,MegaCrit.Sts2.Core.Combat.ICombatState)" />, or write a comment explaining why the two methods are different.
+	/// </summary>
+	/// <param name="card">Card whose star cost color we want.</param>
+	/// <param name="state">Combat state that the color depends on. Null outside of combat (like in the Card Library).</param>
+	/// <returns>Star cost color for the specified card in the specified combat state.</returns>
 	public static CardCostColor GetStarCostColor(CardModel card, ICombatState? state)
 	{
 		if (state == null)

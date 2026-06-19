@@ -36,6 +36,10 @@ public class CardReward : Reward
 
 	private readonly List<CardCreationResult> _cards = new List<CardCreationResult>();
 
+	/// <summary>
+	/// This is true if cards were manually set through the constructor, and Options has an empty card pool. The intent
+	/// when this is set to true is that _cards is a static list that should not be re-populated nor changed.
+	/// </summary>
 	private bool _cardsWereManuallySet;
 
 	private bool _hasBeenRerolled;
@@ -94,6 +98,15 @@ public class CardReward : Reward
 
 	public event Action? AfterGenerated;
 
+	/// <summary>
+	/// Create a card reward from a specified source, using the current character's card pool and the source's
+	/// rarity-rolling logic.
+	/// This is the typical way one would generate a card reward for something like the end of combat.
+	/// </summary>
+	/// <param name="options">Options used to generate the card rewards.</param>
+	/// <param name="cardCount">How many choices to offer (usually 3).</param>
+	/// <param name="player">The player that this reward is for.</param>
+	/// <param name="synchronizer">PlayerChoiceSynchronizer, for injection in tests.</param>
 	public CardReward(CardCreationOptions options, int cardCount, Player player, PlayerChoiceSynchronizer? synchronizer = null)
 		: base(player)
 	{
@@ -104,6 +117,17 @@ public class CardReward : Reward
 		player.RelicObtained += OnRelicObtained;
 	}
 
+	/// <summary>
+	/// Create a card reward with specific cards in it. This is for exceptionally rare cases where we want to offer a
+	/// very specific set of cards that ignores modification, like during the tutorial run.
+	/// Note that <see cref="M:MegaCrit.Sts2.Core.Rewards.CardReward.Populate" /> will do nothing if called after this method.
+	/// </summary>
+	/// <param name="cardsToOffer">List of cards to offer as rewards.</param>
+	/// <param name="source">The source of the reward.</param>
+	/// <param name="player">The player that this reward is for.</param>
+	/// <param name="rerollOptions">If the options are rerolled with <see cref="T:MegaCrit.Sts2.Core.Models.Relics.Driftwood" />, then these options will
+	/// be used to generate a new set of cards.</param>
+	/// <param name="synchronizer">PlayerChoiceSynchronizer, for injection in tests.</param>
 	public CardReward(IEnumerable<CardModel> cardsToOffer, CardCreationSource source, Player player, CardCreationOptions rerollOptions, PlayerChoiceSynchronizer? synchronizer = null)
 		: base(player)
 	{
@@ -115,6 +139,10 @@ public class CardReward : Reward
 		_synchronizer = synchronizer ?? RunManager.Instance.PlayerChoiceSynchronizer;
 	}
 
+	/// <summary>
+	/// Called when the CardReward rolls options for the first time, and may be called again afterward to generate a new
+	/// set of the same type of rewards.
+	/// </summary>
 	public override void Populate()
 	{
 		CardCreationOptions cardCreationOptions = (_hasBeenRerolled ? RerollOptions : Options);

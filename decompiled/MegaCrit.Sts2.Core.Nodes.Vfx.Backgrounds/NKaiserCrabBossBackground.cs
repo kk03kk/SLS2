@@ -11,6 +11,10 @@ using MegaCrit.Sts2.Core.Helpers;
 
 namespace MegaCrit.Sts2.Core.Nodes.Vfx.Backgrounds;
 
+/// <summary>
+/// Manages the <see cref="T:MegaCrit.Sts2.Core.Models.Encounters.KaiserCrabBoss" />'s animations, since its 2 creatures (each of its claws) that share one big
+/// Spine file.
+/// </summary>
 [GlobalClass]
 [ScriptPath("res://src/Core/Nodes/Vfx/Backgrounds/NKaiserCrabBossBackground.cs")]
 public class NKaiserCrabBossBackground : Node2D
@@ -28,28 +32,61 @@ public class NKaiserCrabBossBackground : Node2D
 		Right
 	}
 
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Node2D.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the 'PlayHurtAnim' method.
+		/// </summary>
 		public static readonly StringName PlayHurtAnim = "PlayHurtAnim";
 
+		/// <summary>
+		/// Cached name for the 'PlayArmDeathAnim' method.
+		/// </summary>
 		public static readonly StringName PlayArmDeathAnim = "PlayArmDeathAnim";
 
+		/// <summary>
+		/// Cached name for the 'PlayBodyDeathAnim' method.
+		/// </summary>
 		public static readonly StringName PlayBodyDeathAnim = "PlayBodyDeathAnim";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Node2D.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the '_leftArm' field.
+		/// </summary>
 		public static readonly StringName _leftArm = "_leftArm";
 
+		/// <summary>
+		/// Cached name for the '_rightArm' field.
+		/// </summary>
 		public static readonly StringName _rightArm = "_rightArm";
 
+		/// <summary>
+		/// Cached name for the '_rightArmState' field.
+		/// </summary>
 		public static readonly StringName _rightArmState = "_rightArmState";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Node2D.SignalName
 	{
 	}
@@ -196,11 +233,20 @@ public class NKaiserCrabBossBackground : Node2D
 		animationState.SetAnimation("body/die", loop: false);
 	}
 
+	/// <summary>
+	/// Resets the reaction track animationafter its current animation is finished
+	/// returning control of the rig to other animation tracks
+	/// </summary>
 	private void AddEmptyReactionAnimation(MegaAnimationState state)
 	{
 		state.AddEmptyAnimation(3);
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -219,6 +265,7 @@ public class NKaiserCrabBossBackground : Node2D
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -255,6 +302,7 @@ public class NKaiserCrabBossBackground : Node2D
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -281,6 +329,7 @@ public class NKaiserCrabBossBackground : Node2D
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -302,6 +351,7 @@ public class NKaiserCrabBossBackground : Node2D
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -323,6 +373,11 @@ public class NKaiserCrabBossBackground : Node2D
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -333,6 +388,7 @@ public class NKaiserCrabBossBackground : Node2D
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -342,6 +398,7 @@ public class NKaiserCrabBossBackground : Node2D
 		info.AddProperty(PropertyName._rightArmState, Variant.From(in _rightArmState));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

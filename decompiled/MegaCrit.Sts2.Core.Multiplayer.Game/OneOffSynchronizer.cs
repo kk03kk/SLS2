@@ -22,6 +22,10 @@ using MegaCrit.Sts2.Core.Runs;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Game;
 
+/// <summary>
+/// A synchronizer for a few one-off scenarios that don't fit in any other synchronizer.
+/// This should be used pretty rarely, and we should be on the lookout for patterns that emerge with new content.
+/// </summary>
 public class OneOffSynchronizer : IDisposable
 {
 	private readonly RunLocationTargetedMessageBuffer _messageBuffer;
@@ -52,6 +56,13 @@ public class OneOffSynchronizer : IDisposable
 		_messageBuffer.UnregisterMessageHandler<CrystalSphereRewardsMessage>(HandleCrystalSphereRewardsMessage);
 	}
 
+	/// <summary>
+	/// Does merchant card removal for the local player.
+	/// </summary>
+	/// <param name="goldCost">The cost, in gold, that we should deduct from the player's gold count.</param>
+	/// <param name="cancelable">If false, you are required to remove a card</param>
+	/// <returns>A task that completes when the player finishes the removal flow. Result is true if the player removed
+	/// a card, false otherwise.</returns>
 	public Task<bool> DoLocalMerchantCardRemoval(int goldCost, bool cancelable = true)
 	{
 		MerchantCardRemovalMessage message = new MerchantCardRemovalMessage
@@ -90,6 +101,10 @@ public class OneOffSynchronizer : IDisposable
 		return card != null;
 	}
 
+	/// <summary>
+	/// Should be called after a player opens the chest in the treasure room to synchronize gold gain and other effects.
+	/// </summary>
+	/// <returns>The amount of gold given to the player.</returns>
 	public Task<int> DoLocalTreasureRoomRewards()
 	{
 		TreasureChestOpenedMessage message = new TreasureChestOpenedMessage
@@ -127,6 +142,10 @@ public class OneOffSynchronizer : IDisposable
 		return (int)gold;
 	}
 
+	/// <summary>
+	/// Special one-off logic for Spoils Map. If more stuff ends up going here, make this a hook
+	/// </summary>
+	/// <returns>The amount of gold given by spoils map, if any.</returns>
 	private async Task<int> TryHandleSpoilsMap(Player player)
 	{
 		MapPoint mapPoint = (player.RunState.CurrentMapCoord.HasValue ? player.RunState.Map.GetPoint(player.RunState.CurrentMapCoord.Value) : null);
@@ -148,6 +167,10 @@ public class OneOffSynchronizer : IDisposable
 		return num;
 	}
 
+	/// <summary>
+	/// Special one-off logic for presenting crystal sphere rewards to the player, and notifying other players that
+	/// crystal sphere rewards are beginning for the local player.
+	/// </summary>
 	public async Task DoLocalCrystalSphereRewards(Player owner, Rng rng, List<CrystalSphereItem> revealed)
 	{
 		if (owner != LocalContext.GetMe(_playerCollection))

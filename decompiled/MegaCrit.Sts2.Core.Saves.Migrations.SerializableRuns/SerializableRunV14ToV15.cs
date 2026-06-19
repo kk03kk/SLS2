@@ -6,6 +6,10 @@ using MegaCrit.Sts2.Core.Saves.Runs;
 
 namespace MegaCrit.Sts2.Core.Saves.Migrations.SerializableRuns;
 
+/// <summary>
+/// Added GameMode. It defaults to None for error-checking purposes, but for existing real runs, it should default to
+/// something reasonable.
+/// </summary>
 [Migration(typeof(SerializableRun), 14, 15)]
 public class SerializableRunV14ToV15 : MigrationBase<SerializableRun>
 {

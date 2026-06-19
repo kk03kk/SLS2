@@ -70,6 +70,9 @@ public class DevConsole
 		}
 	}
 
+	/// <summary>
+	/// Gets structured completion results for interactive selection
+	/// </summary>
 	public CompletionResult GetCompletionResults(string inputBuffer)
 	{
 		string[] array = (inputBuffer.EndsWith(' ') ? inputBuffer.Trim().Split(' ').Append(string.Empty)
@@ -232,6 +235,12 @@ public class DevConsole
 		return string.Empty;
 	}
 
+	/// <summary>
+	/// Call this to attempt to execute a command that is issued locally.
+	/// If the command must be networked and a run is in progress, a GameAction will be enqueued to all peers before
+	/// the command is executed.
+	/// </summary>
+	/// <param name="inputValue">The command input by the player.</param>
 	public CmdResult ProcessCommand(string inputValue)
 	{
 		inputValue = inputValue.Trim();
@@ -253,6 +262,12 @@ public class DevConsole
 		return result;
 	}
 
+	/// <summary>
+	/// Call this when a networked console command is received.
+	/// You are expected to await CmdResult.task.
+	/// </summary>
+	/// <param name="player">The player that sent the command.</param>
+	/// <param name="inputValue">The command input by the player.</param>
 	public CmdResult ProcessNetCommand(Player? player, string inputValue)
 	{
 		Log.Info($"Executing DevConsole command (player {player?.NetId}): `{inputValue}`");

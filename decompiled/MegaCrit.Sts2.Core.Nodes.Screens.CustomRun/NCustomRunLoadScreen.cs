@@ -32,61 +32,143 @@ using MegaCrit.Sts2.addons.mega_text;
 
 namespace MegaCrit.Sts2.Core.Nodes.Screens.CustomRun;
 
+/// <summary>
+/// Intermediate screen when loading a custom run in multiplayer. Allows players to join back into the session
+/// before it is resumed.
+/// </summary>
 [ScriptPath("res://src/Core/Nodes/Screens/CustomRun/NCustomRunLoadScreen.cs")]
 public class NCustomRunLoadScreen : NSubmenu, ILoadRunLobbyListener
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : NSubmenu.MethodName
 	{
+		/// <summary>
+		/// Cached name for the 'Create' method.
+		/// </summary>
 		public static readonly StringName Create = "Create";
 
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the 'OnSubmenuOpened' method.
+		/// </summary>
 		public new static readonly StringName OnSubmenuOpened = "OnSubmenuOpened";
 
+		/// <summary>
+		/// Cached name for the 'OnSubmenuClosed' method.
+		/// </summary>
 		public new static readonly StringName OnSubmenuClosed = "OnSubmenuClosed";
 
+		/// <summary>
+		/// Cached name for the 'OnEmbarkPressed' method.
+		/// </summary>
 		public static readonly StringName OnEmbarkPressed = "OnEmbarkPressed";
 
+		/// <summary>
+		/// Cached name for the 'OnUnreadyPressed' method.
+		/// </summary>
 		public static readonly StringName OnUnreadyPressed = "OnUnreadyPressed";
 
+		/// <summary>
+		/// Cached name for the 'UpdateRichPresence' method.
+		/// </summary>
 		public static readonly StringName UpdateRichPresence = "UpdateRichPresence";
 
+		/// <summary>
+		/// Cached name for the '_Process' method.
+		/// </summary>
 		public new static readonly StringName _Process = "_Process";
 
+		/// <summary>
+		/// Cached name for the 'CleanUpLobby' method.
+		/// </summary>
 		public static readonly StringName CleanUpLobby = "CleanUpLobby";
 
+		/// <summary>
+		/// Cached name for the 'PlayerConnected' method.
+		/// </summary>
 		public static readonly StringName PlayerConnected = "PlayerConnected";
 
+		/// <summary>
+		/// Cached name for the 'PlayerReadyChanged' method.
+		/// </summary>
 		public static readonly StringName PlayerReadyChanged = "PlayerReadyChanged";
 
+		/// <summary>
+		/// Cached name for the 'RemotePlayerDisconnected' method.
+		/// </summary>
 		public static readonly StringName RemotePlayerDisconnected = "RemotePlayerDisconnected";
 
+		/// <summary>
+		/// Cached name for the 'BeginRun' method.
+		/// </summary>
 		public static readonly StringName BeginRun = "BeginRun";
 
+		/// <summary>
+		/// Cached name for the 'AfterInitialized' method.
+		/// </summary>
 		public static readonly StringName AfterInitialized = "AfterInitialized";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : NSubmenu.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'InitialFocusedControl' property.
+		/// </summary>
 		public new static readonly StringName InitialFocusedControl = "InitialFocusedControl";
 
+		/// <summary>
+		/// Cached name for the '_confirmButton' field.
+		/// </summary>
 		public static readonly StringName _confirmButton = "_confirmButton";
 
+		/// <summary>
+		/// Cached name for the '_backButton' field.
+		/// </summary>
 		public new static readonly StringName _backButton = "_backButton";
 
+		/// <summary>
+		/// Cached name for the '_unreadyButton' field.
+		/// </summary>
 		public static readonly StringName _unreadyButton = "_unreadyButton";
 
+		/// <summary>
+		/// Cached name for the '_ascensionPanel' field.
+		/// </summary>
 		public static readonly StringName _ascensionPanel = "_ascensionPanel";
 
+		/// <summary>
+		/// Cached name for the '_readyAndWaitingContainer' field.
+		/// </summary>
 		public static readonly StringName _readyAndWaitingContainer = "_readyAndWaitingContainer";
 
+		/// <summary>
+		/// Cached name for the '_seedInput' field.
+		/// </summary>
 		public static readonly StringName _seedInput = "_seedInput";
 
+		/// <summary>
+		/// Cached name for the '_remotePlayerContainer' field.
+		/// </summary>
 		public static readonly StringName _remotePlayerContainer = "_remotePlayerContainer";
 
+		/// <summary>
+		/// Cached name for the '_modifiersList' field.
+		/// </summary>
 		public static readonly StringName _modifiersList = "_modifiersList";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : NSubmenu.SignalName
 	{
 	}
@@ -339,6 +421,11 @@ public class NCustomRunLoadScreen : NSubmenu, ILoadRunLobbyListener
 		NGame.Instance.DebugSeedOverride = null;
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<MethodInfo> GetGodotMethodList()
 	{
@@ -382,6 +469,7 @@ public class NCustomRunLoadScreen : NSubmenu, ILoadRunLobbyListener
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -483,6 +571,7 @@ public class NCustomRunLoadScreen : NSubmenu, ILoadRunLobbyListener
 		return false;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -545,6 +634,7 @@ public class NCustomRunLoadScreen : NSubmenu, ILoadRunLobbyListener
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -591,6 +681,7 @@ public class NCustomRunLoadScreen : NSubmenu, ILoadRunLobbyListener
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -642,6 +733,11 @@ public class NCustomRunLoadScreen : NSubmenu, ILoadRunLobbyListener
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -658,6 +754,7 @@ public class NCustomRunLoadScreen : NSubmenu, ILoadRunLobbyListener
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -672,6 +769,7 @@ public class NCustomRunLoadScreen : NSubmenu, ILoadRunLobbyListener
 		info.AddProperty(PropertyName._modifiersList, Variant.From(in _modifiersList));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

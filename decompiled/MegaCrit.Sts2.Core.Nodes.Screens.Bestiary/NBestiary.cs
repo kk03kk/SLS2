@@ -26,75 +26,178 @@ using MegaCrit.Sts2.addons.mega_text;
 
 namespace MegaCrit.Sts2.Core.Nodes.Screens.Bestiary;
 
+/// <summary>
+/// Screen that has a list of monsters that you can click on to view their name, description, hp, some stats, and
+/// a list of their moves which you can click on to play the associated animation and sfx.
+/// </summary>
 [ScriptPath("res://src/Core/Nodes/Screens/Bestiary/NBestiary.cs")]
 public class NBestiary : NSubmenu
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : NSubmenu.MethodName
 	{
+		/// <summary>
+		/// Cached name for the 'Create' method.
+		/// </summary>
 		public static readonly StringName Create = "Create";
 
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the 'OnSubmenuOpened' method.
+		/// </summary>
 		public new static readonly StringName OnSubmenuOpened = "OnSubmenuOpened";
 
+		/// <summary>
+		/// Cached name for the 'OnSubmenuClosed' method.
+		/// </summary>
 		public new static readonly StringName OnSubmenuClosed = "OnSubmenuClosed";
 
+		/// <summary>
+		/// Cached name for the 'CreateEntries' method.
+		/// </summary>
 		public static readonly StringName CreateEntries = "CreateEntries";
 
+		/// <summary>
+		/// Cached name for the 'OnMonsterClicked' method.
+		/// </summary>
 		public static readonly StringName OnMonsterClicked = "OnMonsterClicked";
 
+		/// <summary>
+		/// Cached name for the 'SelectMonster' method.
+		/// </summary>
 		public static readonly StringName SelectMonster = "SelectMonster";
 
+		/// <summary>
+		/// Cached name for the 'OnMoveButtonClicked' method.
+		/// </summary>
 		public static readonly StringName OnMoveButtonClicked = "OnMoveButtonClicked";
 
+		/// <summary>
+		/// Cached name for the 'GetSideCenter' method.
+		/// </summary>
 		public static readonly StringName GetSideCenter = "GetSideCenter";
 
+		/// <summary>
+		/// Cached name for the 'GetSideFloor' method.
+		/// </summary>
 		public static readonly StringName GetSideFloor = "GetSideFloor";
 
+		/// <summary>
+		/// Cached name for the 'CanBeShown' method.
+		/// </summary>
 		public static readonly StringName CanBeShown = "CanBeShown";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : NSubmenu.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'InitialFocusedControl' property.
+		/// </summary>
 		public new static readonly StringName InitialFocusedControl = "InitialFocusedControl";
 
+		/// <summary>
+		/// Cached name for the 'BackVfxContainer' property.
+		/// </summary>
 		public static readonly StringName BackVfxContainer = "BackVfxContainer";
 
+		/// <summary>
+		/// Cached name for the 'VfxContainer' property.
+		/// </summary>
 		public static readonly StringName VfxContainer = "VfxContainer";
 
+		/// <summary>
+		/// Cached name for the 'Layout' property.
+		/// </summary>
 		public static readonly StringName Layout = "Layout";
 
+		/// <summary>
+		/// Cached name for the '_monsterNameLabel' field.
+		/// </summary>
 		public static readonly StringName _monsterNameLabel = "_monsterNameLabel";
 
+		/// <summary>
+		/// Cached name for the '_epithet' field.
+		/// </summary>
 		public static readonly StringName _epithet = "_epithet";
 
+		/// <summary>
+		/// Cached name for the '_sidebar' field.
+		/// </summary>
 		public static readonly StringName _sidebar = "_sidebar";
 
+		/// <summary>
+		/// Cached name for the '_bestiaryList' field.
+		/// </summary>
 		public static readonly StringName _bestiaryList = "_bestiaryList";
 
+		/// <summary>
+		/// Cached name for the '_selectionArrow' field.
+		/// </summary>
 		public static readonly StringName _selectionArrow = "_selectionArrow";
 
+		/// <summary>
+		/// Cached name for the '_arrowTween' field.
+		/// </summary>
 		public static readonly StringName _arrowTween = "_arrowTween";
 
+		/// <summary>
+		/// Cached name for the '_initSelectionArrow' field.
+		/// </summary>
 		public static readonly StringName _initSelectionArrow = "_initSelectionArrow";
 
+		/// <summary>
+		/// Cached name for the '_layoutContainer' field.
+		/// </summary>
 		public static readonly StringName _layoutContainer = "_layoutContainer";
 
+		/// <summary>
+		/// Cached name for the '_currentLayout' field.
+		/// </summary>
 		public static readonly StringName _currentLayout = "_currentLayout";
 
+		/// <summary>
+		/// Cached name for the '_descriptionLabel' field.
+		/// </summary>
 		public static readonly StringName _descriptionLabel = "_descriptionLabel";
 
+		/// <summary>
+		/// Cached name for the '_moveList' field.
+		/// </summary>
 		public static readonly StringName _moveList = "_moveList";
 
+		/// <summary>
+		/// Cached name for the '_moveContainer' field.
+		/// </summary>
 		public static readonly StringName _moveContainer = "_moveContainer";
 
+		/// <summary>
+		/// Cached name for the '_selectedEntry' field.
+		/// </summary>
 		public static readonly StringName _selectedEntry = "_selectedEntry";
 
+		/// <summary>
+		/// Cached name for the '_previousScreenshakeTarget' field.
+		/// </summary>
 		public static readonly StringName _previousScreenshakeTarget = "_previousScreenshakeTarget";
 
+		/// <summary>
+		/// Cached name for the '_tween' field.
+		/// </summary>
 		public static readonly StringName _tween = "_tween";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : NSubmenu.SignalName
 	{
 	}
@@ -189,6 +292,9 @@ public class NBestiary : NSubmenu
 		BackVfxContainer = GetNode<Control>("%BackVfxContainer");
 	}
 
+	/// <summary>
+	/// On screen open. When the player opens the Bestiary.
+	/// </summary>
 	public override void OnSubmenuOpened()
 	{
 		Instance = this;
@@ -196,6 +302,9 @@ public class NBestiary : NSubmenu
 		CreateEntries();
 	}
 
+	/// <summary>
+	/// Called when the Bestiary is closed (Back button)
+	/// </summary>
 	public override void OnSubmenuClosed()
 	{
 		_initSelectionArrow = true;
@@ -213,6 +322,9 @@ public class NBestiary : NSubmenu
 		_bestiaryList.FreeChildren();
 	}
 
+	/// <summary>
+	/// Initializes the list of monsters based on your save file.
+	/// </summary>
 	private void CreateEntries()
 	{
 		_discoveredMonsterIds = (from e in SaveManager.Instance.Progress.EnemyStats.Values
@@ -221,10 +333,10 @@ public class NBestiary : NSubmenu
 		_discoveredEncounterIds = (from e in SaveManager.Instance.Progress.EncounterStats.Values
 			where e.TotalWins > 0
 			select e.Id).ToHashSet();
-		AddAct(ModelDb.Act<Overgrowth>());
-		AddAct(ModelDb.Act<Underdocks>());
-		AddAct(ModelDb.Act<Hive>());
-		AddAct(ModelDb.Act<Glory>());
+		foreach (ActModel act in ModelDb.Acts)
+		{
+			AddAct(act);
+		}
 		Control node = _sidebar.GetNode<Control>("Content");
 		Vector2 position = node.Position;
 		position.Y = 0f;
@@ -289,11 +401,17 @@ public class NBestiary : NSubmenu
 		}
 	}
 
+	/// <summary>
+	/// A player clicked on a monster in the list on the right.
+	/// </summary>
 	private void OnMonsterClicked(NBestiaryEntry entry)
 	{
 		SelectMonster(entry);
 	}
 
+	/// <summary>
+	/// Loads a specific monster's bestiary entry.
+	/// </summary>
 	private void SelectMonster(NBestiaryEntry entry)
 	{
 		if (entry == _selectedEntry)
@@ -492,6 +610,11 @@ public class NBestiary : NSubmenu
 		return SaveManager.Instance.Progress.EnemyStats.Values.Any((EnemyStats e) => e.TotalWins > 0);
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<MethodInfo> GetGodotMethodList()
 	{
@@ -519,6 +642,7 @@ public class NBestiary : NSubmenu
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -604,6 +728,7 @@ public class NBestiary : NSubmenu
 		return false;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -654,6 +779,7 @@ public class NBestiary : NSubmenu
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -745,6 +871,7 @@ public class NBestiary : NSubmenu
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -851,6 +978,11 @@ public class NBestiary : NSubmenu
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -877,6 +1009,7 @@ public class NBestiary : NSubmenu
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -900,6 +1033,7 @@ public class NBestiary : NSubmenu
 		info.AddProperty(PropertyName._tween, Variant.From(in _tween));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

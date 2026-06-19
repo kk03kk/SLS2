@@ -9,6 +9,9 @@ using MegaCrit.Sts2.Core.Rooms;
 
 namespace MegaCrit.Sts2.Core.Models.Achievements;
 
+/// <summary>
+/// Grants an achievement when a player plays a large number of Sly cards from a single card.
+/// </summary>
 public class SkillSilent1Achievement : AchievementModel
 {
 	private CardModel? _firstCardOnStack;

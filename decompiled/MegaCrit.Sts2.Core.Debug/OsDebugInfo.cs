@@ -13,6 +13,12 @@ namespace MegaCrit.Sts2.Core.Debug;
 
 public static class OsDebugInfo
 {
+	/// <summary>
+	/// At some point in the future, logs system info.
+	/// Getting system info takes a little while, about 1s on my Windows machine. This fetches the info asynchronously
+	/// and then logs it once it's all done.
+	/// Only logs on release builds to avoid cluttering dev logs.
+	/// </summary>
 	public static async Task LogSystemInfo()
 	{
 		if (ReleaseInfoManager.Instance.ReleaseInfo != null)
@@ -23,6 +29,9 @@ public static class OsDebugInfo
 		}
 	}
 
+	/// <summary>
+	/// Gets a string containing diagnostic system info for logging.
+	/// </summary>
 	public static string GetSystemInfoString()
 	{
 		StringBuilder stringBuilder = new StringBuilder();

@@ -8,6 +8,9 @@ using MegaCrit.Sts2.Core.Platform;
 
 namespace MegaCrit.Sts2.Core.Models.Achievements;
 
+/// <summary>
+/// Grants an achievement when the player applies a large amount of poison to a single creature.
+/// </summary>
 public class SkillSilent2Achievement : AchievementModel
 {
 	private const int _poisonThreshold = 99;

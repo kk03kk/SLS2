@@ -8,6 +8,9 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace MegaCrit.Sts2.Core.Localization.DynamicVars;
 
+/// <summary>
+/// DamageVar variant used exclusively by Osty. Utilizes buffs, debuffs on Osty like Strength and Weak
+/// </summary>
 public class OstyDamageVar : DynamicVar
 {
 	public const string defaultName = "OstyDamage";

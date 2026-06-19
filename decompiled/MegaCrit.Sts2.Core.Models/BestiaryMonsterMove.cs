@@ -6,6 +6,10 @@ using MegaCrit.Sts2.Core.Localization;
 
 namespace MegaCrit.Sts2.Core.Models;
 
+/// <summary>
+/// Encapsulates the data needed to play an animation and accompanied sfx for a
+/// "move" for a given creature in the Bestiary.
+/// </summary>
 public struct BestiaryMonsterMove
 {
 	private static readonly LocString _attackMoveName = new LocString("bestiary", "ACTION_NAME.attack");

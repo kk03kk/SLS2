@@ -5,6 +5,9 @@ using MegaCrit.Sts2.Core.Saves;
 
 namespace MegaCrit.Sts2.Core.Timeline.Epochs;
 
+/// <summary>
+/// Life and Death
+/// </summary>
 public class Necrobinder1Epoch : EpochModel
 {
 	public override string Id => "NECROBINDER1_EPOCH";

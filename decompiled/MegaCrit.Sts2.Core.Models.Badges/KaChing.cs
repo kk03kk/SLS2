@@ -6,12 +6,18 @@ using MegaCrit.Sts2.Core.Saves;
 
 namespace MegaCrit.Sts2.Core.Models.Badges;
 
+/// <summary>
+/// Spent more than 1,000 Gold at the Merchant (aggregate).
+/// </summary>
 public class KaChing : Badge
 {
 	private const int _goldRequirement = 1000;
 
 	public override BadgeRarity Rarity => BadgeRarity.Bronze;
 
+	/// <summary>
+	/// Spent more than 1,000 Gold at the Merchant (aggregate).
+	/// </summary>
 	public KaChing(SerializableRun run, bool won, ulong playerId)
 		: base(run, won, playerId, "KACHING", requiresWin: false, multiplayerOnly: false)
 	{

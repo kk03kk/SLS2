@@ -6,6 +6,9 @@ using MegaCrit.Sts2.Core.Logging;
 
 namespace MegaCrit.Sts2.Core.Daily;
 
+/// <summary>
+/// Static class for interfacing with MegaCrit's time server.
+/// </summary>
 public static class TimeServer
 {
 	private const string _timeServerUrl = "https://time.megacrit.com";
@@ -82,6 +85,9 @@ public static class TimeServer
 		return null;
 	}
 
+	/// <summary>
+	/// Begins fetching the time from the time server. After this, RequestTimeTask is non-null.
+	/// </summary>
 	public static Task<TimeServerResult?> FetchDailyTime()
 	{
 		RequestTimeTask = RequestTime("https://time.megacrit.com");

@@ -11,82 +11,196 @@ namespace MegaCrit.Sts2.Core.Nodes.Vfx;
 [ScriptPath("res://src/Core/Nodes/Vfx/NWaterfallGiantVfx.cs")]
 public class NWaterfallGiantVfx : Node
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Node.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the 'OnAnimationEvent' method.
+		/// </summary>
 		public static readonly StringName OnAnimationEvent = "OnAnimationEvent";
 
+		/// <summary>
+		/// Cached name for the 'StartSteam1' method.
+		/// </summary>
 		public static readonly StringName StartSteam1 = "StartSteam1";
 
+		/// <summary>
+		/// Cached name for the 'EndSteam1' method.
+		/// </summary>
 		public static readonly StringName EndSteam1 = "EndSteam1";
 
+		/// <summary>
+		/// Cached name for the 'StartSteam2' method.
+		/// </summary>
 		public static readonly StringName StartSteam2 = "StartSteam2";
 
+		/// <summary>
+		/// Cached name for the 'EndSteam2' method.
+		/// </summary>
 		public static readonly StringName EndSteam2 = "EndSteam2";
 
+		/// <summary>
+		/// Cached name for the 'StartSteam3' method.
+		/// </summary>
 		public static readonly StringName StartSteam3 = "StartSteam3";
 
+		/// <summary>
+		/// Cached name for the 'EndSteam3' method.
+		/// </summary>
 		public static readonly StringName EndSteam3 = "EndSteam3";
 
+		/// <summary>
+		/// Cached name for the 'StartSteam5' method.
+		/// </summary>
 		public static readonly StringName StartSteam5 = "StartSteam5";
 
+		/// <summary>
+		/// Cached name for the 'EndSteam5' method.
+		/// </summary>
 		public static readonly StringName EndSteam5 = "EndSteam5";
 
+		/// <summary>
+		/// Cached name for the 'StartWaterfall' method.
+		/// </summary>
 		public static readonly StringName StartWaterfall = "StartWaterfall";
 
+		/// <summary>
+		/// Cached name for the 'EndWaterfall' method.
+		/// </summary>
 		public static readonly StringName EndWaterfall = "EndWaterfall";
 
+		/// <summary>
+		/// Cached name for the 'Explode' method.
+		/// </summary>
 		public static readonly StringName Explode = "Explode";
 
+		/// <summary>
+		/// Cached name for the 'Buildup1' method.
+		/// </summary>
 		public static readonly StringName Buildup1 = "Buildup1";
 
+		/// <summary>
+		/// Cached name for the 'Buildup2' method.
+		/// </summary>
 		public static readonly StringName Buildup2 = "Buildup2";
 
+		/// <summary>
+		/// Cached name for the 'Buildup3' method.
+		/// </summary>
 		public static readonly StringName Buildup3 = "Buildup3";
 
+		/// <summary>
+		/// Cached name for the 'ClearDeathSteam' method.
+		/// </summary>
 		public static readonly StringName ClearDeathSteam = "ClearDeathSteam";
 
+		/// <summary>
+		/// Cached name for the 'EmitGracefully' method.
+		/// </summary>
 		public static readonly StringName EmitGracefully = "EmitGracefully";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Node.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the '_steam1Particles' field.
+		/// </summary>
 		public static readonly StringName _steam1Particles = "_steam1Particles";
 
+		/// <summary>
+		/// Cached name for the '_steam2Particles' field.
+		/// </summary>
 		public static readonly StringName _steam2Particles = "_steam2Particles";
 
+		/// <summary>
+		/// Cached name for the '_steam3Particles' field.
+		/// </summary>
 		public static readonly StringName _steam3Particles = "_steam3Particles";
 
+		/// <summary>
+		/// Cached name for the '_steam4Particles' field.
+		/// </summary>
 		public static readonly StringName _steam4Particles = "_steam4Particles";
 
+		/// <summary>
+		/// Cached name for the '_steam5Particles' field.
+		/// </summary>
 		public static readonly StringName _steam5Particles = "_steam5Particles";
 
+		/// <summary>
+		/// Cached name for the '_steam6Particles' field.
+		/// </summary>
 		public static readonly StringName _steam6Particles = "_steam6Particles";
 
+		/// <summary>
+		/// Cached name for the '_steamLeakParticles1' field.
+		/// </summary>
 		public static readonly StringName _steamLeakParticles1 = "_steamLeakParticles1";
 
+		/// <summary>
+		/// Cached name for the '_steamLeakParticles2' field.
+		/// </summary>
 		public static readonly StringName _steamLeakParticles2 = "_steamLeakParticles2";
 
+		/// <summary>
+		/// Cached name for the '_steamLeakParticles3' field.
+		/// </summary>
 		public static readonly StringName _steamLeakParticles3 = "_steamLeakParticles3";
 
+		/// <summary>
+		/// Cached name for the '_mistParticles' field.
+		/// </summary>
 		public static readonly StringName _mistParticles = "_mistParticles";
 
+		/// <summary>
+		/// Cached name for the '_mouthParticles' field.
+		/// </summary>
 		public static readonly StringName _mouthParticles = "_mouthParticles";
 
+		/// <summary>
+		/// Cached name for the '_dropletParticles' field.
+		/// </summary>
 		public static readonly StringName _dropletParticles = "_dropletParticles";
 
+		/// <summary>
+		/// Cached name for the '_leakProcMat1' field.
+		/// </summary>
 		public static readonly StringName _leakProcMat1 = "_leakProcMat1";
 
+		/// <summary>
+		/// Cached name for the '_leakProcMat2' field.
+		/// </summary>
 		public static readonly StringName _leakProcMat2 = "_leakProcMat2";
 
+		/// <summary>
+		/// Cached name for the '_leakProcMat3' field.
+		/// </summary>
 		public static readonly StringName _leakProcMat3 = "_leakProcMat3";
 
+		/// <summary>
+		/// Cached name for the '_isDead' field.
+		/// </summary>
 		public static readonly StringName _isDead = "_isDead";
 
+		/// <summary>
+		/// Cached name for the '_parent' field.
+		/// </summary>
 		public static readonly StringName _parent = "_parent";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Node.SignalName
 	{
 	}
@@ -472,6 +586,11 @@ public class NWaterfallGiantVfx : Node
 		}
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -506,6 +625,7 @@ public class NWaterfallGiantVfx : Node
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -620,6 +740,7 @@ public class NWaterfallGiantVfx : Node
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -698,6 +819,7 @@ public class NWaterfallGiantVfx : Node
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -789,6 +911,7 @@ public class NWaterfallGiantVfx : Node
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -880,6 +1003,11 @@ public class NWaterfallGiantVfx : Node
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -904,6 +1032,7 @@ public class NWaterfallGiantVfx : Node
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -927,6 +1056,7 @@ public class NWaterfallGiantVfx : Node
 		info.AddProperty(PropertyName._parent, Variant.From(in _parent));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

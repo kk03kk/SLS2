@@ -17,35 +17,78 @@ using MegaCrit.Sts2.Core.TestSupport;
 
 namespace MegaCrit.Sts2.Core.Nodes.Screens.GameOverScreen;
 
+/// <summary>
+/// Badge visual which appears on the game over screen.
+/// Can be hovered to view its name and description.
+/// </summary>
 [ScriptPath("res://src/Core/Nodes/Screens/GameOverScreen/NBadge.cs")]
 public class NBadge : NButton
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : NButton.MethodName
 	{
+		/// <summary>
+		/// Cached name for the 'Create' method.
+		/// </summary>
 		public static readonly StringName Create = "Create";
 
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the 'GetRarityPrefix' method.
+		/// </summary>
 		public static readonly StringName GetRarityPrefix = "GetRarityPrefix";
 
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 
+		/// <summary>
+		/// Cached name for the 'OnFocus' method.
+		/// </summary>
 		public new static readonly StringName OnFocus = "OnFocus";
 
+		/// <summary>
+		/// Cached name for the 'OnUnfocus' method.
+		/// </summary>
 		public new static readonly StringName OnUnfocus = "OnUnfocus";
 
+		/// <summary>
+		/// Cached name for the 'GetBadgeBaseTexture' method.
+		/// </summary>
 		public static readonly StringName GetBadgeBaseTexture = "GetBadgeBaseTexture";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : NButton.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the '_tween' field.
+		/// </summary>
 		public static readonly StringName _tween = "_tween";
 
+		/// <summary>
+		/// Cached name for the '_hoverNode' field.
+		/// </summary>
 		public static readonly StringName _hoverNode = "_hoverNode";
 
+		/// <summary>
+		/// Cached name for the '_selectionReticle' field.
+		/// </summary>
 		public static readonly StringName _selectionReticle = "_selectionReticle";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : NButton.SignalName
 	{
 	}
@@ -66,6 +109,9 @@ public class NBadge : NButton
 
 	private NSelectionReticle _selectionReticle;
 
+	/// <summary>
+	/// This creates an NBadge for the game over screen.
+	/// </summary>
 	public static NBadge? Create(Badge badgeModel)
 	{
 		if (TestMode.IsOn)
@@ -88,6 +134,10 @@ public class NBadge : NButton
 		return nBadge;
 	}
 
+	/// <summary>
+	/// This creates an NBadge for the run history screen :).
+	/// TODO: And the statistics screen later!
+	/// </summary>
 	public static NBadge? Create(string id, BadgeRarity rarity)
 	{
 		if (TestMode.IsOn)
@@ -118,6 +168,9 @@ public class NBadge : NButton
 		_hoverTip = new HoverTip(_title, _description);
 	}
 
+	/// <summary>
+	/// Maps badge rarity enums to prefix used for LocStrings
+	/// </summary>
 	private static string GetRarityPrefix(BadgeRarity rarity)
 	{
 		return rarity switch
@@ -129,6 +182,10 @@ public class NBadge : NButton
 		};
 	}
 
+	/// <summary>
+	/// 0.4 second animation of a Badge animating in.
+	/// Deferred due to how GridContainer lays out its elements after AddChildSafely().
+	/// </summary>
 	public async Task AnimateIn()
 	{
 		if (this.IsValid())
@@ -175,6 +232,11 @@ public class NBadge : NButton
 		};
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<MethodInfo> GetGodotMethodList()
 	{
@@ -199,6 +261,7 @@ public class NBadge : NButton
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -266,6 +329,7 @@ public class NBadge : NButton
 		return false;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -300,6 +364,7 @@ public class NBadge : NButton
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -321,6 +386,7 @@ public class NBadge : NButton
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -342,6 +408,11 @@ public class NBadge : NButton
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -352,6 +423,7 @@ public class NBadge : NButton
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -361,6 +433,7 @@ public class NBadge : NButton
 		info.AddProperty(PropertyName._selectionReticle, Variant.From(in _selectionReticle));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

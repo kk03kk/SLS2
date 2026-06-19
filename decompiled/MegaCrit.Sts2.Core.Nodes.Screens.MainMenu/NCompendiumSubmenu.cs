@@ -22,50 +22,116 @@ namespace MegaCrit.Sts2.Core.Nodes.Screens.MainMenu;
 [ScriptPath("res://src/Core/Nodes/Screens/MainMenu/NCompendiumSubmenu.cs")]
 public class NCompendiumSubmenu : NSubmenu
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : NSubmenu.MethodName
 	{
+		/// <summary>
+		/// Cached name for the 'Create' method.
+		/// </summary>
 		public static readonly StringName Create = "Create";
 
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the 'OnSubmenuOpened' method.
+		/// </summary>
 		public new static readonly StringName OnSubmenuOpened = "OnSubmenuOpened";
 
+		/// <summary>
+		/// Cached name for the 'OpenCardLibrary' method.
+		/// </summary>
 		public static readonly StringName OpenCardLibrary = "OpenCardLibrary";
 
+		/// <summary>
+		/// Cached name for the 'OpenRelicCollection' method.
+		/// </summary>
 		public static readonly StringName OpenRelicCollection = "OpenRelicCollection";
 
+		/// <summary>
+		/// Cached name for the 'OpenPotionLab' method.
+		/// </summary>
 		public static readonly StringName OpenPotionLab = "OpenPotionLab";
 
+		/// <summary>
+		/// Cached name for the 'OpenBestiary' method.
+		/// </summary>
 		public static readonly StringName OpenBestiary = "OpenBestiary";
 
+		/// <summary>
+		/// Cached name for the 'OpenLeaderboards' method.
+		/// </summary>
 		public static readonly StringName OpenLeaderboards = "OpenLeaderboards";
 
+		/// <summary>
+		/// Cached name for the 'OpenStatistics' method.
+		/// </summary>
 		public static readonly StringName OpenStatistics = "OpenStatistics";
 
+		/// <summary>
+		/// Cached name for the 'OpenRunHistory' method.
+		/// </summary>
 		public static readonly StringName OpenRunHistory = "OpenRunHistory";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : NSubmenu.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'InitialFocusedControl' property.
+		/// </summary>
 		public new static readonly StringName InitialFocusedControl = "InitialFocusedControl";
 
+		/// <summary>
+		/// Cached name for the '_confirmButton' field.
+		/// </summary>
 		public static readonly StringName _confirmButton = "_confirmButton";
 
+		/// <summary>
+		/// Cached name for the '_cardLibraryButton' field.
+		/// </summary>
 		public static readonly StringName _cardLibraryButton = "_cardLibraryButton";
 
+		/// <summary>
+		/// Cached name for the '_relicCollectionButton' field.
+		/// </summary>
 		public static readonly StringName _relicCollectionButton = "_relicCollectionButton";
 
+		/// <summary>
+		/// Cached name for the '_potionLabButton' field.
+		/// </summary>
 		public static readonly StringName _potionLabButton = "_potionLabButton";
 
+		/// <summary>
+		/// Cached name for the '_bestiaryButton' field.
+		/// </summary>
 		public static readonly StringName _bestiaryButton = "_bestiaryButton";
 
+		/// <summary>
+		/// Cached name for the '_leaderboardsButton' field.
+		/// </summary>
 		public static readonly StringName _leaderboardsButton = "_leaderboardsButton";
 
+		/// <summary>
+		/// Cached name for the '_statisticsButton' field.
+		/// </summary>
 		public static readonly StringName _statisticsButton = "_statisticsButton";
 
+		/// <summary>
+		/// Cached name for the '_runHistoryButton' field.
+		/// </summary>
 		public static readonly StringName _runHistoryButton = "_runHistoryButton";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : NSubmenu.SignalName
 	{
 	}
@@ -224,6 +290,11 @@ public class NCompendiumSubmenu : NSubmenu
 		_stack.PushSubmenuType<NRunHistory>();
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<MethodInfo> GetGodotMethodList()
 	{
@@ -263,6 +334,7 @@ public class NCompendiumSubmenu : NSubmenu
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -345,6 +417,7 @@ public class NCompendiumSubmenu : NSubmenu
 		return false;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -391,6 +464,7 @@ public class NCompendiumSubmenu : NSubmenu
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -437,6 +511,7 @@ public class NCompendiumSubmenu : NSubmenu
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -488,6 +563,11 @@ public class NCompendiumSubmenu : NSubmenu
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -504,6 +584,7 @@ public class NCompendiumSubmenu : NSubmenu
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -518,6 +599,7 @@ public class NCompendiumSubmenu : NSubmenu
 		info.AddProperty(PropertyName._runHistoryButton, Variant.From(in _runHistoryButton));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

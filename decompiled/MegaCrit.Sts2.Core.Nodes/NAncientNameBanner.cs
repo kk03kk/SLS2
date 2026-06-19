@@ -15,35 +15,77 @@ using MegaCrit.Sts2.addons.mega_text;
 
 namespace MegaCrit.Sts2.Core.Nodes;
 
+/// <summary>
+/// This VFX dramatically shows the name and epithet of an Ancient when you enter their room.
+/// </summary>
 [ScriptPath("res://src/Core/Nodes/NAncientNameBanner.cs")]
 public class NAncientNameBanner : Control
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Control.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the 'UpdateTransform' method.
+		/// </summary>
 		public static readonly StringName UpdateTransform = "UpdateTransform";
 
+		/// <summary>
+		/// Cached name for the 'UpdateGlyphSpace' method.
+		/// </summary>
 		public static readonly StringName UpdateGlyphSpace = "UpdateGlyphSpace";
 
+		/// <summary>
+		/// Cached name for the 'GetTextCenterGlyphIndex' method.
+		/// </summary>
 		public static readonly StringName GetTextCenterGlyphIndex = "GetTextCenterGlyphIndex";
 
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Control.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the '_titleLabel' field.
+		/// </summary>
 		public static readonly StringName _titleLabel = "_titleLabel";
 
+		/// <summary>
+		/// Cached name for the '_ancientBannerEffect' field.
+		/// </summary>
 		public static readonly StringName _ancientBannerEffect = "_ancientBannerEffect";
 
+		/// <summary>
+		/// Cached name for the '_epithetLabel' field.
+		/// </summary>
 		public static readonly StringName _epithetLabel = "_epithetLabel";
 
+		/// <summary>
+		/// Cached name for the '_moveTween' field.
+		/// </summary>
 		public static readonly StringName _moveTween = "_moveTween";
 
+		/// <summary>
+		/// Cached name for the '_tween' field.
+		/// </summary>
 		public static readonly StringName _tween = "_tween";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Control.SignalName
 	{
 	}
@@ -144,6 +186,10 @@ public class NAncientNameBanner : Control
 		_ancientBannerEffect.Spacing = spacing * 1000f;
 	}
 
+	/// <summary>
+	/// Returns the index of the glyph in the center of the text.
+	/// Returns a fractional value if the midline is in the middle of a glyph (which it usually is).
+	/// </summary>
 	private float GetTextCenterGlyphIndex(string text, Font font, int fontSize)
 	{
 		using TextParagraph textParagraph = new TextParagraph();
@@ -186,6 +232,11 @@ public class NAncientNameBanner : Control
 		base._ExitTree();
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -209,6 +260,7 @@ public class NAncientNameBanner : Control
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -244,6 +296,7 @@ public class NAncientNameBanner : Control
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -270,6 +323,7 @@ public class NAncientNameBanner : Control
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -301,6 +355,7 @@ public class NAncientNameBanner : Control
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -332,6 +387,11 @@ public class NAncientNameBanner : Control
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -344,6 +404,7 @@ public class NAncientNameBanner : Control
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -355,6 +416,7 @@ public class NAncientNameBanner : Control
 		info.AddProperty(PropertyName._tween, Variant.From(in _tween));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

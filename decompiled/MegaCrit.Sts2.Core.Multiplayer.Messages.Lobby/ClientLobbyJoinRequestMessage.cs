@@ -5,6 +5,9 @@ using MegaCrit.Sts2.Core.Unlocks;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Messages.Lobby;
 
+/// <summary>
+/// Sent from a newly connected client to the host as the first message in the joining flow.
+/// </summary>
 public struct ClientLobbyJoinRequestMessage : INetMessage, IPacketSerializable
 {
 	public int maxAscensionUnlocked;

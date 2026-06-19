@@ -20,89 +20,214 @@ using MegaCrit.Sts2.addons.mega_text;
 
 namespace MegaCrit.Sts2.Core.Nodes.Screens.Timeline;
 
+/// <summary>
+/// The screen which opens when you click on an Epoch to view the bigger image + flavor text.
+/// Note that there are two UX for this screen. One for first time open (plays the animation of
+/// the text crawling in) and the second time open, which skips this animation.
+/// </summary>
 [ScriptPath("res://src/Core/Nodes/Screens/Timeline/NEpochInspectScreen.cs")]
 public class NEpochInspectScreen : NClickableControl, IScreenContext
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : NClickableControl.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the 'HidePaginators' method.
+		/// </summary>
 		public static readonly StringName HidePaginators = "HidePaginators";
 
+		/// <summary>
+		/// Cached name for the 'Close' method.
+		/// </summary>
 		public static readonly StringName Close = "Close";
 
+		/// <summary>
+		/// Cached name for the 'UpdateShaderS' method.
+		/// </summary>
 		public static readonly StringName UpdateShaderS = "UpdateShaderS";
 
+		/// <summary>
+		/// Cached name for the 'UpdateShaderV' method.
+		/// </summary>
 		public static readonly StringName UpdateShaderV = "UpdateShaderV";
 
+		/// <summary>
+		/// Cached name for the '_Input' method.
+		/// </summary>
 		public new static readonly StringName _Input = "_Input";
 
+		/// <summary>
+		/// Cached name for the 'OnMouseReleased' method.
+		/// </summary>
 		public static readonly StringName OnMouseReleased = "OnMouseReleased";
 
+		/// <summary>
+		/// Cached name for the 'SpeedUpTextAnimation' method.
+		/// </summary>
 		public static readonly StringName SpeedUpTextAnimation = "SpeedUpTextAnimation";
 
+		/// <summary>
+		/// Cached name for the 'NextChapter' method.
+		/// </summary>
 		public static readonly StringName NextChapter = "NextChapter";
 
+		/// <summary>
+		/// Cached name for the 'PrevChapter' method.
+		/// </summary>
 		public static readonly StringName PrevChapter = "PrevChapter";
 
+		/// <summary>
+		/// Cached name for the 'RefreshChapterPaginators' method.
+		/// </summary>
 		public static readonly StringName RefreshChapterPaginators = "RefreshChapterPaginators";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : NClickableControl.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'DefaultFocusedControl' property.
+		/// </summary>
 		public static readonly StringName DefaultFocusedControl = "DefaultFocusedControl";
 
+		/// <summary>
+		/// Cached name for the '_closeButton' field.
+		/// </summary>
 		public static readonly StringName _closeButton = "_closeButton";
 
+		/// <summary>
+		/// Cached name for the '_portrait' field.
+		/// </summary>
 		public static readonly StringName _portrait = "_portrait";
 
+		/// <summary>
+		/// Cached name for the '_portraitFlash' field.
+		/// </summary>
 		public static readonly StringName _portraitFlash = "_portraitFlash";
 
+		/// <summary>
+		/// Cached name for the '_mask' field.
+		/// </summary>
 		public static readonly StringName _mask = "_mask";
 
+		/// <summary>
+		/// Cached name for the '_chains' field.
+		/// </summary>
 		public static readonly StringName _chains = "_chains";
 
+		/// <summary>
+		/// Cached name for the '_portraitHsv' field.
+		/// </summary>
 		public static readonly StringName _portraitHsv = "_portraitHsv";
 
+		/// <summary>
+		/// Cached name for the '_fancyText' field.
+		/// </summary>
 		public static readonly StringName _fancyText = "_fancyText";
 
+		/// <summary>
+		/// Cached name for the '_storyLabel' field.
+		/// </summary>
 		public static readonly StringName _storyLabel = "_storyLabel";
 
+		/// <summary>
+		/// Cached name for the '_chapterLabel' field.
+		/// </summary>
 		public static readonly StringName _chapterLabel = "_chapterLabel";
 
+		/// <summary>
+		/// Cached name for the '_closeLabel' field.
+		/// </summary>
 		public static readonly StringName _closeLabel = "_closeLabel";
 
+		/// <summary>
+		/// Cached name for the '_placeholderLabel' field.
+		/// </summary>
 		public static readonly StringName _placeholderLabel = "_placeholderLabel";
 
+		/// <summary>
+		/// Cached name for the '_nextChapterButton' field.
+		/// </summary>
 		public static readonly StringName _nextChapterButton = "_nextChapterButton";
 
+		/// <summary>
+		/// Cached name for the '_prevChapterButton' field.
+		/// </summary>
 		public static readonly StringName _prevChapterButton = "_prevChapterButton";
 
+		/// <summary>
+		/// Cached name for the '_unlockInfo' field.
+		/// </summary>
 		public static readonly StringName _unlockInfo = "_unlockInfo";
 
+		/// <summary>
+		/// Cached name for the '_hasStory' field.
+		/// </summary>
 		public static readonly StringName _hasStory = "_hasStory";
 
+		/// <summary>
+		/// Cached name for the '_wasRevealed' field.
+		/// </summary>
 		public static readonly StringName _wasRevealed = "_wasRevealed";
 
+		/// <summary>
+		/// Cached name for the '_prevChapterButtonOffsetX' field.
+		/// </summary>
 		public static readonly StringName _prevChapterButtonOffsetX = "_prevChapterButtonOffsetX";
 
+		/// <summary>
+		/// Cached name for the '_nextChapterButtonOffsetX' field.
+		/// </summary>
 		public static readonly StringName _nextChapterButtonOffsetX = "_nextChapterButtonOffsetX";
 
+		/// <summary>
+		/// Cached name for the '_maskOffsetX' field.
+		/// </summary>
 		public static readonly StringName _maskOffsetX = "_maskOffsetX";
 
+		/// <summary>
+		/// Cached name for the '_maskOffsetY' field.
+		/// </summary>
 		public static readonly StringName _maskOffsetY = "_maskOffsetY";
 
+		/// <summary>
+		/// Cached name for the '_closeButtonY' field.
+		/// </summary>
 		public static readonly StringName _closeButtonY = "_closeButtonY";
 
+		/// <summary>
+		/// Cached name for the '_unlockTween' field.
+		/// </summary>
 		public static readonly StringName _unlockTween = "_unlockTween";
 
+		/// <summary>
+		/// Cached name for the '_buttonTween' field.
+		/// </summary>
 		public static readonly StringName _buttonTween = "_buttonTween";
 
+		/// <summary>
+		/// Cached name for the '_tween' field.
+		/// </summary>
 		public static readonly StringName _tween = "_tween";
 
+		/// <summary>
+		/// Cached name for the '_textTween' field.
+		/// </summary>
 		public static readonly StringName _textTween = "_textTween";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : NClickableControl.SignalName
 	{
 	}
@@ -210,6 +335,9 @@ public class NEpochInspectScreen : NClickableControl, IScreenContext
 		_closeButton.Disable();
 	}
 
+	/// <summary>
+	/// If the Epoch was revealed, we go through a slightly different UX flow (more dramatic opening of screen, queue up unlocks, etc)
+	/// </summary>
 	public async Task Open(NEpochSlot slot, EpochModel epoch, bool wasRevealed)
 	{
 		_buttonTween?.FastForwardToCompletion();
@@ -305,6 +433,9 @@ public class NEpochInspectScreen : NClickableControl, IScreenContext
 		_prevChapterButton.Visible = false;
 	}
 
+	/// <summary>
+	/// The Epoch Inspect Screen was navigated to via the Chapter Navigator button.
+	/// </summary>
 	private void OpenViaPaginator(EpochModel epoch)
 	{
 		_epoch = epoch;
@@ -378,6 +509,10 @@ public class NEpochInspectScreen : NClickableControl, IScreenContext
 		NHotkeyManager.Instance.RemoveHotkeyPressedBinding(MegaInput.left, PrevChapter);
 	}
 
+	/// <summary>
+	/// Is called when the player opens the Epoch inspect screen by clicking on a locked node in the Timeline.
+	/// </summary>
+	/// <param name="epoch"></param>
 	public async Task UnlockAnimation(EpochModel epoch)
 	{
 		HidePaginators();
@@ -494,6 +629,11 @@ public class NEpochInspectScreen : NClickableControl, IScreenContext
 		}
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<MethodInfo> GetGodotMethodList()
 	{
@@ -524,6 +664,7 @@ public class NEpochInspectScreen : NClickableControl, IScreenContext
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -596,6 +737,7 @@ public class NEpochInspectScreen : NClickableControl, IScreenContext
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -646,6 +788,7 @@ public class NEpochInspectScreen : NClickableControl, IScreenContext
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -777,6 +920,7 @@ public class NEpochInspectScreen : NClickableControl, IScreenContext
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -913,6 +1057,11 @@ public class NEpochInspectScreen : NClickableControl, IScreenContext
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -946,6 +1095,7 @@ public class NEpochInspectScreen : NClickableControl, IScreenContext
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -977,6 +1127,7 @@ public class NEpochInspectScreen : NClickableControl, IScreenContext
 		info.AddProperty(PropertyName._textTween, Variant.From(in _textTween));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

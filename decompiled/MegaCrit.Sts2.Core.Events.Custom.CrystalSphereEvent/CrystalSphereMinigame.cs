@@ -38,8 +38,15 @@ public class CrystalSphereMinigame
 
 	public CrystalSphereCell[,] cells;
 
+	/// <summary>
+	/// Set of items on the grid
+	/// </summary>
 	private readonly List<CrystalSphereItem> _items = new List<CrystalSphereItem>();
 
+	/// <summary>
+	/// Items revealed by the player.
+	/// Rewards for these items are given to the player once the minigame is completed
+	/// </summary>
 	private readonly List<CrystalSphereItem> _revealed = new List<CrystalSphereItem>();
 
 	public Rng Rng { get; private set; }
@@ -67,8 +74,15 @@ public class CrystalSphereMinigame
 
 	public IReadOnlyList<CrystalSphereItem> Items => _items;
 
+	/// <summary>
+	/// The cell that we are currently hovered over.
+	/// </summary>
 	private CrystalSphereCell? HoveredCell { get; set; }
 
+	/// <summary>
+	/// The cells that are highlighted on the board. This is separate from HoveredCell
+	/// because we can highlight multiple cells at once depending on the tool
+	/// </summary>
 	private List<CrystalSphereCell> HighlightedCells { get; set; } = new List<CrystalSphereCell>();
 
 	public event Action? DivinationCountChanged;
@@ -120,6 +134,9 @@ public class CrystalSphereMinigame
 		CrystalSphereTool = CrystalSphereToolType.Big;
 	}
 
+	/// <summary>
+	/// Ends the minigames early. Used if the event is force closed via save/quit or closing the application
+	/// </summary>
 	public void ForceMinigameEnd()
 	{
 		_revealed.Clear();
@@ -260,6 +277,11 @@ public class CrystalSphereMinigame
 		}
 	}
 
+	/// <summary>
+	/// Decreases the FogValue of a CrystalSphereCell at the given x,y coordinate by amount
+	/// </summary>
+	/// <param name="x">X coordinate the cell we want to affect is at</param>
+	/// <param name="y">Y coordinate the cell we want to affect is at</param>
 	private async Task ClearCell(int x, int y)
 	{
 		if (x < 0 || x >= GridSize.X)
@@ -285,6 +307,11 @@ public class CrystalSphereMinigame
 		}
 	}
 
+	/// <summary>
+	/// Returns if all the cells an item occupies are visible
+	/// </summary>
+	/// <param name="item">The item we are checking is fully visible</param>
+	/// <returns></returns>
 	private bool AreAllOccupiedCellsClear(CrystalSphereItem item)
 	{
 		for (int i = 0; i < item.Size.X; i++)

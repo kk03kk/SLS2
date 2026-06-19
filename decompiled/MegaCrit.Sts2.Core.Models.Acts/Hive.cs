@@ -46,6 +46,10 @@ public sealed class Hive : ActModel
 
 	protected override int BaseNumberOfRooms => 14;
 
+	public override int Index => 1;
+
+	public override bool IsDefault => true;
+
 	public override string[] BgMusicOptions => new string[2] { "event:/music/act2_a1_v2", "event:/music/act2_a2_v2" };
 
 	public override string[] MusicBankPaths => new string[2] { "res://banks/desktop/act2_a1.bank", "res://banks/desktop/act2_a2.bank" };
@@ -103,6 +107,11 @@ public sealed class Hive : ActModel
 
 	protected override void ApplyActDiscoveryOrderModifications(UnlockState unlockState)
 	{
+	}
+
+	public override bool IsUnlocked(UnlockState unlockState)
+	{
+		return true;
 	}
 
 	public override MapPointTypeCounts GetMapPointTypes(Rng mapRng)

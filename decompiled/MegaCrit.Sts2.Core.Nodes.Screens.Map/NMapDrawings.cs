@@ -23,6 +23,16 @@ using MegaCrit.Sts2.Core.Saves.MapDrawing;
 
 namespace MegaCrit.Sts2.Core.Nodes.Screens.Map;
 
+/// <summary>
+/// Takes care of drawing both local and remote players' map drawings.
+///
+/// Notes on the tech art side:
+/// Lines are placed into a subviewport which renders to a half-resolution texture. Drawn lines are simple colored Line2D
+/// nodes. Eraser lines are Line2D nodes with a shader with a subtractive blend mode. More details are in the shader itself.
+/// The subviewport texture is drawn on top of the map. Importantly, it is drawn using the premultiplied-alpha blend mode.
+/// Without this, black artifacts are seen on the edges of the lines because of the intermediate subviewport texture
+/// blending.
+/// </summary>
 [ScriptPath("res://src/Core/Nodes/Screens/Map/NMapDrawings.cs")]
 public class NMapDrawings : Control
 {
@@ -45,62 +55,146 @@ public class NMapDrawings : Control
 		public DrawingMode CurrentDrawingMode => overrideDrawingMode ?? drawingMode;
 	}
 
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Control.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 
+		/// <summary>
+		/// Cached name for the 'UpdateCurrentLinePositionLocal' method.
+		/// </summary>
 		public static readonly StringName UpdateCurrentLinePositionLocal = "UpdateCurrentLinePositionLocal";
 
+		/// <summary>
+		/// Cached name for the 'StopLineLocal' method.
+		/// </summary>
 		public static readonly StringName StopLineLocal = "StopLineLocal";
 
+		/// <summary>
+		/// Cached name for the 'SetDrawingModeLocal' method.
+		/// </summary>
 		public static readonly StringName SetDrawingModeLocal = "SetDrawingModeLocal";
 
+		/// <summary>
+		/// Cached name for the 'ClearDrawnLinesLocal' method.
+		/// </summary>
 		public static readonly StringName ClearDrawnLinesLocal = "ClearDrawnLinesLocal";
 
+		/// <summary>
+		/// Cached name for the 'IsDrawing' method.
+		/// </summary>
 		public static readonly StringName IsDrawing = "IsDrawing";
 
+		/// <summary>
+		/// Cached name for the 'IsLocalDrawing' method.
+		/// </summary>
 		public static readonly StringName IsLocalDrawing = "IsLocalDrawing";
 
+		/// <summary>
+		/// Cached name for the 'GetDrawingMode' method.
+		/// </summary>
 		public static readonly StringName GetDrawingMode = "GetDrawingMode";
 
+		/// <summary>
+		/// Cached name for the 'GetLocalDrawingMode' method.
+		/// </summary>
 		public static readonly StringName GetLocalDrawingMode = "GetLocalDrawingMode";
 
+		/// <summary>
+		/// Cached name for the 'ToNetPosition' method.
+		/// </summary>
 		public static readonly StringName ToNetPosition = "ToNetPosition";
 
+		/// <summary>
+		/// Cached name for the 'FromNetPosition' method.
+		/// </summary>
 		public static readonly StringName FromNetPosition = "FromNetPosition";
 
+		/// <summary>
+		/// Cached name for the 'UpdateVisibilityFromSettings' method.
+		/// </summary>
 		public static readonly StringName UpdateVisibilityFromSettings = "UpdateVisibilityFromSettings";
 
+		/// <summary>
+		/// Cached name for the 'ClearAllLines' method.
+		/// </summary>
 		public static readonly StringName ClearAllLines = "ClearAllLines";
 
+		/// <summary>
+		/// Cached name for the 'OnPlayerScreenChanged' method.
+		/// </summary>
 		public static readonly StringName OnPlayerScreenChanged = "OnPlayerScreenChanged";
 
+		/// <summary>
+		/// Cached name for the 'TrySendSyncMessage' method.
+		/// </summary>
 		public static readonly StringName TrySendSyncMessage = "TrySendSyncMessage";
 
+		/// <summary>
+		/// Cached name for the 'SendSyncMessage' method.
+		/// </summary>
 		public static readonly StringName SendSyncMessage = "SendSyncMessage";
 
+		/// <summary>
+		/// Cached name for the 'UpdateLocalCursor' method.
+		/// </summary>
 		public static readonly StringName UpdateLocalCursor = "UpdateLocalCursor";
 
+		/// <summary>
+		/// Cached name for the 'RepositionBasedOnBackground' method.
+		/// </summary>
 		public static readonly StringName RepositionBasedOnBackground = "RepositionBasedOnBackground";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Control.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the '_lineDrawScene' field.
+		/// </summary>
 		public static readonly StringName _lineDrawScene = "_lineDrawScene";
 
+		/// <summary>
+		/// Cached name for the '_lineEraseScene' field.
+		/// </summary>
 		public static readonly StringName _lineEraseScene = "_lineEraseScene";
 
+		/// <summary>
+		/// Cached name for the '_cursorManager' field.
+		/// </summary>
 		public static readonly StringName _cursorManager = "_cursorManager";
 
+		/// <summary>
+		/// Cached name for the '_eraserMaterial' field.
+		/// </summary>
 		public static readonly StringName _eraserMaterial = "_eraserMaterial";
 
+		/// <summary>
+		/// Cached name for the '_defaultSize' field.
+		/// </summary>
 		public static readonly StringName _defaultSize = "_defaultSize";
 
+		/// <summary>
+		/// Cached name for the '_lastMessageMsec' field.
+		/// </summary>
 		public static readonly StringName _lastMessageMsec = "_lastMessageMsec";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Control.SignalName
 	{
 	}
@@ -185,6 +279,12 @@ public class NMapDrawings : Control
 		_inputSynchronizer.ScreenChanged -= OnPlayerScreenChanged;
 	}
 
+	/// <summary>
+	/// Called when the local player begins drawing a line.
+	/// </summary>
+	/// <param name="position">The position at which the player started drawing.</param>
+	/// <param name="overrideDrawingMode">The mode to override the current mode with. If null, the current mode in the
+	/// set using SetDrawingMode is used. If it is null and the current mode is None, an exception is thrown.</param>
 	public void BeginLineLocal(Vector2 position, DrawingMode? overrideDrawingMode)
 	{
 		BeginLine(GetDrawingStateForPlayer(_netService.NetId), position, overrideDrawingMode);
@@ -253,6 +353,9 @@ public class NMapDrawings : Control
 		return GetDrawingStateForPlayer(playerId).CurrentDrawingMode;
 	}
 
+	/// <param name="useOverride">In most cases, you want this to be true. If false, this returns DrawingMode.None if the
+	/// player is drawing using a shortcut (right click or middle click).</param>
+	/// <returns>The kind of drawing that the player is currently doing.</returns>
 	public DrawingMode GetLocalDrawingMode(bool useOverride = true)
 	{
 		if (!useOverride)
@@ -511,6 +614,13 @@ public class NMapDrawings : Control
 		SetDrawingMode(state, DrawingMode.None);
 	}
 
+	/// <summary>
+	/// Called when a remote player changes which screen they're looking at.
+	/// If the player was looking at the map and drawing a line, then this will revert their cursor back to the default
+	/// one. It's necessary because drawing packets are unreliable, so the end packet may not be received.
+	/// </summary>
+	/// <param name="playerId">The player whose screen changed.</param>
+	/// <param name="oldScreenType">The screen the player was looking at.</param>
 	private void OnPlayerScreenChanged(ulong playerId, NetScreenType oldScreenType)
 	{
 		if (playerId == _netService.NetId)
@@ -532,6 +642,9 @@ public class NMapDrawings : Control
 		}
 	}
 
+	/// <summary>
+	/// Sends a sync message if enough time has passed since the last one, or buffers it to be sent otherwise.
+	/// </summary>
 	private void TrySendSyncMessage()
 	{
 		if (_sendMessageTask == null && _netService.IsConnected)
@@ -598,6 +711,11 @@ public class NMapDrawings : Control
 		base.Position = new Vector2(mapBg.Position.X + (mapBg.Size.X - base.Size.X) * 0.5f, mapBg.Position.Y);
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -652,6 +770,7 @@ public class NMapDrawings : Control
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -766,6 +885,7 @@ public class NMapDrawings : Control
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -848,6 +968,7 @@ public class NMapDrawings : Control
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -884,6 +1005,7 @@ public class NMapDrawings : Control
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -920,6 +1042,11 @@ public class NMapDrawings : Control
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -933,6 +1060,7 @@ public class NMapDrawings : Control
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -945,6 +1073,7 @@ public class NMapDrawings : Control
 		info.AddProperty(PropertyName._lastMessageMsec, Variant.From(in _lastMessageMsec));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

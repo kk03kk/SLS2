@@ -5,6 +5,9 @@ using MegaCrit.Sts2.Core.Multiplayer.Transport;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Messages.Lobby;
 
+/// <summary>
+/// Broadcast to all peers when a player in the lobby changes their selected character.
+/// </summary>
 public struct LobbyPlayerChangedCharacterMessage : INetMessage, IPacketSerializable
 {
 	public CharacterModel character;

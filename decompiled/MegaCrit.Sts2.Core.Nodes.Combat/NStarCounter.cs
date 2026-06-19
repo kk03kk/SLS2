@@ -16,54 +16,126 @@ namespace MegaCrit.Sts2.Core.Nodes.Combat;
 [ScriptPath("res://src/Core/Nodes/Combat/NStarCounter.cs")]
 public class NStarCounter : Control
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Control.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the '_EnterTree' method.
+		/// </summary>
 		public new static readonly StringName _EnterTree = "_EnterTree";
 
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 
+		/// <summary>
+		/// Cached name for the 'ConnectStarsChangedSignal' method.
+		/// </summary>
 		public static readonly StringName ConnectStarsChangedSignal = "ConnectStarsChangedSignal";
 
+		/// <summary>
+		/// Cached name for the 'OnHovered' method.
+		/// </summary>
 		public static readonly StringName OnHovered = "OnHovered";
 
+		/// <summary>
+		/// Cached name for the 'OnUnhovered' method.
+		/// </summary>
 		public static readonly StringName OnUnhovered = "OnUnhovered";
 
+		/// <summary>
+		/// Cached name for the 'OnStarsChanged' method.
+		/// </summary>
 		public static readonly StringName OnStarsChanged = "OnStarsChanged";
 
+		/// <summary>
+		/// Cached name for the '_Process' method.
+		/// </summary>
 		public new static readonly StringName _Process = "_Process";
 
+		/// <summary>
+		/// Cached name for the 'UpdateStarCount' method.
+		/// </summary>
 		public static readonly StringName UpdateStarCount = "UpdateStarCount";
 
+		/// <summary>
+		/// Cached name for the 'SetStarCountText' method.
+		/// </summary>
 		public static readonly StringName SetStarCountText = "SetStarCountText";
 
+		/// <summary>
+		/// Cached name for the 'UpdateShaderV' method.
+		/// </summary>
 		public static readonly StringName UpdateShaderV = "UpdateShaderV";
 
+		/// <summary>
+		/// Cached name for the 'RefreshVisibility' method.
+		/// </summary>
 		public static readonly StringName RefreshVisibility = "RefreshVisibility";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Control.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the '_label' field.
+		/// </summary>
 		public static readonly StringName _label = "_label";
 
+		/// <summary>
+		/// Cached name for the '_rotationLayers' field.
+		/// </summary>
 		public static readonly StringName _rotationLayers = "_rotationLayers";
 
+		/// <summary>
+		/// Cached name for the '_icon' field.
+		/// </summary>
 		public static readonly StringName _icon = "_icon";
 
+		/// <summary>
+		/// Cached name for the '_hsv' field.
+		/// </summary>
 		public static readonly StringName _hsv = "_hsv";
 
+		/// <summary>
+		/// Cached name for the '_lerpingStarCount' field.
+		/// </summary>
 		public static readonly StringName _lerpingStarCount = "_lerpingStarCount";
 
+		/// <summary>
+		/// Cached name for the '_velocity' field.
+		/// </summary>
 		public static readonly StringName _velocity = "_velocity";
 
+		/// <summary>
+		/// Cached name for the '_displayedStarCount' field.
+		/// </summary>
 		public static readonly StringName _displayedStarCount = "_displayedStarCount";
 
+		/// <summary>
+		/// Cached name for the '_hsvTween' field.
+		/// </summary>
 		public static readonly StringName _hsvTween = "_hsvTween";
 
+		/// <summary>
+		/// Cached name for the '_isListeningToCombatState' field.
+		/// </summary>
 		public static readonly StringName _isListeningToCombatState = "_isListeningToCombatState";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Control.SignalName
 	{
 	}
@@ -231,6 +303,11 @@ public class NStarCounter : Control
 		base.Visible = base.Visible || _player.Character.ShouldAlwaysShowStarCounter || stars > 0;
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -267,6 +344,7 @@ public class NStarCounter : Control
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -345,6 +423,7 @@ public class NStarCounter : Control
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -399,6 +478,7 @@ public class NStarCounter : Control
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -450,6 +530,7 @@ public class NStarCounter : Control
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -501,6 +582,11 @@ public class NStarCounter : Control
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -517,6 +603,7 @@ public class NStarCounter : Control
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -532,6 +619,7 @@ public class NStarCounter : Control
 		info.AddProperty(PropertyName._isListeningToCombatState, Variant.From(in _isListeningToCombatState));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

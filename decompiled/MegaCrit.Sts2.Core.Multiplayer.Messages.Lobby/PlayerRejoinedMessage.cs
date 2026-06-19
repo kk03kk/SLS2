@@ -4,6 +4,9 @@ using MegaCrit.Sts2.Core.Multiplayer.Transport;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Messages.Lobby;
 
+/// <summary>
+/// Sent from host to all clients when a client has rejoined the game.
+/// </summary>
 public struct PlayerRejoinedMessage : INetMessage, IPacketSerializable
 {
 	public ulong playerId;

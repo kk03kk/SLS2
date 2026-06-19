@@ -38,6 +38,11 @@ public sealed class IntangiblePower : PowerModel
 		return Task.CompletedTask;
 	}
 
+	/// <summary>
+	/// Caps damage received at 1.
+	/// Note: the HP loss logic is already handled by <see cref="M:MegaCrit.Sts2.Core.Models.Powers.IntangiblePower.ModifyHpLostAfterOsty(MegaCrit.Sts2.Core.Entities.Creatures.Creature,System.Decimal,MegaCrit.Sts2.Core.ValueProps.ValueProp,MegaCrit.Sts2.Core.Entities.Creatures.Creature,MegaCrit.Sts2.Core.Models.CardModel)" />, the duplicated logic here is
+	/// for block loss and preview logic on targeted attacks.
+	/// </summary>
 	public override decimal ModifyDamageCap(Creature? target, ValueProp props, Creature? dealer, CardModel? cardSource)
 	{
 		if (target != base.Owner)
@@ -47,6 +52,10 @@ public sealed class IntangiblePower : PowerModel
 		return 1m;
 	}
 
+	/// <summary>
+	/// Note: the HP loss logic is already handled by <see cref="M:MegaCrit.Sts2.Core.Models.Powers.IntangiblePower.AfterModifyingHpLostAfterOsty" />, the duplicated logic
+	/// here is for block loss and preview logic on targeted attacks.
+	/// </summary>
 	public override Task AfterModifyingDamageAmount(CardModel? cardSource)
 	{
 		Flash();

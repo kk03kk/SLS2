@@ -12,42 +12,96 @@ namespace MegaCrit.Sts2.addons.mega_text;
 [ScriptPath("res://addons/mega_text/MegaLabel.cs")]
 public class MegaLabel : Label
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Label.MethodName
 	{
+		/// <summary>
+		/// Cached name for the 'DisposeCachedParagraph' method.
+		/// </summary>
 		public static readonly StringName DisposeCachedParagraph = "DisposeCachedParagraph";
 
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the 'RefreshFont' method.
+		/// </summary>
 		public static readonly StringName RefreshFont = "RefreshFont";
 
+		/// <summary>
+		/// Cached name for the '_Notification' method.
+		/// </summary>
 		public new static readonly StringName _Notification = "_Notification";
 
+		/// <summary>
+		/// Cached name for the 'SetTextAutoSize' method.
+		/// </summary>
 		public static readonly StringName SetTextAutoSize = "SetTextAutoSize";
 
+		/// <summary>
+		/// Cached name for the 'SetFontSize' method.
+		/// </summary>
 		public static readonly StringName SetFontSize = "SetFontSize";
 
+		/// <summary>
+		/// Cached name for the 'AdjustFontSize' method.
+		/// </summary>
 		public static readonly StringName AdjustFontSize = "AdjustFontSize";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Label.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'AutoSizeEnabled' property.
+		/// </summary>
 		public static readonly StringName AutoSizeEnabled = "AutoSizeEnabled";
 
+		/// <summary>
+		/// Cached name for the 'MinFontSize' property.
+		/// </summary>
 		public static readonly StringName MinFontSize = "MinFontSize";
 
+		/// <summary>
+		/// Cached name for the 'MaxFontSize' property.
+		/// </summary>
 		public static readonly StringName MaxFontSize = "MaxFontSize";
 
+		/// <summary>
+		/// Cached name for the '_autoSizeEnabled' field.
+		/// </summary>
 		public static readonly StringName _autoSizeEnabled = "_autoSizeEnabled";
 
+		/// <summary>
+		/// Cached name for the '_minFontSize' field.
+		/// </summary>
 		public static readonly StringName _minFontSize = "_minFontSize";
 
+		/// <summary>
+		/// Cached name for the '_maxFontSize' field.
+		/// </summary>
 		public static readonly StringName _maxFontSize = "_maxFontSize";
 
+		/// <summary>
+		/// Cached name for the '_lastSetSize' field.
+		/// </summary>
 		public static readonly StringName _lastSetSize = "_lastSetSize";
 
+		/// <summary>
+		/// Cached name for the '_lastAdjustedSize' field.
+		/// </summary>
 		public static readonly StringName _lastAdjustedSize = "_lastAdjustedSize";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Label.SignalName
 	{
 	}
@@ -126,6 +180,11 @@ public class MegaLabel : Label
 		}
 	}
 
+	/// <summary>
+	/// Releases the cached TextParagraph to free text server RIDs at exit.
+	/// Uses Dispose() (not Free()) because TextParagraph is RefCounted.
+	/// Nulled to guard against AdjustFontSize running during Godot's quit frames.
+	/// </summary>
 	public static void DisposeCachedParagraph()
 	{
 		_cachedParagraph?.Dispose();
@@ -152,6 +211,12 @@ public class MegaLabel : Label
 		}
 	}
 
+	/// <summary>
+	/// Unfortunately, there's no way to override the setting of text for a Label. So if you want the text size to
+	/// automatically adjust after being updated during gameplay, you must use this method instead of setting the
+	/// Text property directly.
+	/// </summary>
+	/// <param name="text"></param>
 	public void SetTextAutoSize(string text)
 	{
 		if (!(base.Text == text))
@@ -212,6 +277,11 @@ public class MegaLabel : Label
 		SetFontSize(Math.Min(num, num2));
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -235,6 +305,7 @@ public class MegaLabel : Label
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -296,6 +367,7 @@ public class MegaLabel : Label
 		return false;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -330,6 +402,7 @@ public class MegaLabel : Label
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -376,6 +449,7 @@ public class MegaLabel : Label
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -425,6 +499,11 @@ public class MegaLabel : Label
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -440,6 +519,7 @@ public class MegaLabel : Label
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -454,6 +534,7 @@ public class MegaLabel : Label
 		info.AddProperty(PropertyName._lastAdjustedSize, Variant.From(in _lastAdjustedSize));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

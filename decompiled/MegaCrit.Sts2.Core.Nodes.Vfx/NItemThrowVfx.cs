@@ -15,38 +15,80 @@ namespace MegaCrit.Sts2.Core.Nodes.Vfx;
 [ScriptPath("res://src/Core/Nodes/Vfx/NItemThrowVfx.cs")]
 public class NItemThrowVfx : Node2D
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Node2D.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Node2D.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the '_itemSprite' field.
+		/// </summary>
 		public static readonly StringName _itemSprite = "_itemSprite";
 
+		/// <summary>
+		/// Cached name for the '_flightTime' field.
+		/// </summary>
 		public static readonly StringName _flightTime = "_flightTime";
 
+		/// <summary>
+		/// Cached name for the '_heightMultiplier' field.
+		/// </summary>
 		public static readonly StringName _heightMultiplier = "_heightMultiplier";
 
+		/// <summary>
+		/// Cached name for the '_horizontalCurve' field.
+		/// </summary>
 		public static readonly StringName _horizontalCurve = "_horizontalCurve";
 
+		/// <summary>
+		/// Cached name for the '_verticalCurve' field.
+		/// </summary>
 		public static readonly StringName _verticalCurve = "_verticalCurve";
 
+		/// <summary>
+		/// Cached name for the '_rotationMultiplier' field.
+		/// </summary>
 		public static readonly StringName _rotationMultiplier = "_rotationMultiplier";
 
+		/// <summary>
+		/// Cached name for the '_rotationInfluenceCurve' field.
+		/// </summary>
 		public static readonly StringName _rotationInfluenceCurve = "_rotationInfluenceCurve";
 
+		/// <summary>
+		/// Cached name for the '_sourcePosition' field.
+		/// </summary>
 		public static readonly StringName _sourcePosition = "_sourcePosition";
 
+		/// <summary>
+		/// Cached name for the '_targetPosition' field.
+		/// </summary>
 		public static readonly StringName _targetPosition = "_targetPosition";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Node2D.SignalName
 	{
 	}
 
 	public static readonly string scenePath = SceneHelper.GetScenePath("vfx/vfx_item_throw");
 
+	/// <summary>
+	/// The base size in pixels that we want our item icon to be at.
+	/// </summary>
 	private const float _baseItemSize = 80f;
 
 	[Export(PropertyHint.None, "")]
@@ -124,6 +166,11 @@ public class NItemThrowVfx : Node2D
 		this.QueueFreeSafely();
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -132,6 +179,7 @@ public class NItemThrowVfx : Node2D
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -144,6 +192,7 @@ public class NItemThrowVfx : Node2D
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -154,6 +203,7 @@ public class NItemThrowVfx : Node2D
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -205,6 +255,7 @@ public class NItemThrowVfx : Node2D
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -256,6 +307,11 @@ public class NItemThrowVfx : Node2D
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -272,6 +328,7 @@ public class NItemThrowVfx : Node2D
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -287,6 +344,7 @@ public class NItemThrowVfx : Node2D
 		info.AddProperty(PropertyName._targetPosition, Variant.From(in _targetPosition));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

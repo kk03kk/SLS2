@@ -10,6 +10,9 @@ using MegaCrit.Sts2.Core.Models.RelicPools;
 
 namespace MegaCrit.Sts2.Core.Models.Characters;
 
+/// <summary>
+/// Placeholder character for if we can't find the character we are looking for (like if it's been deprecated).
+/// </summary>
 public sealed class DeprecatedCharacter : CharacterModel
 {
 	private MockCardPool? _mockCardPool;

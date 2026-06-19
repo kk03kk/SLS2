@@ -17,41 +17,93 @@ using MegaCrit.Sts2.Core.TestSupport;
 
 namespace MegaCrit.Sts2.Core.Nodes.Vfx;
 
+/// <summary>
+/// Another card soul vfx when we have no card.
+/// Used when the discard pile is shuffled into the draw pile.
+/// </summary>
 [ScriptPath("res://src/Core/Nodes/Vfx/NCardFlyShuffleVfx.cs")]
 public class NCardFlyShuffleVfx : Control
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Control.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Control.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the '_vfx' field.
+		/// </summary>
 		public static readonly StringName _vfx = "_vfx";
 
+		/// <summary>
+		/// Cached name for the '_fadeOutTween' field.
+		/// </summary>
 		public static readonly StringName _fadeOutTween = "_fadeOutTween";
 
+		/// <summary>
+		/// Cached name for the '_vfxFading' field.
+		/// </summary>
 		public static readonly StringName _vfxFading = "_vfxFading";
 
+		/// <summary>
+		/// Cached name for the '_startPos' field.
+		/// </summary>
 		public static readonly StringName _startPos = "_startPos";
 
+		/// <summary>
+		/// Cached name for the '_endPos' field.
+		/// </summary>
 		public static readonly StringName _endPos = "_endPos";
 
+		/// <summary>
+		/// Cached name for the '_controlPointOffset' field.
+		/// </summary>
 		public static readonly StringName _controlPointOffset = "_controlPointOffset";
 
+		/// <summary>
+		/// Cached name for the '_duration' field.
+		/// </summary>
 		public static readonly StringName _duration = "_duration";
 
+		/// <summary>
+		/// Cached name for the '_speed' field.
+		/// </summary>
 		public static readonly StringName _speed = "_speed";
 
+		/// <summary>
+		/// Cached name for the '_accel' field.
+		/// </summary>
 		public static readonly StringName _accel = "_accel";
 
+		/// <summary>
+		/// Cached name for the '_arcDir' field.
+		/// </summary>
 		public static readonly StringName _arcDir = "_arcDir";
 
+		/// <summary>
+		/// Cached name for the '_trailPath' field.
+		/// </summary>
 		public static readonly StringName _trailPath = "_trailPath";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Control.SignalName
 	{
 	}
@@ -171,6 +223,11 @@ public class NCardFlyShuffleVfx : Control
 		_cancelToken.Cancel();
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -180,6 +237,7 @@ public class NCardFlyShuffleVfx : Control
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -198,6 +256,7 @@ public class NCardFlyShuffleVfx : Control
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -212,6 +271,7 @@ public class NCardFlyShuffleVfx : Control
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -273,6 +333,7 @@ public class NCardFlyShuffleVfx : Control
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -334,6 +395,11 @@ public class NCardFlyShuffleVfx : Control
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -352,6 +418,7 @@ public class NCardFlyShuffleVfx : Control
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -369,6 +436,7 @@ public class NCardFlyShuffleVfx : Control
 		info.AddProperty(PropertyName._trailPath, Variant.From(in _trailPath));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

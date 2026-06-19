@@ -7,6 +7,9 @@ namespace MegaCrit.Sts2.Core.Combat.History.Entries;
 
 public class CardPlayStartedEntry : CombatHistoryEntry
 {
+	/// <summary>
+	/// The instance of the card play that started.
+	/// </summary>
 	public CardPlay CardPlay { get; }
 
 	public override string Description

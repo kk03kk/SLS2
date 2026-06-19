@@ -153,6 +153,14 @@ public sealed class UnsettlingLamp : RelicModel
 		return Task.CompletedTask;
 	}
 
+	/// <summary>
+	/// If we've doubled an <see cref="T:MegaCrit.Sts2.Core.Models.ITemporaryPower" /> and now we're trying to double its internal debuff,
+	/// skip it so we don't double-dip.
+	/// </summary>
+	/// <example>
+	/// If we've doubled <see cref="T:MegaCrit.Sts2.Core.Models.Powers.PiercingWailPower" />, we don't also want to double negative <see cref="T:MegaCrit.Sts2.Core.Models.Powers.DexterityPower" />,
+	/// because that'll end up quadrupling it.
+	/// </example>
 	private bool HasDoubledTemporaryPowerSource(PowerModel power)
 	{
 		return DoubledPowers.OfType<ITemporaryPower>().Any((ITemporaryPower p) => p.InternallyAppliedPower.GetType() == power.GetType());

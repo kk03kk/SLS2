@@ -16,8 +16,10 @@ namespace MegaCrit.Sts2.Core.Multiplayer.Serialization;
 
 public static class ModelIdSerializationCache
 {
+	/// For serializing over the network, to save space, we map the string names statically to integers...
 	private static readonly Dictionary<string, int> _categoryNameToNetIdMap = new Dictionary<string, int> { [ModelId.none.Category] = 0 };
 
+	/// ...and vice-versa.
 	private static readonly List<string> _netIdToCategoryNameMap;
 
 	private static readonly Dictionary<string, int> _entryNameToNetIdMap;
@@ -42,6 +44,11 @@ public static class ModelIdSerializationCache
 
 	public static uint Hash { get; private set; }
 
+	/// <summary>
+	/// Initializes the serialization cache.
+	/// Note that the alternative is to initialize in a static initializer, but if we do this we don't control the time
+	/// at which it gets initialized, and it usually happens at a bad time during gameplay.
+	/// </summary>
 	public static void Init()
 	{
 		byte[] array = new byte[512];

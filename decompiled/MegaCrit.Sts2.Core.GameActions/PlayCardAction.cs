@@ -33,6 +33,10 @@ public sealed class PlayCardAction : GameAction
 
 	public PlayerChoiceContext? PlayerChoiceContext { get; private set; }
 
+	/// <summary>
+	/// Get the creature that this action is targeting.
+	/// Null for un-targeted cards.
+	/// </summary>
 	public Creature? Target => Player.Creature.CombatState?.GetCreature(TargetId);
 
 	public PlayCardAction(CardModel cardModel, Creature? target)
@@ -99,6 +103,10 @@ public sealed class PlayCardAction : GameAction
 		await _card.OnPlayWrapper(PlayerChoiceContext, target, isAutoPlay: false, resources);
 	}
 
+	/// <summary>
+	/// We override this to handle the case where some external action (like showing the hand selection screen) needs to
+	/// cancel queued card plays.
+	/// </summary>
 	protected override void CancelAction()
 	{
 		if (TestMode.IsOn && !RunManager.Instance.IsInProgress)

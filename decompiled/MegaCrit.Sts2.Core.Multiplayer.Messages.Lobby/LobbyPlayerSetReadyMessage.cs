@@ -4,6 +4,9 @@ using MegaCrit.Sts2.Core.Multiplayer.Transport;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Messages.Lobby;
 
+/// <summary>
+/// Sent by a player when that player is ready to begin the run.
+/// </summary>
 public struct LobbyPlayerSetReadyMessage : INetMessage, IPacketSerializable
 {
 	public bool ready;

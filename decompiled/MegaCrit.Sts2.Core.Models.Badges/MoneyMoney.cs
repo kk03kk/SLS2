@@ -2,6 +2,9 @@ using MegaCrit.Sts2.Core.Saves;
 
 namespace MegaCrit.Sts2.Core.Models.Badges;
 
+/// <summary>
+/// Win a run with 200, 400, 600 gold remaining.
+/// </summary>
 public class MoneyMoney : Badge
 {
 	public override BadgeRarity Rarity
@@ -25,6 +28,9 @@ public class MoneyMoney : Badge
 		}
 	}
 
+	/// <summary>
+	/// Win a run with 200, 400, 600 gold remaining.
+	/// </summary>
 	public MoneyMoney(SerializableRun run, bool won, ulong playerId)
 		: base(run, won, playerId, "MONEY_MONEY", requiresWin: true, multiplayerOnly: false)
 	{

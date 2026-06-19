@@ -12,6 +12,10 @@ using MegaCrit.Sts2.Core.TestSupport;
 
 namespace MegaCrit.Sts2.Core.GameActions;
 
+/// <summary>
+/// This action is enqueued when the player chooses to discard a potion from their belt. It runs both in combat and
+/// outside of combat.
+/// </summary>
 public class DiscardPotionGameAction : GameAction
 {
 	private readonly Player _player;
@@ -32,6 +36,13 @@ public class DiscardPotionGameAction : GameAction
 		}
 	}
 
+	/// <summary>
+	/// True if the player discarded a potion in combat, false otherwise.
+	/// The player may discard a potion at any time. However, there's a specific situation in which order of GameAction
+	/// enqueues matters when out-of-combat: if the player discards a potion post-combat while another player is still
+	/// executing the player turn. If the action is set to GameActionType.Any, it will be executed during combat, before
+	/// the enemy turn.
+	/// </summary>
 	public bool WasEnqueuedInCombat { get; }
 
 	public DiscardPotionGameAction(Player player, uint potionSlotIndex, bool isCombatInProgress)

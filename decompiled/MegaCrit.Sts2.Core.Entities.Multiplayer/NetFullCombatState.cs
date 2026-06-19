@@ -128,6 +128,12 @@ public class NetFullCombatState : IPacketSerializable
 		}
 	}
 
+	/// <summary>
+	/// All the combat-relevant state from the Player class.
+	/// Includes most state except:
+	///  - Rewards and Shop RNG counters (stripped out in FromRun)
+	///  - Rarity odds
+	/// </summary>
 	public struct PlayerState : IPacketSerializable
 	{
 		public ulong playerId;

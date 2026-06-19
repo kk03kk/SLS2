@@ -6,6 +6,9 @@ using MegaCrit.Sts2.Core.Saves;
 
 namespace MegaCrit.Sts2.Core.Models.Badges;
 
+/// <summary>
+/// For each time you Mend in multiplayer, you get a higher tier badge!
+/// </summary>
 public class Healer : Badge
 {
 	public override BadgeRarity Rarity
@@ -46,6 +49,9 @@ public class Healer : Badge
 		}
 	}
 
+	/// <summary>
+	/// For each time you Mend in multiplayer, you get a higher tier badge!
+	/// </summary>
 	public Healer(SerializableRun run, bool won, ulong playerId)
 		: base(run, won, playerId, "HEALER", requiresWin: false, multiplayerOnly: true)
 	{

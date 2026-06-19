@@ -15,6 +15,9 @@ public sealed class DiamondDiademPower : PowerModel
 
 	public override PowerStackType StackType => PowerStackType.Single;
 
+	/// <summary>
+	/// cuts damage received in half.
+	/// </summary>
 	public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
 	{
 		if (target != base.Owner)

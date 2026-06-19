@@ -5,6 +5,10 @@ using MegaCrit.Sts2.Core.Logging;
 
 namespace MegaCrit.Sts2.Core.Assets;
 
+/// <summary>
+/// This class is responsible for preloading and caching assets. It solves a problem where we want to load whole
+/// groups of assets, but we also want to eliminate duplicate loads of the same asset. This class is thread-safe.
+/// </summary>
 public class AssetCache
 {
 	private readonly ConcurrentDictionary<string, Resource> _cache = new ConcurrentDictionary<string, Resource>();
@@ -13,8 +17,12 @@ public class AssetCache
 
 	private readonly HashSet<string> _failedAssets = new HashSet<string>();
 
+	/// <summary>Gets the current count of missed cache assets (loaded outside preloading).</summary>
 	public int MissedCacheAssetCount => _missedCacheAssets.Count;
 
+	/// <summary>
+	/// Gets the asset if it is cached, otherwise falls back to loading it.
+	/// </summary>
 	private Resource GetAsset(string path)
 	{
 		if (_cache.TryGetValue(path, out Resource value))
@@ -46,6 +54,11 @@ public class AssetCache
 		return _cache[path];
 	}
 
+	/// <summary>
+	/// Marks an asset as failed so that synchronous fallback loading does not re-attempt it.
+	/// This prevents repeated native crashes in the Godot resource parser when files are
+	/// missing or corrupted.
+	/// </summary>
 	public void MarkAssetFailed(string path)
 	{
 		_failedAssets.Add(path);
@@ -71,6 +84,10 @@ public class AssetCache
 		}
 	}
 
+	/// <summary>
+	/// Clears and unloads all missed cache assets. Should be called at safe boundaries
+	/// like returning to the main menu to prevent unbounded memory growth.
+	/// </summary>
 	public void UnloadMissedCacheAssets()
 	{
 		if (_missedCacheAssets.Count == 0)

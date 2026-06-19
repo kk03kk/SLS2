@@ -6,6 +6,9 @@ using MegaCrit.Sts2.Core.Saves.Runs;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Messages.Lobby;
 
+/// <summary>
+/// Sent by the host when the modifiers in the custom run menu changes.
+/// </summary>
 public struct LobbyModifiersChangedMessage : INetMessage, IPacketSerializable
 {
 	public List<SerializableModifier> modifiers;

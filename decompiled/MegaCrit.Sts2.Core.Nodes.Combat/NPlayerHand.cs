@@ -42,138 +42,336 @@ public class NPlayerHand : Control
 		UpgradeSelect
 	}
 
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Control.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the '_EnterTree' method.
+		/// </summary>
 		public new static readonly StringName _EnterTree = "_EnterTree";
 
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 
+		/// <summary>
+		/// Cached name for the 'IsAwaitingPlay' method.
+		/// </summary>
 		public static readonly StringName IsAwaitingPlay = "IsAwaitingPlay";
 
+		/// <summary>
+		/// Cached name for the 'Add' method.
+		/// </summary>
 		public static readonly StringName Add = "Add";
 
+		/// <summary>
+		/// Cached name for the 'AddCardHolder' method.
+		/// </summary>
 		public static readonly StringName AddCardHolder = "AddCardHolder";
 
+		/// <summary>
+		/// Cached name for the 'RemoveCardHolder' method.
+		/// </summary>
 		public static readonly StringName RemoveCardHolder = "RemoveCardHolder";
 
+		/// <summary>
+		/// Cached name for the 'OnHolderFocused' method.
+		/// </summary>
 		public static readonly StringName OnHolderFocused = "OnHolderFocused";
 
+		/// <summary>
+		/// Cached name for the 'OnHolderUnfocused' method.
+		/// </summary>
 		public static readonly StringName OnHolderUnfocused = "OnHolderUnfocused";
 
+		/// <summary>
+		/// Cached name for the 'CancelAllCardPlay' method.
+		/// </summary>
 		public static readonly StringName CancelAllCardPlay = "CancelAllCardPlay";
 
+		/// <summary>
+		/// Cached name for the 'ReturnHolderToHand' method.
+		/// </summary>
 		public static readonly StringName ReturnHolderToHand = "ReturnHolderToHand";
 
+		/// <summary>
+		/// Cached name for the 'ForceRefreshCardIndices' method.
+		/// </summary>
 		public static readonly StringName ForceRefreshCardIndices = "ForceRefreshCardIndices";
 
+		/// <summary>
+		/// Cached name for the 'RefreshLayout' method.
+		/// </summary>
 		public static readonly StringName RefreshLayout = "RefreshLayout";
 
+		/// <summary>
+		/// Cached name for the 'OnPeekButtonToggled' method.
+		/// </summary>
 		public static readonly StringName OnPeekButtonToggled = "OnPeekButtonToggled";
 
+		/// <summary>
+		/// Cached name for the 'UpdateSelectModeCardVisibility' method.
+		/// </summary>
 		public static readonly StringName UpdateSelectModeCardVisibility = "UpdateSelectModeCardVisibility";
 
+		/// <summary>
+		/// Cached name for the 'CancelHandSelectionIfNecessary' method.
+		/// </summary>
 		public static readonly StringName CancelHandSelectionIfNecessary = "CancelHandSelectionIfNecessary";
 
+		/// <summary>
+		/// Cached name for the 'OnHolderPressed' method.
+		/// </summary>
 		public static readonly StringName OnHolderPressed = "OnHolderPressed";
 
+		/// <summary>
+		/// Cached name for the 'CanPlayCards' method.
+		/// </summary>
 		public static readonly StringName CanPlayCards = "CanPlayCards";
 
+		/// <summary>
+		/// Cached name for the 'AreCardActionsAllowed' method.
+		/// </summary>
 		public static readonly StringName AreCardActionsAllowed = "AreCardActionsAllowed";
 
+		/// <summary>
+		/// Cached name for the 'StartCardPlay' method.
+		/// </summary>
 		public static readonly StringName StartCardPlay = "StartCardPlay";
 
+		/// <summary>
+		/// Cached name for the 'SelectCardInSimpleMode' method.
+		/// </summary>
 		public static readonly StringName SelectCardInSimpleMode = "SelectCardInSimpleMode";
 
+		/// <summary>
+		/// Cached name for the 'SelectCardInUpgradeMode' method.
+		/// </summary>
 		public static readonly StringName SelectCardInUpgradeMode = "SelectCardInUpgradeMode";
 
+		/// <summary>
+		/// Cached name for the 'DeselectCard' method.
+		/// </summary>
 		public static readonly StringName DeselectCard = "DeselectCard";
 
+		/// <summary>
+		/// Cached name for the 'RevalidateSelectionAfterStateChange' method.
+		/// </summary>
 		public static readonly StringName RevalidateSelectionAfterStateChange = "RevalidateSelectionAfterStateChange";
 
+		/// <summary>
+		/// Cached name for the 'OnSelectModeConfirmButtonPressed' method.
+		/// </summary>
 		public static readonly StringName OnSelectModeConfirmButtonPressed = "OnSelectModeConfirmButtonPressed";
 
+		/// <summary>
+		/// Cached name for the 'CheckIfSelectionComplete' method.
+		/// </summary>
 		public static readonly StringName CheckIfSelectionComplete = "CheckIfSelectionComplete";
 
+		/// <summary>
+		/// Cached name for the 'RefreshSelectModeConfirmButton' method.
+		/// </summary>
 		public static readonly StringName RefreshSelectModeConfirmButton = "RefreshSelectModeConfirmButton";
 
+		/// <summary>
+		/// Cached name for the 'AnimIn' method.
+		/// </summary>
 		public static readonly StringName AnimIn = "AnimIn";
 
+		/// <summary>
+		/// Cached name for the 'AnimOut' method.
+		/// </summary>
 		public static readonly StringName AnimOut = "AnimOut";
 
+		/// <summary>
+		/// Cached name for the 'AnimDisable' method.
+		/// </summary>
 		public static readonly StringName AnimDisable = "AnimDisable";
 
+		/// <summary>
+		/// Cached name for the 'AnimEnable' method.
+		/// </summary>
 		public static readonly StringName AnimEnable = "AnimEnable";
 
+		/// <summary>
+		/// Cached name for the 'FlashPlayableHolders' method.
+		/// </summary>
 		public static readonly StringName FlashPlayableHolders = "FlashPlayableHolders";
 
+		/// <summary>
+		/// Cached name for the 'OnCardSelected' method.
+		/// </summary>
 		public static readonly StringName OnCardSelected = "OnCardSelected";
 
+		/// <summary>
+		/// Cached name for the 'OnCardDeselected' method.
+		/// </summary>
 		public static readonly StringName OnCardDeselected = "OnCardDeselected";
 
+		/// <summary>
+		/// Cached name for the 'UpdateSelectedCardContainer' method.
+		/// </summary>
 		public static readonly StringName UpdateSelectedCardContainer = "UpdateSelectedCardContainer";
 
+		/// <summary>
+		/// Cached name for the 'EnableControllerNavigation' method.
+		/// </summary>
 		public static readonly StringName EnableControllerNavigation = "EnableControllerNavigation";
 
+		/// <summary>
+		/// Cached name for the 'DisableControllerNavigation' method.
+		/// </summary>
 		public static readonly StringName DisableControllerNavigation = "DisableControllerNavigation";
 
+		/// <summary>
+		/// Cached name for the '_UnhandledInput' method.
+		/// </summary>
 		public new static readonly StringName _UnhandledInput = "_UnhandledInput";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Control.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'CardHolderContainer' property.
+		/// </summary>
 		public static readonly StringName CardHolderContainer = "CardHolderContainer";
 
+		/// <summary>
+		/// Cached name for the 'PeekButton' property.
+		/// </summary>
 		public static readonly StringName PeekButton = "PeekButton";
 
+		/// <summary>
+		/// Cached name for the 'InCardPlay' property.
+		/// </summary>
 		public static readonly StringName InCardPlay = "InCardPlay";
 
+		/// <summary>
+		/// Cached name for the 'IsInCardSelection' property.
+		/// </summary>
 		public static readonly StringName IsInCardSelection = "IsInCardSelection";
 
+		/// <summary>
+		/// Cached name for the 'CurrentMode' property.
+		/// </summary>
 		public static readonly StringName CurrentMode = "CurrentMode";
 
+		/// <summary>
+		/// Cached name for the 'HasDraggedHolder' property.
+		/// </summary>
 		public static readonly StringName HasDraggedHolder = "HasDraggedHolder";
 
+		/// <summary>
+		/// Cached name for the 'FocusedHolder' property.
+		/// </summary>
 		public static readonly StringName FocusedHolder = "FocusedHolder";
 
+		/// <summary>
+		/// Cached name for the 'DefaultFocusedControl' property.
+		/// </summary>
 		public static readonly StringName DefaultFocusedControl = "DefaultFocusedControl";
 
+		/// <summary>
+		/// Cached name for the '_selectCardShortcuts' field.
+		/// </summary>
 		public static readonly StringName _selectCardShortcuts = "_selectCardShortcuts";
 
+		/// <summary>
+		/// Cached name for the '_selectModeBackstop' field.
+		/// </summary>
 		public static readonly StringName _selectModeBackstop = "_selectModeBackstop";
 
+		/// <summary>
+		/// Cached name for the '_upgradePreviewContainer' field.
+		/// </summary>
 		public static readonly StringName _upgradePreviewContainer = "_upgradePreviewContainer";
 
+		/// <summary>
+		/// Cached name for the '_selectedHandCardContainer' field.
+		/// </summary>
 		public static readonly StringName _selectedHandCardContainer = "_selectedHandCardContainer";
 
+		/// <summary>
+		/// Cached name for the '_upgradePreview' field.
+		/// </summary>
 		public static readonly StringName _upgradePreview = "_upgradePreview";
 
+		/// <summary>
+		/// Cached name for the '_selectModeConfirmButton' field.
+		/// </summary>
 		public static readonly StringName _selectModeConfirmButton = "_selectModeConfirmButton";
 
+		/// <summary>
+		/// Cached name for the '_selectionHeader' field.
+		/// </summary>
 		public static readonly StringName _selectionHeader = "_selectionHeader";
 
+		/// <summary>
+		/// Cached name for the '_currentCardPlay' field.
+		/// </summary>
 		public static readonly StringName _currentCardPlay = "_currentCardPlay";
 
+		/// <summary>
+		/// Cached name for the '_currentMode' field.
+		/// </summary>
 		public static readonly StringName _currentMode = "_currentMode";
 
+		/// <summary>
+		/// Cached name for the '_draggedHolderIndex' field.
+		/// </summary>
 		public static readonly StringName _draggedHolderIndex = "_draggedHolderIndex";
 
+		/// <summary>
+		/// Cached name for the '_lastFocusedHolderIdx' field.
+		/// </summary>
 		public static readonly StringName _lastFocusedHolderIdx = "_lastFocusedHolderIdx";
 
+		/// <summary>
+		/// Cached name for the '_animEnableTween' field.
+		/// </summary>
 		public static readonly StringName _animEnableTween = "_animEnableTween";
 
+		/// <summary>
+		/// Cached name for the '_isDisabled' field.
+		/// </summary>
 		public static readonly StringName _isDisabled = "_isDisabled";
 
+		/// <summary>
+		/// Cached name for the '_animInTween' field.
+		/// </summary>
 		public static readonly StringName _animInTween = "_animInTween";
 
+		/// <summary>
+		/// Cached name for the '_animOutTween' field.
+		/// </summary>
 		public static readonly StringName _animOutTween = "_animOutTween";
 
+		/// <summary>
+		/// Cached name for the '_selectedCardScaleTween' field.
+		/// </summary>
 		public static readonly StringName _selectedCardScaleTween = "_selectedCardScaleTween";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Control.SignalName
 	{
+		/// <summary>
+		/// Cached name for the 'ModeChanged' signal.
+		/// </summary>
 		public static readonly StringName ModeChanged = "ModeChanged";
 	}
 
@@ -217,10 +415,33 @@ public class NPlayerHand : Control
 
 	private Func<CardModel, bool>? _currentSelectionFilter;
 
+	/// <summary>
+	/// If you're dragging a card, it won't be a child of the card holder container for the duration of the drag,
+	/// so we need to leave an empty space for it in your hand. This index represents where that empty space should be.
+	///
+	/// For example, let's say you start dragging the card in your hand at index 2.
+	/// Once it's removed from your hand for the drag, the card at index 3 moves to index 2, but visually, we
+	/// still want to position it at index 3 so we can "leave a space" at index 2.
+	/// However, the position/angle of the cards at indexes 0 and 1 should be unchanged.
+	/// </summary>
 	private int _draggedHolderIndex = -1;
 
 	private int _lastFocusedHolderIdx = -1;
 
+	/// <summary>
+	/// There are two types of cards that are considered "awaiting play":
+	/// 1. The card you're currently dragging and preparing to play.
+	/// 2. If you've queued up a bunch of cards for play quickly, all the cards that haven't started playing yet.
+	///    For example, if I play a Defend, then quickly play 2 Strikes while the Defend's animations are still running,
+	///    the 2 Strikes are considered "awaiting play" for that time.
+	///
+	/// Cards that are awaiting play exist in a sort of "purgatory" state. From a back-end perspective, they're still in
+	/// your hand (they count towards hand size, etc.), but on the front-end, they should be floating around somewhere
+	/// separate from the other cards in your hand.
+	///
+	/// When a holder returns to the hand it is re-inserted at the position matching its model's order in the backend
+	/// Hand pile (see <see cref="M:MegaCrit.Sts2.Core.Nodes.Combat.NPlayerHand.GetHandInsertIndex(MegaCrit.Sts2.Core.Models.CardModel)" />), so we do not need to remember its old child index here.
+	/// </summary>
 	private readonly HashSet<NHandCardHolder> _holdersAwaitingQueue = new HashSet<NHandCardHolder>();
 
 	private Tween? _animEnableTween;
@@ -325,6 +546,7 @@ public class NPlayerHand : Control
 		}
 	}
 
+	/// <inheritdoc cref="T:MegaCrit.Sts2.Core.Nodes.Combat.NPlayerHand.ModeChangedEventHandler" />
 	public event ModeChangedEventHandler ModeChanged
 	{
 		add
@@ -411,6 +633,10 @@ public class NPlayerHand : Control
 		return ((IEnumerable<NCardHolder>)Holders).Concat((IEnumerable<NCardHolder>)_selectedHandCardContainer.Holders).Concat(_holdersAwaitingQueue).FirstOrDefault((NCardHolder h) => h.CardNode != null && h.CardNode.Model == card);
 	}
 
+	/// <summary>
+	/// Called whenever we add a card into the hand.
+	/// Prunes any empty CardHolders and creates a CardHolder for the newly added card.
+	/// </summary>
 	public NHandCardHolder Add(NCard card, int index = -1)
 	{
 		Vector2 globalPosition = card.GlobalPosition;
@@ -425,6 +651,10 @@ public class NPlayerHand : Control
 		return nHandCardHolder;
 	}
 
+	/// <summary>
+	/// Remove an NCard and its holder from the hand.
+	/// </summary>
+	/// <param name="card">CardModel whose node we want to remove</param>
 	public void Remove(CardModel card)
 	{
 		NCardHolder cardHolder = GetCardHolder(card);
@@ -457,6 +687,16 @@ public class NPlayerHand : Control
 		}
 	}
 
+	/// <summary>
+	/// Translates a card's position in the backend Hand pile into a child index within CardHolderContainer.
+	///
+	/// Cards that are selected, awaiting play, or being dragged stay in the backend Hand pile while their holders are
+	/// absent from CardHolderContainer (selected holders move to the selected-card container; dragged/queued holders
+	/// reparent onto the hand itself), so the raw pile index can exceed the live child count and Godot rejects the
+	/// MoveChild with "Invalid new child index" (PRG-6847). Counting only the holders currently in the container
+	/// keeps the result within its child range.
+	/// </summary>
+	/// <returns>The target child index, or -1 if the card is not in the Hand pile (caller should not move).</returns>
 	private int GetHandInsertIndex(CardModel card)
 	{
 		IReadOnlyList<CardModel> cards = PileType.Hand.GetPile(card.Owner).Cards;
@@ -502,6 +742,10 @@ public class NPlayerHand : Control
 		RefreshLayout();
 	}
 
+	/// <summary>
+	/// If the specific model is being played, then cancel it.
+	/// </summary>
+	/// <param name="card">Card we are trying to stop from being played</param>
 	public void TryCancelCardPlay(CardModel card)
 	{
 		NCardHolder cardHolder = GetCardHolder(card);
@@ -547,11 +791,18 @@ public class NPlayerHand : Control
 		}
 	}
 
+	/// <summary>
+	/// Be sure you know what your doing when you call this function. Should only be used
+	/// by the NHandCardCountTickbox to toggle on/off the player hand count labels right away.
+	/// </summary>
 	public void ForceRefreshCardIndices()
 	{
 		RefreshLayout();
 	}
 
+	/// <summary>
+	/// Call this whenever we gain/lose cards so that we fan out the cards for our players.
+	/// </summary>
 	private void RefreshLayout()
 	{
 		int count = ActiveHolders.Count;
@@ -813,6 +1064,10 @@ public class NPlayerHand : Control
 		}
 	}
 
+	/// <summary>
+	/// Called when a card is clicked in the hand.
+	/// </summary>
+	/// <param name="holder">CardHolder that was clicked.</param>
 	private void OnHolderPressed(NCardHolder holder)
 	{
 		if (PeekButton.IsPeeking)
@@ -924,6 +1179,10 @@ public class NPlayerHand : Control
 		RefreshSelectModeConfirmButton();
 	}
 
+	/// <summary>
+	/// Deselect a card when in a Select Mode.
+	/// </summary>
+	/// <param name="card"></param>
 	public void DeselectCard(NCard card)
 	{
 		if (!IsInCardSelection)
@@ -938,6 +1197,12 @@ public class NPlayerHand : Control
 		nHandCardHolder.TryGrabFocus();
 	}
 
+	/// <summary>
+	/// Combat state can change while the player is mid-selection (e.g. another player kills a monster whose
+	/// power was downgrading our cards). Re-evaluate the filter against the current hand and the currently-
+	/// selected cards, deselecting anything that no longer qualifies and cancelling the whole selection with
+	/// an empty result if no valid candidates remain.
+	/// </summary>
 	private void RevalidateSelectionAfterStateChange()
 	{
 		Func<CardModel, bool> filter = _currentSelectionFilter;
@@ -1018,6 +1283,9 @@ public class NPlayerHand : Control
 		}
 	}
 
+	/// <summary>
+	/// Animation for entering combat
+	/// </summary>
 	public void AnimIn()
 	{
 		_animOutTween?.Kill();
@@ -1026,6 +1294,9 @@ public class NPlayerHand : Control
 		_animInTween.TweenProperty(this, "position", _showPosition, 0.800000011920929).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
 	}
 
+	/// <summary>
+	/// Animation when winning combat
+	/// </summary>
 	public void AnimOut()
 	{
 		CancelHandSelectionIfNecessary();
@@ -1035,6 +1306,9 @@ public class NPlayerHand : Control
 		_animOutTween.TweenProperty(this, "position", _hidePosition, 0.800000011920929).SetEase(Tween.EaseType.In).SetTrans(Tween.TransitionType.Back);
 	}
 
+	/// <summary>
+	/// Animation when player actions are disabled during player turn
+	/// </summary>
 	private void AnimDisable()
 	{
 		if (!_isDisabled)
@@ -1047,6 +1321,9 @@ public class NPlayerHand : Control
 		}
 	}
 
+	/// <summary>
+	/// Animation when player actions are re-enabled during player turn
+	/// </summary>
 	private void AnimEnable()
 	{
 		if (_isDisabled)
@@ -1182,6 +1459,11 @@ public class NPlayerHand : Control
 		}
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -1284,6 +1566,7 @@ public class NPlayerHand : Control
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -1514,6 +1797,7 @@ public class NPlayerHand : Control
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -1672,6 +1956,7 @@ public class NPlayerHand : Control
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -1778,6 +2063,7 @@ public class NPlayerHand : Control
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -1911,6 +2197,11 @@ public class NPlayerHand : Control
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -1942,6 +2233,7 @@ public class NPlayerHand : Control
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -1969,6 +2261,7 @@ public class NPlayerHand : Control
 		info.AddSignalEventDelegate(SignalName.ModeChanged, backing_ModeChanged);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{
@@ -2059,6 +2352,11 @@ public class NPlayerHand : Control
 		}
 	}
 
+	/// <summary>
+	/// Get the signal information for all the signals declared in this class.
+	/// This method is used by Godot to register the available signals in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotSignalList()
 	{
@@ -2072,6 +2370,7 @@ public class NPlayerHand : Control
 		EmitSignal(SignalName.ModeChanged);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RaiseGodotClassSignalCallbacks(in godot_string_name signal, NativeVariantPtrArgs args)
 	{
@@ -2085,6 +2384,7 @@ public class NPlayerHand : Control
 		}
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassSignal(in godot_string_name signal)
 	{

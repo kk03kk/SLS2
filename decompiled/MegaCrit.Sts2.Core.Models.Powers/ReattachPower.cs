@@ -34,6 +34,9 @@ public sealed class ReattachPower : PowerModel
 		return new Data();
 	}
 
+	/// <summary>
+	/// Executed when Decimillipede Segment is reattaching at the end of its turn.
+	/// </summary>
 	public async Task DoReattach()
 	{
 		if (!AreAllOtherSegmentsDead())
@@ -67,6 +70,9 @@ public sealed class ReattachPower : PowerModel
 		}
 	}
 
+	/// <summary>
+	/// This is so the Decimillipede Segment doesn't receive powers while it is reviving
+	/// </summary>
 	public override bool ShouldAllowHitting(Creature creature)
 	{
 		if (creature != base.Owner)
@@ -94,6 +100,9 @@ public sealed class ReattachPower : PowerModel
 		return false;
 	}
 
+	/// <summary>
+	/// Killing Decimillipede Segment shouldn't trigger fatal unless all other segments are dead too.
+	/// </summary>
 	public override bool ShouldOwnerDeathTriggerFatal()
 	{
 		return AreAllOtherSegmentsDead();

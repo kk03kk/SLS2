@@ -6,6 +6,10 @@ using Steamworks;
 
 namespace MegaCrit.Sts2.Core.Platform.Steam;
 
+/// <summary>
+/// Manages Steam user stats and global stat aggregates.
+/// Used to track per-user architect damage and fetch the global aggregate across all players.
+/// </summary>
 public static class SteamStatsManager
 {
 	private const string _architectDamageStat = "architect_damage";

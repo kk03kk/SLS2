@@ -8,41 +8,87 @@ using MegaCrit.Sts2.addons.mega_text;
 
 namespace MegaCrit.Sts2.Core.Nodes.CommonUi;
 
+/// <summary>
+/// The beige banner which appears on many many screens. Choose a Card!
+/// </summary>
 [ScriptPath("res://src/Core/Nodes/CommonUi/NCommonBanner.cs")]
 public class NCommonBanner : Control
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Control.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the 'OnWindowChange' method.
+		/// </summary>
 		public static readonly StringName OnWindowChange = "OnWindowChange";
 
+		/// <summary>
+		/// Cached name for the 'AnimateIn' method.
+		/// </summary>
 		public static readonly StringName AnimateIn = "AnimateIn";
 
+		/// <summary>
+		/// Cached name for the 'AnimateOut' method.
+		/// </summary>
 		public static readonly StringName AnimateOut = "AnimateOut";
 
+		/// <summary>
+		/// Cached name for the 'ChangeText' method.
+		/// </summary>
 		public static readonly StringName ChangeText = "ChangeText";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Control.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'label' field.
+		/// </summary>
 		public static readonly StringName label = "label";
 
+		/// <summary>
+		/// Cached name for the '_labelTween' field.
+		/// </summary>
 		public static readonly StringName _labelTween = "_labelTween";
 
+		/// <summary>
+		/// Cached name for the '_tween' field.
+		/// </summary>
 		public static readonly StringName _tween = "_tween";
 
+		/// <summary>
+		/// Cached name for the '_showPos' field.
+		/// </summary>
 		public static readonly StringName _showPos = "_showPos";
 
+		/// <summary>
+		/// Cached name for the '_hidePos' field.
+		/// </summary>
 		public static readonly StringName _hidePos = "_hidePos";
 
+		/// <summary>
+		/// Cached name for the '_imgOffset' field.
+		/// </summary>
 		public static readonly StringName _imgOffset = "_imgOffset";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Control.SignalName
 	{
 	}
 
+	/// NOTE: This is set to public for modders as it's a common UI element.
 	public MegaLabel label;
 
 	private Tween? _labelTween;
@@ -89,6 +135,9 @@ public class NCommonBanner : Control
 		_tween.TweenProperty(this, "modulate:a", 0f, 0.4).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Expo);
 	}
 
+	/// <summary>
+	/// Call this when you want to change the text on an existing banner without animating the banner again.
+	/// </summary>
 	public void ChangeText(string text)
 	{
 		label.SetTextAutoSize(text);
@@ -98,6 +147,11 @@ public class NCommonBanner : Control
 		_labelTween.TweenProperty(label, "modulate:a", 1f, 0.25);
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -113,6 +167,7 @@ public class NCommonBanner : Control
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -149,6 +204,7 @@ public class NCommonBanner : Control
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -175,6 +231,7 @@ public class NCommonBanner : Control
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -211,6 +268,7 @@ public class NCommonBanner : Control
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -247,6 +305,11 @@ public class NCommonBanner : Control
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -260,6 +323,7 @@ public class NCommonBanner : Control
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -272,6 +336,7 @@ public class NCommonBanner : Control
 		info.AddProperty(PropertyName._imgOffset, Variant.From(in _imgOffset));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

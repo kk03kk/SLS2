@@ -136,6 +136,9 @@ public sealed class MadScience : CardModel
 		}
 	}
 
+	/// <summary>
+	/// Used for tests.
+	/// </summary>
 	private CardModel? MockedChaosCard
 	{
 		get
@@ -290,6 +293,9 @@ public sealed class MadScience : CardModel
 		}
 	}
 
+	/// <summary>
+	/// ONLY USE THIS IN TESTS!
+	/// </summary>
 	public void MockChaosCard(CardModel card)
 	{
 		AssertMutable();

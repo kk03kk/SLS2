@@ -5,6 +5,11 @@ using MegaCrit.Sts2.Core.Runs;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Messages.Game.Sync;
 
+/// <summary>
+/// Message that is sent when a reward is selected from a rewards screen.
+/// This is sent BEFORE obtaining a reward. For instance, when a player selects a card reward, this message is sent
+/// before the player finishes selecting the card they wish to choose. The card selection occurs as a separate process.
+/// </summary>
 public class RewardSelectedMessage : INetMessage, IPacketSerializable, IRunLocationTargetedMessage
 {
 	public RunLocation location;

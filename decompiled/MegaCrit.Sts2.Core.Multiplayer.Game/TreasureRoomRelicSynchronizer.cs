@@ -21,12 +21,26 @@ using MegaCrit.Sts2.Core.Unlocks;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Game;
 
+/// <summary>
+/// Synchronizes treasure room shared relic picking in multiplayer.
+/// After opening the treasure chest, players are presented with multiple relics. They may vote on any one of the relics
+/// to take. After all players cast a vote:
+/// - If only one player votes for a relic, then that player gets the relic.
+/// - If multiple players have voted for a relic, they play rock-paper-scissors. The winning player gets the relic.
+/// - If no one has voted for a relic, a random loser of a rock-paper-scissors game gets the relic.
+/// </summary>
 public class TreasureRoomRelicSynchronizer
 {
 	public class PlayerVote
 	{
+		/// <summary>
+		/// Index of relic voted on. If null, then player skipped.
+		/// </summary>
 		public int? index;
 
+		/// <summary>
+		/// If true, then the player has voted. False if the player has not yet picked an option.
+		/// </summary>
 		public bool voteReceived;
 	}
 
@@ -48,6 +62,9 @@ public class TreasureRoomRelicSynchronizer
 
 	private PlayerVote? _predictedVote;
 
+	/// <summary>
+	/// Set to true if the player skips the relic in singleplayer.
+	/// </summary>
 	private bool _singleplayerSkipped;
 
 	public IReadOnlyList<RelicModel>? CurrentRelics => _currentRelics;
@@ -67,6 +84,10 @@ public class TreasureRoomRelicSynchronizer
 		_rng = rng;
 	}
 
+	/// <summary>
+	/// Call this when the treasure room is opened to generate the relics that are selected.
+	/// CurrentRelics will be null until this is called.
+	/// </summary>
 	public void BeginRelicPicking()
 	{
 		if (CurrentRelics != null)
@@ -112,11 +133,21 @@ public class TreasureRoomRelicSynchronizer
 		}
 	}
 
+	/// <summary>
+	/// Little semantic sugar which calls PickRelicLocally with null.
+	/// </summary>
 	public void SkipRelicLocally()
 	{
 		PickRelicLocally(null);
 	}
 
+	/// <summary>
+	/// Called when the local player chooses a relic to vote for.
+	/// Note that this immediately invokes `VotesChanged` with the new vote. However, the vote is not confirmed until
+	/// the resulting action round-trips to the host.
+	/// </summary>
+	/// <param name="index">The index of the relic in CurrentRelics that the player voted for, or null if the player
+	/// chose to skip.</param>
 	public void PickRelicLocally(int? index)
 	{
 		if (index.HasValue)
@@ -140,6 +171,11 @@ public class TreasureRoomRelicSynchronizer
 		this.VotesChanged?.Invoke();
 	}
 
+	/// <summary>
+	/// Called when any player (local or remote) has voted for a relic.
+	/// </summary>
+	/// <param name="player">The player that voted.</param>
+	/// <param name="index">The index of the relic in CurrentRelics that the player voted for.</param>
 	public void OnPicked(Player player, int? index)
 	{
 		if (index.HasValue)
@@ -259,6 +295,10 @@ public class TreasureRoomRelicSynchronizer
 		this.RelicsAwarded?.Invoke(results);
 	}
 
+	/// <summary>
+	/// Called when the room is exited.
+	/// Used to avoid emitting an error in the legitimate case where the player never completes relic picking in singleplayer.
+	/// </summary>
 	public void OnRoomExited()
 	{
 		if (_singleplayerSkipped)
@@ -273,6 +313,10 @@ public class TreasureRoomRelicSynchronizer
 		_singleplayerSkipped = false;
 	}
 
+	/// <summary>
+	/// Returns the relic that the player is currently voting for.
+	/// If the player has not yet voted for a relic, then null is returned.
+	/// </summary>
 	public PlayerVote GetPlayerVote(Player player)
 	{
 		if (player == LocalPlayer && _predictedVote != null)
@@ -282,6 +326,10 @@ public class TreasureRoomRelicSynchronizer
 		return _votes[_playerCollection.GetPlayerSlotIndex(player)];
 	}
 
+	/// <summary>
+	/// Completes relic picking immediately with no relics awarded.
+	/// Called when the chest is empty (e.g., due to SilverCrucible).
+	/// </summary>
 	public void CompleteWithNoRelics()
 	{
 		_logger.Debug("Completing relic picking with no relics (empty chest)");
@@ -289,6 +337,10 @@ public class TreasureRoomRelicSynchronizer
 		_currentRelics = null;
 	}
 
+	/// <summary>
+	/// If treasure room rarity should be forced because the player is currently playing a tutorial run, this returns
+	/// a non-null rarity. Otherwise, the rarity is randomized.
+	/// </summary>
 	private RelicModel? TryGetRelicForTutorial(UnlockState unlockState)
 	{
 		if (unlockState.NumberOfRuns == 0 && LocalContext.GetMe(_playerCollection).RunState.MapPointHistory.SelectMany((IReadOnlyList<MapPointHistoryEntry> l) => l).Count((MapPointHistoryEntry p) => p.HasRoomOfType(RoomType.Treasure)) == 1)

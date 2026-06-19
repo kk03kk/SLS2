@@ -8,14 +8,28 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace MegaCrit.Sts2.Core.Models.Singleton;
 
+/// <summary>
+/// Scales block gained by enemies.
+/// </summary>
 public class MultiplayerScalingModel : SingletonModel
 {
+	/// <summary>
+	/// The <see cref="T:MegaCrit.Sts2.Core.Runs.RunState" /> that this model is scaling.
+	/// Should always be set when creating a run, so we mark it as non-nullable.
+	/// </summary>
 	private RunState _runState;
 
+	/// <summary>
+	/// The CombatState that this model is scaling.
+	/// Only set when we are in combat.
+	/// </summary>
 	private CombatState? _combatState;
 
 	public override bool ShouldReceiveCombatHooks => true;
 
+	/// <summary>
+	/// Initialize with the specified <see cref="T:MegaCrit.Sts2.Core.Runs.RunState" />.
+	/// </summary>
 	public void Initialize(RunState state)
 	{
 		if (_runState != null)

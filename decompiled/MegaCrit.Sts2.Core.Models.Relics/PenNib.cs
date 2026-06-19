@@ -91,6 +91,9 @@ public sealed class PenNib : RelicModel
 		InvokeDisplayAmountChanged();
 	}
 
+	/// <summary>
+	/// This is public so we can call it from save tests.
+	/// </summary>
 	public void NotifyAttackPlayed()
 	{
 		AttacksPlayed++;

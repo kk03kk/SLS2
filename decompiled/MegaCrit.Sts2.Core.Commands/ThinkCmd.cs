@@ -5,6 +5,9 @@ using MegaCrit.Sts2.Core.Nodes.Vfx;
 
 namespace MegaCrit.Sts2.Core.Commands;
 
+/// <summary>
+/// Creates a thought bubble
+/// </summary>
 public static class ThinkCmd
 {
 	private const double _defaultTimePerCharacter = 0.08;

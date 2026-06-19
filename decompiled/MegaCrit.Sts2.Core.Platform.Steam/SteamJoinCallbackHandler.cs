@@ -13,6 +13,9 @@ using Steamworks;
 
 namespace MegaCrit.Sts2.Core.Platform.Steam;
 
+/// <summary>
+/// Responsible for handling Steam-related requests to join multiplayer sessions coming from outside the game.
+/// </summary>
 public class SteamJoinCallbackHandler : IDisposable
 {
 	private readonly Callback<GameLobbyJoinRequested_t> _steamJoinCallback;
@@ -22,6 +25,11 @@ public class SteamJoinCallbackHandler : IDisposable
 		_steamJoinCallback = new Callback<GameLobbyJoinRequested_t>(OnSteamLobbyJoinRequested);
 	}
 
+	/// <summary>
+	/// If the game is not yet launched and the player accepts an invite, Steam launches the game with a specific command
+	/// line argument. This method handles joining the multiplayer session. It should be called relatively early after
+	/// the game is launched.
+	/// </summary>
 	public void CheckForCommandLineJoin()
 	{
 		if (CommandLineHelper.TryGetValue("+connect_lobby", out string value))

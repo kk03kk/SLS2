@@ -22,6 +22,12 @@ public sealed class PoisonPower : PowerModel
 
 	public override Color AmountLabelColor => PowerModel._normalAmountLabelColor;
 
+	/// <summary>
+	/// <see cref="T:MegaCrit.Sts2.Core.Models.Powers.AccelerantPower" /> makes Poison trigger extra times, but it should never trigger more times than the
+	/// amount of Poison we have.
+	/// Since the power is applied to players, enemy creatures need to look to them (their opponents) to figure out the
+	/// trigger count.
+	/// </summary>
 	private int TriggerCount
 	{
 		get

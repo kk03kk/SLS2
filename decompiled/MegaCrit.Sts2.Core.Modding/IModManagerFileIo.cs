@@ -3,6 +3,11 @@ using Godot;
 
 namespace MegaCrit.Sts2.Core.Modding;
 
+/// <summary>
+/// A file IO abstraction layer for use with ModManager.
+/// It's a little different than ISaveStore, which is scoped only to a specific directory. This class allows global access
+/// to the filesystem.
+/// </summary>
 public interface IModManagerFileIo
 {
 	string[] GetFilesAt(string path);

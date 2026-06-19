@@ -8,6 +8,10 @@ using MegaCrit.Sts2.Core.Saves.Runs;
 
 namespace MegaCrit.Sts2.Core.Models.Badges;
 
+/// <summary>
+/// Data class for Badges.
+/// This is the actual backing class with the data for the badge. BadgeModel only exists to listen to combat events.
+/// </summary>
 public abstract class Badge
 {
 	protected readonly SerializableRun _run;
@@ -20,10 +24,16 @@ public abstract class Badge
 
 	public abstract BadgeRarity Rarity { get; }
 
+	/// <summary>
+	/// By default, a badge requires you to win to obtain it.
+	/// </summary>
 	public bool RequiresWin { get; }
 
 	public bool MultiplayerOnly { get; }
 
+	/// <summary>
+	/// Given a Badge's Rarity, returns the appropriate asset that's used to hold the badge icon.
+	/// </summary>
 	public Texture2D BadgeBase => Rarity switch
 	{
 		BadgeRarity.Bronze => PreloadManager.Cache.GetTexture2D(ImageHelper.GetImagePath("ui/game_over_screen/badge_bronze.png")), 

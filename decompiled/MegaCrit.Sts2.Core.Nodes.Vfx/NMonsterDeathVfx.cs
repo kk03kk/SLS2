@@ -24,14 +24,23 @@ namespace MegaCrit.Sts2.Core.Nodes.Vfx;
 [ScriptPath("res://src/Core/Nodes/Vfx/NMonsterDeathVfx.cs")]
 public class NMonsterDeathVfx : Node2D
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Node2D.MethodName
 	{
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Node2D.PropertyName
 	{
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Node2D.SignalName
 	{
 	}
@@ -58,6 +67,12 @@ public class NMonsterDeathVfx : Node2D
 
 	public static IEnumerable<string> AssetPaths => new global::_003C_003Ez__ReadOnlySingleElementList<string>(ScenePath);
 
+	/// <summary>
+	/// Creates an instance of NMonsterDeathVfx for the specified creature.
+	/// </summary>
+	/// <param name="creatureNode">The creature node.</param>
+	/// <param name="cancelToken">The cancellation token.</param>
+	/// <returns>The created NMonsterDeathVfx instance, or null if cancellation is requested or NCombatRoom.Instance is null.</returns>
 	public static NMonsterDeathVfx? Create(NCreature creatureNode, CancellationToken cancelToken)
 	{
 		if (TestMode.IsOn)
@@ -91,6 +106,13 @@ public class NMonsterDeathVfx : Node2D
 		return nMonsterDeathVfx;
 	}
 
+	/// <summary>
+	/// Creates an instance of NMonsterDeathVfx for the specified creature.
+	/// This should be used on creatures like the Decimillipede that are made of several different creatures that fade
+	/// out together.
+	/// </summary>
+	/// <param name="creatureNodes">The creature nodes.</param>
+	/// <returns>The created NMonsterDeathVfx instance, or null if cancellation is requested or NCombatRoom.Instance is null.</returns>
 	public static NMonsterDeathVfx? Create(List<NCreature> creatureNodes)
 	{
 		if (TestMode.IsOn)
@@ -192,12 +214,14 @@ public class NMonsterDeathVfx : Node2D
 		this.QueueFreeSafely();
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
 		base.SaveGodotObjectData(info);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

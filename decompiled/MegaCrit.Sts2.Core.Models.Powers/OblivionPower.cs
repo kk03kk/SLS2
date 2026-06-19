@@ -13,6 +13,10 @@ public sealed class OblivionPower : PowerModel
 {
 	private class Data
 	{
+		/// <summary>
+		/// Keep track of the cards we've seen played and the power amount at the time they were played.
+		/// This lets Oblivion avoid triggering on itself.
+		/// </summary>
 		public readonly Dictionary<CardModel, int> amountsForPlayedCards = new Dictionary<CardModel, int>();
 	}
 

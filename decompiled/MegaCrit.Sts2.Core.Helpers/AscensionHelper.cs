@@ -11,6 +11,14 @@ public static class AscensionHelper
 {
 	public static double PovertyAscensionGoldMultiplier => 0.75;
 
+	/// <summary>
+	/// Return a different value depending on whether the given ascension is higher or lower than the current
+	/// ascension of the run.
+	/// </summary>
+	/// <param name="level">The value that we use for ascensions below the ascensionThreshold</param>
+	/// <param name="ascensionValue">The value that we use for ascensions above the ascensionThreshold</param>
+	/// <param name="fallbackValue">The value that we use for ascensions below the ascensionThreshold</param>
+	/// <returns></returns>
 	public static int GetValueIfAscension(AscensionLevel level, int ascensionValue, int fallbackValue)
 	{
 		if (!RunManager.Instance.HasAscension(level))

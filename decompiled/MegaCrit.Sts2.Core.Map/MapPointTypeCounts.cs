@@ -19,6 +19,9 @@ public class MapPointTypeCounts
 
 	public int NumOfRests { get; }
 
+	/// <summary>
+	/// Whether the map generation MapPointType assignment ignores the rules or follows the rules.
+	/// </summary>
 	public bool ShouldIgnoreMapPointRulesForMapPointType(MapPointType pointType)
 	{
 		return PointTypesThatIgnoreRules.Contains(pointType);

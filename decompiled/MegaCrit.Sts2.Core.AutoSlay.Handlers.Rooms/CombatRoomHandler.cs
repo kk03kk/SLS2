@@ -19,6 +19,10 @@ using MegaCrit.Sts2.Core.Runs;
 
 namespace MegaCrit.Sts2.Core.AutoSlay.Handlers.Rooms;
 
+/// <summary>
+/// Handles combat rooms (Monster, Elite, Boss).
+/// Applies massive defensive buffs and plays all cards each turn.
+/// </summary>
 public class CombatRoomHandler : IRoomHandler, IHandler
 {
 	public RoomType[] HandledTypes => new RoomType[3]

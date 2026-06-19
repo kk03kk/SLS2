@@ -9,6 +9,9 @@ using MegaCrit.Sts2.Core.Platform;
 
 namespace MegaCrit.Sts2.Core.Models.Achievements;
 
+/// <summary>
+/// Grants an achievement when the player applies a large amount of Strength to Osty.
+/// </summary>
 public class SkillNecrobinder2Achievement : AchievementModel
 {
 	private const int _strengthThreshold = 50;

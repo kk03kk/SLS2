@@ -21,6 +21,11 @@ public static class PlayerCmd
 
 	public const string goldLargeSfx = "event:/sfx/ui/gold/gold_3";
 
+	/// <summary>
+	/// Increase the current amount of energy that the player has.
+	/// </summary>
+	/// <param name="amount">Amount of energy to give.</param>
+	/// <param name="player">Player to give the energy to.</param>
 	public static async Task GainEnergy(decimal amount, Player player)
 	{
 		if (!(amount <= 0m) && !CombatManager.Instance.IsEnding)
@@ -37,6 +42,11 @@ public static class PlayerCmd
 		}
 	}
 
+	/// <summary>
+	/// Decrease the current amount of energy that the player has.
+	/// </summary>
+	/// <param name="amount">Amount of energy to remove.</param>
+	/// <param name="player">Player to remove the energy from.</param>
 	public static Task LoseEnergy(decimal amount, Player player)
 	{
 		if (amount <= 0m)
@@ -51,6 +61,11 @@ public static class PlayerCmd
 		return Task.CompletedTask;
 	}
 
+	/// <summary>
+	/// Set the player to have a specific amount of energy.
+	/// </summary>
+	/// <param name="amount">New amount of energy.</param>
+	/// <param name="player">Player whose energy we're setting.</param>
 	public static async Task SetEnergy(decimal amount, Player player)
 	{
 		if (!CombatManager.Instance.IsEnding)
@@ -67,6 +82,11 @@ public static class PlayerCmd
 		}
 	}
 
+	/// <summary>
+	/// Increase the current amount of stars that the player has.
+	/// </summary>
+	/// <param name="amount">Amount of stars to give.</param>
+	/// <param name="player">Player to give the stars to.</param>
 	public static async Task GainStars(decimal amount, Player player)
 	{
 		if (!CombatManager.Instance.IsEnding && Hook.ShouldGainStars(player.Creature.CombatState, amount, player))
@@ -76,6 +96,11 @@ public static class PlayerCmd
 		}
 	}
 
+	/// <summary>
+	/// Decrease the current amount of stars that the player has.
+	/// </summary>
+	/// <param name="amount">Amount of stars to remove.</param>
+	/// <param name="player">Player to remove the stars from.</param>
 	public static Task LoseStars(decimal amount, Player player)
 	{
 		if (CombatManager.Instance.IsEnding)
@@ -86,6 +111,11 @@ public static class PlayerCmd
 		return Task.CompletedTask;
 	}
 
+	/// <summary>
+	/// Set the player to have a specific amount of stars.
+	/// </summary>
+	/// <param name="amount">New amount of stars.</param>
+	/// <param name="player">Player whose stars we're setting.</param>
 	public static async Task SetStars(decimal amount, Player player)
 	{
 		if (!CombatManager.Instance.IsEnding)
@@ -102,6 +132,12 @@ public static class PlayerCmd
 		}
 	}
 
+	/// <summary>
+	/// Increase the current amount of gold that the player has.
+	/// </summary>
+	/// <param name="amount">Amount of gold to give.</param>
+	/// <param name="player">Player to give the gold to.</param>
+	/// <param name="wasStolenBack">Was the gold stolen back from an enemy.</param>
 	public static async Task GainGold(decimal amount, Player player, bool wasStolenBack = false)
 	{
 		IRunState runState = player.RunState;
@@ -133,6 +169,12 @@ public static class PlayerCmd
 		await Hook.AfterGoldGained(runState, player);
 	}
 
+	/// <summary>
+	/// Decrease the current amount of gold that the player has.
+	/// </summary>
+	/// <param name="amount">Amount of gold to lose.</param>
+	/// <param name="player">Player to take the gold from.</param>
+	/// <param name="goldLossType">How the player lost the gold</param>
 	public static Task LoseGold(decimal amount, Player player, GoldLossType goldLossType = GoldLossType.Lost)
 	{
 		SfxCmd.Play("event:/sfx/ui/gold/gold_1");
@@ -157,6 +199,11 @@ public static class PlayerCmd
 		return Task.CompletedTask;
 	}
 
+	/// <summary>
+	/// Set the player to have a specific amount of gold.
+	/// </summary>
+	/// <param name="amount">New amount of gold.</param>
+	/// <param name="player">Player whose gold we're setting.</param>
 	public static async Task SetGold(decimal amount, Player player)
 	{
 		int gold = player.Gold;
@@ -182,6 +229,11 @@ public static class PlayerCmd
 		return Task.CompletedTask;
 	}
 
+	/// <summary>
+	/// Give the player a new pet (aww).
+	/// </summary>
+	/// <param name="player">Player to give the pet to.</param>
+	/// <typeparam name="T">Type of pet to give them.</typeparam>
 	public static async Task<Creature> AddPet<T>(Player player) where T : MonsterModel
 	{
 		Creature pet = player.Creature.CombatState.CreateCreature((T)ModelDb.Monster<T>().ToMutable(), player.Creature.Side, null);
@@ -189,6 +241,11 @@ public static class PlayerCmd
 		return pet;
 	}
 
+	/// <summary>
+	/// Give the player a new pet (aww).
+	/// </summary>
+	/// <param name="pet">Pet creature to give to the player.</param>
+	/// <param name="player">Player to give the pet to.</param>
 	public static async Task AddPet(Creature pet, Player player)
 	{
 		if (pet.CombatState == null)
@@ -199,6 +256,11 @@ public static class PlayerCmd
 		await CreatureCmd.Add(pet);
 	}
 
+	/// <summary>
+	/// Heal the player as if they were resting at a rest site.
+	/// </summary>
+	/// <param name="player">Player to heal.</param>
+	/// <param name="playSfx">If true, we'll play the default rest site SFX.</param>
 	public static async Task MimicRestSiteHeal(Player player, bool playSfx = true)
 	{
 		if (playSfx)
@@ -208,6 +270,12 @@ public static class PlayerCmd
 		await HealRestSiteOption.ExecuteRestSiteHeal(player, isMimicked: true);
 	}
 
+	/// <summary>
+	/// Ends the turn for a given player.
+	/// </summary>
+	/// <param name="player">Player who is ending their turn</param>
+	/// <param name="canBackOut">If the player is allowed to un-end their turn, particularly in multiplayer.</param>
+	/// <param name="actionDuringEnemyTurn">Optional action to execute during the enemy turn. This is useful for tests.</param>
 	public static void EndTurn(Player player, bool canBackOut, Func<Task>? actionDuringEnemyTurn = null)
 	{
 		if (!CombatManager.Instance.IsPlayerReadyToEndTurn(player))

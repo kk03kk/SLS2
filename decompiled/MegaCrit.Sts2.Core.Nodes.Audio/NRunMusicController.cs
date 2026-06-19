@@ -15,6 +15,10 @@ using MegaCrit.Sts2.Core.Runs;
 
 namespace MegaCrit.Sts2.Core.Nodes.Audio;
 
+/// <summary>
+/// Manages the music specifically for run.
+/// Looking into info such as room type to decided what tracks to transition to.
+/// </summary>
 [ScriptPath("res://src/Core/Nodes/Audio/NRunMusicController.cs")]
 public class NRunMusicController : Node
 {
@@ -38,52 +42,121 @@ public class NRunMusicController : Node
 		Off
 	}
 
+	/// <summary>
+	/// A resolved act-music change: the track event to play and the bank that contains it.
+	/// </summary>
 	public readonly record struct MusicSelection(string Track, string BankPath);
 
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Node.MethodName
 	{
+		/// <summary>
+		/// Cached name for the 'GetTrack' method.
+		/// </summary>
 		public static readonly StringName GetTrack = "GetTrack";
 
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 
+		/// <summary>
+		/// Cached name for the 'UpdateMusic' method.
+		/// </summary>
 		public static readonly StringName UpdateMusic = "UpdateMusic";
 
+		/// <summary>
+		/// Cached name for the 'PlayCustomMusic' method.
+		/// </summary>
 		public static readonly StringName PlayCustomMusic = "PlayCustomMusic";
 
+		/// <summary>
+		/// Cached name for the 'UpdateCustomTrack' method.
+		/// </summary>
 		public static readonly StringName UpdateCustomTrack = "UpdateCustomTrack";
 
+		/// <summary>
+		/// Cached name for the 'StopCustomMusic' method.
+		/// </summary>
 		public static readonly StringName StopCustomMusic = "StopCustomMusic";
 
+		/// <summary>
+		/// Cached name for the 'UpdateAmbience' method.
+		/// </summary>
 		public static readonly StringName UpdateAmbience = "UpdateAmbience";
 
+		/// <summary>
+		/// Cached name for the 'UpdateTrack' method.
+		/// </summary>
 		public static readonly StringName UpdateTrack = "UpdateTrack";
 
+		/// <summary>
+		/// Cached name for the 'UpdateMusicParameter' method.
+		/// </summary>
 		public static readonly StringName UpdateMusicParameter = "UpdateMusicParameter";
 
+		/// <summary>
+		/// Cached name for the 'ToggleMerchantTrack' method.
+		/// </summary>
 		public static readonly StringName ToggleMerchantTrack = "ToggleMerchantTrack";
 
+		/// <summary>
+		/// Cached name for the 'TriggerEliteSecondPhase' method.
+		/// </summary>
 		public static readonly StringName TriggerEliteSecondPhase = "TriggerEliteSecondPhase";
 
+		/// <summary>
+		/// Cached name for the 'TriggerCampfireGoingOut' method.
+		/// </summary>
 		public static readonly StringName TriggerCampfireGoingOut = "TriggerCampfireGoingOut";
 
+		/// <summary>
+		/// Cached name for the 'StopMusic' method.
+		/// </summary>
 		public static readonly StringName StopMusic = "StopMusic";
 
+		/// <summary>
+		/// Cached name for the 'LoadActBank' method.
+		/// </summary>
 		public static readonly StringName LoadActBank = "LoadActBank";
 
+		/// <summary>
+		/// Cached name for the 'UnloadActBanks' method.
+		/// </summary>
 		public static readonly StringName UnloadActBanks = "UnloadActBanks";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Node.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the '_proxy' field.
+		/// </summary>
 		public static readonly StringName _proxy = "_proxy";
 
+		/// <summary>
+		/// Cached name for the '_currentTrack' field.
+		/// </summary>
 		public static readonly StringName _currentTrack = "_currentTrack";
 
+		/// <summary>
+		/// Cached name for the '_currentAmbience' field.
+		/// </summary>
 		public static readonly StringName _currentAmbience = "_currentAmbience";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Node.SignalName
 	{
 	}
@@ -168,6 +241,14 @@ public class NRunMusicController : Node
 		_runState = runState;
 	}
 
+	/// <summary>
+	/// Resolves which act background track to play for a given run seed, or null when nothing
+	/// should change. Selection is deterministic in <paramref name="seed" />, so a run always
+	/// picks the same track. Returns null when the act has no music, or when the selected track
+	/// already equals <paramref name="currentTrack" />. The equality check makes a redundant call
+	/// a no-op instead of stopping and recreating the FMOD event, which restarts the track from
+	/// the top. Two such calls fire on run start, from NRun._Ready and the act-entry path.
+	/// </summary>
 	public static MusicSelection? ResolveMusic(string? currentTrack, string[] options, string[] bankPaths, uint seed)
 	{
 		if (options.Length == 0)
@@ -333,6 +414,11 @@ public class NRunMusicController : Node
 		_proxy.Call("unload_act_banks");
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -378,6 +464,7 @@ public class NRunMusicController : Node
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -485,6 +572,7 @@ public class NRunMusicController : Node
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -555,6 +643,7 @@ public class NRunMusicController : Node
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -576,6 +665,7 @@ public class NRunMusicController : Node
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -597,6 +687,11 @@ public class NRunMusicController : Node
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -607,6 +702,7 @@ public class NRunMusicController : Node
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -616,6 +712,7 @@ public class NRunMusicController : Node
 		info.AddProperty(PropertyName._currentAmbience, Variant.From(in _currentAmbience));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

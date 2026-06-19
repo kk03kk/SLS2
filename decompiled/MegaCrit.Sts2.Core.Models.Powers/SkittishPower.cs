@@ -16,6 +16,10 @@ public sealed class SkittishPower : PowerModel
 {
 	private class Data
 	{
+		/// <summary>
+		/// Has the owner gained block from Skittish this turn?
+		/// Skittish should only trigger once per turn, so we can skip when this is true.
+		/// </summary>
 		public bool hasGainedBlockThisTurn;
 	}
 

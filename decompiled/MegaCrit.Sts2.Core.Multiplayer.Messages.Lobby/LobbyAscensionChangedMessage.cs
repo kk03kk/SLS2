@@ -4,6 +4,9 @@ using MegaCrit.Sts2.Core.Multiplayer.Transport;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Messages.Lobby;
 
+/// <summary>
+/// Sent by the host when the chosen ascension level changes.
+/// </summary>
 public struct LobbyAscensionChangedMessage : INetMessage, IPacketSerializable
 {
 	public int ascension;

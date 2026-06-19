@@ -21,58 +21,132 @@ using MegaCrit.Sts2.Core.Saves;
 
 namespace MegaCrit.Sts2.Core.Nodes.Combat;
 
+/// <summary>
+/// An abstract base class in charge of managing the logic for playing a card from your hand.
+/// Inherited classes manage card play behavior for different types of inputs.
+/// Is created and destroyed on demand.
+/// </summary>
 [ScriptPath("res://src/Core/Nodes/Combat/NCardPlay.cs")]
 public abstract class NCardPlay : Node
 {
 	[Signal]
 	public delegate void FinishedEventHandler(bool success);
 
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Node.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the 'Start' method.
+		/// </summary>
 		public static readonly StringName Start = "Start";
 
+		/// <summary>
+		/// Cached name for the 'CancelPlayCard' method.
+		/// </summary>
 		public static readonly StringName CancelPlayCard = "CancelPlayCard";
 
+		/// <summary>
+		/// Cached name for the 'OnCancelPlayCard' method.
+		/// </summary>
 		public static readonly StringName OnCancelPlayCard = "OnCancelPlayCard";
 
+		/// <summary>
+		/// Cached name for the 'Cleanup' method.
+		/// </summary>
 		public static readonly StringName Cleanup = "Cleanup";
 
+		/// <summary>
+		/// Cached name for the 'OnCreatureHover' method.
+		/// </summary>
 		public static readonly StringName OnCreatureHover = "OnCreatureHover";
 
+		/// <summary>
+		/// Cached name for the 'OnCreatureUnhover' method.
+		/// </summary>
 		public static readonly StringName OnCreatureUnhover = "OnCreatureUnhover";
 
+		/// <summary>
+		/// Cached name for the 'CenterCard' method.
+		/// </summary>
 		public static readonly StringName CenterCard = "CenterCard";
 
+		/// <summary>
+		/// Cached name for the 'HideTargetingVisuals' method.
+		/// </summary>
 		public static readonly StringName HideTargetingVisuals = "HideTargetingVisuals";
 
+		/// <summary>
+		/// Cached name for the 'ShowMultiCreatureTargetingVisuals' method.
+		/// </summary>
 		public static readonly StringName ShowMultiCreatureTargetingVisuals = "ShowMultiCreatureTargetingVisuals";
 
+		/// <summary>
+		/// Cached name for the 'AutoDisableCannotPlayCardFtueCheck' method.
+		/// </summary>
 		public static readonly StringName AutoDisableCannotPlayCardFtueCheck = "AutoDisableCannotPlayCardFtueCheck";
 
+		/// <summary>
+		/// Cached name for the 'TryShowEvokingOrbs' method.
+		/// </summary>
 		public static readonly StringName TryShowEvokingOrbs = "TryShowEvokingOrbs";
 
+		/// <summary>
+		/// Cached name for the 'HideEvokingOrbs' method.
+		/// </summary>
 		public static readonly StringName HideEvokingOrbs = "HideEvokingOrbs";
 
+		/// <summary>
+		/// Cached name for the 'ClearTarget' method.
+		/// </summary>
 		public static readonly StringName ClearTarget = "ClearTarget";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Node.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'Holder' property.
+		/// </summary>
 		public static readonly StringName Holder = "Holder";
 
+		/// <summary>
+		/// Cached name for the 'CardNode' property.
+		/// </summary>
 		public static readonly StringName CardNode = "CardNode";
 
+		/// <summary>
+		/// Cached name for the 'CardOwnerNode' property.
+		/// </summary>
 		public static readonly StringName CardOwnerNode = "CardOwnerNode";
 
+		/// <summary>
+		/// Cached name for the '_viewport' field.
+		/// </summary>
 		public static readonly StringName _viewport = "_viewport";
 
+		/// <summary>
+		/// Cached name for the '_isTryingToPlayCard' field.
+		/// </summary>
 		public static readonly StringName _isTryingToPlayCard = "_isTryingToPlayCard";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Node.SignalName
 	{
+		/// <summary>
+		/// Cached name for the 'Finished' signal.
+		/// </summary>
 		public static readonly StringName Finished = "Finished";
 	}
 
@@ -96,6 +170,7 @@ public abstract class NCardPlay : Node
 
 	public Player Player { get; protected set; }
 
+	/// <inheritdoc cref="T:MegaCrit.Sts2.Core.Nodes.Combat.NCardPlay.FinishedEventHandler" />
 	public event FinishedEventHandler Finished
 	{
 		add
@@ -315,6 +390,11 @@ public abstract class NCardPlay : Node
 		CardNode?.SetPreviewTarget(null);
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -345,6 +425,7 @@ public abstract class NCardPlay : Node
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -435,6 +516,7 @@ public abstract class NCardPlay : Node
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -497,6 +579,7 @@ public abstract class NCardPlay : Node
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -518,6 +601,7 @@ public abstract class NCardPlay : Node
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -549,6 +633,11 @@ public abstract class NCardPlay : Node
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -561,6 +650,7 @@ public abstract class NCardPlay : Node
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -571,6 +661,7 @@ public abstract class NCardPlay : Node
 		info.AddSignalEventDelegate(SignalName.Finished, backing_Finished);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{
@@ -593,6 +684,11 @@ public abstract class NCardPlay : Node
 		}
 	}
 
+	/// <summary>
+	/// Get the signal information for all the signals declared in this class.
+	/// This method is used by Godot to register the available signals in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotSignalList()
 	{
@@ -609,6 +705,7 @@ public abstract class NCardPlay : Node
 		EmitSignal(SignalName.Finished, success);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RaiseGodotClassSignalCallbacks(in godot_string_name signal, NativeVariantPtrArgs args)
 	{
@@ -622,6 +719,7 @@ public abstract class NCardPlay : Node
 		}
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassSignal(in godot_string_name signal)
 	{

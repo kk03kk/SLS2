@@ -7,6 +7,9 @@ using MegaCrit.Sts2.Core.Saves;
 
 namespace MegaCrit.Sts2.Core.Models.Badges;
 
+/// <summary>
+/// Defeat a boss without taking damage.
+/// </summary>
 public class Perfect : Badge
 {
 	public override BadgeRarity Rarity
@@ -47,6 +50,9 @@ public class Perfect : Badge
 		}
 	}
 
+	/// <summary>
+	/// Defeat a boss without taking damage.
+	/// </summary>
 	public Perfect(SerializableRun run, bool won, ulong playerId)
 		: base(run, won, playerId, "PERFECT", requiresWin: false, multiplayerOnly: false)
 	{

@@ -2,6 +2,9 @@ using MegaCrit.Sts2.Core.Saves;
 
 namespace MegaCrit.Sts2.Core.Models.Badges;
 
+/// <summary>
+/// The faster you win a run, the better the badge!
+/// </summary>
 public class Speedy : Badge
 {
 	private const int _winTimeGold = 1800;
@@ -31,6 +34,9 @@ public class Speedy : Badge
 		}
 	}
 
+	/// <summary>
+	/// The faster you win a run, the better the badge!
+	/// </summary>
 	public Speedy(SerializableRun run, bool won, ulong playerId)
 		: base(run, won, playerId, "SPEEDY", requiresWin: true, multiplayerOnly: false)
 	{

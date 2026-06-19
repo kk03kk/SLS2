@@ -13,6 +13,10 @@ public sealed class MockGainBlockOnAttackPower : PowerModel
 
 	public override PowerStackType StackType => PowerStackType.Single;
 
+	/// <summary>
+	/// This gives the attacker 1 block after every attack.
+	/// A multi-hit attack should still only gain 1 block.
+	/// </summary>
 	public override async Task AfterAttack(PlayerChoiceContext choiceContext, AttackCommand command)
 	{
 		if (command.Attacker == base.Owner && command.DamageProps.HasFlag(ValueProp.Move))

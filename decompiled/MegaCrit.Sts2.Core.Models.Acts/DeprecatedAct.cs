@@ -33,6 +33,10 @@ public sealed class DeprecatedAct : ActModel
 
 	public override string ChestSpineSkinNameStroke => "";
 
+	public override int Index => -1;
+
+	public override bool IsDefault => false;
+
 	public override Color MapTraveledColor => new Color("27221C");
 
 	public override Color MapUntraveledColor => new Color("6E7750");
@@ -42,6 +46,11 @@ public sealed class DeprecatedAct : ActModel
 	public override IEnumerable<EncounterModel> GenerateAllEncounters()
 	{
 		return Array.Empty<EncounterModel>();
+	}
+
+	public override bool IsUnlocked(UnlockState unlockState)
+	{
+		return true;
 	}
 
 	public override IEnumerable<AncientEventModel> GetUnlockedAncients(UnlockState unlockState)

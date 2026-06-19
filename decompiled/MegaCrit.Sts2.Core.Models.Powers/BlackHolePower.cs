@@ -14,6 +14,10 @@ public sealed class BlackHolePower : PowerModel
 
 	public override PowerStackType StackType => PowerStackType.Counter;
 
+	/// <remarks>
+	/// We do this in AfterCardPlayed instead of AfterStarsSpent because stars are spent at the beginning of the card
+	/// play, but Black Hole should trigger after the card is played.
+	/// </remarks>
 	public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
 		if (cardPlay.Resources.StarsSpent > 0 && cardPlay.Card.Owner == base.Owner.Player && cardPlay.IsLastInSeries)

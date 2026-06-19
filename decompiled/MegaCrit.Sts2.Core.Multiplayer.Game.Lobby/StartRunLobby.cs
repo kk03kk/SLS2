@@ -24,6 +24,11 @@ using MegaCrit.Sts2.Core.Unlocks;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Game.Lobby;
 
+/// <summary>
+/// Class which handles the connection flow for players beginning a new run.
+/// Exists before Run does, and provides player data to start a multiplayer run.
+/// <see cref="T:MegaCrit.Sts2.Core.Multiplayer.Game.Lobby.RunLobby" /> handles player connection and disconnection after the run begins.
+/// </summary>
 public class StartRunLobby
 {
 	private struct ConnectingPlayer : IEquatable<ConnectingPlayer>
@@ -84,8 +89,15 @@ public class StartRunLobby
 
 	public IReadOnlyList<ModifierModel> Modifiers => _modifiers;
 
+	/// <summary>
+	/// If we are the host, this is the amount of time we give clients to send the handshake response in milliseconds.
+	/// Public for tests.
+	/// </summary>
 	public int HandshakeTimeout { get; set; } = 10000;
 
+	/// <summary>
+	/// TEMPORARY way for the host to manually specify which ActModel they want for act 1.
+	/// </summary>
 	public string Act1 { get; set; } = "random";
 
 	public List<LobbyPlayer> Players { get; } = new List<LobbyPlayer>();
@@ -150,6 +162,14 @@ public class StartRunLobby
 		this.PlayerConnected?.Invoke(LocalPlayer);
 	}
 
+	/// <summary>
+	/// This should be called to cleanup the lobby before exiting the lobby screen.
+	/// </summary>
+	/// <param name="disconnectSession">
+	/// If true, the net service will be disconnected. Pass true if the lobby is being closed rather than transitioning
+	/// to a run.
+	/// </param>
+	/// <param name="error">If disconnectSession is true, this is the error that is sent to clients.</param>
 	public void CleanUp(bool disconnectSession, NetError error = NetError.Quit)
 	{
 		NetService.UnregisterMessageHandler<ClientLobbyJoinRequestMessage>(HandleClientLobbyJoinRequestMessage);
@@ -180,6 +200,9 @@ public class StartRunLobby
 		}
 	}
 
+	/// <summary>
+	/// Should be called when the lobby opens on the host player's side to generate the host's lobby player.
+	/// </summary>
 	public LobbyPlayer? AddLocalHostPlayer(UnlockState unlocks, int maxMultiplayerAscension)
 	{
 		if (NetService.Type == NetGameType.Client)
@@ -191,6 +214,9 @@ public class StartRunLobby
 		return AddLocalHostPlayerInternal(unlockState, maxMultiplayerAscension);
 	}
 
+	/// <summary>
+	/// For use in tests and internally in this class.
+	/// </summary>
 	public LobbyPlayer? AddLocalHostPlayerInternal(SerializableUnlockState unlockState, int maxMultiplayerAscension)
 	{
 		LobbyPlayer? result = TryAddPlayerInFirstAvailableSlot(unlockState, maxMultiplayerAscension, NetService.NetId);
@@ -325,13 +351,25 @@ public class StartRunLobby
 
 	private void HandleAscensionChangedMessage(LobbyAscensionChangedMessage message, ulong _)
 	{
-		_logger.Debug($"Received AscensionChangedMessage, new ascension: {message.ascension}");
-		Ascension = message.ascension;
-		LobbyListener.AscensionChanged();
+		if (_isBeginningRun)
+		{
+			Log.Warn($"Received AscensionChangedMessage with ascension {message.ascension} while run was already starting! Ignoring");
+		}
+		else
+		{
+			_logger.Debug($"Received AscensionChangedMessage, new ascension: {message.ascension}");
+			Ascension = message.ascension;
+			LobbyListener.AscensionChanged();
+		}
 	}
 
 	private void HandleSeedChangedMessage(LobbySeedChangedMessage message, ulong _)
 	{
+		if (_isBeginningRun)
+		{
+			Log.Warn("Received SeedChangedMessage with seed " + message.seed + " while run was already starting! Ignoring");
+			return;
+		}
 		_logger.Debug("Received SeedChangedMessage, new seed: " + message.seed);
 		Seed = message.seed;
 		LobbyListener.SeedChanged();
@@ -340,9 +378,16 @@ public class StartRunLobby
 	private void HandleModifiersChangedMessage(LobbyModifiersChangedMessage message, ulong _)
 	{
 		_logger.Debug("Received ModifiersChangedMessage, new modifiers: " + string.Join(",", message.modifiers.Select((SerializableModifier m) => m.Id)));
-		_modifiers.Clear();
-		_modifiers.AddRange(message.modifiers.Select(ModifierModel.FromSerializable));
-		LobbyListener.ModifiersChanged();
+		if (_isBeginningRun)
+		{
+			Log.Warn($"Received ModifiersChangedMessage with {message.modifiers.Count} while run was already starting! Ignoring");
+		}
+		else
+		{
+			_modifiers.Clear();
+			_modifiers.AddRange(message.modifiers.Select(ModifierModel.FromSerializable));
+			LobbyListener.ModifiersChanged();
+		}
 	}
 
 	private void HandlePlayerReadyMessage(LobbyPlayerSetReadyMessage message, ulong senderId)
@@ -364,11 +409,17 @@ public class StartRunLobby
 		_logger.Debug("Received LobbyBeginRunMessage");
 		Players.Clear();
 		Players.AddRange(message.playersInLobby);
+		Act1 = message.act1;
 		BeginRunLocally(message.seed, message.modifiers.Select(ModifierModel.FromSerializable).ToList());
 	}
 
 	private void ChangeCharacter(ulong playerId, CharacterModel character, bool isRandomCharacterResolution = false)
 	{
+		if (_isBeginningRun)
+		{
+			Log.Warn($"Player {playerId} tried to change character while run was already starting! Ignoring");
+			return;
+		}
 		int num = Players.FindIndex((LobbyPlayer p) => p.id == playerId);
 		if (num >= 0)
 		{
@@ -409,7 +460,7 @@ public class StartRunLobby
 
 	private void BeginRunLocally(string seed, List<ModifierModel> modifiers)
 	{
-		Rng rng = new Rng((uint)StringHelper.GetDeterministicHashCode(seed));
+		Rng rng = new Rng((uint)StringHelper.GetDeterministicHashCode(seed), "act_selection");
 		List<ActModel> list = ActModel.GetRandomList(rng, GetUnlockState(), NetService.Type.IsMultiplayer()).ToList();
 		list[0] = GetAct(Act1) ?? list[0];
 		for (int i = 0; i < Players.Count; i++)
@@ -535,6 +586,9 @@ public class StartRunLobby
 		return true;
 	}
 
+	/// <summary>
+	/// Updates the preferred Ascension.
+	/// </summary>
 	private void UpdatePreferredAscension()
 	{
 		if (GameMode == GameMode.Daily)
@@ -566,6 +620,10 @@ public class StartRunLobby
 		}
 	}
 
+	/// <summary>
+	/// Sets the character chosen by the local player and replicates that to all peers.
+	/// </summary>
+	/// <param name="character"></param>
 	public void SetLocalCharacter(CharacterModel character)
 	{
 		ChangeCharacter(NetService.NetId, character);
@@ -577,6 +635,12 @@ public class StartRunLobby
 		SetSingleplayerAscensionAfterCharacterChanged(character.Id);
 	}
 
+	/// <summary>
+	/// Sets the seed to use for the run.
+	/// This can only be called as host or singleplayer. Calling it on the client will throw an exception and have no
+	/// effect. The seed is synced to the clients for display use, but the final seed that is used is sent in the
+	/// <see cref="T:MegaCrit.Sts2.Core.Multiplayer.Messages.Lobby.LobbyBeginRunMessage" />.
+	/// </summary>
 	public void SetSeed(string? seed)
 	{
 		NetGameType type = NetService.Type;
@@ -593,12 +657,23 @@ public class StartRunLobby
 		LobbyListener.SeedChanged();
 	}
 
+	/// <summary>
+	/// Sets the modifiers to use for the run.
+	/// This can only be called as host or singleplayer. Calling it on the client will throw an exception and have no
+	/// effect. The seed is synced to the clients for display use, but the final seed that is used is sent in the
+	/// <see cref="T:MegaCrit.Sts2.Core.Multiplayer.Messages.Lobby.LobbyBeginRunMessage" />.
+	/// </summary>
 	public void SetModifiers(List<ModifierModel> modifiers)
 	{
 		NetGameType type = NetService.Type;
 		if ((uint)(type - 1) > 1u)
 		{
 			throw new InvalidOperationException("Can only be called on host or singleplayer");
+		}
+		if (_isBeginningRun)
+		{
+			Log.Warn("Tried to change modifiers while run was already starting! Ignoring");
+			return;
 		}
 		_modifiers.Clear();
 		_modifiers.AddRange(modifiers);
@@ -610,12 +685,22 @@ public class StartRunLobby
 		LobbyListener.ModifiersChanged();
 	}
 
+	/// <summary>
+	/// Sets the local player to be ready or unready and syncs the state to all peers.
+	/// This is called for both Singleplayer and Multiplayer (singleplayer uses a local lobby).
+	/// </summary>
+	/// <param name="ready"></param>
 	public void SetReady(bool ready)
 	{
 		int num = Players.FindIndex((LobbyPlayer p) => p.id == NetService.NetId);
 		if (num < 0)
 		{
 			throw new InvalidOperationException("Tried to set local player ready, but they are not in the list of players in the lobby!");
+		}
+		if (_isBeginningRun)
+		{
+			Log.Warn("Tried to set ready while run was already starting! Ignoring");
+			return;
 		}
 		LobbyPlayer value = Players[num];
 		value.isReady = ready;
@@ -660,6 +745,9 @@ public class StartRunLobby
 		return true;
 	}
 
+	/// <summary>
+	/// Sets the ascension level. Should only be called on the host.
+	/// </summary>
 	public void SyncAscensionChange(int ascension)
 	{
 		if (NetService.Type == NetGameType.Client)
@@ -668,14 +756,21 @@ public class StartRunLobby
 		}
 		if (Ascension != ascension)
 		{
-			Ascension = ascension;
-			LobbyAscensionChangedMessage message = new LobbyAscensionChangedMessage
+			if (_isBeginningRun)
 			{
-				ascension = ascension
-			};
-			NetService.SendMessage(message);
-			UpdatePreferredAscension();
-			LobbyListener.AscensionChanged();
+				Log.Warn($"Tried to set ascension to {ascension} while run was already starting! Ignoring");
+			}
+			else
+			{
+				Ascension = ascension;
+				LobbyAscensionChangedMessage message = new LobbyAscensionChangedMessage
+				{
+					ascension = ascension
+				};
+				NetService.SendMessage(message);
+				UpdatePreferredAscension();
+				LobbyListener.AscensionChanged();
+			}
 		}
 	}
 

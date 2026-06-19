@@ -116,8 +116,16 @@ public class Creature
 
 	public CombatSide Side { get; }
 
+	/// <summary>
+	/// The CombatState that this creature exists in.
+	/// Never null for monsters.
+	/// Will be null for players when outside of combat.
+	/// </summary>
 	public ICombatState? CombatState { get; set; }
 
+	/// <summary>
+	/// Use this when displaying the name to the player.
+	/// </summary>
 	public string Name
 	{
 		get
@@ -134,6 +142,10 @@ public class Creature
 		}
 	}
 
+	/// <summary>
+	/// Use this when logging the name of the creature.
+	/// It avoids logging player names directly.
+	/// </summary>
 	public string LogName
 	{
 		get
@@ -154,8 +166,17 @@ public class Creature
 
 	public bool IsPlayer => Player != null;
 
+	/// <summary>
+	/// How should this creature's health bar be displayed?
+	/// This is mostly for visuals, although a few gameplay effects (like <see cref="T:MegaCrit.Sts2.Core.Models.Powers.HellraiserPower" />) check it to see
+	/// if the creature can currently take damage.
+	/// </summary>
 	public HpDisplay HpDisplay { get; set; }
 
+	/// <summary>
+	/// The player that owns this pet.
+	/// Returns null if this creature is not a pet.
+	/// </summary>
 	public Player? PetOwner
 	{
 		get
@@ -172,8 +193,14 @@ public class Creature
 		}
 	}
 
+	/// <summary>
+	/// Is this creature a pet?
+	/// </summary>
 	public bool IsPet => PetOwner != null;
 
+	/// <summary>
+	/// Get all the pets that belong to this creature.
+	/// </summary>
 	public IReadOnlyList<Creature> Pets => Player?.PlayerCombatState?.Pets ?? Array.Empty<Creature>();
 
 	public bool IsAlive => CurrentHp > 0;
@@ -215,6 +242,13 @@ public class Creature
 
 	public bool IsEnemy => Side == CombatSide.Enemy;
 
+	/// <summary>
+	/// Is this creature a <b>primary enemy</b>?
+	/// A <b>primary enemy</b> can stay alive all alone.
+	/// A <b>secondary enemy</b> will automatically die unless there's also a living primary enemy.
+	/// Most enemies are primary enemies. Enemies with powers like <see cref="T:MegaCrit.Sts2.Core.Models.Powers.MinionPower" /> or <see cref="T:MegaCrit.Sts2.Core.Models.Powers.IllusionPower" /> are
+	/// secondary.
+	/// </summary>
 	public bool IsPrimaryEnemy
 	{
 		get
@@ -227,6 +261,10 @@ public class Creature
 		}
 	}
 
+	/// <summary>
+	/// Is this creature a <b>secondary enemy</b>?
+	/// See <see cref="P:MegaCrit.Sts2.Core.Entities.Creatures.Creature.IsPrimaryEnemy" /> for detailed definitions.
+	/// </summary>
 	public bool IsSecondaryEnemy
 	{
 		get
@@ -239,6 +277,11 @@ public class Creature
 		}
 	}
 
+	/// <summary>
+	/// Is this creature <b>hittable</b>?
+	/// A <b>hittable</b> creature is alive and can be "hit" by effects.
+	/// This is different from <b>targetable</b>; an un-targetable creature can still be hit by AOE effects.
+	/// </summary>
 	public bool IsHittable
 	{
 		get
@@ -255,6 +298,13 @@ public class Creature
 		}
 	}
 
+	/// <summary>
+	/// Can this creature have powers applied to it?
+	/// A creature can have powers applied to it if it's in combat and can be "hit" by effects.
+	/// This is different from <b>targetable</b>; an un-targetable creature can have powers applied to it.
+	/// It's also different from <b>hittable</b>; a creature is not hittable if it's dead, but dead creatures can still
+	/// have powers applied to them.
+	/// </summary>
 	public bool CanReceivePowers
 	{
 		get
@@ -358,6 +408,9 @@ public class Creature
 		throw new InvalidOperationException("Creature and Monster should never both be null.");
 	}
 
+	/// <summary>
+	/// Called when the creature is first added to combat.
+	/// </summary>
 	public async Task AfterAddedToRoom()
 	{
 		if (Side == CombatSide.Enemy)
@@ -366,6 +419,14 @@ public class Creature
 		}
 	}
 
+	/// <summary>
+	/// DO NOT CALL UNLESS YOU KNOW EXACTLY WHAT YOU'RE DOING.
+	/// Hooks and everything are all done in CreatureCmd.Damage, so there needs to be a really good reason to want to
+	/// avoid them.
+	/// </summary>
+	/// <param name="amount">Amount of damage to be dealt to this creature's block.</param>
+	/// <param name="props">Damage props</param>
+	/// <returns>How much damage was blocked.</returns>
 	public decimal DamageBlockInternal(decimal amount, ValueProp props)
 	{
 		decimal num = (props.HasFlag(ValueProp.Unblockable) ? 0m : Math.Min(Block, amount));
@@ -373,6 +434,14 @@ public class Creature
 		return num;
 	}
 
+	/// <summary>
+	/// DO NOT CALL UNLESS YOU KNOW EXACTLY WHAT YOU'RE DOING.
+	/// Hooks and everything are all done in CreatureCmd.Damage, so there needs to be a really good reason to want to
+	/// avoid them.
+	/// </summary>
+	/// <param name="amount">Amount of damage to be dealt to this creature's HP.</param>
+	/// <param name="props">Value props for the damage.</param>
+	/// <returns>Result of the damage.</returns>
 	public DamageResult LoseHpInternal(decimal amount, ValueProp props)
 	{
 		bool flag = CurrentHp > 0 && amount >= (decimal)CurrentHp;
@@ -442,6 +511,16 @@ public class Creature
 		this.Died?.Invoke(this);
 	}
 
+	/// <summary>
+	/// Stun this creature.
+	/// You should probably be calling
+	/// <see cref="M:MegaCrit.Sts2.Core.Commands.CreatureCmd.Stun(MegaCrit.Sts2.Core.Entities.Creatures.Creature,System.Func{System.Collections.Generic.IReadOnlyList{MegaCrit.Sts2.Core.Entities.Creatures.Creature},System.Threading.Tasks.Task},System.String)" /> instead.
+	/// </summary>
+	/// <param name="stunMove">Logic for the move that the stunned creature will "perform".</param>
+	/// <param name="nextMoveId">
+	/// ID of the move that the creature should perform the turn after they perform stunMove.
+	/// If null or empty, this will default to the last move they performed.
+	/// </param>
 	public void StunInternal(Func<IReadOnlyList<Creature>, Task> stunMove, string? nextMoveId)
 	{
 		if (Monster == null)
@@ -514,6 +593,11 @@ public class Creature
 		return GetPower<T>()?.Amount ?? 0;
 	}
 
+	/// <summary>
+	/// NEVER CALL THIS!
+	/// ONLY PowerModel.ApplyInternal should be calling this.
+	/// </summary>
+	/// <param name="power">Power to apply.</param>
 	public void ApplyPowerInternal(PowerModel power)
 	{
 		if (power.Owner != this)
@@ -528,6 +612,13 @@ public class Creature
 		this.PowerApplied?.Invoke(power);
 	}
 
+	/// <summary>
+	/// NEVER CALL THIS!
+	/// ONLY PowerModel.Amount should be calling this.
+	/// </summary>
+	/// <param name="power">Power to modify.</param>
+	/// <param name="change">How much the power has changed.</param>
+	/// <param name="silent">Whether or not VFX should be displayed for this power.</param>
 	public void InvokePowerModified(PowerModel power, int change, bool silent)
 	{
 		if (change > 0)
@@ -544,6 +635,11 @@ public class Creature
 		}
 	}
 
+	/// <summary>
+	/// NEVER CALL THIS!
+	/// ONLY PowerModel.RemoveInternal should be calling this.
+	/// </summary>
+	/// <param name="power">Power to remove.</param>
 	public void RemovePowerInternal(PowerModel power)
 	{
 		if (power.Owner != this)
@@ -554,6 +650,11 @@ public class Creature
 		this.PowerRemoved?.Invoke(power);
 	}
 
+	/// <summary>
+	/// NEVER CALL THIS UNLESS YOU KNOW WHAT YOU'RE DOING!
+	/// This skips the AfterRemoved call for powers.
+	/// </summary>
+	/// <param name="except">Powers that should not be removed.</param>
 	public IEnumerable<PowerModel> RemoveAllPowersInternalExcept(IEnumerable<PowerModel>? except = null)
 	{
 		List<PowerModel> list = _powers.Except(except ?? Array.Empty<PowerModel>()).ToList();
@@ -631,6 +732,10 @@ public class Creature
 		return "Creature " + LogName;
 	}
 
+	/// <summary>
+	/// Helper function to get the percent hp of a creature (0 - 1).
+	/// </summary>
+	/// <returns></returns>
 	public double GetHpPercentRemaining()
 	{
 		return (double)_currentHp / (double)_maxHp;

@@ -13,6 +13,9 @@ using MegaCrit.Sts2.Core.Runs;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Game;
 
+/// <summary>
+/// Handles miscellaneous multiplayer messages that are for game feel and fun.
+/// </summary>
 public class FlavorSynchronizer : IDisposable
 {
 	private const ulong _pingDebounceMsec = 1000uL;

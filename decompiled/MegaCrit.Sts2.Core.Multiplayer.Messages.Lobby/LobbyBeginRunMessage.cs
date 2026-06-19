@@ -8,6 +8,9 @@ using MegaCrit.Sts2.Core.Saves.Runs;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Messages.Lobby;
 
+/// <summary>
+/// Sent when the lobby closes and the run begins.
+/// </summary>
 public struct LobbyBeginRunMessage : INetMessage, IPacketSerializable
 {
 	public List<LobbyPlayer>? playersInLobby;

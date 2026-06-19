@@ -3,6 +3,11 @@ using System.Text.Json.Serialization;
 
 namespace MegaCrit.Sts2.Core.Modding;
 
+/// <summary>
+/// Represents a mod in the settings save. Used for:
+///  - Representing manual load order
+///  - Disabling/enabling mods
+/// </summary>
 public class SettingsSaveMod
 {
 	[JsonPropertyName("id")]

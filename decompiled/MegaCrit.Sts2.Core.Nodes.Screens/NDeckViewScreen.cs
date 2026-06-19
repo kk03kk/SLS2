@@ -24,49 +24,112 @@ using MegaCrit.Sts2.addons.mega_text;
 
 namespace MegaCrit.Sts2.Core.Nodes.Screens;
 
+/// <summary>
+/// This is the screen used to view the player's deck (that's you!)
+/// </summary>
 [ScriptPath("res://src/Core/Nodes/Screens/NDeckViewScreen.cs")]
 public class NDeckViewScreen : NCardsViewScreen
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : NCardsViewScreen.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the 'ConnectSignals' method.
+		/// </summary>
 		public new static readonly StringName ConnectSignals = "ConnectSignals";
 
+		/// <summary>
+		/// Cached name for the '_EnterTree' method.
+		/// </summary>
 		public new static readonly StringName _EnterTree = "_EnterTree";
 
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 
+		/// <summary>
+		/// Cached name for the 'AfterCapstoneClosed' method.
+		/// </summary>
 		public new static readonly StringName AfterCapstoneClosed = "AfterCapstoneClosed";
 
+		/// <summary>
+		/// Cached name for the 'OnPileContentsChanged' method.
+		/// </summary>
 		public static readonly StringName OnPileContentsChanged = "OnPileContentsChanged";
 
+		/// <summary>
+		/// Cached name for the 'OnObtainedSort' method.
+		/// </summary>
 		public static readonly StringName OnObtainedSort = "OnObtainedSort";
 
+		/// <summary>
+		/// Cached name for the 'OnCardTypeSort' method.
+		/// </summary>
 		public static readonly StringName OnCardTypeSort = "OnCardTypeSort";
 
+		/// <summary>
+		/// Cached name for the 'OnCostSort' method.
+		/// </summary>
 		public static readonly StringName OnCostSort = "OnCostSort";
 
+		/// <summary>
+		/// Cached name for the 'OnAlphabetSort' method.
+		/// </summary>
 		public static readonly StringName OnAlphabetSort = "OnAlphabetSort";
 
+		/// <summary>
+		/// Cached name for the 'DisplayCards' method.
+		/// </summary>
 		public static readonly StringName DisplayCards = "DisplayCards";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : NCardsViewScreen.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'ScreenType' property.
+		/// </summary>
 		public new static readonly StringName ScreenType = "ScreenType";
 
+		/// <summary>
+		/// Cached name for the '_obtainedSorter' field.
+		/// </summary>
 		public static readonly StringName _obtainedSorter = "_obtainedSorter";
 
+		/// <summary>
+		/// Cached name for the '_typeSorter' field.
+		/// </summary>
 		public static readonly StringName _typeSorter = "_typeSorter";
 
+		/// <summary>
+		/// Cached name for the '_costSorter' field.
+		/// </summary>
 		public static readonly StringName _costSorter = "_costSorter";
 
+		/// <summary>
+		/// Cached name for the '_alphabetSorter' field.
+		/// </summary>
 		public static readonly StringName _alphabetSorter = "_alphabetSorter";
 
+		/// <summary>
+		/// Cached name for the '_bg' field.
+		/// </summary>
 		public static readonly StringName _bg = "_bg";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : NCardsViewScreen.SignalName
 	{
 	}
@@ -255,6 +318,11 @@ public class NDeckViewScreen : NCardsViewScreen
 		}
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<MethodInfo> GetGodotMethodList()
 	{
@@ -285,6 +353,7 @@ public class NDeckViewScreen : NCardsViewScreen
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -357,6 +426,7 @@ public class NDeckViewScreen : NCardsViewScreen
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -407,6 +477,7 @@ public class NDeckViewScreen : NCardsViewScreen
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -438,6 +509,7 @@ public class NDeckViewScreen : NCardsViewScreen
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -474,6 +546,11 @@ public class NDeckViewScreen : NCardsViewScreen
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -487,6 +564,7 @@ public class NDeckViewScreen : NCardsViewScreen
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -498,6 +576,7 @@ public class NDeckViewScreen : NCardsViewScreen
 		info.AddProperty(PropertyName._bg, Variant.From(in _bg));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

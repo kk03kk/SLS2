@@ -13,6 +13,11 @@ public sealed class SerpentFormPower : PowerModel
 {
 	private class Data
 	{
+		/// <summary>
+		/// Keep track of the cards we've seen played and the power amount at the time they were played.
+		/// This lets Serpent Form avoid triggering on cards that started play before it was applied, and avoid
+		/// dealing extra damage on multiple plays of Serpent Form.
+		/// </summary>
 		public readonly Dictionary<CardModel, int> amountsForPlayedCards = new Dictionary<CardModel, int>();
 	}
 

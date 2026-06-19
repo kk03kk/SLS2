@@ -5,6 +5,10 @@ using MegaCrit.Sts2.Core.TestSupport;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Game.PeerInput;
 
+/// <summary>
+/// Utilities to help with transforming mouse position from screen coordinates to a normalized position suitable for
+/// syncing mouse positions across various aspect ratios.
+/// </summary>
 public static class NetCursorHelper
 {
 	public static readonly QuantizeParams quantizeParams = new QuantizeParams(-3f, 3f, 16);

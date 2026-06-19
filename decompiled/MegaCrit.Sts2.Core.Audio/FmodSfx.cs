@@ -1,5 +1,9 @@
 namespace MegaCrit.Sts2.Core.Audio;
 
+/// <summary>
+/// Set of FMOD sfx that are used more globally (vs being tied to a specific creature of vfx).
+/// Any Temporary Sfx or Sfx not using FMOD should be put into TmpSfx.cs
+/// </summary>
 public static class FmodSfx
 {
 	public const string block = "event:/sfx/block_gain";

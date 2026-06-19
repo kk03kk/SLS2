@@ -15,54 +15,126 @@ namespace MegaCrit.Sts2.Core.Debug;
 [ScriptPath("res://src/Core/Debug/NCombatVfxSpawner.cs")]
 public class NCombatVfxSpawner : Control
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Control.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the '_Process' method.
+		/// </summary>
 		public new static readonly StringName _Process = "_Process";
 
+		/// <summary>
+		/// Cached name for the '_Input' method.
+		/// </summary>
 		public new static readonly StringName _Input = "_Input";
 
+		/// <summary>
+		/// Cached name for the 'GetRandomColor' method.
+		/// </summary>
 		public static readonly StringName GetRandomColor = "GetRandomColor";
 
+		/// <summary>
+		/// Cached name for the 'TestFunctionA' method.
+		/// </summary>
 		public static readonly StringName TestFunctionA = "TestFunctionA";
 
+		/// <summary>
+		/// Cached name for the 'TestFunctionB' method.
+		/// </summary>
 		public static readonly StringName TestFunctionB = "TestFunctionB";
 
+		/// <summary>
+		/// Cached name for the 'TestFunctionC' method.
+		/// </summary>
 		public static readonly StringName TestFunctionC = "TestFunctionC";
 
+		/// <summary>
+		/// Cached name for the 'SpawnVfx' method.
+		/// </summary>
 		public static readonly StringName SpawnVfx = "SpawnVfx";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Control.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the '_backCombatVfxContainer' field.
+		/// </summary>
 		public static readonly StringName _backCombatVfxContainer = "_backCombatVfxContainer";
 
+		/// <summary>
+		/// Cached name for the '_combatVfxContainer' field.
+		/// </summary>
 		public static readonly StringName _combatVfxContainer = "_combatVfxContainer";
 
+		/// <summary>
+		/// Cached name for the '_env' field.
+		/// </summary>
 		public static readonly StringName _env = "_env";
 
+		/// <summary>
+		/// Cached name for the '_playerTopPosition' field.
+		/// </summary>
 		public static readonly StringName _playerTopPosition = "_playerTopPosition";
 
+		/// <summary>
+		/// Cached name for the '_playerPosition' field.
+		/// </summary>
 		public static readonly StringName _playerPosition = "_playerPosition";
 
+		/// <summary>
+		/// Cached name for the '_playerGroundPosition' field.
+		/// </summary>
 		public static readonly StringName _playerGroundPosition = "_playerGroundPosition";
 
+		/// <summary>
+		/// Cached name for the '_enemyTopPosition' field.
+		/// </summary>
 		public static readonly StringName _enemyTopPosition = "_enemyTopPosition";
 
+		/// <summary>
+		/// Cached name for the '_enemyPosition' field.
+		/// </summary>
 		public static readonly StringName _enemyPosition = "_enemyPosition";
 
+		/// <summary>
+		/// Cached name for the '_enemyGroundPosition' field.
+		/// </summary>
 		public static readonly StringName _enemyGroundPosition = "_enemyGroundPosition";
 
+		/// <summary>
+		/// Cached name for the '_defectEyePosition' field.
+		/// </summary>
 		public static readonly StringName _defectEyePosition = "_defectEyePosition";
 
+		/// <summary>
+		/// Cached name for the '_lowHpBorderVfx' field.
+		/// </summary>
 		public static readonly StringName _lowHpBorderVfx = "_lowHpBorderVfx";
 
+		/// <summary>
+		/// Cached name for the '_gaseousScreenVfx' field.
+		/// </summary>
 		public static readonly StringName _gaseousScreenVfx = "_gaseousScreenVfx";
 
+		/// <summary>
+		/// Cached name for the '_shiftPressed' field.
+		/// </summary>
 		public static readonly StringName _shiftPressed = "_shiftPressed";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Control.SignalName
 	{
 	}
@@ -187,6 +259,11 @@ public class NCombatVfxSpawner : Control
 		_combatVfxContainer.AddChildSafely(child2);
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -217,6 +294,7 @@ public class NCombatVfxSpawner : Control
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -282,6 +360,7 @@ public class NCombatVfxSpawner : Control
 		return false;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -320,6 +399,7 @@ public class NCombatVfxSpawner : Control
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -391,6 +471,7 @@ public class NCombatVfxSpawner : Control
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -462,6 +543,11 @@ public class NCombatVfxSpawner : Control
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -482,6 +568,7 @@ public class NCombatVfxSpawner : Control
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -501,6 +588,7 @@ public class NCombatVfxSpawner : Control
 		info.AddProperty(PropertyName._shiftPressed, Variant.From(in _shiftPressed));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

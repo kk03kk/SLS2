@@ -17,56 +17,126 @@ using MegaCrit.Sts2.Core.Runs;
 
 namespace MegaCrit.Sts2.Core.Nodes.Relics;
 
+/// <summary>
+/// UI for holding relics. Is located under the top bar.
+/// Positioning is handled by the HFlowContainer.
+/// </summary>
 [ScriptPath("res://src/Core/Nodes/Relics/NRelicInventory.cs")]
 public class NRelicInventory : FlowContainer
 {
 	[Signal]
 	public delegate void RelicsChangedEventHandler();
 
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : FlowContainer.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the '_EnterTree' method.
+		/// </summary>
 		public new static readonly StringName _EnterTree = "_EnterTree";
 
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 
+		/// <summary>
+		/// Cached name for the 'ConnectPlayerEvents' method.
+		/// </summary>
 		public static readonly StringName ConnectPlayerEvents = "ConnectPlayerEvents";
 
+		/// <summary>
+		/// Cached name for the 'DisconnectPlayerEvents' method.
+		/// </summary>
 		public static readonly StringName DisconnectPlayerEvents = "DisconnectPlayerEvents";
 
+		/// <summary>
+		/// Cached name for the 'OnRelicUnfocused' method.
+		/// </summary>
 		public static readonly StringName OnRelicUnfocused = "OnRelicUnfocused";
 
+		/// <summary>
+		/// Cached name for the 'AnimShow' method.
+		/// </summary>
 		public static readonly StringName AnimShow = "AnimShow";
 
+		/// <summary>
+		/// Cached name for the 'AnimHide' method.
+		/// </summary>
 		public static readonly StringName AnimHide = "AnimHide";
 
+		/// <summary>
+		/// Cached name for the 'ShowImmediately' method.
+		/// </summary>
 		public static readonly StringName ShowImmediately = "ShowImmediately";
 
+		/// <summary>
+		/// Cached name for the 'HideImmediately' method.
+		/// </summary>
 		public static readonly StringName HideImmediately = "HideImmediately";
 
+		/// <summary>
+		/// Cached name for the 'GetDefaultPosition' method.
+		/// </summary>
 		public static readonly StringName GetDefaultPosition = "GetDefaultPosition";
 
+		/// <summary>
+		/// Cached name for the '_Input' method.
+		/// </summary>
 		public new static readonly StringName _Input = "_Input";
 
+		/// <summary>
+		/// Cached name for the 'DebugHideTopBar' method.
+		/// </summary>
 		public static readonly StringName DebugHideTopBar = "DebugHideTopBar";
 
+		/// <summary>
+		/// Cached name for the 'UpdateNavigation' method.
+		/// </summary>
 		public static readonly StringName UpdateNavigation = "UpdateNavigation";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : FlowContainer.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the '_originalPos' field.
+		/// </summary>
 		public static readonly StringName _originalPos = "_originalPos";
 
+		/// <summary>
+		/// Cached name for the '_curTween' field.
+		/// </summary>
 		public static readonly StringName _curTween = "_curTween";
 
+		/// <summary>
+		/// Cached name for the '_debugHideTween' field.
+		/// </summary>
 		public static readonly StringName _debugHideTween = "_debugHideTween";
 
+		/// <summary>
+		/// Cached name for the '_isDebugHidden' field.
+		/// </summary>
 		public static readonly StringName _isDebugHidden = "_isDebugHidden";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : FlowContainer.SignalName
 	{
+		/// <summary>
+		/// Cached name for the 'RelicsChanged' signal.
+		/// </summary>
 		public static readonly StringName RelicsChanged = "RelicsChanged";
 	}
 
@@ -86,6 +156,7 @@ public class NRelicInventory : FlowContainer
 
 	public IReadOnlyList<NRelicInventoryHolder> RelicNodes => _relicNodes;
 
+	/// <inheritdoc cref="T:MegaCrit.Sts2.Core.Nodes.Relics.NRelicInventory.RelicsChangedEventHandler" />
 	public event RelicsChangedEventHandler RelicsChanged
 	{
 		add
@@ -198,6 +269,9 @@ public class NRelicInventory : FlowContainer
 		}
 	}
 
+	/// <summary>
+	/// Opens the Inspect Relic screen and allows the player to paginate through the rest of the top bar relics.
+	/// </summary>
 	private void OnRelicClicked(RelicModel model)
 	{
 		List<RelicModel> list = new List<RelicModel>();
@@ -269,11 +343,20 @@ public class NRelicInventory : FlowContainer
 		base.Position = position;
 	}
 
+	/// <summary>
+	/// Returns the position the relic inventory is at normally.
+	/// this.Position can change if the relic inventory is hidden, so this is used when we want to position elements
+	/// relative to the relic inventory.
+	/// </summary>
 	public Vector2 GetDefaultPosition()
 	{
 		return _originalPos;
 	}
 
+	/// <summary>
+	/// Used for trailers
+	/// </summary>
+	/// <param name="inputEvent"></param>
 	public override void _Input(InputEvent inputEvent)
 	{
 		if (inputEvent.IsActionReleased(DebugHotkey.hideTopBar))
@@ -282,6 +365,9 @@ public class NRelicInventory : FlowContainer
 		}
 	}
 
+	/// <summary>
+	/// Used for trailers
+	/// </summary>
 	private void DebugHideTopBar()
 	{
 		if (_isDebugHidden)
@@ -327,6 +413,11 @@ public class NRelicInventory : FlowContainer
 		}
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -351,6 +442,7 @@ public class NRelicInventory : FlowContainer
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -453,6 +545,7 @@ public class NRelicInventory : FlowContainer
 		return false;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -515,6 +608,7 @@ public class NRelicInventory : FlowContainer
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -541,6 +635,7 @@ public class NRelicInventory : FlowContainer
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -567,6 +662,11 @@ public class NRelicInventory : FlowContainer
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -578,6 +678,7 @@ public class NRelicInventory : FlowContainer
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -589,6 +690,7 @@ public class NRelicInventory : FlowContainer
 		info.AddSignalEventDelegate(SignalName.RelicsChanged, backing_RelicsChanged);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{
@@ -615,6 +717,11 @@ public class NRelicInventory : FlowContainer
 		}
 	}
 
+	/// <summary>
+	/// Get the signal information for all the signals declared in this class.
+	/// This method is used by Godot to register the available signals in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotSignalList()
 	{
@@ -628,6 +735,7 @@ public class NRelicInventory : FlowContainer
 		EmitSignal(SignalName.RelicsChanged);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RaiseGodotClassSignalCallbacks(in godot_string_name signal, NativeVariantPtrArgs args)
 	{
@@ -641,6 +749,7 @@ public class NRelicInventory : FlowContainer
 		}
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassSignal(in godot_string_name signal)
 	{

@@ -5,10 +5,24 @@ using MegaCrit.Sts2.Core.Multiplayer.Serialization;
 
 namespace MegaCrit.Sts2.Core.Runs;
 
+/// <summary>
+/// Uniquely identifies a location within a run for RunLocationTargetedMessageBuffer.
+/// This location takes into account which room the player is in, which is important for multi-room locations, like
+/// those that happen in combat events.
+/// Make sure you look at <see cref="T:MegaCrit.Sts2.Core.Runs.MapLocation" /> as well, which identifies locations on the map without considering
+/// the room.
+/// </summary>
 public struct RunLocation : IEquatable<RunLocation>, IComparable<RunLocation>, IPacketSerializable
 {
+	/// <summary>
+	/// The act and map coordinate that the location is at.
+	/// </summary>
 	public MapLocation mapLocation;
 
+	/// <summary>
+	/// The room index that this location is in.
+	/// Zero is the root room. Any room other than zero is a sub-room, entered using RunManager.EnterRoomWithoutExitingCurrentRoom.
+	/// </summary>
 	public int? roomId;
 
 	public RunLocation(MapLocation mapLocation, int? roomId)

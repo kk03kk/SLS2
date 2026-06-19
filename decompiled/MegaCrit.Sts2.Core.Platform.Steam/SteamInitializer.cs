@@ -19,10 +19,17 @@ public static class SteamInitializer
 
 	public static bool Initialized { get; private set; }
 
+	/// <summary>
+	/// Initialization result. Failure code if Initialization was called and Initialized is false.
+	/// </summary>
 	public static ESteamAPIInitResult? InitResult { get; private set; }
 
 	public static string? InitErrorMessage { get; private set; }
 
+	/// <summary>
+	/// Cancellation token that is cancelled when Steam disconnects. Pass this to SteamCallResult
+	/// to prevent async Steam API calls from hanging indefinitely when the callback pump stops.
+	/// </summary>
 	public static CancellationToken DisconnectToken => _disconnectCts.Token;
 
 	public static event Action? SteamNoLongerRunning;

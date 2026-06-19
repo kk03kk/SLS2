@@ -13,6 +13,9 @@ using MegaCrit.Sts2.Core.TestSupport;
 
 namespace MegaCrit.Sts2.Core.GameActions;
 
+/// <summary>
+/// Responsible for pulling actions from the PlayerActionQueueSet and executing them.
+/// </summary>
 public class ActionExecutor
 {
 	private readonly ActionQueueSet _actionQueueSet;
@@ -59,6 +62,12 @@ public class ActionExecutor
 		_logger = new MegaCrit.Sts2.Core.Logging.Logger("ActionExecutor", LogType.Actions);
 	}
 
+	/// <summary>
+	/// WARNING: You probably want to use CombatManager.Pause() instead. Only use this if you want to pause player
+	/// actions WITHOUT pausing the rest of combat.
+	///
+	/// Pause the ActionQueue.
+	/// </summary>
 	public void Pause()
 	{
 		if (!NonInteractiveMode.IsActive)
@@ -68,12 +77,22 @@ public class ActionExecutor
 		}
 	}
 
+	/// <summary>
+	/// WARNING: You probably want to use CombatManager.Unpause() instead. Only use this if you want to un-pause player
+	/// actions WITHOUT un-pausing the rest of combat.
+	///
+	/// Unpause the ActionQueue.
+	/// </summary>
 	public void Unpause()
 	{
 		_logger.Debug("Un-pausing queue");
 		_isPaused = false;
 	}
 
+	/// <summary>
+	/// Returns a task which finishes execution when there are no tasks left to execute.
+	/// If there is no currently executing task, then this returns a completed task.
+	/// </summary>
 	public Task FinishedExecutingActions()
 	{
 		if (_queueTaskCompletionSource == null)
@@ -83,6 +102,9 @@ public class ActionExecutor
 		return _queueTaskCompletionSource.Task;
 	}
 
+	/// <summary>
+	/// Cancel the whole queue.
+	/// </summary>
 	public void Cancel()
 	{
 		_logger.Debug("Cancelling queue");

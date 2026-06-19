@@ -197,6 +197,10 @@ public sealed class Trial : EventModel
 		SetTrialFinished("TRIAL.pages.NONDESCRIPT_INNOCENT.description");
 	}
 
+	/// <summary>
+	/// Helper function because we create this event's descriptions dynamically
+	/// </summary>
+	/// <param name="trialResultLoc"></param>
 	private void SetTrialFinished(string trialResultLoc)
 	{
 		LocString locString = L10NLookup("TRIAL.trialResult");

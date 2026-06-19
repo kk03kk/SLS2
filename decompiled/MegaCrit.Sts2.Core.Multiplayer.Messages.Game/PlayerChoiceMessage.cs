@@ -5,6 +5,9 @@ using MegaCrit.Sts2.Core.Multiplayer.Transport;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Messages.Game;
 
+/// <summary>
+/// Broadcast from a peer to all other peers when that peer has made a choice in combat.
+/// </summary>
 public struct PlayerChoiceMessage : INetMessage, IPacketSerializable
 {
 	public uint choiceId;

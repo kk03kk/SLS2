@@ -41,6 +41,10 @@ public sealed class Underdocks : ActModel
 
 	protected override int BaseNumberOfRooms => 15;
 
+	public override int Index => 0;
+
+	public override bool IsDefault => false;
+
 	public override string[] BgMusicOptions => new string[1] { "event:/music/act1_b1_v1" };
 
 	public override string[] MusicBankPaths => new string[1] { "res://banks/desktop/act1_b1.bank" };
@@ -98,6 +102,11 @@ public sealed class Underdocks : ActModel
 
 	protected override void ApplyActDiscoveryOrderModifications(UnlockState unlockState)
 	{
+	}
+
+	public override bool IsUnlocked(UnlockState unlockState)
+	{
+		return unlockState.IsEpochRevealed<UnderdocksEpoch>();
 	}
 
 	public override MapPointTypeCounts GetMapPointTypes(Rng mapRng)

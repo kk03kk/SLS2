@@ -22,6 +22,9 @@ public sealed class FakeMerchant : EventModel
 {
 	public const int relicCost = 50;
 
+	/// <summary>
+	/// Note: don't add <see cref="T:MegaCrit.Sts2.Core.Models.Relics.FakeMerchantsRug" /> to this list, it's a combat reward, not a relic you can buy.
+	/// </summary>
 	private static readonly RelicModel[] _inventoryRelics = new RelicModel[9]
 	{
 		ModelDb.Relic<FakeAnchor>(),

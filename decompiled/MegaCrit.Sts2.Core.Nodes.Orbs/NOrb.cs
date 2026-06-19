@@ -21,50 +21,116 @@ namespace MegaCrit.Sts2.Core.Nodes.Orbs;
 [ScriptPath("res://src/Core/Nodes/Orbs/NOrb.cs")]
 public class NOrb : NClickableControl
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : NClickableControl.MethodName
 	{
+		/// <summary>
+		/// Cached name for the 'Create' method.
+		/// </summary>
 		public static readonly StringName Create = "Create";
 
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the '_EnterTree' method.
+		/// </summary>
 		public new static readonly StringName _EnterTree = "_EnterTree";
 
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 
+		/// <summary>
+		/// Cached name for the 'UpdateVisuals' method.
+		/// </summary>
 		public static readonly StringName UpdateVisuals = "UpdateVisuals";
 
+		/// <summary>
+		/// Cached name for the 'Flash' method.
+		/// </summary>
 		public static readonly StringName Flash = "Flash";
 
+		/// <summary>
+		/// Cached name for the 'OnFocus' method.
+		/// </summary>
 		public new static readonly StringName OnFocus = "OnFocus";
 
+		/// <summary>
+		/// Cached name for the 'OnUnfocus' method.
+		/// </summary>
 		public new static readonly StringName OnUnfocus = "OnUnfocus";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : NClickableControl.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the '_outline' field.
+		/// </summary>
 		public static readonly StringName _outline = "_outline";
 
+		/// <summary>
+		/// Cached name for the '_visualContainer' field.
+		/// </summary>
 		public static readonly StringName _visualContainer = "_visualContainer";
 
+		/// <summary>
+		/// Cached name for the '_labelContainer' field.
+		/// </summary>
 		public static readonly StringName _labelContainer = "_labelContainer";
 
+		/// <summary>
+		/// Cached name for the '_passiveLabel' field.
+		/// </summary>
 		public static readonly StringName _passiveLabel = "_passiveLabel";
 
+		/// <summary>
+		/// Cached name for the '_evokeLabel' field.
+		/// </summary>
 		public static readonly StringName _evokeLabel = "_evokeLabel";
 
+		/// <summary>
+		/// Cached name for the '_bounds' field.
+		/// </summary>
 		public static readonly StringName _bounds = "_bounds";
 
+		/// <summary>
+		/// Cached name for the '_flashParticle' field.
+		/// </summary>
 		public static readonly StringName _flashParticle = "_flashParticle";
 
+		/// <summary>
+		/// Cached name for the '_selectionReticle' field.
+		/// </summary>
 		public static readonly StringName _selectionReticle = "_selectionReticle";
 
+		/// <summary>
+		/// Cached name for the '_isLocal' field.
+		/// </summary>
 		public static readonly StringName _isLocal = "_isLocal";
 
+		/// <summary>
+		/// Cached name for the '_sprite' field.
+		/// </summary>
 		public static readonly StringName _sprite = "_sprite";
 
+		/// <summary>
+		/// Cached name for the '_curTween' field.
+		/// </summary>
 		public static readonly StringName _curTween = "_curTween";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : NClickableControl.SignalName
 	{
 	}
@@ -273,6 +339,11 @@ public class NOrb : NClickableControl
 		_selectionReticle.OnDeselect();
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<MethodInfo> GetGodotMethodList()
 	{
@@ -294,6 +365,7 @@ public class NOrb : NClickableControl
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -359,6 +431,7 @@ public class NOrb : NClickableControl
 		return false;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -397,6 +470,7 @@ public class NOrb : NClickableControl
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -458,6 +532,7 @@ public class NOrb : NClickableControl
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -519,6 +594,11 @@ public class NOrb : NClickableControl
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -537,6 +617,7 @@ public class NOrb : NClickableControl
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -554,6 +635,7 @@ public class NOrb : NClickableControl
 		info.AddProperty(PropertyName._curTween, Variant.From(in _curTween));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

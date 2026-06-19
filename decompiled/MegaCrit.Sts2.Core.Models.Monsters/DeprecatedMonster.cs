@@ -7,6 +7,9 @@ using MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine;
 
 namespace MegaCrit.Sts2.Core.Models.Monsters;
 
+/// <summary>
+/// Represents a monster that has been removed from the game. Mostly used for the run history.
+/// </summary>
 public sealed class DeprecatedMonster : MonsterModel
 {
 	public override int MinInitialHp => 0;

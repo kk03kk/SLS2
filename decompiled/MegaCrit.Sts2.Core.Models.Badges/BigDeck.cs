@@ -2,6 +2,9 @@ using MegaCrit.Sts2.Core.Saves;
 
 namespace MegaCrit.Sts2.Core.Models.Badges;
 
+/// <summary>
+/// Won with a deck of 40, 60, or 100 or more cards.
+/// </summary>
 public class BigDeck : Badge
 {
 	public override BadgeRarity Rarity
@@ -25,6 +28,9 @@ public class BigDeck : Badge
 		}
 	}
 
+	/// <summary>
+	/// Won with a deck of 40, 60, or 100 or more cards.
+	/// </summary>
 	public BigDeck(SerializableRun run, bool won, ulong playerId)
 		: base(run, won, playerId, "BIG_DECK", requiresWin: true, multiplayerOnly: false)
 	{

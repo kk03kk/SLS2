@@ -7,6 +7,10 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace MegaCrit.Sts2.Core.Models.Orbs.Mock;
 
+/// <summary>
+/// This orb is for testing only. When this orb is Evoked, it removes its owner from combat, simulating the player
+/// exiting the run while an orb is evoking.
+/// </summary>
 public class MockCombatCleanupOrb : OrbModel
 {
 	public override decimal PassiveVal => 0m;

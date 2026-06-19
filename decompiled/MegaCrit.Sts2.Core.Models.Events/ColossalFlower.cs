@@ -85,12 +85,18 @@ public sealed class ColossalFlower : EventModel
 		SetEventFinished(L10NLookup("COLOSSAL_FLOWER.pages.EXTRACT_CURRENT_PRIZE.description"));
 	}
 
+	/// <summary>
+	/// The player opted for 135 Gold rather than Pollinous Core + 7 damage
+	/// </summary>
 	private async Task ExtractInstead()
 	{
 		await PlayerCmd.GainGold(_prizeCosts[NumberOfDigs], base.Owner);
 		SetEventFinished(L10NLookup("COLOSSAL_FLOWER.pages.EXTRACT_INSTEAD.description"));
 	}
 
+	/// <summary>
+	/// The player takes damage and gets the relic.
+	/// </summary>
 	private async Task ObtainPollinousCore()
 	{
 		await DealReachDeeperDamage();

@@ -8,6 +8,9 @@ using MegaCrit.Sts2.Core.Nodes.Screens.Map;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Messages.Game.Flavor;
 
+/// <summary>
+/// Sent when a player begins drawing a line, updates the position of the line drawing, or ends drawing a line.
+/// </summary>
 public class MapDrawingMessage : INetMessage, IPacketSerializable
 {
 	public static readonly int maxEventCount = (int)Math.Pow(2.0, 4.0) - 1;

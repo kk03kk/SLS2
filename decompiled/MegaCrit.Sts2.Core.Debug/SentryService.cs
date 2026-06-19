@@ -19,6 +19,10 @@ using Sentry;
 
 namespace MegaCrit.Sts2.Core.Debug;
 
+/// <summary>
+/// Manages Sentry .NET SDK initialization and error reporting for C# exceptions.
+/// This complements the GDExtension SDK which handles native crashes.
+/// </summary>
 public static class SentryService
 {
 	private const string _dsnSettingPath = "sentry/config/dsn";
@@ -69,6 +73,13 @@ public static class SentryService
 
 	public static string SessionId => _sessionId;
 
+	/// <summary>
+	/// Disables GDExtension Sentry event capture when mods are detected.
+	/// Called right after ModManager.Initialize to prevent mod errors from being reported
+	/// through the GDExtension before AfterGameInit has a chance to shut everything down.
+	/// Sets the sample callable to always return false instead of calling close(), because
+	/// the native SDK should not be closed until the application is shutting down.
+	/// </summary>
 	public static void DisableGdExtensionIfModded()
 	{
 		if (ModManager.IsRunningModded())
@@ -82,6 +93,10 @@ public static class SentryService
 		return false;
 	}
 
+	/// <summary>
+	/// Initializes the Sentry .NET SDK. Should be called early in game startup.
+	/// Disabled in editor (unless headless), uses "playtesters" environment with release_info, "development" without.
+	/// </summary>
 	public static void Initialize()
 	{
 		bool flag = OS.HasFeature("editor");
@@ -234,6 +249,10 @@ public static class SentryService
 		}
 	}
 
+	/// <summary>
+	/// Configures sampling rate based on the Steam branch. Call after Steam initializes.
+	/// Shuts down Sentry entirely for non-Steam builds (null branch).
+	/// </summary>
 	private static void SetPlatformBranch(string? branch)
 	{
 		_sampleRate = branch switch
@@ -268,6 +287,9 @@ public static class SentryService
 		Log.Info($"[Sentry.NET] Platform branch: {branch}, sample rate: {_sampleRate:P0}");
 	}
 
+	/// <summary>
+	/// Adds a breadcrumb for tracking user actions leading up to an error.
+	/// </summary>
 	public static void AddBreadcrumb(string message, string category = "app", BreadcrumbLevel level = BreadcrumbLevel.Info)
 	{
 		if (IsEnabled)
@@ -276,6 +298,11 @@ public static class SentryService
 		}
 	}
 
+	/// <summary>
+	/// Captures an exception and sends it to Sentry.
+	/// Attaches current game state context for debugging.
+	/// Respects user consent settings.
+	/// </summary>
 	public static void CaptureException(Exception ex)
 	{
 		if (IsEnabled)
@@ -287,6 +314,10 @@ public static class SentryService
 		}
 	}
 
+	/// <summary>
+	/// Captures an exception with additional scope configuration.
+	/// AttachGameState is called first, then the caller's configureScope action.
+	/// </summary>
 	public static void CaptureException(Exception ex, Action<Scope> configureScope)
 	{
 		if (IsEnabled)
@@ -299,6 +330,10 @@ public static class SentryService
 		}
 	}
 
+	/// <summary>
+	/// Captures a message and sends it to Sentry.
+	/// Respects user consent settings.
+	/// </summary>
 	public static void CaptureMessage(string message, SentryLevel level = SentryLevel.Info, Action<Scope>? configureScope = null)
 	{
 		if (IsEnabled)
@@ -316,6 +351,9 @@ public static class SentryService
 		}
 	}
 
+	/// <summary>
+	/// Sets a tag on the current scope for filtering in Sentry.
+	/// </summary>
 	public static void SetTag(string key, string value)
 	{
 		if (IsEnabled)
@@ -327,6 +365,9 @@ public static class SentryService
 		}
 	}
 
+	/// <summary>
+	/// Sets extra context data on the current scope.
+	/// </summary>
 	public static void SetExtra(string key, object value)
 	{
 		if (IsEnabled)
@@ -338,6 +379,10 @@ public static class SentryService
 		}
 	}
 
+	/// <summary>
+	/// Initializes Sentry for testing purposes, bypassing editor and release checks.
+	/// Only use from dev console commands.
+	/// </summary>
 	public static void InitializeForTesting()
 	{
 		if (IsEnabled)
@@ -375,6 +420,10 @@ public static class SentryService
 		Log.Info("[Sentry.NET] Initialized for testing via dev console");
 	}
 
+	/// <summary>
+	/// Shuts down the Sentry SDK gracefully.
+	/// Should be called when the game exits.
+	/// </summary>
 	public static void Shutdown()
 	{
 		if (IsEnabled)
@@ -393,6 +442,10 @@ public static class SentryService
 		return ProjectSettings.GetSetting("sentry/config/dsn", "").AsString();
 	}
 
+	/// <summary>
+	/// Attaches current game state to the Sentry scope for debugging context.
+	/// Collects scene, run info, and combat state when available.
+	/// </summary>
 	private static void AttachGameState(Scope scope)
 	{
 		try
@@ -520,6 +573,12 @@ public static class SentryService
 		return true;
 	}
 
+	/// <summary>
+	/// Returns true if the Sentry service should shutdown after we've finished initializing the game.
+	/// This should only return false for things that don't change during the runtime of the game.
+	/// We shutdown the service rather than filtering events so that crashes (which can't get filtered) don't get sent
+	/// for modded games.
+	/// </summary>
 	private static bool ShouldStayAliveAfterInit(bool shouldLog)
 	{
 		if (IsForcedOn)

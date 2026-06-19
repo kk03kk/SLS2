@@ -8,6 +8,24 @@ using MegaCrit.Sts2.Core.Runs;
 
 namespace MegaCrit.Sts2.Core.Map;
 
+/// <summary>
+/// An hourglass-shaped map where all paths converge through a single centered treasure node.
+/// Used when SpoilsMap card is active in Act 2.
+///
+/// This map is generated from scratch rather than post-processing StandardActMap.
+/// The hourglass structure requires fundamentally different path topology. All paths must converge
+/// through a single centered treasure node, with rows narrowing towards the treasure then widening after.
+/// Post-processing would require deleting most nodes and rewiring all edges, which is roughly as complex
+/// as generating from scratch.
+///
+/// Keeping these implementations separate makes both easier to understand. StandardActMap stays clean,
+/// and the hourglass-specific constraints live here explicitly instead of being tangled up in post-processing logic.
+/// Each can evolve independently.
+///
+/// The tradeoff is this duplicates some map generation logic (~400 lines). If StandardActMap's core rules change
+/// (adjacency constraints, parent/child limits, point type placement), we'll need to manually sync those changes here.
+/// Tests in SpoilsActMapTest verify the core map invariants hold.
+/// </summary>
 public sealed class SpoilsActMap : ActMap
 {
 	private const int _mapWidth = 7;
@@ -61,6 +79,11 @@ public sealed class SpoilsActMap : ActMap
 
 	protected override MapPoint?[,] Grid { get; }
 
+	/// <summary>
+	/// Creates a map used only when the player has the <see cref="T:MegaCrit.Sts2.Core.Models.Cards.SpoilsMap" />.
+	/// </summary>
+	/// <param name="runState">The run state for this run.</param>
+	/// <param name="mapPointTypeCountsOverride">If passed, replaces the default point counts used to generate the map.</param>
 	public SpoilsActMap(IRunState runState, MapPointTypeCounts? mapPointTypeCountsOverride = null)
 	{
 		ActModel act = runState.Act;

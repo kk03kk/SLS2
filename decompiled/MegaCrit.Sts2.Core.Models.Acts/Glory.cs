@@ -42,6 +42,10 @@ public sealed class Glory : ActModel
 
 	protected override int BaseNumberOfRooms => 13;
 
+	public override int Index => 2;
+
+	public override bool IsDefault => true;
+
 	public override string[] BgMusicOptions => new string[2] { "event:/music/act3_a1_v1", "event:/music/act3_a2_v1" };
 
 	public override string[] MusicBankPaths => new string[2] { "res://banks/desktop/act3_a1.bank", "res://banks/desktop/act3_a2.bank" };
@@ -92,6 +96,11 @@ public sealed class Glory : ActModel
 
 	protected override void ApplyActDiscoveryOrderModifications(UnlockState unlockState)
 	{
+	}
+
+	public override bool IsUnlocked(UnlockState unlockState)
+	{
+		return true;
 	}
 
 	public override MapPointTypeCounts GetMapPointTypes(Rng mapRng)

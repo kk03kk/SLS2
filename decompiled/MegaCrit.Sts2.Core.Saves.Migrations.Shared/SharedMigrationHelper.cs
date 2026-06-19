@@ -6,6 +6,9 @@ namespace MegaCrit.Sts2.Core.Saves.Migrations.Shared;
 
 public static class SharedMigrationHelper
 {
+	/// <summary>
+	/// Renames used by SerializableRun V15-&gt;V16 and RunHistory V8-&gt;V9.
+	/// </summary>
 	public static readonly IReadOnlyDictionary<string, string> V100Renames = new Dictionary<string, string>
 	{
 		["CARD.PREPARE"] = "CARD.PREPARED",
@@ -13,6 +16,9 @@ public static class SharedMigrationHelper
 		["MONSTER.DOOR"] = "MONSTER.DEPRECATED_MONSTER"
 	};
 
+	/// <summary>
+	/// Recursively walks a JSON tree and replaces string values found in the renames dictionary.
+	/// </summary>
 	public static void ReplaceModelIds(JsonNode? node, IReadOnlyDictionary<string, string> renames)
 	{
 		if (!(node is JsonObject jsonObject))
@@ -49,6 +55,10 @@ public static class SharedMigrationHelper
 		}
 	}
 
+	/// <summary>
+	/// Used in Run History V2-&gt;V3 and SerializableRun V3-&gt;V4.
+	/// migratingData is assumed to be the list of list of MapPointHistoryEntry.
+	/// </summary>
 	public static void MigrateMapPointHistoryRooms(JsonNode? jsonNode)
 	{
 		if (!(jsonNode is JsonArray jsonArray))
@@ -103,6 +113,9 @@ public static class SharedMigrationHelper
 		}
 	}
 
+	/// <summary>
+	/// Recursively removes schema_version from everything except for the first JSON object.
+	/// </summary>
 	public static void RecursiveRemoveSchema(JsonNode node, int depth = 0)
 	{
 		if (node is JsonObject jsonObject)

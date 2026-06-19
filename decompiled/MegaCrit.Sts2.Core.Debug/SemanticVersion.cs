@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 namespace MegaCrit.Sts2.Core.Debug;
 
+/// <summary>
+/// Implementation of semver. Mostly used for comparing versions.
+/// https://semver.org
+/// </summary>
 public class SemanticVersion : IComparable<SemanticVersion>, IEquatable<SemanticVersion>
 {
 	private enum ParseState

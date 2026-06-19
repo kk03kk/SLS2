@@ -21,79 +21,188 @@ using MegaCrit.sts2.Core.Nodes.TopBar;
 
 namespace MegaCrit.Sts2.Core.Nodes.CommonUi;
 
+/// <summary>
+/// A Node script which contains references to all systems which reside in the Top Bar, the bar at the top
+/// of the screen which displays gold, health, potions, and various buttons in the top right corner during a run.
+/// </summary>
 [ScriptPath("res://src/Core/Nodes/CommonUi/NTopBar.cs")]
 public class NTopBar : Control
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Control.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the '_EnterTree' method.
+		/// </summary>
 		public new static readonly StringName _EnterTree = "_EnterTree";
 
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 
+		/// <summary>
+		/// Cached name for the 'ToggleAnimState' method.
+		/// </summary>
 		public static readonly StringName ToggleAnimState = "ToggleAnimState";
 
+		/// <summary>
+		/// Cached name for the '_Input' method.
+		/// </summary>
 		public new static readonly StringName _Input = "_Input";
 
+		/// <summary>
+		/// Cached name for the 'DebugHideTopBar' method.
+		/// </summary>
 		public static readonly StringName DebugHideTopBar = "DebugHideTopBar";
 
+		/// <summary>
+		/// Cached name for the 'AnimHide' method.
+		/// </summary>
 		public static readonly StringName AnimHide = "AnimHide";
 
+		/// <summary>
+		/// Cached name for the 'AnimShow' method.
+		/// </summary>
 		public static readonly StringName AnimShow = "AnimShow";
 
+		/// <summary>
+		/// Cached name for the 'MaxPotionsChanged' method.
+		/// </summary>
 		public static readonly StringName MaxPotionsChanged = "MaxPotionsChanged";
 
+		/// <summary>
+		/// Cached name for the 'UpdateNavigation' method.
+		/// </summary>
 		public static readonly StringName UpdateNavigation = "UpdateNavigation";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Control.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'Map' property.
+		/// </summary>
 		public static readonly StringName Map = "Map";
 
+		/// <summary>
+		/// Cached name for the 'Deck' property.
+		/// </summary>
 		public static readonly StringName Deck = "Deck";
 
+		/// <summary>
+		/// Cached name for the 'Pause' property.
+		/// </summary>
 		public static readonly StringName Pause = "Pause";
 
+		/// <summary>
+		/// Cached name for the 'PotionContainer' property.
+		/// </summary>
 		public static readonly StringName PotionContainer = "PotionContainer";
 
+		/// <summary>
+		/// Cached name for the 'RoomIcon' property.
+		/// </summary>
 		public static readonly StringName RoomIcon = "RoomIcon";
 
+		/// <summary>
+		/// Cached name for the 'FloorIcon' property.
+		/// </summary>
 		public static readonly StringName FloorIcon = "FloorIcon";
 
+		/// <summary>
+		/// Cached name for the 'BossIcon' property.
+		/// </summary>
 		public static readonly StringName BossIcon = "BossIcon";
 
+		/// <summary>
+		/// Cached name for the 'Gold' property.
+		/// </summary>
 		public static readonly StringName Gold = "Gold";
 
+		/// <summary>
+		/// Cached name for the 'Hp' property.
+		/// </summary>
 		public static readonly StringName Hp = "Hp";
 
+		/// <summary>
+		/// Cached name for the 'Portrait' property.
+		/// </summary>
 		public static readonly StringName Portrait = "Portrait";
 
+		/// <summary>
+		/// Cached name for the 'PortraitTip' property.
+		/// </summary>
 		public static readonly StringName PortraitTip = "PortraitTip";
 
+		/// <summary>
+		/// Cached name for the 'Timer' property.
+		/// </summary>
 		public static readonly StringName Timer = "Timer";
 
+		/// <summary>
+		/// Cached name for the 'TrailContainer' property.
+		/// </summary>
 		public static readonly StringName TrailContainer = "TrailContainer";
 
+		/// <summary>
+		/// Cached name for the 'ActiveScreenProxy' property.
+		/// </summary>
 		public static readonly StringName ActiveScreenProxy = "ActiveScreenProxy";
 
+		/// <summary>
+		/// Cached name for the '_capstoneContainer' field.
+		/// </summary>
 		public static readonly StringName _capstoneContainer = "_capstoneContainer";
 
+		/// <summary>
+		/// Cached name for the '_modifiersContainer' field.
+		/// </summary>
 		public static readonly StringName _modifiersContainer = "_modifiersContainer";
 
+		/// <summary>
+		/// Cached name for the '_achievementLock' field.
+		/// </summary>
 		public static readonly StringName _achievementLock = "_achievementLock";
 
+		/// <summary>
+		/// Cached name for the '_ascensionIcon' field.
+		/// </summary>
 		public static readonly StringName _ascensionIcon = "_ascensionIcon";
 
+		/// <summary>
+		/// Cached name for the '_ascensionLabel' field.
+		/// </summary>
 		public static readonly StringName _ascensionLabel = "_ascensionLabel";
 
+		/// <summary>
+		/// Cached name for the '_ascensionHsv' field.
+		/// </summary>
 		public static readonly StringName _ascensionHsv = "_ascensionHsv";
 
+		/// <summary>
+		/// Cached name for the '_hideTween' field.
+		/// </summary>
 		public static readonly StringName _hideTween = "_hideTween";
 
+		/// <summary>
+		/// Cached name for the '_isDebugHidden' field.
+		/// </summary>
 		public static readonly StringName _isDebugHidden = "_isDebugHidden";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Control.SignalName
 	{
 	}
@@ -152,6 +261,12 @@ public class NTopBar : Control
 
 	public Node TrailContainer { get; private set; }
 
+	/// <summary>
+	/// A control node that will automatically try to refocus on the current ScreenContext's FocusedControlFromTopBar.
+	/// Used by things like the nodes in see <see cref="T:MegaCrit.Sts2.Core.Nodes.Relics.NRelicInventory" /> to dynamically controller navigate from the relic
+	/// nodes back to the current active screen. Doing it this way circumvents us needing to call ActiveScreenContext.Update
+	/// whenever we need update the top bar elements navigation back to the active screen.
+	/// </summary>
 	public Control ActiveScreenProxy { get; private set; }
 
 	public override void _Ready()
@@ -366,6 +481,11 @@ public class NTopBar : Control
 		}
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -392,6 +512,7 @@ public class NTopBar : Control
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -458,6 +579,7 @@ public class NTopBar : Control
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -504,6 +626,7 @@ public class NTopBar : Control
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -620,6 +743,7 @@ public class NTopBar : Control
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -736,6 +860,11 @@ public class NTopBar : Control
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -765,6 +894,7 @@ public class NTopBar : Control
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -793,6 +923,7 @@ public class NTopBar : Control
 		info.AddProperty(PropertyName._isDebugHidden, Variant.From(in _isDebugHidden));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

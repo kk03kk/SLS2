@@ -17,56 +17,131 @@ namespace MegaCrit.Sts2.Core.Nodes.Combat;
 [ScriptPath("res://src/Core/Nodes/Combat/NCreatureVisuals.cs")]
 public class NCreatureVisuals : Node2D
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Node2D.MethodName
 	{
+		/// <summary>
+		/// Cached name for the 'GetCurrentBody' method.
+		/// </summary>
 		public static readonly StringName GetCurrentBody = "GetCurrentBody";
 
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the '_EnterTree' method.
+		/// </summary>
 		public new static readonly StringName _EnterTree = "_EnterTree";
 
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 
+		/// <summary>
+		/// Cached name for the 'SetScaleAndHue' method.
+		/// </summary>
 		public static readonly StringName SetScaleAndHue = "SetScaleAndHue";
 
+		/// <summary>
+		/// Cached name for the 'IsPlayingHurtAnimation' method.
+		/// </summary>
 		public static readonly StringName IsPlayingHurtAnimation = "IsPlayingHurtAnimation";
 
+		/// <summary>
+		/// Cached name for the 'TryApplyLiquidOverlay' method.
+		/// </summary>
 		public static readonly StringName TryApplyLiquidOverlay = "TryApplyLiquidOverlay";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Node2D.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'Bounds' property.
+		/// </summary>
 		public static readonly StringName Bounds = "Bounds";
 
+		/// <summary>
+		/// Cached name for the 'IntentPosition' property.
+		/// </summary>
 		public static readonly StringName IntentPosition = "IntentPosition";
 
+		/// <summary>
+		/// Cached name for the 'OrbPosition' property.
+		/// </summary>
 		public static readonly StringName OrbPosition = "OrbPosition";
 
+		/// <summary>
+		/// Cached name for the 'TalkPosition' property.
+		/// </summary>
 		public static readonly StringName TalkPosition = "TalkPosition";
 
+		/// <summary>
+		/// Cached name for the 'IsSpineNode' property.
+		/// </summary>
 		public static readonly StringName IsSpineNode = "IsSpineNode";
 
+		/// <summary>
+		/// Cached name for the 'HasSpineAnimation' property.
+		/// </summary>
 		public static readonly StringName HasSpineAnimation = "HasSpineAnimation";
 
+		/// <summary>
+		/// Cached name for the 'IsUsingPhobiaModeBody' property.
+		/// </summary>
 		public static readonly StringName IsUsingPhobiaModeBody = "IsUsingPhobiaModeBody";
 
+		/// <summary>
+		/// Cached name for the 'VfxSpawnPosition' property.
+		/// </summary>
 		public static readonly StringName VfxSpawnPosition = "VfxSpawnPosition";
 
+		/// <summary>
+		/// Cached name for the 'DefaultScale' property.
+		/// </summary>
 		public static readonly StringName DefaultScale = "DefaultScale";
 
+		/// <summary>
+		/// Cached name for the '_body' field.
+		/// </summary>
 		public static readonly StringName _body = "_body";
 
+		/// <summary>
+		/// Cached name for the '_phobiaModeBody' field.
+		/// </summary>
 		public static readonly StringName _phobiaModeBody = "_phobiaModeBody";
 
+		/// <summary>
+		/// Cached name for the '_hue' field.
+		/// </summary>
 		public static readonly StringName _hue = "_hue";
 
+		/// <summary>
+		/// Cached name for the '_liquidOverlayTimer' field.
+		/// </summary>
 		public static readonly StringName _liquidOverlayTimer = "_liquidOverlayTimer";
 
+		/// <summary>
+		/// Cached name for the '_savedNormalMaterial' field.
+		/// </summary>
 		public static readonly StringName _savedNormalMaterial = "_savedNormalMaterial";
 
+		/// <summary>
+		/// Cached name for the '_currentLiquidOverlayMaterial' field.
+		/// </summary>
 		public static readonly StringName _currentLiquidOverlayMaterial = "_currentLiquidOverlayMaterial";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Node2D.SignalName
 	{
 	}
@@ -121,6 +196,9 @@ public class NCreatureVisuals : Node2D
 
 	public SpineAnimationAccess SpineAnimation => new SpineAnimationAccess(SpineBody);
 
+	/// <summary>
+	/// Position we spawn things like hit vfx. Sometimes the center of the creatures isn't always the center of the visual.
+	/// </summary>
 	public Marker2D VfxSpawnPosition { get; private set; }
 
 	public float DefaultScale { get; set; } = 1f;
@@ -261,6 +339,11 @@ public class NCreatureVisuals : Node2D
 		}
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -282,6 +365,7 @@ public class NCreatureVisuals : Node2D
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -328,6 +412,7 @@ public class NCreatureVisuals : Node2D
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -362,6 +447,7 @@ public class NCreatureVisuals : Node2D
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -428,6 +514,7 @@ public class NCreatureVisuals : Node2D
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -518,6 +605,11 @@ public class NCreatureVisuals : Node2D
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -540,6 +632,7 @@ public class NCreatureVisuals : Node2D
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -558,6 +651,7 @@ public class NCreatureVisuals : Node2D
 		info.AddProperty(PropertyName._currentLiquidOverlayMaterial, Variant.From(in _currentLiquidOverlayMaterial));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

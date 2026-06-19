@@ -3,6 +3,9 @@ using Godot;
 
 namespace MegaCrit.Sts2.Core.Bindings.MegaSpine;
 
+/// <summary>
+/// C# bindings for SpineAnimationState.
+/// </summary>
 public class MegaAnimationState : MegaSpineBinding
 {
 	protected override string SpineClassName => "SpineAnimationState";
@@ -34,11 +37,20 @@ public class MegaAnimationState : MegaSpineBinding
 		return new MegaTrackEntry(native);
 	}
 
+	/// <summary>
+	/// Returns the name of the animation currently playing on the given track, or null if no track is
+	/// active. Value-only so no transient wrapper escapes; the native reads are kept GC-safe by the
+	/// GC.KeepAlive in MegaSpineBinding.Call (PRG-6985).
+	/// </summary>
 	public string? GetCurrentAnimationName(int trackIndex = 0)
 	{
 		return GetCurrent(trackIndex)?.GetAnimationName();
 	}
 
+	/// <summary>
+	/// Returns the duration of the animation currently playing on the given track, or null if no track
+	/// is active. See <see cref="M:MegaCrit.Sts2.Core.Bindings.MegaSpine.MegaAnimationState.GetCurrentAnimationName(System.Int32)" />.
+	/// </summary>
 	public float? GetCurrentAnimationDuration(int trackIndex = 0)
 	{
 		return GetCurrent(trackIndex)?.GetAnimationDuration();

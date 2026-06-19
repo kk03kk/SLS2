@@ -12,58 +12,136 @@ namespace MegaCrit.Sts2.Core.Nodes.Vfx;
 [ScriptPath("res://src/Core/Nodes/Vfx/NTestSubjectVfx.cs")]
 public class NTestSubjectVfx : Node
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Node.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the 'OnAnimationEvent' method.
+		/// </summary>
 		public static readonly StringName OnAnimationEvent = "OnAnimationEvent";
 
+		/// <summary>
+		/// Cached name for the 'PlayAnim1' method.
+		/// </summary>
 		public static readonly StringName PlayAnim1 = "PlayAnim1";
 
+		/// <summary>
+		/// Cached name for the 'SquirtNeck' method.
+		/// </summary>
 		public static readonly StringName SquirtNeck = "SquirtNeck";
 
+		/// <summary>
+		/// Cached name for the 'StartDizzies' method.
+		/// </summary>
 		public static readonly StringName StartDizzies = "StartDizzies";
 
+		/// <summary>
+		/// Cached name for the 'EndDizzies' method.
+		/// </summary>
 		public static readonly StringName EndDizzies = "EndDizzies";
 
+		/// <summary>
+		/// Cached name for the 'StartEmbers' method.
+		/// </summary>
 		public static readonly StringName StartEmbers = "StartEmbers";
 
+		/// <summary>
+		/// Cached name for the 'StartFlames' method.
+		/// </summary>
 		public static readonly StringName StartFlames = "StartFlames";
 
+		/// <summary>
+		/// Cached name for the 'EndFlames' method.
+		/// </summary>
 		public static readonly StringName EndFlames = "EndFlames";
 
+		/// <summary>
+		/// Cached name for the 'StartBurnVfx' method.
+		/// </summary>
 		public static readonly StringName StartBurnVfx = "StartBurnVfx";
 
+		/// <summary>
+		/// Cached name for the 'EndBurnVfx' method.
+		/// </summary>
 		public static readonly StringName EndBurnVfx = "EndBurnVfx";
 
+		/// <summary>
+		/// Cached name for the 'StartCeilingSparks' method.
+		/// </summary>
 		public static readonly StringName StartCeilingSparks = "StartCeilingSparks";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Node.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the '_neckParticles' field.
+		/// </summary>
 		public static readonly StringName _neckParticles = "_neckParticles";
 
+		/// <summary>
+		/// Cached name for the '_dizzyParticles' field.
+		/// </summary>
 		public static readonly StringName _dizzyParticles = "_dizzyParticles";
 
+		/// <summary>
+		/// Cached name for the '_emberParticles' field.
+		/// </summary>
 		public static readonly StringName _emberParticles = "_emberParticles";
 
+		/// <summary>
+		/// Cached name for the '_flameParticles' field.
+		/// </summary>
 		public static readonly StringName _flameParticles = "_flameParticles";
 
+		/// <summary>
+		/// Cached name for the '_burnParticles' field.
+		/// </summary>
 		public static readonly StringName _burnParticles = "_burnParticles";
 
+		/// <summary>
+		/// Cached name for the '_targetedBurnParticle' field.
+		/// </summary>
 		public static readonly StringName _targetedBurnParticle = "_targetedBurnParticle";
 
+		/// <summary>
+		/// Cached name for the '_burnParticleFountain' field.
+		/// </summary>
 		public static readonly StringName _burnParticleFountain = "_burnParticleFountain";
 
+		/// <summary>
+		/// Cached name for the '_ceilingParticles' field.
+		/// </summary>
 		public static readonly StringName _ceilingParticles = "_ceilingParticles";
 
+		/// <summary>
+		/// Cached name for the '_parent' field.
+		/// </summary>
 		public static readonly StringName _parent = "_parent";
 
+		/// <summary>
+		/// Cached name for the '_keyDown' field.
+		/// </summary>
 		public static readonly StringName _keyDown = "_keyDown";
 
+		/// <summary>
+		/// Cached name for the '_doingThing' field.
+		/// </summary>
 		public static readonly StringName _doingThing = "_doingThing";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Node.SignalName
 	{
 	}
@@ -273,6 +351,11 @@ public class NTestSubjectVfx : Node
 		_ceilingParticles.Restart();
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -298,6 +381,7 @@ public class NTestSubjectVfx : Node
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -376,6 +460,7 @@ public class NTestSubjectVfx : Node
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -430,6 +515,7 @@ public class NTestSubjectVfx : Node
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -491,6 +577,7 @@ public class NTestSubjectVfx : Node
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -552,6 +639,11 @@ public class NTestSubjectVfx : Node
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -570,6 +662,7 @@ public class NTestSubjectVfx : Node
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -587,6 +680,7 @@ public class NTestSubjectVfx : Node
 		info.AddProperty(PropertyName._doingThing, Variant.From(in _doingThing));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

@@ -4,10 +4,23 @@ using MegaCrit.Sts2.Core.Multiplayer.Serialization;
 
 namespace MegaCrit.Sts2.Core.Runs;
 
+/// <summary>
+/// Identifies a coordinate on the map that the player is at.
+/// Contains an act index + map coordinate.
+/// Make sure you look at <see cref="T:MegaCrit.Sts2.Core.Runs.RunLocation" /> as well, which also includes a room identifier. This class is more
+/// suitable for situations where the room doesn't matter, e.g. map voting.
+/// </summary>
 public struct MapLocation(MapCoord? coord, int actIndex) : IEquatable<MapLocation>, IComparable<MapLocation>, IPacketSerializable
 {
+	/// <summary>
+	/// The act that this location is in.
+	/// </summary>
 	public int actIndex = actIndex;
 
+	/// <summary>
+	/// The coordinate that this location is at.
+	/// Will be null when we're in the map room (at the start of an act, before picking the ancient map point).
+	/// </summary>
 	public MapCoord? coord = coord;
 
 	public void Serialize(PacketWriter writer)

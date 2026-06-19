@@ -30,50 +30,116 @@ namespace MegaCrit.Sts2.Core.Nodes.Events.Custom;
 [ScriptPath("res://src/Core/Nodes/Events/Custom/NFakeMerchant.cs")]
 public class NFakeMerchant : Control, ICustomEventNode, IScreenContext
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Control.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the '_EnterTree' method.
+		/// </summary>
 		public new static readonly StringName _EnterTree = "_EnterTree";
 
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 
+		/// <summary>
+		/// Cached name for the 'ToggleMerchantTrack' method.
+		/// </summary>
 		public static readonly StringName ToggleMerchantTrack = "ToggleMerchantTrack";
 
+		/// <summary>
+		/// Cached name for the 'AfterRoomIsLoaded' method.
+		/// </summary>
 		public static readonly StringName AfterRoomIsLoaded = "AfterRoomIsLoaded";
 
+		/// <summary>
+		/// Cached name for the 'StartCharacterAnimation' method.
+		/// </summary>
 		public static readonly StringName StartCharacterAnimation = "StartCharacterAnimation";
 
+		/// <summary>
+		/// Cached name for the 'HideScreen' method.
+		/// </summary>
 		public static readonly StringName HideScreen = "HideScreen";
 
+		/// <summary>
+		/// Cached name for the 'OnMerchantOpened' method.
+		/// </summary>
 		public static readonly StringName OnMerchantOpened = "OnMerchantOpened";
 
+		/// <summary>
+		/// Cached name for the 'OpenInventory' method.
+		/// </summary>
 		public static readonly StringName OpenInventory = "OpenInventory";
 
+		/// <summary>
+		/// Cached name for the 'ShowProceedButton' method.
+		/// </summary>
 		public static readonly StringName ShowProceedButton = "ShowProceedButton";
 
+		/// <summary>
+		/// Cached name for the 'OnActiveScreenUpdated' method.
+		/// </summary>
 		public static readonly StringName OnActiveScreenUpdated = "OnActiveScreenUpdated";
 
+		/// <summary>
+		/// Cached name for the 'BlockInput' method.
+		/// </summary>
 		public static readonly StringName BlockInput = "BlockInput";
 
+		/// <summary>
+		/// Cached name for the 'UnblockInput' method.
+		/// </summary>
 		public static readonly StringName UnblockInput = "UnblockInput";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Control.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'Inventory' property.
+		/// </summary>
 		public static readonly StringName Inventory = "Inventory";
 
+		/// <summary>
+		/// Cached name for the 'MerchantButton' property.
+		/// </summary>
 		public static readonly StringName MerchantButton = "MerchantButton";
 
+		/// <summary>
+		/// Cached name for the 'DefaultFocusedControl' property.
+		/// </summary>
 		public static readonly StringName DefaultFocusedControl = "DefaultFocusedControl";
 
+		/// <summary>
+		/// Cached name for the '_proceedButton' field.
+		/// </summary>
 		public static readonly StringName _proceedButton = "_proceedButton";
 
+		/// <summary>
+		/// Cached name for the '_characterContainer' field.
+		/// </summary>
 		public static readonly StringName _characterContainer = "_characterContainer";
 
+		/// <summary>
+		/// Cached name for the '_inputBlocker' field.
+		/// </summary>
 		public static readonly StringName _inputBlocker = "_inputBlocker";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Control.SignalName
 	{
 	}
@@ -305,6 +371,11 @@ public class NFakeMerchant : Control, ICustomEventNode, IScreenContext
 		NHotkeyManager.Instance.RemoveBlockingScreen(_inputBlocker);
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -334,6 +405,7 @@ public class NFakeMerchant : Control, ICustomEventNode, IScreenContext
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -418,6 +490,7 @@ public class NFakeMerchant : Control, ICustomEventNode, IScreenContext
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -476,6 +549,7 @@ public class NFakeMerchant : Control, ICustomEventNode, IScreenContext
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -507,6 +581,7 @@ public class NFakeMerchant : Control, ICustomEventNode, IScreenContext
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -543,6 +618,11 @@ public class NFakeMerchant : Control, ICustomEventNode, IScreenContext
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -556,6 +636,7 @@ public class NFakeMerchant : Control, ICustomEventNode, IScreenContext
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -567,6 +648,7 @@ public class NFakeMerchant : Control, ICustomEventNode, IScreenContext
 		info.AddProperty(PropertyName._inputBlocker, Variant.From(in _inputBlocker));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

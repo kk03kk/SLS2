@@ -10,6 +10,9 @@ using MegaCrit.Sts2.Core.Logging;
 
 namespace MegaCrit.Sts2.Core.Models.Badges;
 
+/// <summary>
+/// Play 20 cards in a single turn.
+/// </summary>
 public class CccComboModel : BadgeModel
 {
 	private int _cardsPlayedThisTurn;

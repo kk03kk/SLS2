@@ -23,6 +23,9 @@ public sealed class Ironclad : CharacterModel
 
 	public override CharacterGender Gender => CharacterGender.Masculine;
 
+	/// <remarks>
+	/// Ironclad starts out unlocked.
+	/// </remarks>
 	protected override CharacterModel? UnlocksAfterRunAs => null;
 
 	public override Color NameColor => StsColors.red;

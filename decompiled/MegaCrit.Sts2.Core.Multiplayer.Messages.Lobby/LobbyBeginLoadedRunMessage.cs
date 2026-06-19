@@ -5,6 +5,10 @@ using MegaCrit.Sts2.Core.Multiplayer.Transport;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Messages.Lobby;
 
+/// <summary>
+/// Sent when the <see cref="T:MegaCrit.Sts2.Core.Multiplayer.Game.Lobby.LoadRunLobby" /> closes and the run begins.
+/// Used only in <see cref="T:MegaCrit.Sts2.Core.Multiplayer.Game.Lobby.LoadRunLobby" />. Lobby uses <see cref="T:MegaCrit.Sts2.Core.Multiplayer.Messages.Lobby.LobbyBeginRunMessage" />.
+/// </summary>
 [StructLayout(LayoutKind.Sequential, Size = 1)]
 public struct LobbyBeginLoadedRunMessage : INetMessage, IPacketSerializable
 {

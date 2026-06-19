@@ -4,6 +4,10 @@ using MegaCrit.Sts2.Core.Saves.Migrations.Shared;
 
 namespace MegaCrit.Sts2.Core.Saves.Migrations.RunHistories;
 
+/// <summary>
+/// Migrates renamed/deleted ModelIds in completed run history saves.
+/// Same renames as SerializableRunV15ToV16, applied to the RunHistory schema.
+/// </summary>
 [Migration(typeof(RunHistory), 8, 9)]
 public class RunHistoryV8ToV9 : MigrationBase<RunHistory>
 {

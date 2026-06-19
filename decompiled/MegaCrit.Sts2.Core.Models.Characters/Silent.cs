@@ -25,6 +25,10 @@ public sealed class Silent : CharacterModel
 
 	public override CharacterGender Gender => CharacterGender.Feminine;
 
+	/// <remarks>
+	/// You'll always unlock Silent by doing a run with Ironclad since he's the only character you start out with, but
+	/// technically you unlock her by doing a run with any character.
+	/// </remarks>
 	protected override CharacterModel? UnlocksAfterRunAs => null;
 
 	public override int StartingHp => 70;

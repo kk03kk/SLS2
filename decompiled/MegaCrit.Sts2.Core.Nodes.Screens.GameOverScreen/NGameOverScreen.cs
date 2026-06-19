@@ -45,122 +45,296 @@ namespace MegaCrit.Sts2.Core.Nodes.Screens.GameOverScreen;
 [ScriptPath("res://src/Core/Nodes/Screens/GameOverScreen/NGameOverScreen.cs")]
 public class NGameOverScreen : NClickableControl, IOverlayScreen, IScreenContext
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : NClickableControl.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 
+		/// <summary>
+		/// Cached name for the 'DiscoveredAnyEpochs' method.
+		/// </summary>
 		public static readonly StringName DiscoveredAnyEpochs = "DiscoveredAnyEpochs";
 
+		/// <summary>
+		/// Cached name for the 'InitializeBannerAndQuote' method.
+		/// </summary>
 		public static readonly StringName InitializeBannerAndQuote = "InitializeBannerAndQuote";
 
+		/// <summary>
+		/// Cached name for the 'OpenSummaryScreen' method.
+		/// </summary>
 		public static readonly StringName OpenSummaryScreen = "OpenSummaryScreen";
 
+		/// <summary>
+		/// Cached name for the 'AddScoreLine' method.
+		/// </summary>
 		public static readonly StringName AddScoreLine = "AddScoreLine";
 
+		/// <summary>
+		/// Cached name for the 'PlayUnlockSfx' method.
+		/// </summary>
 		public static readonly StringName PlayUnlockSfx = "PlayUnlockSfx";
 
+		/// <summary>
+		/// Cached name for the 'TweenScore' method.
+		/// </summary>
 		public static readonly StringName TweenScore = "TweenScore";
 
+		/// <summary>
+		/// Cached name for the 'GetScoreThreshold' method.
+		/// </summary>
 		public static readonly StringName GetScoreThreshold = "GetScoreThreshold";
 
+		/// <summary>
+		/// Cached name for the 'ShowLeaderboard' method.
+		/// </summary>
 		public static readonly StringName ShowLeaderboard = "ShowLeaderboard";
 
+		/// <summary>
+		/// Cached name for the 'HideSummary' method.
+		/// </summary>
 		public static readonly StringName HideSummary = "HideSummary";
 
+		/// <summary>
+		/// Cached name for the 'OpenRunHistoryScreen' method.
+		/// </summary>
 		public static readonly StringName OpenRunHistoryScreen = "OpenRunHistoryScreen";
 
+		/// <summary>
+		/// Cached name for the 'OnMainMenuButtonPressed' method.
+		/// </summary>
 		public static readonly StringName OnMainMenuButtonPressed = "OnMainMenuButtonPressed";
 
+		/// <summary>
+		/// Cached name for the 'OpenTimeline' method.
+		/// </summary>
 		public static readonly StringName OpenTimeline = "OpenTimeline";
 
+		/// <summary>
+		/// Cached name for the 'ReturnToMainMenu' method.
+		/// </summary>
 		public static readonly StringName ReturnToMainMenu = "ReturnToMainMenu";
 
+		/// <summary>
+		/// Cached name for the 'AfterOverlayOpened' method.
+		/// </summary>
 		public static readonly StringName AfterOverlayOpened = "AfterOverlayOpened";
 
+		/// <summary>
+		/// Cached name for the 'MoveCreaturesToDifferentLayerAndDisableUi' method.
+		/// </summary>
 		public static readonly StringName MoveCreaturesToDifferentLayerAndDisableUi = "MoveCreaturesToDifferentLayerAndDisableUi";
 
+		/// <summary>
+		/// Cached name for the 'UpdateBackstopMaterial' method.
+		/// </summary>
 		public static readonly StringName UpdateBackstopMaterial = "UpdateBackstopMaterial";
 
+		/// <summary>
+		/// Cached name for the 'AfterOverlayClosed' method.
+		/// </summary>
 		public static readonly StringName AfterOverlayClosed = "AfterOverlayClosed";
 
+		/// <summary>
+		/// Cached name for the 'AfterOverlayShown' method.
+		/// </summary>
 		public static readonly StringName AfterOverlayShown = "AfterOverlayShown";
 
+		/// <summary>
+		/// Cached name for the 'AfterOverlayHidden' method.
+		/// </summary>
 		public static readonly StringName AfterOverlayHidden = "AfterOverlayHidden";
 
+		/// <summary>
+		/// Cached name for the 'GetAscensionMulti' method.
+		/// </summary>
 		public static readonly StringName GetAscensionMulti = "GetAscensionMulti";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : NClickableControl.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'ScreenType' property.
+		/// </summary>
 		public static readonly StringName ScreenType = "ScreenType";
 
+		/// <summary>
+		/// Cached name for the 'UseSharedBackstop' property.
+		/// </summary>
 		public static readonly StringName UseSharedBackstop = "UseSharedBackstop";
 
+		/// <summary>
+		/// Cached name for the 'FocusedControlFromTopBar' property.
+		/// </summary>
 		public static readonly StringName FocusedControlFromTopBar = "FocusedControlFromTopBar";
 
+		/// <summary>
+		/// Cached name for the 'DefaultFocusedControl' property.
+		/// </summary>
 		public static readonly StringName DefaultFocusedControl = "DefaultFocusedControl";
 
+		/// <summary>
+		/// Cached name for the '_continueButton' field.
+		/// </summary>
 		public static readonly StringName _continueButton = "_continueButton";
 
+		/// <summary>
+		/// Cached name for the '_viewRunButton' field.
+		/// </summary>
 		public static readonly StringName _viewRunButton = "_viewRunButton";
 
+		/// <summary>
+		/// Cached name for the '_mainMenuButton' field.
+		/// </summary>
 		public static readonly StringName _mainMenuButton = "_mainMenuButton";
 
+		/// <summary>
+		/// Cached name for the '_leaderboardButton' field.
+		/// </summary>
 		public static readonly StringName _leaderboardButton = "_leaderboardButton";
 
+		/// <summary>
+		/// Cached name for the '_badgeContainer' field.
+		/// </summary>
 		public static readonly StringName _badgeContainer = "_badgeContainer";
 
+		/// <summary>
+		/// Cached name for the '_scoreLineContainer' field.
+		/// </summary>
 		public static readonly StringName _scoreLineContainer = "_scoreLineContainer";
 
+		/// <summary>
+		/// Cached name for the '_scoreBar' field.
+		/// </summary>
 		public static readonly StringName _scoreBar = "_scoreBar";
 
+		/// <summary>
+		/// Cached name for the '_scoreFg' field.
+		/// </summary>
 		public static readonly StringName _scoreFg = "_scoreFg";
 
+		/// <summary>
+		/// Cached name for the '_scoreProgress' field.
+		/// </summary>
 		public static readonly StringName _scoreProgress = "_scoreProgress";
 
+		/// <summary>
+		/// Cached name for the '_unlocksRemaining' field.
+		/// </summary>
 		public static readonly StringName _unlocksRemaining = "_unlocksRemaining";
 
+		/// <summary>
+		/// Cached name for the '_score' field.
+		/// </summary>
 		public static readonly StringName _score = "_score";
 
+		/// <summary>
+		/// Cached name for the '_scoreThreshold' field.
+		/// </summary>
 		public static readonly StringName _scoreThreshold = "_scoreThreshold";
 
+		/// <summary>
+		/// Cached name for the '_scoreUnlockedEpochId' field.
+		/// </summary>
 		public static readonly StringName _scoreUnlockedEpochId = "_scoreUnlockedEpochId";
 
+		/// <summary>
+		/// Cached name for the '_leaderboard' field.
+		/// </summary>
 		public static readonly StringName _leaderboard = "_leaderboard";
 
+		/// <summary>
+		/// Cached name for the '_creatureContainer' field.
+		/// </summary>
 		public static readonly StringName _creatureContainer = "_creatureContainer";
 
+		/// <summary>
+		/// Cached name for the '_summaryContainer' field.
+		/// </summary>
 		public static readonly StringName _summaryContainer = "_summaryContainer";
 
+		/// <summary>
+		/// Cached name for the '_fullBlackBackstop' field.
+		/// </summary>
 		public static readonly StringName _fullBlackBackstop = "_fullBlackBackstop";
 
+		/// <summary>
+		/// Cached name for the '_summaryBackstop' field.
+		/// </summary>
 		public static readonly StringName _summaryBackstop = "_summaryBackstop";
 
+		/// <summary>
+		/// Cached name for the '_backstop' field.
+		/// </summary>
 		public static readonly StringName _backstop = "_backstop";
 
+		/// <summary>
+		/// Cached name for the '_banner' field.
+		/// </summary>
 		public static readonly StringName _banner = "_banner";
 
+		/// <summary>
+		/// Cached name for the '_deathQuote' field.
+		/// </summary>
 		public static readonly StringName _deathQuote = "_deathQuote";
 
+		/// <summary>
+		/// Cached name for the '_victoryDamageLabel' field.
+		/// </summary>
 		public static readonly StringName _victoryDamageLabel = "_victoryDamageLabel";
 
+		/// <summary>
+		/// Cached name for the '_uiNode' field.
+		/// </summary>
 		public static readonly StringName _uiNode = "_uiNode";
 
+		/// <summary>
+		/// Cached name for the '_screenshakeContainer' field.
+		/// </summary>
 		public static readonly StringName _screenshakeContainer = "_screenshakeContainer";
 
+		/// <summary>
+		/// Cached name for the '_discoveryLabel' field.
+		/// </summary>
 		public static readonly StringName _discoveryLabel = "_discoveryLabel";
 
+		/// <summary>
+		/// Cached name for the '_encounterQuote' field.
+		/// </summary>
 		public static readonly StringName _encounterQuote = "_encounterQuote";
 
+		/// <summary>
+		/// Cached name for the '_isAnimatingSummary' field.
+		/// </summary>
 		public static readonly StringName _isAnimatingSummary = "_isAnimatingSummary";
 
+		/// <summary>
+		/// Cached name for the '_backstopMaterial' field.
+		/// </summary>
 		public static readonly StringName _backstopMaterial = "_backstopMaterial";
 
+		/// <summary>
+		/// Cached name for the '_quoteTween' field.
+		/// </summary>
 		public static readonly StringName _quoteTween = "_quoteTween";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : NClickableControl.SignalName
 	{
 	}
@@ -395,6 +569,10 @@ public class NGameOverScreen : NClickableControl, IOverlayScreen, IScreenContext
 		}
 	}
 
+	/// <summary>
+	/// Create an instance of this screen.
+	/// Null if we're in test mode.
+	/// </summary>
 	public static NGameOverScreen? Create(RunState runState, SerializableRun serializableRun)
 	{
 		if (TestMode.IsOn)
@@ -408,6 +586,10 @@ public class NGameOverScreen : NClickableControl, IOverlayScreen, IScreenContext
 		return nGameOverScreen;
 	}
 
+	/// <summary>
+	/// Called when the player continues to the score/badge breakdown.
+	/// </summary>
+	/// <param name="_"></param>
 	private void OpenSummaryScreen(NButton _)
 	{
 		_isAnimatingSummary = true;
@@ -419,6 +601,10 @@ public class NGameOverScreen : NClickableControl, IOverlayScreen, IScreenContext
 		TaskHelper.RunSafely(AnimateRunSummary());
 	}
 
+	/// <summary>
+	/// Animates the second page of our Game Over screen
+	/// </summary>
+	/// <exception cref="T:System.InvalidOperationException"></exception>
 	private async Task AnimateRunSummary()
 	{
 		Tween tween = CreateTween();
@@ -512,6 +698,9 @@ public class NGameOverScreen : NClickableControl, IOverlayScreen, IScreenContext
 		await Cmd.Wait(0.5f, _cts.Token);
 	}
 
+	/// <summary>
+	/// Based on the badges you get, save them to the progress file.
+	/// </summary>
 	private void SaveBadgesToProgress(List<Badge> badgesToSave)
 	{
 		CharacterStats characterStats = SaveManager.Instance.Progress.CharacterStats[_localPlayer.Character.Id];
@@ -537,6 +726,9 @@ public class NGameOverScreen : NClickableControl, IOverlayScreen, IScreenContext
 		}
 	}
 
+	/// <summary>
+	/// Helper function to create score lines, add child, and place it in a list to bulk animate later.
+	/// </summary>
 	private void AddScoreLine(string locEntryKey, string? locAmountKey = null, int amount = 0, string scoreLabel = "ERROR", string? iconPath = null)
 	{
 		LocString locString = new LocString("game_over_screen", locEntryKey);
@@ -669,6 +861,12 @@ public class NGameOverScreen : NClickableControl, IOverlayScreen, IScreenContext
 		_scoreProgress.SetTextAutoSize($"[{value}/{_scoreThreshold}]");
 	}
 
+	/// <summary>
+	/// Lookup table of score thresholds based on the total number of unlocks the player has completed.
+	/// Must match: <see cref="M:MegaCrit.Sts2.Core.Saves.SaveManager.GetEpochIdForUnlock" />.
+	/// </summary>
+	/// <param name="unlocksRemaining"></param>
+	/// <returns></returns>
 	private int GetScoreThreshold(int unlocksRemaining)
 	{
 		return (18 - unlocksRemaining) switch
@@ -778,6 +976,10 @@ public class NGameOverScreen : NClickableControl, IOverlayScreen, IScreenContext
 		TaskHelper.RunSafely(AnimateIn());
 	}
 
+	/// <summary>
+	/// We move the Creature nodes so they render above the game over screen backstop!
+	/// Drama!
+	/// </summary>
 	private void MoveCreaturesToDifferentLayerAndDisableUi()
 	{
 		List<NCreatureVisuals> list = new List<NCreatureVisuals>();
@@ -849,6 +1051,9 @@ public class NGameOverScreen : NClickableControl, IOverlayScreen, IScreenContext
 		}
 	}
 
+	/// <summary>
+	/// Called when the Game Over screen appears (immediately upon Death/Victory)
+	/// </summary>
 	private async Task AnimateIn()
 	{
 		Tween backstopTween = CreateTween();
@@ -906,6 +1111,11 @@ public class NGameOverScreen : NClickableControl, IOverlayScreen, IScreenContext
 		base.Visible = false;
 	}
 
+	/// <summary>
+	/// Little helper function that creates the x1.1 sort of string for the Score Line.
+	/// </summary>
+	/// <param name="ascension"></param>
+	/// <returns></returns>
 	private string GetAscensionMulti(int ascension)
 	{
 		int value = ascension / 10 + 1;
@@ -917,6 +1127,11 @@ public class NGameOverScreen : NClickableControl, IOverlayScreen, IScreenContext
 		return value.ToString();
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<MethodInfo> GetGodotMethodList()
 	{
@@ -977,6 +1192,7 @@ public class NGameOverScreen : NClickableControl, IOverlayScreen, IScreenContext
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -1112,6 +1328,7 @@ public class NGameOverScreen : NClickableControl, IOverlayScreen, IScreenContext
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -1206,6 +1423,7 @@ public class NGameOverScreen : NClickableControl, IOverlayScreen, IScreenContext
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -1357,6 +1575,7 @@ public class NGameOverScreen : NClickableControl, IOverlayScreen, IScreenContext
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -1531,6 +1750,11 @@ public class NGameOverScreen : NClickableControl, IOverlayScreen, IScreenContext
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -1571,6 +1795,7 @@ public class NGameOverScreen : NClickableControl, IOverlayScreen, IScreenContext
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -1606,6 +1831,7 @@ public class NGameOverScreen : NClickableControl, IOverlayScreen, IScreenContext
 		info.AddProperty(PropertyName._quoteTween, Variant.From(in _quoteTween));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

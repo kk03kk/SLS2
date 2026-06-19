@@ -22,6 +22,10 @@ public sealed class UnceasingTop : RelicModel
 		}
 	}
 
+	/// <remarks>
+	/// Don't trigger before hand draw or after hand flush, because if a card is autoplayed during this time, the
+	/// player's hand will always be empty, so Unceasing Top will always draw.
+	/// </remarks>
 	private static bool IsValidPhase(PlayerTurnPhase phase)
 	{
 		if ((uint)(phase - 2) <= 2u)

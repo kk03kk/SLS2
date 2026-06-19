@@ -5,6 +5,9 @@ using MegaCrit.Sts2.Core.Multiplayer.Transport;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Messages.Game.Flavor;
 
+/// <summary>
+/// Sent when a player clicks on a map coordinate that they've already voted on.
+/// </summary>
 public struct MapPingMessage : INetMessage, IPacketSerializable
 {
 	public required MapCoord coord;

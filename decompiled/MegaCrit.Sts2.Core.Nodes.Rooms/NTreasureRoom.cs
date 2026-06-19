@@ -25,59 +25,137 @@ using MegaCrit.Sts2.Core.TestSupport;
 
 namespace MegaCrit.Sts2.Core.Nodes.Rooms;
 
+/// <summary>
+/// Manages the UI flow for a treasure room.
+/// </summary>
 [ScriptPath("res://src/Core/Nodes/Rooms/NTreasureRoom.cs")]
 public class NTreasureRoom : Control, IScreenContext, IRoomWithProceedButton
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Control.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the '_EnterTree' method.
+		/// </summary>
 		public new static readonly StringName _EnterTree = "_EnterTree";
 
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 
+		/// <summary>
+		/// Cached name for the 'OnProceedButtonPressed' method.
+		/// </summary>
 		public static readonly StringName OnProceedButtonPressed = "OnProceedButtonPressed";
 
+		/// <summary>
+		/// Cached name for the 'RefreshVotes' method.
+		/// </summary>
 		public static readonly StringName RefreshVotes = "RefreshVotes";
 
+		/// <summary>
+		/// Cached name for the 'OnProceedButtonReleased' method.
+		/// </summary>
 		public static readonly StringName OnProceedButtonReleased = "OnProceedButtonReleased";
 
+		/// <summary>
+		/// Cached name for the 'OnChestButtonReleased' method.
+		/// </summary>
 		public static readonly StringName OnChestButtonReleased = "OnChestButtonReleased";
 
+		/// <summary>
+		/// Cached name for the 'OnMouseEntered' method.
+		/// </summary>
 		public static readonly StringName OnMouseEntered = "OnMouseEntered";
 
+		/// <summary>
+		/// Cached name for the 'OnMouseExited' method.
+		/// </summary>
 		public static readonly StringName OnMouseExited = "OnMouseExited";
 
+		/// <summary>
+		/// Cached name for the 'UpdateChestSkin' method.
+		/// </summary>
 		public static readonly StringName UpdateChestSkin = "UpdateChestSkin";
 
+		/// <summary>
+		/// Cached name for the 'OnActiveScreenChanged' method.
+		/// </summary>
 		public static readonly StringName OnActiveScreenChanged = "OnActiveScreenChanged";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Control.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'ProceedButton' property.
+		/// </summary>
 		public static readonly StringName ProceedButton = "ProceedButton";
 
+		/// <summary>
+		/// Cached name for the 'DefaultFocusedControl' property.
+		/// </summary>
 		public static readonly StringName DefaultFocusedControl = "DefaultFocusedControl";
 
+		/// <summary>
+		/// Cached name for the '_banner' field.
+		/// </summary>
 		public static readonly StringName _banner = "_banner";
 
+		/// <summary>
+		/// Cached name for the '_chestButton' field.
+		/// </summary>
 		public static readonly StringName _chestButton = "_chestButton";
 
+		/// <summary>
+		/// Cached name for the '_chestNode' field.
+		/// </summary>
 		public static readonly StringName _chestNode = "_chestNode";
 
+		/// <summary>
+		/// Cached name for the '_proceedButton' field.
+		/// </summary>
 		public static readonly StringName _proceedButton = "_proceedButton";
 
+		/// <summary>
+		/// Cached name for the '_goldParticles' field.
+		/// </summary>
 		public static readonly StringName _goldParticles = "_goldParticles";
 
+		/// <summary>
+		/// Cached name for the '_relicCollection' field.
+		/// </summary>
 		public static readonly StringName _relicCollection = "_relicCollection";
 
+		/// <summary>
+		/// Cached name for the '_skipVoteContainer' field.
+		/// </summary>
 		public static readonly StringName _skipVoteContainer = "_skipVoteContainer";
 
+		/// <summary>
+		/// Cached name for the '_isRelicCollectionOpen' field.
+		/// </summary>
 		public static readonly StringName _isRelicCollectionOpen = "_isRelicCollectionOpen";
 
+		/// <summary>
+		/// Cached name for the '_hasChestBeenOpened' field.
+		/// </summary>
 		public static readonly StringName _hasChestBeenOpened = "_hasChestBeenOpened";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Control.SignalName
 	{
 	}
@@ -343,6 +421,11 @@ public class NTreasureRoom : Control, IScreenContext, IRoomWithProceedButton
 		return false;
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -373,6 +456,7 @@ public class NTreasureRoom : Control, IScreenContext, IRoomWithProceedButton
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -445,6 +529,7 @@ public class NTreasureRoom : Control, IScreenContext, IRoomWithProceedButton
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -495,6 +580,7 @@ public class NTreasureRoom : Control, IScreenContext, IRoomWithProceedButton
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -546,6 +632,7 @@ public class NTreasureRoom : Control, IScreenContext, IRoomWithProceedButton
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -607,6 +694,11 @@ public class NTreasureRoom : Control, IScreenContext, IRoomWithProceedButton
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -625,6 +717,7 @@ public class NTreasureRoom : Control, IScreenContext, IRoomWithProceedButton
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -640,6 +733,7 @@ public class NTreasureRoom : Control, IScreenContext, IRoomWithProceedButton
 		info.AddProperty(PropertyName._hasChestBeenOpened, Variant.From(in _hasChestBeenOpened));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

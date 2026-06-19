@@ -28,8 +28,6 @@ public static class ModManager
 
 	private static List<Mod> _mods = new List<Mod>();
 
-	private static bool _initialized;
-
 	private static Callback<ItemInstalled_t>? _steamItemInstalledCallback;
 
 	private static ModSettings? _settings;
@@ -42,14 +40,29 @@ public static class ModManager
 
 	private static bool? _hasHarmonyPatches;
 
+	public static ModManagerState State { get; private set; }
+
 	public static IReadOnlyList<Mod> Mods => _mods;
 
 	public static bool PlayerAgreedToModLoading => _settings?.PlayerAgreedToModLoading ?? false;
 
+	/// <summary>
+	/// Called when a new mod is detected. Use this to display a warning at runtime if the user adds new mods.
+	/// </summary>
 	public static event Action<Mod>? OnModDetected;
 
+	/// <summary>
+	/// Used by mods to hook into the metrics upload process.
+	/// This is unused by STS2 code. It is only used by mods, and is called when we would ordinarily upload metrics.
+	/// </summary>
 	public static event MetricsUploadHook? OnMetricsUpload;
 
+	/// <summary>
+	/// Loads all mods from the appropriate directories. This includes the "mods" directory next to the executable, as
+	/// well as Steam workshop files.
+	/// This should be called as early as possible in the game's initialization process so that downstream classes
+	/// (ModelDb, LocManager) pick up the changes that the mods apply.
+	/// </summary>
 	public static async Task Initialize(IModManagerFileIo fileIo, ModSettings? settings, SemanticVersion? gameVersion)
 	{
 		_settings = settings;
@@ -62,61 +75,66 @@ public static class ModManager
 		if (CommandLineHelper.HasArg("nomods"))
 		{
 			Log.Info("'nomods' passed as executable argument, skipping mod initialization");
+			State = ModManagerState.Skipped;
+			return;
 		}
-		else
+		if (TestMode.IsOn && !_allowInitForTests)
 		{
-			if (TestMode.IsOn && !_allowInitForTests)
-			{
-				return;
-			}
-			_allowInitForTests = false;
-			AppDomain.CurrentDomain.AssemblyResolve += HandleAssemblyResolveFailure;
-			string executablePath = OS.GetExecutablePath();
-			string directoryName = Path.GetDirectoryName(executablePath);
-			string path = Path.Combine(directoryName, "mods");
-			string path2 = Path.Combine(directoryName, "mods_STEAMTEST");
-			if (fileIo.DirectoryExists(path))
-			{
-				ReadModsInDirRecursive(path, ModSource.ModsDirectory, null);
-			}
-			if (fileIo.DirectoryExists(path2))
-			{
-				ReadModsInDirRecursive(path2, ModSource.SteamWorkshop, null);
-			}
-			if (SteamInitializer.Initialized)
-			{
-				await ReadSteamMods();
-			}
-			if (_mods.Count == 0)
-			{
-				return;
-			}
-			RemoveDisabledMods();
-			SortModList(_settings?.ModList ?? new List<SettingsSaveMod>());
-			foreach (Mod mod2 in _mods)
-			{
-				TryLoadMod(mod2);
-			}
-			if (IsRunningModded())
-			{
-				int value = _mods.Count((Mod m) => m.state == ModLoadState.Loaded);
-				Log.Info($" --- RUNNING MODDED! --- Loaded {value} mods ({_mods.Count} total)");
-			}
-			_initialized = true;
-			if (_settings == null)
-			{
-				return;
-			}
-			List<SettingsSaveMod> list = new List<SettingsSaveMod>();
-			foreach (Mod mod in _mods)
-			{
-				SettingsSaveMod settingsSaveMod = new SettingsSaveMod(mod);
-				bool isEnabled = _settings.ModList.FirstOrDefault((SettingsSaveMod m) => m.Id == mod.manifest?.id)?.IsEnabled ?? true;
-				settingsSaveMod.IsEnabled = isEnabled;
-				list.Add(settingsSaveMod);
-			}
-			_settings.ModList = list;
+			State = ModManagerState.Skipped;
+			return;
 		}
+		_allowInitForTests = false;
+		AppDomain.CurrentDomain.AssemblyResolve += HandleAssemblyResolveFailure;
+		string executablePath = OS.GetExecutablePath();
+		string directoryName = Path.GetDirectoryName(executablePath);
+		string path = Path.Combine(directoryName, "mods");
+		string path2 = Path.Combine(directoryName, "mods_STEAMTEST");
+		if (fileIo.DirectoryExists(path))
+		{
+			ReadModsInDirRecursive(path, ModSource.ModsDirectory, null);
+		}
+		if (fileIo.DirectoryExists(path2))
+		{
+			ReadModsInDirRecursive(path2, ModSource.SteamWorkshop, null);
+		}
+		if (SteamInitializer.Initialized)
+		{
+			await ReadSteamMods();
+		}
+		if (OS.IsDebugBuild())
+		{
+			await Task.Yield();
+		}
+		if (_mods.Count == 0)
+		{
+			State = ModManagerState.Initialized;
+			return;
+		}
+		RemoveDisabledMods();
+		SortModList(_settings?.ModList ?? new List<SettingsSaveMod>());
+		foreach (Mod mod2 in _mods)
+		{
+			TryLoadMod(mod2);
+		}
+		if (IsRunningModded())
+		{
+			int value = _mods.Count((Mod m) => m.state == ModLoadState.Loaded);
+			Log.Info($" --- RUNNING MODDED! --- Loaded {value} mods ({_mods.Count} total)");
+		}
+		State = ModManagerState.Initialized;
+		if (_settings == null)
+		{
+			return;
+		}
+		List<SettingsSaveMod> list = new List<SettingsSaveMod>();
+		foreach (Mod mod in _mods)
+		{
+			SettingsSaveMod settingsSaveMod = new SettingsSaveMod(mod);
+			bool isEnabled = _settings.ModList.FirstOrDefault((SettingsSaveMod m) => m.Id == mod.manifest?.id)?.IsEnabled ?? true;
+			settingsSaveMod.IsEnabled = isEnabled;
+			list.Add(settingsSaveMod);
+		}
+		_settings.ModList = list;
 	}
 
 	public static void ResetForTests()
@@ -126,13 +144,28 @@ public static class ModManager
 			throw new NotImplementedException("Tried to reset ModManager outside of tests! This is not allowed, as we cannot unload DLLs or PCKs");
 		}
 		_mods.Clear();
-		_initialized = false;
+		State = ModManagerState.None;
 		_settings = null;
 		_fileIo = null;
 		_allowInitForTests = true;
 		_circularDependencies.Clear();
 	}
 
+	/// <summary>
+	/// Sorts mods so that dependencies are loaded before the mods that depend on them (topological sort).
+	/// Uses Kahn's algorithm: https://en.wikipedia.org/wiki/Topological_sorting#Kahn's_algorithm
+	///
+	/// How it works:
+	///   1. Build a graph: count each mod's dependencies (in-degree) and track reverse edges (dependentsMap).
+	///   2. Seed a frontier queue with all mods that have zero dependencies (they're ready to load).
+	///   3. Dequeue a mod, add it to the sorted output, and decrement the in-degree of each mod that depends
+	///      on it. When a mod's in-degree reaches zero, all its dependencies are satisfied, so enqueue it.
+	///   4. When the queue is empty, any mod NOT in the sorted output is part of a dependency cycle (its
+	///      in-degree never reached zero because it's waiting on something that's waiting on it).
+	///
+	/// For mods with no dependency relationship between them, we use a PriorityQueue keyed by the user's
+	/// manual ordering (from settings) to keep the sort stable.
+	/// </summary>
 	private static void SortModList(List<SettingsSaveMod> manualOrdering)
 	{
 		List<Mod> list = new List<Mod>();
@@ -259,6 +292,10 @@ public static class ModManager
 		_mods = list5;
 	}
 
+	/// <summary>
+	/// If the user has subscribed to a mod via Steam workshop and also has it in their local directory, we never want
+	/// to load the Steam mod. This is to help mod developers in development.
+	/// </summary>
 	private static void RemoveDisabledMods()
 	{
 		HashSet<string> hashSet = new HashSet<string>();
@@ -289,6 +326,11 @@ public static class ModManager
 		}
 	}
 
+	/// <summary>
+	/// Recurses through the directory and reads all the mod PCKs and DLLs in it, putting it in the _mods list.
+	/// We allow mods in directories to give modders a little slack in how they organize their files.
+	/// Pass the newMods list if you wish to get the mods that have been newly read.
+	/// </summary>
 	private static void ReadModsInDirRecursive(string path, ModSource source, List<Mod>? newMods)
 	{
 		string[] array = _fileIo?.GetFilesAt(path) ?? Array.Empty<string>();
@@ -534,7 +576,7 @@ public static class ModManager
 			}
 		}
 		string value;
-		if (_initialized)
+		if (State != ModManagerState.None)
 		{
 			Log.Info("Skipping loading mod " + modId + ", can't load mods at runtime");
 			mod.state = ModLoadState.AddedAtRuntime;
@@ -756,6 +798,9 @@ public static class ModManager
 		}
 	}
 
+	/// <summary>
+	/// Calls the mod initializer on a type that has the ModInitializerAttribute on it.
+	/// </summary>
 	private static bool CallModInitializer(Type initializerType)
 	{
 		ModInitializerAttribute customAttribute = initializerType.GetCustomAttribute<ModInitializerAttribute>();
@@ -785,6 +830,10 @@ public static class ModManager
 		return true;
 	}
 
+	/// <summary>
+	/// Returns the filenames of all the loc tables available in loaded mods for the given language and filename.
+	/// For example, if "eng" and "cards.json" are provided, this returns all mods that supply a cards.json in english.
+	/// </summary>
 	public static IEnumerable<string> GetModdedLocTables(string language, string file)
 	{
 		foreach (Mod mod in _mods)
@@ -800,6 +849,10 @@ public static class ModManager
 		}
 	}
 
+	/// <summary>
+	/// Returns a list of the names of all loaded mods that affect gameplay.
+	/// For multiplayer - used to compare mods between different players.
+	/// </summary>
 	public static List<string>? GetGameplayRelevantModNameList()
 	{
 		if (!IsRunningModded())
@@ -811,6 +864,27 @@ public static class ModManager
 			select m.manifest?.id + "-" + m.manifest?.version).ToList();
 	}
 
+	/// <summary>
+	/// Returns a list of the names of all loaded mods that do not affect gameplay.
+	/// </summary>
+	public static List<string>? GetNonGameplayRelevantModNameList()
+	{
+		if (!IsRunningModded())
+		{
+			return null;
+		}
+		return (from m in GetLoadedMods()
+			where !(m.manifest?.affectsGameplay ?? true)
+			select m.manifest?.id + "-" + m.manifest?.version).ToList();
+	}
+
+	/// <summary>
+	/// Resolves assemblies loaded by mods that may have a different version.
+	/// When writing a mod DLL, the implementer may target a STS2 DLL that does not match the current version. When the
+	/// dotnet runtime attempts to load the DLL, it tries to strictly match the version. Usually, we don't really need
+	/// it to - a lot of our APIs don't change that often. Attaching this method to the AssemblyResolve event allows us
+	/// to force dotnet to resolve the assembly to the correct one.
+	/// </summary>
 	private static Assembly HandleAssemblyResolveFailure(object? source, ResolveEventArgs ev)
 	{
 		if (ev.Name.StartsWith("sts2,"))
@@ -826,6 +900,9 @@ public static class ModManager
 		return null;
 	}
 
+	/// <summary>
+	/// Called by the metrics uploader when metrics would be uploaded, but are not because there are mods present.
+	/// </summary>
 	public static void CallMetricsHooks(SerializableRun run, bool isVictory, ulong localPlayerId)
 	{
 		ModManager.OnMetricsUpload?.Invoke(run, isVictory, localPlayerId);

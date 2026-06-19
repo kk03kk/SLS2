@@ -11,6 +11,11 @@ using MegaCrit.Sts2.Core.Timeline;
 
 namespace MegaCrit.Sts2.Core.Saves;
 
+/// <summary>
+/// Domain type for player progress. Separates runtime representation from the JSON wire format
+/// (<see cref="T:MegaCrit.Sts2.Core.Saves.SerializableProgress" />). Uses dictionaries for stat lookups and hashsets for deduplication
+/// of discovered content.
+/// </summary>
 public class ProgressState
 {
 	private static readonly Dictionary<string, Achievement> _achievementsByName = BuildAchievementLookup();
@@ -145,6 +150,9 @@ public class ProgressState
 
 	public int NumberOfRuns => Wins + Losses;
 
+	/// <summary>
+	/// Creates an empty ProgressState. Used for new save files and test setup.
+	/// </summary>
 	public static ProgressState CreateDefault()
 	{
 		return FromSerializable(new SerializableProgress(), new DeserializationContext());
@@ -297,6 +305,9 @@ public class ProgressState
 		return _unlockedAchievements.ContainsKey(achievement);
 	}
 
+	/// <summary>
+	/// Sets an epoch to Obtained if its slot exists, or creates a new ObtainedNoSlot entry.
+	/// </summary>
 	public void ObtainEpoch(string epochId)
 	{
 		SerializableEpoch serializableEpoch = _epochs.FirstOrDefault((SerializableEpoch e) => e.Id == epochId);
@@ -309,6 +320,11 @@ public class ProgressState
 		FilterAndSortEpochs();
 	}
 
+	/// <summary>
+	/// Sets or creates an epoch at any desired state. Used by timeline expansions.
+	/// Bypasses <see cref="M:MegaCrit.Sts2.Core.Saves.SerializableEpoch.SetObtained(MegaCrit.Sts2.Core.Saves.EpochState)" />'s one-way guard so the
+	/// state can be moved in any direction (e.g. NotObtained to Revealed).
+	/// </summary>
 	public void ObtainEpochOverride(string epochId, EpochState state)
 	{
 		SerializableEpoch serializableEpoch = _epochs.FirstOrDefault((SerializableEpoch e) => e.Id == epochId);
@@ -327,6 +343,11 @@ public class ProgressState
 		}
 	}
 
+	/// <summary>
+	/// Opens a timeline slot for an epoch. If no entry exists, creates a NotObtained entry.
+	/// If the epoch was earned before its slot existed (ObtainedNoSlot), promotes it to Obtained.
+	/// Does NOT modify ObtainDate (the date was set when the epoch was earned, not when the slot opened).
+	/// </summary>
 	public void UnlockSlot(string epochId)
 	{
 		SerializableEpoch serializableEpoch = _epochs.FirstOrDefault((SerializableEpoch e) => e.Id == epochId);
@@ -345,6 +366,10 @@ public class ProgressState
 		Log.Error($"Slot unlocked for {epochId} but it's in an invalid state: {serializableEpoch.State}");
 	}
 
+	/// <summary>
+	/// Sets an obtained epoch to Revealed state. Pure data mutation only.
+	/// The metric upload stays on <see cref="M:MegaCrit.Sts2.Core.Saves.SaveManager.RevealEpoch(System.String,System.Boolean)" />.
+	/// </summary>
 	public void RevealEpoch(string epochId)
 	{
 		SerializableEpoch serializableEpoch = _epochs.FirstOrDefault((SerializableEpoch e) => e.Id == epochId);
@@ -355,6 +380,9 @@ public class ProgressState
 		serializableEpoch.State = EpochState.Revealed;
 	}
 
+	/// <summary>
+	/// Clears all epochs. Used by the debug Reset Progress button.
+	/// </summary>
 	public void ResetEpochs()
 	{
 		_epochs.Clear();
@@ -693,6 +721,11 @@ public class ProgressState
 		ctx.PopPath();
 	}
 
+	/// <summary>
+	/// For each Revealed epoch, ensures all epochs it would expand via
+	/// <see cref="M:MegaCrit.Sts2.Core.Timeline.EpochModel.GetTimelineExpansion" /> have slot entries.
+	/// Promotes ObtainedNoSlot to Obtained and creates missing entries as NotObtained.
+	/// </summary>
 	private static void FixMissingSlots(List<SerializableEpoch> epochs, DeserializationContext ctx)
 	{
 		Dictionary<string, SerializableEpoch> dictionary = new Dictionary<string, SerializableEpoch>();

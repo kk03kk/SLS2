@@ -7,18 +7,33 @@ using Godot.NativeInterop;
 
 namespace MegaCrit.Sts2.Core.Nodes.Screens.Shops;
 
+/// <summary>
+/// Manages the shop items for the fake merchant shop. We need this because we need to override the default controller navigation
+/// </summary>
 [ScriptPath("res://src/Core/Nodes/Screens/Shops/NFakeMerchantInventory.cs")]
 public class NFakeMerchantInventory : NMerchantInventory
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : NMerchantInventory.MethodName
 	{
+		/// <summary>
+		/// Cached name for the 'UpdateNavigation' method.
+		/// </summary>
 		public new static readonly StringName UpdateNavigation = "UpdateNavigation";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : NMerchantInventory.PropertyName
 	{
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : NMerchantInventory.SignalName
 	{
 	}
@@ -65,6 +80,11 @@ public class NFakeMerchantInventory : NMerchantInventory
 		}
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<MethodInfo> GetGodotMethodList()
 	{
@@ -73,6 +93,7 @@ public class NFakeMerchantInventory : NMerchantInventory
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -85,6 +106,7 @@ public class NFakeMerchantInventory : NMerchantInventory
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -95,12 +117,14 @@ public class NFakeMerchantInventory : NMerchantInventory
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
 		base.SaveGodotObjectData(info);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

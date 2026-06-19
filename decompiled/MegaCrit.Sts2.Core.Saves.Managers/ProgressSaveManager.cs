@@ -106,11 +106,17 @@ public class ProgressSaveManager
 		return readSaveResult;
 	}
 
+	/// <summary>
+	/// Generate an unlock state from the current progress save.
+	/// </summary>
 	public UnlockState GenerateUnlockState()
 	{
 		return new UnlockState(Progress);
 	}
 
+	/// <summary>
+	/// Called after a loss. Marks the player as having lost to an encounter (not a monster).
+	/// </summary>
 	private void IncrementEncounterLoss(ModelId characterId, ModelId encounterId)
 	{
 		EncounterStats orCreateEncounterStats = Progress.GetOrCreateEncounterStats(encounterId);
@@ -132,6 +138,9 @@ public class ProgressSaveManager
 		}
 	}
 
+	/// <summary>
+	/// Called after a loss. Marks the player as having lost to a specific monster in an encounter.
+	/// </summary>
 	private void IncrementEnemyFightLoss(ModelId characterId, ModelId monster)
 	{
 		EnemyStats orCreateEnemyStats = Progress.GetOrCreateEnemyStats(monster);
@@ -177,6 +186,9 @@ public class ProgressSaveManager
 		}
 	}
 
+	/// <summary>
+	/// Called whenever a run is completed. This could be Death, Victory, or Abandon.
+	/// </summary>
 	public void UpdateWithRunData(SerializableRun serializableRun, bool victory)
 	{
 		bool flag = serializableRun.Players.Count == 1;
@@ -319,6 +331,10 @@ public class ProgressSaveManager
 		SaveProgress();
 	}
 
+	/// <summary>
+	/// Check for Epoch-related unlocks at the end of each run.
+	/// Singleplayer only.
+	/// </summary>
 	private void UpdateEpochsPostRun(SerializablePlayer serializablePlayer, SerializableRun serializableRun, bool victory)
 	{
 		TryObtainEpochPostRun(EpochModel.Get<NeowEpoch>(), serializablePlayer, serializableRun);
@@ -339,6 +355,10 @@ public class ProgressSaveManager
 		}
 	}
 
+	/// <summary>
+	/// If you complete a run with a character for the first time,
+	/// there's generally an unlock for another character.
+	/// </summary>
 	private void PostRunUnlockCharacterEpochCheck(SerializablePlayer serializablePlayer, SerializableRun serializableRun)
 	{
 		CharacterModel byId = ModelDb.GetById<CharacterModel>(serializablePlayer.CharacterId);
@@ -363,6 +383,10 @@ public class ProgressSaveManager
 		}
 	}
 
+	/// <summary>
+	/// When the player completes Ascension 1 they unlock Character Epoch 7.
+	/// This unlock grants the player the means to Kill the Architect and 3 cards.
+	/// </summary>
 	private void CheckAscensionOneCompleted(SerializablePlayer serializablePlayer, SerializableRun serializableRun)
 	{
 		if (serializableRun.Ascension == 1)
@@ -377,6 +401,10 @@ public class ProgressSaveManager
 		}
 	}
 
+	/// <summary>
+	/// Checks for Character5Epoch for all characters.
+	/// Requires defeating 15 Elites in the game with the character.
+	/// </summary>
 	private void CheckFifteenElitesDefeatedEpoch(Player localPlayer)
 	{
 		CharacterModel character = localPlayer.Character;
@@ -450,6 +478,10 @@ public class ProgressSaveManager
 		}
 	}
 
+	/// <summary>
+	/// Checks for Character6Epoch for all characters.
+	/// Requires defeating 15 Bosses in the game with the character.
+	/// </summary>
 	private void CheckFifteenBossesDefeatedEpoch(Player localPlayer)
 	{
 		CharacterModel character = localPlayer.Character;
@@ -522,6 +554,10 @@ public class ProgressSaveManager
 		}
 	}
 
+	/// <summary>
+	/// Helper function to obtain character unlocks 1, 2, and 3.
+	/// Requires the player to defeat a boss in an act for the first time (for each character!)
+	/// </summary>
 	private void ObtainCharUnlockEpoch(Player localPlayer, int act)
 	{
 		if (localPlayer.Character.IsPlayable)
@@ -557,6 +593,16 @@ public class ProgressSaveManager
 		}
 	}
 
+	/// <summary>
+	/// Called mid-run (like when you kill a boss that unlocks an Epoch).
+	/// If this Epoch's slot is available, we obtain it and return true.
+	/// We return a bool so callers can log or show VFX accordingly.
+	/// </summary>
+	/// <param name="epoch">Epoch to try to obtain.</param>
+	/// <param name="localPlayer">The local player's Player instance.</param>
+	/// <returns>
+	/// True if you Obtained a new Epoch, false if not (you already have it OR the slot is unavailable).
+	/// </returns>
 	private bool TryObtainEpochMidRun(EpochModel epoch, Player localPlayer)
 	{
 		if (localPlayer.RunState.GameMode.AreAchievementsAndEpochsLocked())
@@ -571,6 +617,17 @@ public class ProgressSaveManager
 		return true;
 	}
 
+	/// <summary>
+	/// Called post-run (like after abandoning your first run, which unlocks the Silent).
+	/// If this Epoch's slot is available, we obtain it and return true.
+	/// We return a bool so callers can log or show VFX accordingly.
+	/// </summary>
+	/// <param name="epoch">Epoch to try to obtain.</param>
+	/// <param name="serializablePlayer">The serializable version of the local player's Player instance.</param>
+	/// <param name="serializableRun">The serializable version of the run.</param>
+	/// <returns>
+	/// True if you Obtained a new Epoch, false if not (you already have it OR the slot is unavailable).
+	/// </returns>
 	private bool TryObtainEpochPostRun(EpochModel epoch, SerializablePlayer serializablePlayer, SerializableRun serializableRun)
 	{
 		if (serializableRun.GameMode.AreAchievementsAndEpochsLocked())
@@ -585,6 +642,16 @@ public class ProgressSaveManager
 		return true;
 	}
 
+	/// <summary>
+	/// WARNING: This should only be called by <see cref="M:MegaCrit.Sts2.Core.Saves.Managers.ProgressSaveManager.TryObtainEpochMidRun(MegaCrit.Sts2.Core.Timeline.EpochModel,MegaCrit.Sts2.Core.Entities.Players.Player)" /> and
+	/// <see cref="M:MegaCrit.Sts2.Core.Saves.Managers.ProgressSaveManager.TryObtainEpochPostRun(MegaCrit.Sts2.Core.Timeline.EpochModel,MegaCrit.Sts2.Core.Saves.Runs.SerializablePlayer,MegaCrit.Sts2.Core.Saves.SerializableRun)" />.
+	/// If this Epoch's slot is available, we obtain it and return true.
+	/// We return a bool so callers can log or show VFX accordingly.
+	/// </summary>
+	/// <param name="epoch">Epoch to try to obtain.</param>
+	/// <returns>
+	/// True if you Obtained a new Epoch, false if not (you already have it OR the slot is unavailable).
+	/// </returns>
 	private bool TryObtainEpochInternal(EpochModel epoch)
 	{
 		if (Progress.IsEpochObtained(epoch.Id))
@@ -607,6 +674,16 @@ public class ProgressSaveManager
 		return true;
 	}
 
+	/// <summary>
+	/// Returns the set of epochs that the player has both obtained and may reveal.
+	/// In certain (buggy) scenarios, the player may end up obtaining epochs that are still hidden. An example scenario
+	/// (though this may be fixed in the future) is:
+	///  - The player joins a multiplayer daily, which allows them to play a character they have not unlocked
+	///  - The player obtains an epoch for that character which they can't see on the timeline
+	///
+	/// This method skips those sorts of epochs. However, it still returns epochs that are in ObtainedNoSlot state but
+	/// are about to be revealed by another epoch the player has obtained.
+	/// </summary>
 	public IEnumerable<SerializableEpoch> GetRevealableEpochs()
 	{
 		HashSet<string> satisfiedEpochIds = new HashSet<string>(from e in Progress.Epochs.Where(delegate(SerializableEpoch e)
@@ -655,6 +732,9 @@ public class ProgressSaveManager
 		return Progress.Epochs.Where((SerializableEpoch e) => satisfiedEpochIds.Contains(e.Id) && reachableSet.Contains(e.Id));
 	}
 
+	/// <summary>
+	/// Lots of checks and update of the progress save file after the end of each combat.
+	/// </summary>
 	public void UpdateAfterCombatWon(Player localPlayer, CombatRoom room)
 	{
 		CombatState combatState = room.CombatState;
@@ -714,6 +794,10 @@ public class ProgressSaveManager
 		}
 	}
 
+	/// <summary>
+	/// If the player wins a singleplayer run, this logic checks if they're playing on Max Ascension.
+	/// If so, increment it by 1.
+	/// </summary>
 	private static void IncrementSingleplayerAscension(SerializableRun run, CharacterStats charStats)
 	{
 		if (run.Ascension == charStats.MaxAscension)
@@ -730,6 +814,10 @@ public class ProgressSaveManager
 		}
 	}
 
+	/// <summary>
+	/// If the player wins a multiplayer run, this logic checks if they're playing on Max Ascension.
+	/// If so, increment it by 1.
+	/// </summary>
 	private void IncrementMultiplayerAscension(SerializableRun run)
 	{
 		if (run.Ascension == Progress.MaxMultiplayerAscension)
@@ -746,6 +834,10 @@ public class ProgressSaveManager
 		}
 	}
 
+	/// <summary>
+	/// Returns true if all ftues are disabled OR if the given ftue key exists (seen by the player before).
+	/// Is also disabled if there's no game (test mode)
+	/// </summary>
 	public bool SeenFtue(string ftueKey)
 	{
 		if (!Progress.EnableFtues)
@@ -755,6 +847,10 @@ public class ProgressSaveManager
 		return Progress.FtueCompleted.Contains(ftueKey);
 	}
 
+	/// <summary>
+	/// Checks if a one-time popup has been seen before or not.
+	/// This is only used by the "Ascension Unlocked" popups for now.
+	/// </summary>
 	public bool SeenPopup(string popupKey)
 	{
 		if (TestMode.IsOn)

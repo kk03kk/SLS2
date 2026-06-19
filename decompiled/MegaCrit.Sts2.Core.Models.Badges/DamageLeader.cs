@@ -3,10 +3,16 @@ using MegaCrit.Sts2.Core.Saves.Runs;
 
 namespace MegaCrit.Sts2.Core.Models.Badges;
 
+/// <summary>
+/// The player who dealt the most damage in a multiplayer game gets this badge.
+/// </summary>
 public class DamageLeader : Badge
 {
 	public override BadgeRarity Rarity => BadgeRarity.Bronze;
 
+	/// <summary>
+	/// The player who dealt the most damage in a multiplayer game gets this badge.
+	/// </summary>
 	public DamageLeader(SerializableRun run, bool won, ulong playerId)
 		: base(run, won, playerId, "DAMAGE_LEADER", requiresWin: false, multiplayerOnly: true)
 	{

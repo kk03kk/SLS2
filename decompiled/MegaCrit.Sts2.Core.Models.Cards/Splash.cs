@@ -55,6 +55,9 @@ public sealed class Splash : CardModel
 		}
 	}
 
+	/// <summary>
+	/// ONLY USE THIS IN TESTS!
+	/// </summary>
 	public void MockGeneratedCard(CardModel card)
 	{
 		AssertMutable();

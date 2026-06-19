@@ -16,6 +16,11 @@ public sealed class MonologuePower : PowerModel
 {
 	private class Data
 	{
+		/// <summary>
+		/// Keep track of the cards we've seen played and the power amount at the time they were played.
+		/// This lets Monologue avoid triggering on cards that started play before it was applied, and avoid gaining
+		/// extra block on multiple plays of Monologue.
+		/// </summary>
 		public readonly Dictionary<CardModel, int> amountsForPlayedCards = new Dictionary<CardModel, int>();
 	}
 

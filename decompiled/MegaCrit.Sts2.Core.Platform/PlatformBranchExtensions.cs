@@ -2,6 +2,9 @@ namespace MegaCrit.Sts2.Core.Platform;
 
 public static class PlatformBranchExtensions
 {
+	/// <summary>
+	/// Prefer over ToString as this gives the actual branch name as displayed in Steam or other platform
+	/// </summary>
 	public static string ToName(this PlatformBranch branch)
 	{
 		switch (branch)

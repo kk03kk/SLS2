@@ -14,37 +14,82 @@ using MegaCrit.Sts2.addons.mega_text;
 
 namespace MegaCrit.Sts2.Core.Nodes.Debug;
 
+/// <summary>
+/// Manages label displays for debug info both in main menu and in run.
+/// </summary>
 [ScriptPath("res://src/Core/Nodes/Debug/NDebugInfoLabelManager.cs")]
 public class NDebugInfoLabelManager : Node
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Node.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the 'UpdateText' method.
+		/// </summary>
 		public static readonly StringName UpdateText = "UpdateText";
 
+		/// <summary>
+		/// Cached name for the 'OnModdedWarningHovered' method.
+		/// </summary>
 		public static readonly StringName OnModdedWarningHovered = "OnModdedWarningHovered";
 
+		/// <summary>
+		/// Cached name for the 'OnModdedWarningUnhovered' method.
+		/// </summary>
 		public static readonly StringName OnModdedWarningUnhovered = "OnModdedWarningUnhovered";
 
+		/// <summary>
+		/// Cached name for the '_Input' method.
+		/// </summary>
 		public new static readonly StringName _Input = "_Input";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Node.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'isMainMenu' field.
+		/// </summary>
 		public static readonly StringName isMainMenu = "isMainMenu";
 
+		/// <summary>
+		/// Cached name for the '_releaseInfo' field.
+		/// </summary>
 		public static readonly StringName _releaseInfo = "_releaseInfo";
 
+		/// <summary>
+		/// Cached name for the '_moddedWarning' field.
+		/// </summary>
 		public static readonly StringName _moddedWarning = "_moddedWarning";
 
+		/// <summary>
+		/// Cached name for the '_seed' field.
+		/// </summary>
 		public static readonly StringName _seed = "_seed";
 
+		/// <summary>
+		/// Cached name for the '_modWarningContainer' field.
+		/// </summary>
 		public static readonly StringName _modWarningContainer = "_modWarningContainer";
 
+		/// <summary>
+		/// Cached name for the '_modWarningLabel' field.
+		/// </summary>
 		public static readonly StringName _modWarningLabel = "_modWarningLabel";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Node.SignalName
 	{
 	}
@@ -186,6 +231,11 @@ public class NDebugInfoLabelManager : Node
 		}
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -204,6 +254,7 @@ public class NDebugInfoLabelManager : Node
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -240,6 +291,7 @@ public class NDebugInfoLabelManager : Node
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -266,6 +318,7 @@ public class NDebugInfoLabelManager : Node
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -302,6 +355,7 @@ public class NDebugInfoLabelManager : Node
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -338,6 +392,11 @@ public class NDebugInfoLabelManager : Node
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -351,6 +410,7 @@ public class NDebugInfoLabelManager : Node
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -363,6 +423,7 @@ public class NDebugInfoLabelManager : Node
 		info.AddProperty(PropertyName._modWarningLabel, Variant.From(in _modWarningLabel));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

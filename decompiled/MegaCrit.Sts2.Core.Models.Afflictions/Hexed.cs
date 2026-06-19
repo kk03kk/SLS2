@@ -7,6 +7,9 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace MegaCrit.Sts2.Core.Models.Afflictions;
 
+/// <summary>
+/// Most of this Affliction's logic lives in <see cref="T:MegaCrit.Sts2.Core.Models.Powers.HexPower" />.
+/// </summary>
 public sealed class Hexed : AfflictionModel
 {
 	protected override IEnumerable<IHoverTip> ExtraHoverTips => new global::_003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(CardKeyword.Ethereal));

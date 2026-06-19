@@ -11,6 +11,9 @@ using MegaCrit.Sts2.Core.Runs;
 
 namespace MegaCrit.Sts2.Core.Nodes.Events;
 
+/// <summary>
+/// Represents the animation which plays when players don't all vote for the same shared event option.
+/// </summary>
 public class EventSplitVoteAnimation
 {
 	private NEventLayout _eventLayout;
@@ -31,6 +34,12 @@ public class EventSplitVoteAnimation
 		_runState = runState;
 	}
 
+	/// <summary>
+	/// Plays the animation if necessary.
+	/// The animation is not played if all players voted for the same event option.
+	/// Note that we are using the votes as indicated by the nodes and not by EventSynchronizer. This is on purpose -
+	/// the votes contained in EventSynchronizer have already been cleared by this point in time.
+	/// </summary>
 	public async Task TryPlay(NEventOptionButton chosenButton)
 	{
 		if (_eventLayout.OptionButtons.Count((NEventOptionButton b) => b.VoteContainer.Players.Any()) == 1)

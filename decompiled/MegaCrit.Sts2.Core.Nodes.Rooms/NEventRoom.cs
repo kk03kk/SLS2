@@ -28,38 +28,86 @@ namespace MegaCrit.Sts2.Core.Nodes.Rooms;
 [ScriptPath("res://src/Core/Nodes/Rooms/NEventRoom.cs")]
 public class NEventRoom : Control, IScreenContext
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Control.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the '_EnterTree' method.
+		/// </summary>
 		public new static readonly StringName _EnterTree = "_EnterTree";
 
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 
+		/// <summary>
+		/// Cached name for the 'SetPortrait' method.
+		/// </summary>
 		public static readonly StringName SetPortrait = "SetPortrait";
 
+		/// <summary>
+		/// Cached name for the 'DisableOptionButtons' method.
+		/// </summary>
 		public static readonly StringName DisableOptionButtons = "DisableOptionButtons";
 
+		/// <summary>
+		/// Cached name for the 'OnEnteringEventCombat' method.
+		/// </summary>
 		public static readonly StringName OnEnteringEventCombat = "OnEnteringEventCombat";
 
+		/// <summary>
+		/// Cached name for the 'OnActiveScreenUpdated' method.
+		/// </summary>
 		public static readonly StringName OnActiveScreenUpdated = "OnActiveScreenUpdated";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Control.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'Layout' property.
+		/// </summary>
 		public static readonly StringName Layout = "Layout";
 
+		/// <summary>
+		/// Cached name for the 'EmbeddedCombatRoom' property.
+		/// </summary>
 		public static readonly StringName EmbeddedCombatRoom = "EmbeddedCombatRoom";
 
+		/// <summary>
+		/// Cached name for the 'VfxContainer' property.
+		/// </summary>
 		public static readonly StringName VfxContainer = "VfxContainer";
 
+		/// <summary>
+		/// Cached name for the 'DefaultFocusedControl' property.
+		/// </summary>
 		public static readonly StringName DefaultFocusedControl = "DefaultFocusedControl";
 
+		/// <summary>
+		/// Cached name for the '_isPreFinished' field.
+		/// </summary>
 		public static readonly StringName _isPreFinished = "_isPreFinished";
 
+		/// <summary>
+		/// Cached name for the '_eventContainer' field.
+		/// </summary>
 		public static readonly StringName _eventContainer = "_eventContainer";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Control.SignalName
 	{
 	}
@@ -80,12 +128,23 @@ public class NEventRoom : Control, IScreenContext
 
 	public static NEventRoom? Instance => NRun.Instance?.EventRoom;
 
+	/// <summary>
+	/// The event layout node.
+	/// Null in custom-layout events like <see cref="T:MegaCrit.Sts2.Core.Models.Events.FakeMerchant" />.
+	/// </summary>
 	public NEventLayout? Layout => _eventContainer.CurrentScene as NEventLayout;
 
+	/// <summary>
+	/// The Custom Event node.
+	/// </summary>
 	public ICustomEventNode? CustomEventNode => _eventContainer.CurrentScene as ICustomEventNode;
 
 	public NCombatRoom? EmbeddedCombatRoom => (Layout as NCombatEventLayout)?.EmbeddedCombatRoom;
 
+	/// <summary>
+	/// Container node for event VFX.
+	/// Null in custom-layout events like <see cref="T:MegaCrit.Sts2.Core.Models.Events.FakeMerchant" />.
+	/// </summary>
 	public Control? VfxContainer { get; private set; }
 
 	public static IEnumerable<string> AssetPaths => new global::_003C_003Ez__ReadOnlySingleElementList<string>("res://scenes/rooms/event_room.tscn");
@@ -103,6 +162,12 @@ public class NEventRoom : Control, IScreenContext
 		}
 	}
 
+	/// <summary>
+	/// Creates an event room node for the given event.
+	/// </summary>
+	/// <param name="eventModel">The event to create the room node for.</param>
+	/// <param name="runState">The state of the run that the event is in.</param>
+	/// <param name="isPreFinished">Whether or not the event is pre-finished (i.e. loaded from a save after being finished).</param>
 	public static NEventRoom? Create(EventModel eventModel, IRunState? runState, bool isPreFinished)
 	{
 		if (TestMode.IsOn)
@@ -226,6 +291,9 @@ public class NEventRoom : Control, IScreenContext
 		DefaultFocusedControl?.TryGrabFocus();
 	}
 
+	/// <summary>
+	/// Occurs when the local player clicks an event option.
+	/// </summary>
 	public void OptionButtonClicked(EventOption option, int index)
 	{
 		if (option.IsLocked)
@@ -244,6 +312,10 @@ public class NEventRoom : Control, IScreenContext
 		RunManager.Instance.EventSynchronizer.ChooseLocalOption(index);
 	}
 
+	/// <summary>
+	/// Occurs after an option is executed. This may not occur at the same time as the local player clicking the button
+	/// if we are in a shared multiplayer event.
+	/// </summary>
 	private async Task BeforeOptionChosen(EventOption option)
 	{
 		if (_event.Owner.RunState.Players.Count > 1 && RunManager.Instance.EventSynchronizer.IsShared && !option.IsProceed)
@@ -256,6 +328,11 @@ public class NEventRoom : Control, IScreenContext
 		}
 	}
 
+	/// <summary>
+	/// Called whenever an event's state changes - i.e. when an option is chosen.
+	/// Note that, in multiplayer, this does not necessarily occur at the same time the local player chooses an option.
+	/// For shared events, this is called after all players vote on an option.
+	/// </summary>
 	private void RefreshEventState(EventModel eventModel)
 	{
 		SetDescription(GetDescriptionOrFallback());
@@ -297,6 +374,11 @@ public class NEventRoom : Control, IScreenContext
 		this.UpdateControllerNavEnabled();
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -314,6 +396,7 @@ public class NEventRoom : Control, IScreenContext
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -362,6 +445,7 @@ public class NEventRoom : Control, IScreenContext
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -396,6 +480,7 @@ public class NEventRoom : Control, IScreenContext
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -417,6 +502,7 @@ public class NEventRoom : Control, IScreenContext
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -456,6 +542,11 @@ public class NEventRoom : Control, IScreenContext
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -469,6 +560,7 @@ public class NEventRoom : Control, IScreenContext
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -478,6 +570,7 @@ public class NEventRoom : Control, IScreenContext
 		info.AddProperty(PropertyName._eventContainer, Variant.From(in _eventContainer));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

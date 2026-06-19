@@ -5,6 +5,12 @@ using MegaCrit.Sts2.Core.Platform;
 
 namespace MegaCrit.Sts2.Core.Leaderboard;
 
+/// <summary>
+/// Interface for platform leaderboard implementations.
+/// Note: This is currently modeled after Steam's leaderboard API. As we add other platforms, I expect the interface to
+/// change heavily or need refactoring.
+/// For documentation on individual methods, look at LeaderboardManager, which replicates these methods exactly.
+/// </summary>
 public interface ILeaderboardStrategy
 {
 	PlatformType Platform { get; }

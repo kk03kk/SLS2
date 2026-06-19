@@ -42,134 +42,326 @@ namespace MegaCrit.Sts2.Core.Nodes.Combat;
 [ScriptPath("res://src/Core/Nodes/Combat/NCreature.cs")]
 public class NCreature : Control
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Control.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the '_EnterTree' method.
+		/// </summary>
 		public new static readonly StringName _EnterTree = "_EnterTree";
 
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 
+		/// <summary>
+		/// Cached name for the 'ConnectSpineAnimatorSignals' method.
+		/// </summary>
 		public static readonly StringName ConnectSpineAnimatorSignals = "ConnectSpineAnimatorSignals";
 
+		/// <summary>
+		/// Cached name for the 'UpdateBounds' method.
+		/// </summary>
 		public static readonly StringName UpdateBounds = "UpdateBounds";
 
+		/// <summary>
+		/// Cached name for the 'UpdatePhobiaMode' method.
+		/// </summary>
 		public static readonly StringName UpdatePhobiaMode = "UpdatePhobiaMode";
 
+		/// <summary>
+		/// Cached name for the 'UpdateNavigation' method.
+		/// </summary>
 		public static readonly StringName UpdateNavigation = "UpdateNavigation";
 
+		/// <summary>
+		/// Cached name for the 'OnFocus' method.
+		/// </summary>
 		public static readonly StringName OnFocus = "OnFocus";
 
+		/// <summary>
+		/// Cached name for the 'OnUnfocus' method.
+		/// </summary>
 		public static readonly StringName OnUnfocus = "OnUnfocus";
 
+		/// <summary>
+		/// Cached name for the 'OnTargetingStarted' method.
+		/// </summary>
 		public static readonly StringName OnTargetingStarted = "OnTargetingStarted";
 
+		/// <summary>
+		/// Cached name for the 'SetRemotePlayerFocused' method.
+		/// </summary>
 		public static readonly StringName SetRemotePlayerFocused = "SetRemotePlayerFocused";
 
+		/// <summary>
+		/// Cached name for the 'HideHoverTips' method.
+		/// </summary>
 		public static readonly StringName HideHoverTips = "HideHoverTips";
 
+		/// <summary>
+		/// Cached name for the 'SetAnimationTrigger' method.
+		/// </summary>
 		public static readonly StringName SetAnimationTrigger = "SetAnimationTrigger";
 
+		/// <summary>
+		/// Cached name for the 'GetCurrentAnimationLength' method.
+		/// </summary>
 		public static readonly StringName GetCurrentAnimationLength = "GetCurrentAnimationLength";
 
+		/// <summary>
+		/// Cached name for the 'GetCurrentAnimationTimeRemaining' method.
+		/// </summary>
 		public static readonly StringName GetCurrentAnimationTimeRemaining = "GetCurrentAnimationTimeRemaining";
 
+		/// <summary>
+		/// Cached name for the 'ToggleIsInteractable' method.
+		/// </summary>
 		public static readonly StringName ToggleIsInteractable = "ToggleIsInteractable";
 
+		/// <summary>
+		/// Cached name for the 'AnimDisableUi' method.
+		/// </summary>
 		public static readonly StringName AnimDisableUi = "AnimDisableUi";
 
+		/// <summary>
+		/// Cached name for the 'AnimEnableUi' method.
+		/// </summary>
 		public static readonly StringName AnimEnableUi = "AnimEnableUi";
 
+		/// <summary>
+		/// Cached name for the 'StartDeathAnim' method.
+		/// </summary>
 		public static readonly StringName StartDeathAnim = "StartDeathAnim";
 
+		/// <summary>
+		/// Cached name for the 'StartReviveAnim' method.
+		/// </summary>
 		public static readonly StringName StartReviveAnim = "StartReviveAnim";
 
+		/// <summary>
+		/// Cached name for the 'AnimTempRevive' method.
+		/// </summary>
 		public static readonly StringName AnimTempRevive = "AnimTempRevive";
 
+		/// <summary>
+		/// Cached name for the 'ImmediatelySetIdle' method.
+		/// </summary>
 		public static readonly StringName ImmediatelySetIdle = "ImmediatelySetIdle";
 
+		/// <summary>
+		/// Cached name for the 'AnimHideIntent' method.
+		/// </summary>
 		public static readonly StringName AnimHideIntent = "AnimHideIntent";
 
+		/// <summary>
+		/// Cached name for the 'SetScaleAndHue' method.
+		/// </summary>
 		public static readonly StringName SetScaleAndHue = "SetScaleAndHue";
 
+		/// <summary>
+		/// Cached name for the 'ScaleTo' method.
+		/// </summary>
 		public static readonly StringName ScaleTo = "ScaleTo";
 
+		/// <summary>
+		/// Cached name for the 'SetDefaultScaleTo' method.
+		/// </summary>
 		public static readonly StringName SetDefaultScaleTo = "SetDefaultScaleTo";
 
+		/// <summary>
+		/// Cached name for the 'OstyScaleToSize' method.
+		/// </summary>
 		public static readonly StringName OstyScaleToSize = "OstyScaleToSize";
 
+		/// <summary>
+		/// Cached name for the 'AnimShake' method.
+		/// </summary>
 		public static readonly StringName AnimShake = "AnimShake";
 
+		/// <summary>
+		/// Cached name for the 'DoScaleTween' method.
+		/// </summary>
 		public static readonly StringName DoScaleTween = "DoScaleTween";
 
+		/// <summary>
+		/// Cached name for the 'SetOrbManagerPosition' method.
+		/// </summary>
 		public static readonly StringName SetOrbManagerPosition = "SetOrbManagerPosition";
 
+		/// <summary>
+		/// Cached name for the 'GetTopOfHitbox' method.
+		/// </summary>
 		public static readonly StringName GetTopOfHitbox = "GetTopOfHitbox";
 
+		/// <summary>
+		/// Cached name for the 'GetBottomOfHitbox' method.
+		/// </summary>
 		public static readonly StringName GetBottomOfHitbox = "GetBottomOfHitbox";
 
+		/// <summary>
+		/// Cached name for the 'ShowMultiselectReticle' method.
+		/// </summary>
 		public static readonly StringName ShowMultiselectReticle = "ShowMultiselectReticle";
 
+		/// <summary>
+		/// Cached name for the 'HideMultiselectReticle' method.
+		/// </summary>
 		public static readonly StringName HideMultiselectReticle = "HideMultiselectReticle";
 
+		/// <summary>
+		/// Cached name for the 'ShowSingleSelectReticle' method.
+		/// </summary>
 		public static readonly StringName ShowSingleSelectReticle = "ShowSingleSelectReticle";
 
+		/// <summary>
+		/// Cached name for the 'HideSingleSelectReticle' method.
+		/// </summary>
 		public static readonly StringName HideSingleSelectReticle = "HideSingleSelectReticle";
 
+		/// <summary>
+		/// Cached name for the 'SetupForBestiary' method.
+		/// </summary>
 		public static readonly StringName SetupForBestiary = "SetupForBestiary";
 
+		/// <summary>
+		/// Cached name for the 'StartSfxLoop' method.
+		/// </summary>
 		public static readonly StringName StartSfxLoop = "StartSfxLoop";
 
+		/// <summary>
+		/// Cached name for the 'StopSfxLoop' method.
+		/// </summary>
 		public static readonly StringName StopSfxLoop = "StopSfxLoop";
 
+		/// <summary>
+		/// Cached name for the 'StopAllSfxLoops' method.
+		/// </summary>
 		public static readonly StringName StopAllSfxLoops = "StopAllSfxLoops";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Control.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'Hitbox' property.
+		/// </summary>
 		public static readonly StringName Hitbox = "Hitbox";
 
+		/// <summary>
+		/// Cached name for the 'OrbManager' property.
+		/// </summary>
 		public static readonly StringName OrbManager = "OrbManager";
 
+		/// <summary>
+		/// Cached name for the 'IsInteractable' property.
+		/// </summary>
 		public static readonly StringName IsInteractable = "IsInteractable";
 
+		/// <summary>
+		/// Cached name for the 'VfxSpawnPosition' property.
+		/// </summary>
 		public static readonly StringName VfxSpawnPosition = "VfxSpawnPosition";
 
+		/// <summary>
+		/// Cached name for the 'PowerAppliedVfxSpawnPosition' property.
+		/// </summary>
 		public static readonly StringName PowerAppliedVfxSpawnPosition = "PowerAppliedVfxSpawnPosition";
 
+		/// <summary>
+		/// Cached name for the 'Visuals' property.
+		/// </summary>
 		public static readonly StringName Visuals = "Visuals";
 
+		/// <summary>
+		/// Cached name for the 'Body' property.
+		/// </summary>
 		public static readonly StringName Body = "Body";
 
+		/// <summary>
+		/// Cached name for the 'IntentContainer' property.
+		/// </summary>
 		public static readonly StringName IntentContainer = "IntentContainer";
 
+		/// <summary>
+		/// Cached name for the 'IsPlayingDeathAnimation' property.
+		/// </summary>
 		public static readonly StringName IsPlayingDeathAnimation = "IsPlayingDeathAnimation";
 
+		/// <summary>
+		/// Cached name for the 'HasSpineAnimation' property.
+		/// </summary>
 		public static readonly StringName HasSpineAnimation = "HasSpineAnimation";
 
+		/// <summary>
+		/// Cached name for the 'IsFocused' property.
+		/// </summary>
 		public static readonly StringName IsFocused = "IsFocused";
 
+		/// <summary>
+		/// Cached name for the 'PlayerIntentHandler' property.
+		/// </summary>
 		public static readonly StringName PlayerIntentHandler = "PlayerIntentHandler";
 
+		/// <summary>
+		/// Cached name for the '_stateDisplay' field.
+		/// </summary>
 		public static readonly StringName _stateDisplay = "_stateDisplay";
 
+		/// <summary>
+		/// Cached name for the '_intentFadeTween' field.
+		/// </summary>
 		public static readonly StringName _intentFadeTween = "_intentFadeTween";
 
+		/// <summary>
+		/// Cached name for the '_shakeTween' field.
+		/// </summary>
 		public static readonly StringName _shakeTween = "_shakeTween";
 
+		/// <summary>
+		/// Cached name for the '_isRemotePlayerOrPet' field.
+		/// </summary>
 		public static readonly StringName _isRemotePlayerOrPet = "_isRemotePlayerOrPet";
 
+		/// <summary>
+		/// Cached name for the '_isInBestiary' field.
+		/// </summary>
 		public static readonly StringName _isInBestiary = "_isInBestiary";
 
+		/// <summary>
+		/// Cached name for the '_tempScale' field.
+		/// </summary>
 		public static readonly StringName _tempScale = "_tempScale";
 
+		/// <summary>
+		/// Cached name for the '_scaleTween' field.
+		/// </summary>
 		public static readonly StringName _scaleTween = "_scaleTween";
 
+		/// <summary>
+		/// Cached name for the '_isInMultiselect' field.
+		/// </summary>
 		public static readonly StringName _isInMultiselect = "_isInMultiselect";
 
+		/// <summary>
+		/// Cached name for the '_selectionReticle' field.
+		/// </summary>
 		public static readonly StringName _selectionReticle = "_selectionReticle";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Control.SignalName
 	{
 	}
@@ -196,6 +388,16 @@ public class NCreature : Control
 
 	private NSelectionReticle _selectionReticle;
 
+	/// <summary>
+	/// Keeps track of the looping sfx that are owned by this creature (ie thieving hopper's fluttering).
+	/// We use this as a way to easily cancel all looping sfx when a creature instance is killed or despawned.
+	/// - The Key is the string field of the sfx we are tracking (ie event://flying_sfx)
+	///
+	/// - The Value is a Tuple, where the first item is the loop param we will use to end the sfx and the second item
+	///   is the value that we need to set that param to end the sfx. (ie ("loop", 1)).
+	///   We need to do this because not all sfx loops use the same loop param or loop value to finish the FMOD event
+	///   (ie waterfall giant uses the same loop param to ramp up how intense it is AND to end the loop).
+	/// </summary>
 	private readonly Dictionary<string, (string, float)> _sfxLoops = new Dictionary<string, (string, float)>();
 
 	public static IEnumerable<string> AssetPaths => new global::_003C_003Ez__ReadOnlySingleElementList<string>(_scenePath);
@@ -379,6 +581,10 @@ public class NCreature : Control
 		Visuals.UpdatePhobiaMode(Entity.Monster);
 	}
 
+	/// <summary>
+	/// Called when a creatures hitbox is updated. Called on initialization and things like Osty getting bigger, thieving hopper flying, etc.
+	/// </summary>
+	/// <param name="boundsContainer"></param> The parent node which has the children: Bounds, CenterPos, and IntentPos nodes.
 	private void UpdateBounds(Node boundsContainer)
 	{
 		Control node = boundsContainer.GetNode<Control>("%Bounds");
@@ -454,6 +660,10 @@ public class NCreature : Control
 		await RevealIntents();
 	}
 
+	/// <summary>
+	/// This makes the intents visible again!
+	/// So let's fade them in.
+	/// </summary>
 	private Task RevealIntents()
 	{
 		IntentContainer.Modulate = Colors.Transparent;
@@ -937,16 +1147,31 @@ public class NCreature : Control
 		}
 	}
 
+	/// <summary>
+	/// Helper function to get the top of this creature's hitbox position.
+	/// Used for spawning vfx or aligning UI elements to a creature's hitbox.
+	/// </summary>
 	public Vector2 GetTopOfHitbox()
 	{
 		return Hitbox.GlobalPosition + new Vector2(Hitbox.Size.X * 0.5f, 0f);
 	}
 
+	/// <summary>
+	/// Helper function to get the top of this creature's hitbox position.
+	/// Used for spawning vfx or aligning UI elements to a creature's hitbox.
+	/// </summary>
+	/// <returns></returns>
 	public Vector2 GetBottomOfHitbox()
 	{
 		return Hitbox.GlobalPosition + new Vector2(Hitbox.Size.X * 0.5f, Hitbox.Size.Y);
 	}
 
+	/// <summary>
+	/// Track the block status of another creature.
+	/// Used for pets who want to show extra UI when their owner has block.
+	/// For example, Osty tracks Necrobinder's block.
+	/// </summary>
+	/// <param name="creature">Extra creature (different from _creature) whose block status we want to track in this UI.</param>
 	public void TrackBlockStatus(Creature creature)
 	{
 		_stateDisplay.TrackBlockStatus(creature);
@@ -1017,6 +1242,11 @@ public class NCreature : Control
 		}
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -1113,6 +1343,7 @@ public class NCreature : Control
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -1358,6 +1589,7 @@ public class NCreature : Control
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -1524,6 +1756,7 @@ public class NCreature : Control
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -1610,6 +1843,7 @@ public class NCreature : Control
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -1732,6 +1966,11 @@ public class NCreature : Control
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -1760,6 +1999,7 @@ public class NCreature : Control
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -1782,6 +2022,7 @@ public class NCreature : Control
 		info.AddProperty(PropertyName._selectionReticle, Variant.From(in _selectionReticle));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

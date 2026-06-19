@@ -13,6 +13,10 @@ public sealed class BufferPower : PowerModel
 
 	public override PowerStackType StackType => PowerStackType.Counter;
 
+	/// <summary>
+	/// We use Late because other effects may reduce damage taken to 0 too, and it's more player-friendly for them to
+	/// trigger first so that this power doesn't have to decrement.
+	/// </summary>
 	public override decimal ModifyHpLostAfterOstyLate(Creature target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
 	{
 		if (target != base.Owner)

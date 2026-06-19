@@ -7,7 +7,6 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.Extensions;
-using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Map;
 using MegaCrit.Sts2.Core.Random;
@@ -75,7 +74,7 @@ public sealed class FurCoat : RelicModel
 		}
 		if (flag)
 		{
-			Rng rng = new Rng((uint)((int)base.Owner.RunState.Rng.Seed + (int)base.Owner.NetId + StringHelper.GetDeterministicHashCode("FurCoat")));
+			Rng rng = new Rng(base.Owner, base.Id);
 			List<MapPoint> list = map.GetAllMapPoints().Where(delegate(MapPoint p)
 			{
 				MapPointType pointType = p.PointType;

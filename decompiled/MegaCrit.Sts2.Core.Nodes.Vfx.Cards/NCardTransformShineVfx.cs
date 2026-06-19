@@ -22,56 +22,131 @@ namespace MegaCrit.Sts2.Core.Nodes.Vfx.Cards;
 [ScriptPath("res://src/Core/Nodes/Vfx/Cards/NCardTransformShineVfx.cs")]
 public class NCardTransformShineVfx : Control
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Control.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 
+		/// <summary>
+		/// Cached name for the 'GetEffectiveDuration' method.
+		/// </summary>
 		public static readonly StringName GetEffectiveDuration = "GetEffectiveDuration";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Control.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the '_overlay' field.
+		/// </summary>
 		public static readonly StringName _overlay = "_overlay";
 
+		/// <summary>
+		/// Cached name for the '_borderGlow' field.
+		/// </summary>
 		public static readonly StringName _borderGlow = "_borderGlow";
 
+		/// <summary>
+		/// Cached name for the '_revealParticles' field.
+		/// </summary>
 		public static readonly StringName _revealParticles = "_revealParticles";
 
+		/// <summary>
+		/// Cached name for the '_shineParticles' field.
+		/// </summary>
 		public static readonly StringName _shineParticles = "_shineParticles";
 
+		/// <summary>
+		/// Cached name for the '_endParticles' field.
+		/// </summary>
 		public static readonly StringName _endParticles = "_endParticles";
 
+		/// <summary>
+		/// Cached name for the '_anticipationScaleCurve' field.
+		/// </summary>
 		public static readonly StringName _anticipationScaleCurve = "_anticipationScaleCurve";
 
+		/// <summary>
+		/// Cached name for the '_revealScaleCurve' field.
+		/// </summary>
 		public static readonly StringName _revealScaleCurve = "_revealScaleCurve";
 
+		/// <summary>
+		/// Cached name for the '_overlayShowDuration' field.
+		/// </summary>
 		public static readonly StringName _overlayShowDuration = "_overlayShowDuration";
 
+		/// <summary>
+		/// Cached name for the '_overlayShowShortDuration' field.
+		/// </summary>
 		public static readonly StringName _overlayShowShortDuration = "_overlayShowShortDuration";
 
+		/// <summary>
+		/// Cached name for the '_overlayIdleDuration' field.
+		/// </summary>
 		public static readonly StringName _overlayIdleDuration = "_overlayIdleDuration";
 
+		/// <summary>
+		/// Cached name for the '_overlayIdleShortDuration' field.
+		/// </summary>
 		public static readonly StringName _overlayIdleShortDuration = "_overlayIdleShortDuration";
 
+		/// <summary>
+		/// Cached name for the '_overlayHideDuration' field.
+		/// </summary>
 		public static readonly StringName _overlayHideDuration = "_overlayHideDuration";
 
+		/// <summary>
+		/// Cached name for the '_glowFadeDuration' field.
+		/// </summary>
 		public static readonly StringName _glowFadeDuration = "_glowFadeDuration";
 
+		/// <summary>
+		/// Cached name for the '_glowTopScale' field.
+		/// </summary>
 		public static readonly StringName _glowTopScale = "_glowTopScale";
 
+		/// <summary>
+		/// Cached name for the '_shineDelay' field.
+		/// </summary>
 		public static readonly StringName _shineDelay = "_shineDelay";
 
+		/// <summary>
+		/// Cached name for the '_endParticlesDelay' field.
+		/// </summary>
 		public static readonly StringName _endParticlesDelay = "_endParticlesDelay";
 
+		/// <summary>
+		/// Cached name for the '_cardNode' field.
+		/// </summary>
 		public static readonly StringName _cardNode = "_cardNode";
 
+		/// <summary>
+		/// Cached name for the '_tween' field.
+		/// </summary>
 		public static readonly StringName _tween = "_tween";
 
+		/// <summary>
+		/// Cached name for the '_whiteOpaque' field.
+		/// </summary>
 		public static readonly StringName _whiteOpaque = "_whiteOpaque";
 
+		/// <summary>
+		/// Cached name for the '_whiteClear' field.
+		/// </summary>
 		public static readonly StringName _whiteClear = "_whiteClear";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Control.SignalName
 	{
 	}
@@ -272,6 +347,11 @@ public class NCardTransformShineVfx : Control
 		_cardNode.Scale = _originalCardScale * one;
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -284,6 +364,7 @@ public class NCardTransformShineVfx : Control
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -301,6 +382,7 @@ public class NCardTransformShineVfx : Control
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -315,6 +397,7 @@ public class NCardTransformShineVfx : Control
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -421,6 +504,7 @@ public class NCardTransformShineVfx : Control
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -527,6 +611,11 @@ public class NCardTransformShineVfx : Control
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -554,6 +643,7 @@ public class NCardTransformShineVfx : Control
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -580,6 +670,7 @@ public class NCardTransformShineVfx : Control
 		info.AddProperty(PropertyName._whiteClear, Variant.From(in _whiteClear));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

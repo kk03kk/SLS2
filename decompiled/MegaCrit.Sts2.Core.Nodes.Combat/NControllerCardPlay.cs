@@ -31,38 +31,86 @@ public class NControllerCardPlay : NCardPlay
 	[Signal]
 	public delegate void CanceledEventHandler();
 
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : NCardPlay.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Input' method.
+		/// </summary>
 		public new static readonly StringName _Input = "_Input";
 
+		/// <summary>
+		/// Cached name for the 'Create' method.
+		/// </summary>
 		public static readonly StringName Create = "Create";
 
+		/// <summary>
+		/// Cached name for the 'Start' method.
+		/// </summary>
 		public new static readonly StringName Start = "Start";
 
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 
+		/// <summary>
+		/// Cached name for the 'DisconnectTargetingSignals' method.
+		/// </summary>
 		public static readonly StringName DisconnectTargetingSignals = "DisconnectTargetingSignals";
 
+		/// <summary>
+		/// Cached name for the 'MultiCreatureTargeting' method.
+		/// </summary>
 		public static readonly StringName MultiCreatureTargeting = "MultiCreatureTargeting";
 
+		/// <summary>
+		/// Cached name for the 'OnCancelPlayCard' method.
+		/// </summary>
 		public new static readonly StringName OnCancelPlayCard = "OnCancelPlayCard";
 
+		/// <summary>
+		/// Cached name for the 'Cleanup' method.
+		/// </summary>
 		public new static readonly StringName Cleanup = "Cleanup";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : NCardPlay.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the '_onCreatureHoverCallable' field.
+		/// </summary>
 		public static readonly StringName _onCreatureHoverCallable = "_onCreatureHoverCallable";
 
+		/// <summary>
+		/// Cached name for the '_onCreatureUnhoverCallable' field.
+		/// </summary>
 		public static readonly StringName _onCreatureUnhoverCallable = "_onCreatureUnhoverCallable";
 
+		/// <summary>
+		/// Cached name for the '_signalsConnected' field.
+		/// </summary>
 		public static readonly StringName _signalsConnected = "_signalsConnected";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : NCardPlay.SignalName
 	{
+		/// <summary>
+		/// Cached name for the 'Confirmed' signal.
+		/// </summary>
 		public static readonly StringName Confirmed = "Confirmed";
 
+		/// <summary>
+		/// Cached name for the 'Canceled' signal.
+		/// </summary>
 		public static readonly StringName Canceled = "Canceled";
 	}
 
@@ -76,6 +124,7 @@ public class NControllerCardPlay : NCardPlay
 
 	private CanceledEventHandler backing_Canceled;
 
+	/// <inheritdoc cref="T:MegaCrit.Sts2.Core.Nodes.Combat.NControllerCardPlay.ConfirmedEventHandler" />
 	public event ConfirmedEventHandler Confirmed
 	{
 		add
@@ -88,6 +137,7 @@ public class NControllerCardPlay : NCardPlay
 		}
 	}
 
+	/// <inheritdoc cref="T:MegaCrit.Sts2.Core.Nodes.Combat.NControllerCardPlay.CanceledEventHandler" />
 	public event CanceledEventHandler Canceled
 	{
 		add
@@ -274,6 +324,11 @@ public class NControllerCardPlay : NCardPlay
 		NCombatRoom.Instance.Ui.Hand.DefaultFocusedControl.TryGrabFocus();
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<MethodInfo> GetGodotMethodList()
 	{
@@ -298,6 +353,7 @@ public class NControllerCardPlay : NCardPlay
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -363,6 +419,7 @@ public class NControllerCardPlay : NCardPlay
 		return false;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -401,6 +458,7 @@ public class NControllerCardPlay : NCardPlay
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -422,6 +480,7 @@ public class NControllerCardPlay : NCardPlay
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -443,6 +502,11 @@ public class NControllerCardPlay : NCardPlay
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -453,6 +517,7 @@ public class NControllerCardPlay : NCardPlay
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -464,6 +529,7 @@ public class NControllerCardPlay : NCardPlay
 		info.AddSignalEventDelegate(SignalName.Canceled, backing_Canceled);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{
@@ -490,6 +556,11 @@ public class NControllerCardPlay : NCardPlay
 		}
 	}
 
+	/// <summary>
+	/// Get the signal information for all the signals declared in this class.
+	/// This method is used by Godot to register the available signals in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<MethodInfo> GetGodotSignalList()
 	{
@@ -509,6 +580,7 @@ public class NControllerCardPlay : NCardPlay
 		EmitSignal(SignalName.Canceled);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RaiseGodotClassSignalCallbacks(in godot_string_name signal, NativeVariantPtrArgs args)
 	{
@@ -526,6 +598,7 @@ public class NControllerCardPlay : NCardPlay
 		}
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassSignal(in godot_string_name signal)
 	{

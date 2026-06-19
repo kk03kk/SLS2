@@ -20,41 +20,92 @@ using MegaCrit.Sts2.Core.Saves;
 
 namespace MegaCrit.Sts2.Core.Nodes.Screens.GameOverScreen;
 
+/// <summary>
+/// Animates the Run Summary portion of the Death Screen.
+/// </summary>
 [ScriptPath("res://src/Core/Nodes/Screens/GameOverScreen/NRunSummary.cs")]
 public class NRunSummary : Control
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Control.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the 'SetControllerNav' method.
+		/// </summary>
 		public static readonly StringName SetControllerNav = "SetControllerNav";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Control.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'DefaultFocusedControl' property.
+		/// </summary>
 		public static readonly StringName DefaultFocusedControl = "DefaultFocusedControl";
 
+		/// <summary>
+		/// Cached name for the '_discoveryContainer' field.
+		/// </summary>
 		public static readonly StringName _discoveryContainer = "_discoveryContainer";
 
+		/// <summary>
+		/// Cached name for the '_discoveryHeader' field.
+		/// </summary>
 		public static readonly StringName _discoveryHeader = "_discoveryHeader";
 
+		/// <summary>
+		/// Cached name for the '_discoveredContents' field.
+		/// </summary>
 		public static readonly StringName _discoveredContents = "_discoveredContents";
 
+		/// <summary>
+		/// Cached name for the '_discoveredCards' field.
+		/// </summary>
 		public static readonly StringName _discoveredCards = "_discoveredCards";
 
+		/// <summary>
+		/// Cached name for the '_discoveredRelics' field.
+		/// </summary>
 		public static readonly StringName _discoveredRelics = "_discoveredRelics";
 
+		/// <summary>
+		/// Cached name for the '_discoveredPotions' field.
+		/// </summary>
 		public static readonly StringName _discoveredPotions = "_discoveredPotions";
 
+		/// <summary>
+		/// Cached name for the '_discoveredEnemies' field.
+		/// </summary>
 		public static readonly StringName _discoveredEnemies = "_discoveredEnemies";
 
+		/// <summary>
+		/// Cached name for the '_discoveredEpochs' field.
+		/// </summary>
 		public static readonly StringName _discoveredEpochs = "_discoveredEpochs";
 
+		/// <summary>
+		/// Cached name for the '_tween' field.
+		/// </summary>
 		public static readonly StringName _tween = "_tween";
 
+		/// <summary>
+		/// Cached name for the '_waitTween' field.
+		/// </summary>
 		public static readonly StringName _waitTween = "_waitTween";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Control.SignalName
 	{
 	}
@@ -218,6 +269,11 @@ public class NRunSummary : Control
 		}
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -230,6 +286,7 @@ public class NRunSummary : Control
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -248,6 +305,7 @@ public class NRunSummary : Control
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -262,6 +320,7 @@ public class NRunSummary : Control
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -318,6 +377,7 @@ public class NRunSummary : Control
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -379,6 +439,11 @@ public class NRunSummary : Control
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -397,6 +462,7 @@ public class NRunSummary : Control
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -413,6 +479,7 @@ public class NRunSummary : Control
 		info.AddProperty(PropertyName._waitTween, Variant.From(in _waitTween));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

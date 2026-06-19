@@ -49,6 +49,9 @@ public sealed class StoneOfAllTime : EventModel
 		new DynamicVar("PushVigorousAmount", 8m)
 	});
 
+	/// <summary>
+	/// Only appears in Act 2 and requires all players to have at least 1 potion
+	/// </summary>
 	public override bool IsAllowed(IRunState runState)
 	{
 		if (runState.CurrentActIndex == 1)

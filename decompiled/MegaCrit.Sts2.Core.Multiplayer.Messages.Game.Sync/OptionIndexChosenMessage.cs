@@ -5,6 +5,11 @@ using MegaCrit.Sts2.Core.Runs;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Messages.Game.Sync;
 
+/// <summary>
+/// Used both in events and rest sites to synchronize the option chosen by a player.
+/// In events, optionIndex is the index of the currently displayed EventOption to choose.
+/// In rest sites, optionIndex is the index of the currently displayed RestSiteOption to choose.
+/// </summary>
 public struct OptionIndexChosenMessage : INetMessage, IPacketSerializable, IRunLocationTargetedMessage
 {
 	public OptionIndexType type;

@@ -24,6 +24,11 @@ public sealed class TheBombPower : PowerModel
 
 	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(40m, ValueProp.Unpowered));
 
+	/// <summary>
+	/// Set the amount of damage that this instance of The Bomb will deal.
+	/// This is necessary because Amount is used to track the number of turns left until exploding.
+	/// </summary>
+	/// <param name="damage">Amount of damage to deal</param>
 	public void SetDamage(decimal damage)
 	{
 		AssertMutable();

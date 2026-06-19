@@ -26,95 +26,232 @@ using MegaCrit.Sts2.addons.mega_text;
 
 namespace MegaCrit.Sts2.Core.Nodes.Screens.Timeline;
 
+/// <summary>
+/// The Timeline screen allows players to reveal Epochs they've obtained to see lore and unlock content.
+/// When accessed:
+///  1. Load progress data
+///  2. Set up the Epoch slots
+///  3. Control screen state logic for the SingleEpochViewScreen and UnlockScreen
+///  4. Play any bespoke animations for Timeline expansion, etc
+/// </summary>
 [ScriptPath("res://src/Core/Nodes/Screens/Timeline/NTimelineScreen.cs")]
 public class NTimelineScreen : NSubmenu
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : NSubmenu.MethodName
 	{
+		/// <summary>
+		/// Cached name for the 'Create' method.
+		/// </summary>
 		public static readonly StringName Create = "Create";
 
+		/// <summary>
+		/// Cached name for the 'OnSubmenuOpened' method.
+		/// </summary>
 		public new static readonly StringName OnSubmenuOpened = "OnSubmenuOpened";
 
+		/// <summary>
+		/// Cached name for the 'OnSubmenuClosed' method.
+		/// </summary>
 		public new static readonly StringName OnSubmenuClosed = "OnSubmenuClosed";
 
+		/// <summary>
+		/// Cached name for the 'OnSubmenuShown' method.
+		/// </summary>
 		public new static readonly StringName OnSubmenuShown = "OnSubmenuShown";
 
+		/// <summary>
+		/// Cached name for the 'OnSubmenuHidden' method.
+		/// </summary>
 		public new static readonly StringName OnSubmenuHidden = "OnSubmenuHidden";
 
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the 'OnBackButtonPressed' method.
+		/// </summary>
 		public static readonly StringName OnBackButtonPressed = "OnBackButtonPressed";
 
+		/// <summary>
+		/// Cached name for the 'GetEraTexturePath' method.
+		/// </summary>
 		public static readonly StringName GetEraTexturePath = "GetEraTexturePath";
 
+		/// <summary>
+		/// Cached name for the 'GetSlot' method.
+		/// </summary>
 		public static readonly StringName GetSlot = "GetSlot";
 
+		/// <summary>
+		/// Cached name for the 'OpenInspectScreen' method.
+		/// </summary>
 		public static readonly StringName OpenInspectScreen = "OpenInspectScreen";
 
+		/// <summary>
+		/// Cached name for the 'QueueMiscUnlock' method.
+		/// </summary>
 		public static readonly StringName QueueMiscUnlock = "QueueMiscUnlock";
 
+		/// <summary>
+		/// Cached name for the 'SetScreenDraggability' method.
+		/// </summary>
 		public static readonly StringName SetScreenDraggability = "SetScreenDraggability";
 
+		/// <summary>
+		/// Cached name for the 'ShowBackstopAndHideUi' method.
+		/// </summary>
 		public static readonly StringName ShowBackstopAndHideUi = "ShowBackstopAndHideUi";
 
+		/// <summary>
+		/// Cached name for the 'OpenQueuedScreen' method.
+		/// </summary>
 		public static readonly StringName OpenQueuedScreen = "OpenQueuedScreen";
 
+		/// <summary>
+		/// Cached name for the 'IsScreenQueued' method.
+		/// </summary>
 		public static readonly StringName IsScreenQueued = "IsScreenQueued";
 
+		/// <summary>
+		/// Cached name for the 'IsInspectScreenQueued' method.
+		/// </summary>
 		public static readonly StringName IsInspectScreenQueued = "IsInspectScreenQueued";
 
+		/// <summary>
+		/// Cached name for the 'ShowHeaderAndActionsUi' method.
+		/// </summary>
 		public static readonly StringName ShowHeaderAndActionsUi = "ShowHeaderAndActionsUi";
 
+		/// <summary>
+		/// Cached name for the 'DisableInput' method.
+		/// </summary>
 		public static readonly StringName DisableInput = "DisableInput";
 
+		/// <summary>
+		/// Cached name for the 'EnableInput' method.
+		/// </summary>
 		public static readonly StringName EnableInput = "EnableInput";
 
+		/// <summary>
+		/// Cached name for the 'RefreshBackButton' method.
+		/// </summary>
 		public static readonly StringName RefreshBackButton = "RefreshBackButton";
 
+		/// <summary>
+		/// Cached name for the 'ResetScreen' method.
+		/// </summary>
 		public static readonly StringName ResetScreen = "ResetScreen";
 
+		/// <summary>
+		/// Cached name for the 'GetReminderVfxHolder' method.
+		/// </summary>
 		public static readonly StringName GetReminderVfxHolder = "GetReminderVfxHolder";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : NSubmenu.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'CurrentUnlockScreen' property.
+		/// </summary>
 		public static readonly StringName CurrentUnlockScreen = "CurrentUnlockScreen";
 
+		/// <summary>
+		/// Cached name for the 'InitialFocusedControl' property.
+		/// </summary>
 		public new static readonly StringName InitialFocusedControl = "InitialFocusedControl";
 
+		/// <summary>
+		/// Cached name for the '_inspectScreen' field.
+		/// </summary>
 		public static readonly StringName _inspectScreen = "_inspectScreen";
 
+		/// <summary>
+		/// Cached name for the '_reminderText' field.
+		/// </summary>
 		public static readonly StringName _reminderText = "_reminderText";
 
+		/// <summary>
+		/// Cached name for the '_reminderVfxHolder' field.
+		/// </summary>
 		public static readonly StringName _reminderVfxHolder = "_reminderVfxHolder";
 
+		/// <summary>
+		/// Cached name for the '_backstop' field.
+		/// </summary>
 		public static readonly StringName _backstop = "_backstop";
 
+		/// <summary>
+		/// Cached name for the '_inputBlocker' field.
+		/// </summary>
 		public static readonly StringName _inputBlocker = "_inputBlocker";
 
+		/// <summary>
+		/// Cached name for the '_lineContainer' field.
+		/// </summary>
 		public static readonly StringName _lineContainer = "_lineContainer";
 
+		/// <summary>
+		/// Cached name for the '_line' field.
+		/// </summary>
 		public static readonly StringName _line = "_line";
 
+		/// <summary>
+		/// Cached name for the '_epochSlotContainer' field.
+		/// </summary>
 		public static readonly StringName _epochSlotContainer = "_epochSlotContainer";
 
+		/// <summary>
+		/// Cached name for the '_slotsContainer' field.
+		/// </summary>
 		public static readonly StringName _slotsContainer = "_slotsContainer";
 
+		/// <summary>
+		/// Cached name for the '_backButton' field.
+		/// </summary>
 		public new static readonly StringName _backButton = "_backButton";
 
+		/// <summary>
+		/// Cached name for the '_unlockScreenHolder' field.
+		/// </summary>
 		public static readonly StringName _unlockScreenHolder = "_unlockScreenHolder";
 
+		/// <summary>
+		/// Cached name for the '_tutorial' field.
+		/// </summary>
 		public static readonly StringName _tutorial = "_tutorial";
 
+		/// <summary>
+		/// Cached name for the '_isUiVisible' field.
+		/// </summary>
 		public static readonly StringName _isUiVisible = "_isUiVisible";
 
+		/// <summary>
+		/// Cached name for the '_queuedInspectScreen' field.
+		/// </summary>
 		public static readonly StringName _queuedInspectScreen = "_queuedInspectScreen";
 
+		/// <summary>
+		/// Cached name for the '_lineGrowTween' field.
+		/// </summary>
 		public static readonly StringName _lineGrowTween = "_lineGrowTween";
 
+		/// <summary>
+		/// Cached name for the '_backstopTween' field.
+		/// </summary>
 		public static readonly StringName _backstopTween = "_backstopTween";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : NSubmenu.SignalName
 	{
 	}
@@ -183,6 +320,9 @@ public class NTimelineScreen : NSubmenu
 		}
 	}
 
+	/// <summary>
+	/// This is a convenience reference for static access and avoiding re-initialization and NOT a Singleton.
+	/// </summary>
 	public static NTimelineScreen Instance => NGame.Instance.MainMenu.SubmenuStack.GetSubmenuType<NTimelineScreen>();
 
 	public NUnlockScreen? CurrentUnlockScreen { get; set; }
@@ -271,6 +411,9 @@ public class NTimelineScreen : NSubmenu
 		SfxCmd.Play("event:/sfx/ui/map/map_close");
 	}
 
+	/// <summary>
+	/// Only called the first time you enter the Timeline (hence the name).
+	/// </summary>
 	private async Task FirstTimeLogic()
 	{
 		await this.AwaitProcessFrame();
@@ -279,6 +422,9 @@ public class NTimelineScreen : NSubmenu
 		_tutorial.Init(this);
 	}
 
+	/// <summary>
+	/// Called from NTimelineTutorial once the player completes it.
+	/// </summary>
 	public async Task SpawnFirstTimeTimeline()
 	{
 		SfxCmd.Play("event:/sfx/ui/timeline/ui_timeline_open");
@@ -292,6 +438,12 @@ public class NTimelineScreen : NSubmenu
 		EnableInput();
 	}
 
+	/// <summary>
+	/// Called every time this screen is opened.
+	/// The Timeline is recreated from the save file each time.
+	/// NOTE: If you're opening the screen for the first time,
+	/// FirstTimeLogic() is called instead.
+	/// </summary>
 	private async Task InitScreen()
 	{
 		Log.Info("Initializing Timeline:");
@@ -330,6 +482,9 @@ public class NTimelineScreen : NSubmenu
 		TaskHelper.RunSafely(NavigateToRevealableSlot());
 	}
 
+	/// <summary>
+	/// When the Timeline is opened, if there is an epoch to unlock, we lerp to it.
+	/// </summary>
 	private async Task NavigateToRevealableSlot()
 	{
 		if (SaveManager.Instance.GetDiscoveredEpochCount() == 0)
@@ -360,6 +515,10 @@ public class NTimelineScreen : NSubmenu
 		EnableInput();
 	}
 
+	/// <summary>
+	/// Creates Epoch slots and the Era columns required to hold them.
+	/// This is called both when opening the screen and for Timeline expansion events (isAnimated).
+	/// </summary>
 	public async Task AddEpochSlots(List<EpochSlotData> slotsToAdd, bool isAnimated)
 	{
 		List<NEraColumn> list = new List<NEraColumn>();
@@ -410,6 +569,10 @@ public class NTimelineScreen : NSubmenu
 		}
 	}
 
+	/// <summary>
+	/// Exists solely to calculate the expected position for a column during timeline expansion.
+	/// This position is cached to prevent a 1 frame flicker of moving columns when the Timeline expands.
+	/// </summary>
 	private List<Vector2> PredictHBoxLayout(HBoxContainer hbox)
 	{
 		float num = 0f;
@@ -444,6 +607,11 @@ public class NTimelineScreen : NSubmenu
 		return list2;
 	}
 
+	/// <summary>
+	/// Called whenever we add new epoch slots to this screen.
+	/// Expands the Timeline "line" and pops in the new Era icons if applicable.
+	/// </summary>
+	/// <param name="newlyCreatedColumns"></param>
 	private async Task GrowTimelineAndAddEraIcons(List<NEraColumn> newlyCreatedColumns)
 	{
 		if (newlyCreatedColumns.Count > 0)
@@ -469,6 +637,10 @@ public class NTimelineScreen : NSubmenu
 		}
 	}
 
+	/// <summary>
+	/// This is the non-animated version of GrowTimelineAndAddEraIcons()
+	/// </summary>
+	/// <param name="newlyCreatedColumns"></param>
 	private void InitLineAndIcons(List<NEraColumn> newlyCreatedColumns)
 	{
 		if (newlyCreatedColumns.Count == 0)
@@ -487,6 +659,11 @@ public class NTimelineScreen : NSubmenu
 		newlyCreatedColumns.Clear();
 	}
 
+	/// <summary>
+	/// Lookup table to get the icon and name associated with a given EpochEra.
+	/// Utilizes Tuples. Fancy.
+	/// </summary>
+	/// <param name="era"></param>
 	public static (Texture2D Texture, string Name) GetEraIcon(EpochEra era)
 	{
 		return (Texture: PreloadManager.Cache.GetTexture2D(GetEraTexturePath(era)), Name: StringHelper.Slugify(era.ToString()));
@@ -533,6 +710,10 @@ public class NTimelineScreen : NSubmenu
 		TaskHelper.RunSafely(_inspectScreen.Open(slot, slot.model, playAnimation));
 	}
 
+	/// <summary>
+	/// Misc unlock screens just show "text"
+	/// </summary>
+	/// <param name="text"></param>
 	public void QueueMiscUnlock(string text)
 	{
 		NUnlockMiscScreen nUnlockMiscScreen = NUnlockMiscScreen.Create();
@@ -540,11 +721,19 @@ public class NTimelineScreen : NSubmenu
 		_unlockScreens.Enqueue(nUnlockMiscScreen);
 	}
 
+	/// <summary>
+	/// Character unlock screen shows text and the idle animation of the character
+	/// </summary>
 	public void QueueCharacterUnlock<T>(EpochModel epoch) where T : CharacterModel
 	{
 		_unlockScreens.Enqueue(NUnlockCharacterScreen.Create(epoch, ModelDb.Character<T>()));
 	}
 
+	/// <summary>
+	/// Used by EpochModels to queue up a "Card Unlock Screen".
+	/// See: IroncladUnlock1Epoch.cs
+	/// </summary>
+	/// <param name="cards"></param>
 	public void QueueCardUnlock(IReadOnlyList<CardModel> cards)
 	{
 		NUnlockCardsScreen nUnlockCardsScreen = NUnlockCardsScreen.Create();
@@ -552,6 +741,11 @@ public class NTimelineScreen : NSubmenu
 		_unlockScreens.Enqueue(nUnlockCardsScreen);
 	}
 
+	/// <summary>
+	/// Used by EpochModels to queue up a "Relic Unlock Screen".
+	/// See: Silent3Epoch.cs
+	/// </summary>
+	/// <param name="relics"></param>
 	public void QueueRelicUnlock(List<RelicModel> relics)
 	{
 		NUnlockRelicsScreen nUnlockRelicsScreen = NUnlockRelicsScreen.Create();
@@ -559,6 +753,10 @@ public class NTimelineScreen : NSubmenu
 		_unlockScreens.Enqueue(nUnlockRelicsScreen);
 	}
 
+	/// <summary>
+	/// Used by EpochModels to queue up a "Potion Unlock Screen".
+	/// </summary>
+	/// <param name="potions"></param>
 	public void QueuePotionUnlock(List<PotionModel> potions)
 	{
 		NUnlockPotionsScreen nUnlockPotionsScreen = NUnlockPotionsScreen.Create();
@@ -573,11 +771,18 @@ public class NTimelineScreen : NSubmenu
 		_unlockScreens.Enqueue(nUnlockTimelineScreen);
 	}
 
+	/// <summary>
+	/// Allows the user to pan the screen left/right if there are 4+ Epochs
+	/// </summary>
 	public void SetScreenDraggability()
 	{
 		_slotsContainer.MouseFilter = (MouseFilterEnum)((_save.Epochs.Count <= 4) ? 2 : 0);
 	}
 
+	/// <summary>
+	/// Called when we open an Epoch Inspect screen.
+	/// Because the backstop is transparent we do some fancy trickery.
+	/// </summary>
 	public void ShowBackstopAndHideUi()
 	{
 		_backstop.Visible = true;
@@ -589,6 +794,10 @@ public class NTimelineScreen : NSubmenu
 		_reminderText.AnimateOut();
 	}
 
+	/// <summary>
+	/// Called when we close the Epoch Inspect screen.
+	/// </summary>
+	/// <param name="showBackButton"></param>
 	public async Task HideBackstopAndShowUi(bool showBackButton)
 	{
 		_backstopTween?.FastForwardToCompletion();
@@ -627,6 +836,10 @@ public class NTimelineScreen : NSubmenu
 		await _uniqueEpochEras[era].SpawnNameAndYear();
 	}
 
+	/// <summary>
+	/// Animates in the Header and Actions Available UI.
+	/// Called during the first timeline expansion or on screen open (if any Epochs are slotted)
+	/// </summary>
 	public void ShowHeaderAndActionsUi()
 	{
 		if (!_isUiVisible)
@@ -671,6 +884,10 @@ public class NTimelineScreen : NSubmenu
 		}
 	}
 
+	/// <summary>
+	/// Resets all vars and nodes on this screen. Used when players back out to main menu and reopen this screen.
+	/// While less safe than destroying and recreating the scene, it's more efficient.
+	/// </summary>
 	private void ResetScreen()
 	{
 		Control lineContainer = _lineContainer;
@@ -696,6 +913,11 @@ public class NTimelineScreen : NSubmenu
 		return _reminderVfxHolder;
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<MethodInfo> GetGodotMethodList()
 	{
@@ -742,6 +964,7 @@ public class NTimelineScreen : NSubmenu
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -897,6 +1120,7 @@ public class NTimelineScreen : NSubmenu
 		return false;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -991,6 +1215,7 @@ public class NTimelineScreen : NSubmenu
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -1082,6 +1307,7 @@ public class NTimelineScreen : NSubmenu
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -1178,6 +1404,11 @@ public class NTimelineScreen : NSubmenu
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -1203,6 +1434,7 @@ public class NTimelineScreen : NSubmenu
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -1226,6 +1458,7 @@ public class NTimelineScreen : NSubmenu
 		info.AddProperty(PropertyName._backstopTween, Variant.From(in _backstopTween));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

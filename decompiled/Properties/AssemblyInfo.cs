@@ -3,6 +3,8 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.Versioning;
+using System.Security;
+using System.Security.Permissions;
 using Godot;
 using MegaCrit.Sts2.Core.Assets;
 using MegaCrit.Sts2.Core.Audio.Debug;
@@ -80,7 +82,7 @@ using RiderTestRunner;
 [assembly: AssemblyCopyright("© 2023 Mega Crit Games")]
 [assembly: AssemblyDescription("sts2")]
 [assembly: AssemblyFileVersion("0.1.0.0")]
-[assembly: AssemblyInformationalVersion("0.1.0+23d60b98db6c5cfab827a60a4090e1d0e9f48aa8")]
+[assembly: AssemblyInformationalVersion("0.1.0+59260271157f76a2896f0eab5bc6ea1245d8b314")]
 [assembly: AssemblyProduct("sts2")]
 [assembly: AssemblyTitle("sts2")]
 [assembly: AssemblyHasScripts(new Type[]

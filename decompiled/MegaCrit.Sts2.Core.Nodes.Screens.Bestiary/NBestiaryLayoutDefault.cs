@@ -17,22 +17,46 @@ namespace MegaCrit.Sts2.Core.Nodes.Screens.Bestiary;
 [ScriptPath("res://src/Core/Nodes/Screens/Bestiary/NBestiaryLayoutDefault.cs")]
 public class NBestiaryLayoutDefault : NBestiaryLayout
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : NBestiaryLayout.MethodName
 	{
+		/// <summary>
+		/// Cached name for the 'Create' method.
+		/// </summary>
 		public static readonly StringName Create = "Create";
 
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the 'Cleanup' method.
+		/// </summary>
 		public new static readonly StringName Cleanup = "Cleanup";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : NBestiaryLayout.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the '_creature' field.
+		/// </summary>
 		public static readonly StringName _creature = "_creature";
 
+		/// <summary>
+		/// Cached name for the '_creatureContainer' field.
+		/// </summary>
 		public static readonly StringName _creatureContainer = "_creatureContainer";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : NBestiaryLayout.SignalName
 	{
 	}
@@ -87,6 +111,11 @@ public class NBestiaryLayoutDefault : NBestiaryLayout
 		return new global::_003C_003Ez__ReadOnlySingleElementList<NCreature>(_creature);
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<MethodInfo> GetGodotMethodList()
 	{
@@ -97,6 +126,7 @@ public class NBestiaryLayoutDefault : NBestiaryLayout
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -132,6 +162,7 @@ public class NBestiaryLayoutDefault : NBestiaryLayout
 		return false;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -150,6 +181,7 @@ public class NBestiaryLayoutDefault : NBestiaryLayout
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -166,6 +198,7 @@ public class NBestiaryLayoutDefault : NBestiaryLayout
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -182,6 +215,11 @@ public class NBestiaryLayoutDefault : NBestiaryLayout
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -191,6 +229,7 @@ public class NBestiaryLayoutDefault : NBestiaryLayout
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -199,6 +238,7 @@ public class NBestiaryLayoutDefault : NBestiaryLayout
 		info.AddProperty(PropertyName._creatureContainer, Variant.From(in _creatureContainer));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

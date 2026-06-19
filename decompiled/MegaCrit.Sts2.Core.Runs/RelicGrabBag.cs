@@ -21,8 +21,18 @@ public class RelicGrabBag
 		RelicRarity.Shop
 	};
 
+	/// <summary>
+	/// "Deque" is short for Double-Ended Queue.
+	/// https://en.wikipedia.org/wiki/Double-ended_queue
+	/// </summary>
 	private readonly Dictionary<RelicRarity, List<RelicModel>> _deques = new Dictionary<RelicRarity, List<RelicModel>>();
 
+	/// <summary>
+	/// This is used in multiplayer for relics that are seen at a shared relic picking treasure chest.
+	/// Relics that are chosen by a player are removed from their player's grab bag, and the other relics seen at the
+	/// chest are moved to this dequeue.
+	/// It is not used at all for the shared relic grab bag.
+	/// </summary>
 	private readonly List<RelicModel> _mpFallbackDequeue = new List<RelicModel>();
 
 	private readonly bool _refreshAllowed;
@@ -31,6 +41,9 @@ public class RelicGrabBag
 
 	public bool IsPopulated => _deques.Count > 0;
 
+	/// <summary>
+	/// Check if any relics are available to pull. Used by events to determine if they should appear.
+	/// </summary>
 	public bool HasAvailableRelics(IRunState runState)
 	{
 		foreach (RelicRarity rarity in _rarities)
@@ -105,6 +118,14 @@ public class RelicGrabBag
 		return PullFromFront(rarity, (RelicModel _) => true, runState);
 	}
 
+	/// <summary>
+	/// Get the front relic from the bucket of the specified rarity and remove it from the bucket.
+	/// Used by most relic reward sources (elite combat rewards etc).
+	/// </summary>
+	/// <param name="rarity">Rarity of the relic we want.</param>
+	/// <param name="runState">The current run state, used to check if relics are allowed.</param>
+	/// <param name="filter">Filter for what type of relics we are allowed to return.</param>
+	/// <returns>RelicModel</returns>
 	public RelicModel? PullFromFront(RelicRarity rarity, Func<RelicModel, bool> filter, IRunState runState)
 	{
 		List<RelicModel> availableDeque = GetAvailableDeque(rarity, runState, filter);
@@ -124,6 +145,14 @@ public class RelicGrabBag
 		return null;
 	}
 
+	/// <summary>
+	/// Get the back relic from the bucket of the specified rarity and remove it from the bucket.
+	/// Used in shops.
+	/// </summary>
+	/// <param name="rarity">Rarity of the relic we want.</param>
+	/// <param name="filter">Filter for what type of relics we are allowed to return.</param>
+	/// <param name="runState">The current run state, used to check if relics are allowed.</param>
+	/// <returns>RelicModel</returns>
 	public RelicModel? PullFromBack(RelicRarity rarity, Func<RelicModel, bool> filter, IRunState runState)
 	{
 		List<RelicModel> availableDeque = GetAvailableDeque(rarity, runState, filter);
@@ -143,6 +172,10 @@ public class RelicGrabBag
 		return null;
 	}
 
+	/// <summary>
+	/// Removes the specified relic from the bucket of the appropriate rarity so that it is never rolled.
+	/// If it's already not there, then nothing happens.
+	/// </summary>
 	public void Remove<T>() where T : RelicModel
 	{
 		Remove(ModelDb.Relic<T>());

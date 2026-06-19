@@ -3,6 +3,9 @@ using MegaCrit.Sts2.Core.Nodes.Screens.Timeline;
 
 namespace MegaCrit.Sts2.Core.Timeline.Epochs;
 
+/// <summary>
+/// Orobas
+/// </summary>
 public class OrobasEpoch : EpochModel
 {
 	public override string Id => "OROBAS_EPOCH";

@@ -4,6 +4,10 @@ using SmartFormat.Core.Extensions;
 
 namespace MegaCrit.Sts2.Core.Localization.Formatters;
 
+/// <summary>
+/// Formats numeric types with locale-aware thousand separators (N0) by default.
+/// Named formatters (diff, energyIcons, etc.) take priority over this auto-detect formatter.
+/// </summary>
 public class LocaleNumberFormatter : IFormatter
 {
 	public string Name

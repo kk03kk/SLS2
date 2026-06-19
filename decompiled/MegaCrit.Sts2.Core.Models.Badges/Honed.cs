@@ -6,12 +6,18 @@ using MegaCrit.Sts2.Core.Saves.Runs;
 
 namespace MegaCrit.Sts2.Core.Models.Badges;
 
+/// <summary>
+/// Deck contains 5+ of the same card
+/// </summary>
 public class Honed : Badge
 {
 	private const int _sameCardAmount = 5;
 
 	public override BadgeRarity Rarity => BadgeRarity.Bronze;
 
+	/// <summary>
+	/// Deck contains 5+ of the same card
+	/// </summary>
 	public Honed(SerializableRun run, bool won, ulong playerId)
 		: base(run, won, playerId, "HONED", requiresWin: true, multiplayerOnly: false)
 	{

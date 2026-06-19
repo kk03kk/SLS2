@@ -43,6 +43,13 @@ public class UsePotionAction : GameAction
 
 	public PlayerChoiceContext? PlayerChoiceContext { get; private set; }
 
+	/// <summary>
+	/// Constructor to use for constructing the UsePotionAction outside of serialization.
+	/// </summary>
+	/// <param name="potion">The potion which will be used.</param>
+	/// <param name="target">The target which the player is using the potion on. Pass null if the potion is not targeted.</param>
+	/// <param name="isCombatInProgress">Pass true if the potion was played during combat. The GameAction will be cancelled at
+	/// the end of combat if it is still enqueued.</param>
 	public UsePotionAction(PotionModel potion, Creature? target, bool isCombatInProgress)
 	{
 		if (potion.Owner == null)
@@ -76,6 +83,14 @@ public class UsePotionAction : GameAction
 		TargetPlayerId = target.Player?.NetId;
 	}
 
+	/// <summary>
+	/// Constructor to use when deserializing a NetUsePotionAction. Should not be used in other circumstances.
+	/// </summary>
+	/// <param name="player">The player who sent us the action.</param>
+	/// <param name="potionIndex">The index of the potion that will be used.</param>
+	/// <param name="targetId">The combat ID of the target.</param>
+	/// <param name="targetPlayerId">The NetID of the player that is targeted, if the potion was used outside of combat.</param>
+	/// <param name="isCombatInProgress">Whether or not combat was in progress when the potion was used.</param>
 	public UsePotionAction(Player player, uint potionIndex, uint? targetId, ulong? targetPlayerId, bool isCombatInProgress)
 	{
 		Player = player;

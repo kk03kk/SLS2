@@ -14,29 +14,64 @@ using MegaCrit.Sts2.Core.TestSupport;
 
 namespace MegaCrit.Sts2.Core.Nodes;
 
+/// <summary>
+/// Manages the fancy screen to screen transitions that use the SDF shader.
+/// FadeOut = Fades out the current screen. This means the screen becomes black.
+/// FadeIn = Fades the screen in. This means the screen becomes revealed.
+/// </summary>
 [ScriptPath("res://src/Core/Nodes/NTransition.cs")]
 public class NTransition : ColorRect
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : ColorRect.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : ColorRect.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'InTransition' property.
+		/// </summary>
 		public static readonly StringName InTransition = "InTransition";
 
+		/// <summary>
+		/// Cached name for the '_initialGradientYPosition' field.
+		/// </summary>
 		public static readonly StringName _initialGradientYPosition = "_initialGradientYPosition";
 
+		/// <summary>
+		/// Cached name for the '_targetGradientYPosition' field.
+		/// </summary>
 		public static readonly StringName _targetGradientYPosition = "_targetGradientYPosition";
 
+		/// <summary>
+		/// Cached name for the '_gradientTransition' field.
+		/// </summary>
 		public static readonly StringName _gradientTransition = "_gradientTransition";
 
+		/// <summary>
+		/// Cached name for the '_simpleTransition' field.
+		/// </summary>
 		public static readonly StringName _simpleTransition = "_simpleTransition";
 
+		/// <summary>
+		/// Cached name for the '_tween' field.
+		/// </summary>
 		public static readonly StringName _tween = "_tween";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : ColorRect.SignalName
 	{
 	}
@@ -187,6 +222,11 @@ public class NTransition : ColorRect
 		base.MouseFilter = MouseFilterEnum.Ignore;
 	}
 
+	/// <summary>
+	/// The gradient sweep transition when players move from room to room.
+	/// This replaced the spiral room transition animation.
+	/// Note that this utilizes TWO images to accomplish this transition, a simple backdrop fade + gradient sweep.
+	/// </summary>
 	public async Task RoomFadeOut()
 	{
 		InTransition = true;
@@ -223,6 +263,9 @@ public class NTransition : ColorRect
 		}
 	}
 
+	/// <summary>
+	/// Uses the SimpleTransition ColorRect to fade from black -&gt; seeing the next room.
+	/// </summary>
 	public async Task RoomFadeIn(bool showTransition = true)
 	{
 		if (TestMode.IsOn)
@@ -274,6 +317,11 @@ public class NTransition : ColorRect
 		}
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -282,6 +330,7 @@ public class NTransition : ColorRect
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -294,6 +343,7 @@ public class NTransition : ColorRect
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -304,6 +354,7 @@ public class NTransition : ColorRect
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -340,6 +391,7 @@ public class NTransition : ColorRect
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -376,6 +428,11 @@ public class NTransition : ColorRect
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -389,6 +446,7 @@ public class NTransition : ColorRect
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -401,6 +459,7 @@ public class NTransition : ColorRect
 		info.AddProperty(PropertyName._tween, Variant.From(in _tween));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

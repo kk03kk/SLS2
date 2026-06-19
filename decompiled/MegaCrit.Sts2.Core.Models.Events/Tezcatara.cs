@@ -13,6 +13,10 @@ namespace MegaCrit.Sts2.Core.Models.Events;
 
 public class Tezcatara : AncientEventModel
 {
+	/// <summary>
+	/// This ancient's "any character" dialogue is friendly, but they don't trust the <see cref="T:MegaCrit.Sts2.Core.Models.Characters.Defect" />, so we
+	/// blacklist them so we don't show these friendly dialogue options for them.
+	/// </summary>
 	public override IEnumerable<CharacterModel> AnyCharacterDialogueBlacklist => new global::_003C_003Ez__ReadOnlySingleElementList<CharacterModel>(ModelDb.Character<Defect>());
 
 	public override Color ButtonColor => new Color(0.08f, 0.04f, 0f, 0.75f);

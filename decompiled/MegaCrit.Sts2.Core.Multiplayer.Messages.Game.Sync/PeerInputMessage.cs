@@ -7,6 +7,10 @@ using MegaCrit.Sts2.Core.Multiplayer.Transport;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Messages.Game.Sync;
 
+/// <summary>
+/// Message sent to update the input state of a remote peer.
+/// Input state includes mouse position, mouse down state, and hover info.
+/// </summary>
 public class PeerInputMessage : INetMessage, IPacketSerializable
 {
 	private static readonly QuantizeParams _quantizeParams = new QuantizeParams(-3f, 3f, 16);

@@ -7,8 +7,18 @@ namespace MegaCrit.Sts2.Core.Combat.History.Entries;
 
 public class CardPlayFinishedEntry : CombatHistoryEntry
 {
+	/// <summary>
+	/// The instance of the card play that finished.
+	/// </summary>
 	public CardPlay CardPlay { get; }
 
+	/// <summary>
+	/// Tracks if the card was Ethereal at the time it was played.
+	///
+	/// This is a HACK in order to make <see cref="T:MegaCrit.Sts2.Core.Models.Cards.BansheesCry" /> work.
+	/// If we end up with more WasX properties like this, we should add some sort of snapshot mechanism so that
+	/// <see cref="P:MegaCrit.Sts2.Core.Combat.History.Entries.CardPlayFinishedEntry.CardPlay" /> represents the state of the card at the time it was played.
+	/// </summary>
 	public bool WasEthereal { get; }
 
 	public override string Description

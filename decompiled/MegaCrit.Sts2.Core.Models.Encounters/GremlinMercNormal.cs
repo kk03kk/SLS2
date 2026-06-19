@@ -28,6 +28,10 @@ public sealed class GremlinMercNormal : EncounterModel
 		ModelDb.Monster<SneakyGremlin>()
 	});
 
+	/// <summary>
+	/// Whether GremlinMerc stole at least some gold this combat. Set by <see cref="T:MegaCrit.Sts2.Core.Models.Powers.SurprisePower" />
+	/// when the merc dies and its stolen gold is transferred to Fat Gremlin.
+	/// </summary>
 	private bool GoldWasStolen
 	{
 		get

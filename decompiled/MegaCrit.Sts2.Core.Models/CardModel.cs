@@ -53,6 +53,11 @@ public abstract class CardModel : AbstractModel
 
 	private int _baseStarCost;
 
+	/// <summary>
+	/// Was this card's star cost just recently upgraded?
+	/// This is mainly used to show upgrade preview values in green.
+	/// This should be cleared after the upgrade is complete.
+	/// </summary>
 	private bool _wasStarCostJustUpgraded;
 
 	private List<TemporaryCardCost> _temporaryStarCosts = new List<TemporaryCardCost>();
@@ -71,8 +76,16 @@ public abstract class CardModel : AbstractModel
 
 	private bool _hasSingleTurnSly;
 
+	/// <summary>
+	/// The card that this is a clone of. Null when this card is not a clone (which is most of the time).
+	/// Clones are exactly the same as any other type of card, we just keep track of the original to make some effects
+	/// easier to implement (like <see cref="T:MegaCrit.Sts2.Core.Models.Cards.Terraforming" />).
+	/// </summary>
 	private CardModel? _cloneOf;
 
+	/// <summary>
+	/// Whether or not this card is considered a duplicate. See <see cref="P:MegaCrit.Sts2.Core.Models.CardModel.DupeOf" /> for more info on dupes.
+	/// </summary>
 	private bool _isDupe;
 
 	private int _currentUpgradeLevel;
@@ -276,6 +289,9 @@ public abstract class CardModel : AbstractModel
 
 	public virtual CardRarity Rarity { get; }
 
+	/// <summary>
+	/// Manages card restrictions based on how many players there are in a run.
+	/// </summary>
 	public virtual CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.None;
 
 	public virtual CardPoolModel Pool
@@ -300,8 +316,20 @@ public abstract class CardModel : AbstractModel
 		}
 	}
 
+	/// <summary>
+	/// Visually what pool we want the card to be from. Normally this is the same as the regular pool.
+	/// It is not the case when we want it to be part of one pool, but look like its from another pool
+	/// ie Trash Heap cards are event cards, but we want the colors to reflect their original character cards from sts1
+	/// </summary>
 	public virtual CardPoolModel VisualCardPool => Pool;
 
+	/// <summary>
+	/// Get the Player that this card belongs to.
+	/// Will technically be null on a canonical card model and in certain edge-case timing moments (end of combat before
+	/// transitioning to the next room), but we should rarely be checking that, so we leave this as non-nullable for
+	/// convenience in 99% of cases.
+	/// If you really need to check for null, override the warning with a comment.
+	/// </summary>
 	public Player Owner
 	{
 		get
@@ -320,12 +348,33 @@ public abstract class CardModel : AbstractModel
 		}
 	}
 
+	/// <summary>
+	/// The pile which this card is in.
+	/// Can be null when used by Card HoverTips, Card Rewards, Card Library, things like that.
+	/// </summary>
 	public CardPile? Pile => _owner?.Piles.FirstOrDefault((CardPile p) => p.Cards.Contains(this));
 
+	/// <summary>
+	/// This card's "official" starting energy cost.
+	/// This is what would appear on the card if it was printed out on paper.
+	///
+	/// Note: If you want to check a card's canonical energy cost, use <see cref="P:MegaCrit.Sts2.Core.Entities.Cards.CardEnergyCost.Canonical" /> instead.
+	/// </summary>
 	protected virtual int CanonicalEnergyCost { get; }
 
+	/// <summary>
+	/// Whether this card has an energy cost of X.
+	/// X-cost-cards automatically spend all of the player's remaining energy when played, and their effect is
+	/// multiplied by the amount spent.
+	///
+	/// Note: This exists on CardModel for the purposes of overriding in subclasses. If you want to check if a card has
+	/// an energy cost of X, use <see cref="P:MegaCrit.Sts2.Core.Entities.Cards.CardEnergyCost.CostsX" /> instead.
+	/// </summary>
 	protected virtual bool HasEnergyCostX => false;
 
+	/// <summary>
+	/// All energy-cost-related information and logic about this card.
+	/// </summary>
 	public CardEnergyCost EnergyCost
 	{
 		get
@@ -338,6 +387,11 @@ public abstract class CardModel : AbstractModel
 		}
 	}
 
+	/// <summary>
+	/// The number of extra times this card's logic should be executed when it's played, excluding any effects from
+	/// other models.
+	/// Defaults to 0, but various effects can permanently set this to a higher value.
+	/// </summary>
 	public int BaseReplayCount
 	{
 		get
@@ -385,6 +439,14 @@ public abstract class CardModel : AbstractModel
 
 	public TemporaryCardCost? TemporaryStarCost => _temporaryStarCosts.LastOrDefault();
 
+	/// <summary>
+	/// Get this card's current star cost.
+	///
+	/// This works just like <see cref="M:MegaCrit.Sts2.Core.Entities.Cards.CardEnergyCost.GetWithModifiers(MegaCrit.Sts2.Core.Entities.Cards.CostModifiers)" /> passing <see cref="F:MegaCrit.Sts2.Core.Entities.Cards.CostModifiers.Local" /> but
+	/// for stars, and with one exception.
+	/// If the card had no star cost (it was negative) and it is temporarily set to zero, then we still treat the card
+	/// as if it has no star cost, so that it still doesn't show up on the card.
+	/// </summary>
 	public virtual int CurrentStarCost
 	{
 		get
@@ -404,6 +466,14 @@ public abstract class CardModel : AbstractModel
 
 	public virtual bool HasStarCostX => false;
 
+	/// <summary>
+	/// The amount of stars most recently spent to play this card.
+	/// Used when duplicating X-cost cards, to make sure the duplicates are played with the same value.
+	///
+	/// WARNING: Only use this for calculations related to stars spent. If you're using this to calculate a cost-X-stars
+	/// card's effect, use <see cref="M:MegaCrit.Sts2.Core.Models.CardModel.ResolveStarXValue" /> instead, as it will take X-value modifications (like
+	/// <see cref="T:MegaCrit.Sts2.Core.Models.Relics.ChemicalX" />) into account.
+	/// </summary>
 	public int LastStarsSpent
 	{
 		get
@@ -417,10 +487,22 @@ public abstract class CardModel : AbstractModel
 		}
 	}
 
+	/// <summary>
+	/// Defines who what creature we should be targeting/highlighting. Some examples:
+	/// - AnyEnemy means that this is a single target attack.
+	/// - AllEnemies: this is an AOE attack so highlight all valid enemies
+	/// - Self: This is a power applied to the player, highlight the players character
+	/// </summary>
 	public virtual TargetType TargetType { get; }
 
 	public virtual IEnumerable<CardKeyword> CanonicalKeywords => Array.Empty<CardKeyword>();
 
+	/// <summary>
+	/// The keywords applied directly to this card: its canonical keywords, plus any added by <see cref="M:MegaCrit.Sts2.Core.Models.CardModel.AddKeyword(MegaCrit.Sts2.Core.Entities.Cards.CardKeyword)" />,
+	/// minus any removed by <see cref="M:MegaCrit.Sts2.Core.Models.CardModel.RemoveKeyword(MegaCrit.Sts2.Core.Entities.Cards.CardKeyword)" />. This is the persistent, instance-owned keyword state; it is
+	/// what gets cloned, and is unaffected by other models in the combat state.
+	/// See <see cref="F:MegaCrit.Sts2.Core.Entities.Cards.KeywordSources.Local" /> for more details.
+	/// </summary>
 	private HashSet<CardKeyword> LocalKeywords
 	{
 		get
@@ -435,8 +517,19 @@ public abstract class CardModel : AbstractModel
 		}
 	}
 
+	/// <summary>
+	/// This card's current keywords, including both local keywords (<see cref="F:MegaCrit.Sts2.Core.Entities.Cards.KeywordSources.Local" />) and any
+	/// global keywords (<see cref="F:MegaCrit.Sts2.Core.Entities.Cards.KeywordSources.Global" />) granted by other models in the combat state (e.g.
+	/// Ethereal from <see cref="T:MegaCrit.Sts2.Core.Models.Powers.HexPower" />). See <see cref="M:MegaCrit.Sts2.Core.Models.CardModel.GetKeywordsWithSources(MegaCrit.Sts2.Core.Entities.Cards.KeywordSources)" />.
+	/// </summary>
 	public IReadOnlySet<CardKeyword> Keywords => GetKeywordsWithSources(KeywordSources.All);
 
+	/// <summary>
+	/// This card's tags. See <see cref="T:MegaCrit.Sts2.Core.Entities.Cards.CardTag" /> for details on how to use these.
+	///
+	/// NOTE: The current implementation assumes a card's tags will never change. If we ever need to dynamically add or
+	/// remove tags after creation, change this to work more like Keywords.
+	/// </summary>
 	public virtual IEnumerable<CardTag> Tags => _tags ?? (_tags = CanonicalTags);
 
 	protected virtual HashSet<CardTag> CanonicalTags => new HashSet<CardTag>();
@@ -457,6 +550,12 @@ public abstract class CardModel : AbstractModel
 
 	protected virtual IEnumerable<DynamicVar> CanonicalVars => Array.Empty<DynamicVar>();
 
+	/// <summary>
+	/// This is used for cards like Havoc and Cinder to mark cards that should be sent to the exhaust pile instead
+	/// of the discard pile on their next play.
+	///
+	/// TODO: This might be kind of a hacky solution. We should look into other ways to pass this info along.
+	/// </summary>
 	public bool ExhaustOnNextPlay
 	{
 		get
@@ -483,6 +582,11 @@ public abstract class CardModel : AbstractModel
 		}
 	}
 
+	/// <summary>
+	/// Should this card be retained this turn?
+	/// True if the card has the Retain keyword, or if some effect like Well-Laid Plans has made it retain for a single
+	/// turn and it's still that turn.
+	/// </summary>
 	public bool ShouldRetainThisTurn
 	{
 		get
@@ -508,6 +612,10 @@ public abstract class CardModel : AbstractModel
 		}
 	}
 
+	/// <summary>
+	/// Is this card Sly this turn?
+	/// True if the card has the Sly keyword, or if some effect like Hand Trick has made it Sly for a single turn.
+	/// </summary>
 	public bool IsSlyThisTurn
 	{
 		get
@@ -524,14 +632,48 @@ public abstract class CardModel : AbstractModel
 
 	public AfflictionModel? Affliction { get; private set; }
 
+	/// <summary>
+	/// Whether or not playing this card can heal the player or their pets, either directly (like Feed) or by giving
+	/// you something else that can heal you (like Alchemize giving you a Regen Potion).
+	///
+	/// Used primarily to filter cards out of random in-combat generation effects, to avoid making annoying
+	/// "optimal play" behavior.
+	/// </summary>
 	public virtual bool CanBeGeneratedInCombat => true;
 
+	/// <summary>
+	/// Used to filter cards out of modifier pools. Ancient curses and Ascender's Bane should not be generated by Cursed
+	/// Run.
+	/// </summary>
 	public virtual bool CanBeGeneratedByModifiers => true;
 
+	/// <summary>
+	/// Manages if and how a card will Evoke an Orb.
+	/// Applies to cards like Dualcast, which say "Evoke your next Orb".
+	/// Does NOT apply to cards that may evoke an Orb as a side-effect (like Zap's channeling causing an Orb to evoke).
+	///
+	/// Used primarily to visually update the numbers displayed on your Orbs to reflect their Evoke values while
+	/// dragging a card.
+	/// </summary>
 	public virtual OrbEvokeType OrbEvokeType => OrbEvokeType.None;
 
+	/// <summary>
+	/// Whether or not playing this card gains you block immediately.
+	/// True for cards like Defend and Survivor.
+	/// False for cards like Shadowmeld (which doesn't gain you block until you play an attack after).
+	///
+	/// Used for things like filtering the Nimble enchantment's targets.
+	/// Also automatically sets the block HoverTip.
+	///
+	/// Note: Don't convert this into a CardTag. It's used by the system for automatic Osty targeting behavior.
+	/// </summary>
 	public virtual bool GainsBlock => false;
 
+	/// <summary>
+	/// Is this card one of the basic Strikes or Defends that you start the game with?
+	///
+	/// Used for things like Pandora's Box that only operate on these specific starter cards.
+	/// </summary>
 	public virtual bool IsBasicStrikeOrDefend
 	{
 		get
@@ -554,8 +696,19 @@ public abstract class CardModel : AbstractModel
 
 	public CardModel? CloneOf => _cloneOf;
 
+	/// <summary>
+	/// Whether or not this card is considered a clone. See <see cref="P:MegaCrit.Sts2.Core.Models.CardModel.CloneOf" /> for more info on clones.
+	/// </summary>
 	public bool IsClone => CloneOf != null;
 
+	/// <summary>
+	/// The card that this is a duplicate of. Null when this card is not a duplicate (which is most of the time).
+	///
+	/// Dupes behave slightly differently from original cards in some situations. For example:
+	/// * After playing a dupe, it is sent to the Limbo pile, rather than Discard/Exhaust.
+	/// * Dupes cannot be further duplicated by effects like Duplication Potion.
+	/// * If an X-cost card is duped, the dupe retains the X-value from the original.
+	/// </summary>
 	public CardModel? DupeOf
 	{
 		get
@@ -641,6 +794,11 @@ public abstract class CardModel : AbstractModel
 		}
 	}
 
+	/// <summary>
+	/// Is this card currently appearing as a previewed upgrade in <see cref="T:MegaCrit.Sts2.Core.Nodes.Cards.NUpgradePreview" />?
+	/// And if so, what type of upgrade preview is it?
+	/// This is to facilitate having upgrade previews reflect power values from the player in combat (i.e. Armaments).
+	/// </summary>
 	public CardUpgradePreviewType UpgradePreviewType
 	{
 		get
@@ -658,8 +816,15 @@ public abstract class CardModel : AbstractModel
 		}
 	}
 
+	/// <summary>
+	/// Override this property to add extra conditions to check before allowing play.
+	/// For example, Grand Finale is only playable if your draw pile is empty, so it would override this.
+	/// </summary>
 	protected virtual bool IsPlayable => true;
 
+	/// <summary>
+	/// Set via constructor parameter to block a card from appearing in the Card Library screen.
+	/// </summary>
 	public bool ShouldShowInCardLibrary { get; }
 
 	public bool ShouldGlowGold
@@ -686,10 +851,21 @@ public abstract class CardModel : AbstractModel
 		}
 	}
 
+	/// <summary>
+	/// Override this property to add conditions to check to determine whether to show a gold glow on this card.
+	/// For example, Evil Eye adds 6 extra block if you've exhausted a card this turn, so it would override this.
+	/// </summary>
 	protected virtual bool ShouldGlowGoldInternal => false;
 
+	/// <summary>
+	/// Override this property to add conditions to check to determine whether to show a red glow on this card.
+	/// For example, Normality should glow red when it blocks card plays.
+	/// </summary>
 	protected virtual bool ShouldGlowRedInternal => false;
 
+	/// <summary>
+	/// Is this card currently appearing as a previewed enchanted card in <see cref="T:MegaCrit.Sts2.Core.Nodes.Cards.NEnchantPreview" />?
+	/// </summary>
 	public bool IsEnchantmentPreview
 	{
 		get
@@ -733,6 +909,10 @@ public abstract class CardModel : AbstractModel
 		}
 	}
 
+	/// <summary>
+	/// Index of the play currently in progress while this card is being played (0 = first play, 1 = first Replay,
+	/// etc.). Lets damage previews reflect mid-Replay state before the current play's History entry has been logged.
+	/// </summary>
 	public int CurrentPlayIndex
 	{
 		get
@@ -759,6 +939,12 @@ public abstract class CardModel : AbstractModel
 		}
 	}
 
+	/// <summary>
+	/// Set to true when this card is removed from the combat/run state (happens pretty rarely, like when a card is
+	/// transformed or removed from the player's deck).
+	/// Set to false when the card is added _back_ to the combat/run state (even more rarely, like when
+	/// <see cref="T:MegaCrit.Sts2.Core.Models.Monsters.ThievingHopper" /> steals a card and then you add it back to your deck later).
+	/// </summary>
 	public bool HasBeenRemovedFromState { get; set; }
 
 	protected virtual IEnumerable<IHoverTip> ExtraHoverTips => Array.Empty<IHoverTip>();
@@ -818,8 +1004,16 @@ public abstract class CardModel : AbstractModel
 		}
 	}
 
+	/// <summary>
+	/// The state of the run that this card exists in.
+	/// Null for cards that exist outside of a run (in the Compendium, in preview HoverTips, etc.)
+	/// </summary>
 	public IRunState? RunState => _owner?.RunState;
 
+	/// <summary>
+	/// The state of the combat that this card exists in.
+	/// Null for cards that exist outside of a combat (deck cards, cards offered in rewards or at events, etc.)
+	/// </summary>
 	public ICombatState? CombatState
 	{
 		get
@@ -833,16 +1027,34 @@ public abstract class CardModel : AbstractModel
 		}
 	}
 
+	/// <summary>
+	/// The lowest-level scope that this card exists in.
+	/// Combat takes precedence over run, since all cards in a run have a <see cref="P:MegaCrit.Sts2.Core.Models.CardModel.RunState" />, but cards that have been added
+	/// to combat also have a CombatState.
+	/// Note: For operations that need a scope during combat, we check the owner's CombatState as a fallback because
+	/// CombatState is null for cards in non-combat piles (like the deck).
+	/// </summary>
 	public ICardScope? CardScope => ((ICardScope)CombatState) ?? ((ICardScope)(_owner?.Creature.CombatState)) ?? RunState;
 
+	/// <summary>
+	/// Override this property to run this card's <see cref="M:MegaCrit.Sts2.Core.Models.CardModel.OnTurnEndInHand(MegaCrit.Sts2.Core.GameActions.Multiplayer.PlayerChoiceContext)" /> when the player ends the turn with this
+	/// card in their hand.
+	/// </summary>
 	public virtual bool HasTurnEndInHandEffect => false;
 
 	public override bool ShouldReceiveCombatHooks => Pile?.IsCombatPile ?? false;
 
 	public virtual IEnumerable<string> AllPortraitPaths => new global::_003C_003Ez__ReadOnlySingleElementList<string>(PortraitPath);
 
+	/// <summary>
+	/// Returns all card-related asset paths for a run.
+	/// </summary>
 	public IEnumerable<string> RunAssetPaths => ExtraRunAssetPaths;
 
+	/// <summary>
+	/// Cards can define VFX that are displayed in combat here.
+	/// These are not preloaded when only the card would be displayed, e.g. in the compendium.
+	/// </summary>
 	protected virtual IEnumerable<string> ExtraRunAssetPaths => Array.Empty<string>();
 
 	public event Action? AfflictionChanged;
@@ -865,6 +1077,12 @@ public abstract class CardModel : AbstractModel
 
 	public event Action? Forged;
 
+	/// <summary>
+	/// These values are constructor parameters rather than abstract properties to avoid virtual dispatch.
+	/// Most cards have constant values for these properties, so storing them in fields eliminates the
+	/// overhead of virtual method calls on every access. Cards with dynamic behavior (e.g., MadScience)
+	/// can still override the virtual properties.
+	/// </summary>
 	protected CardModel(int canonicalEnergyCost, CardType type, CardRarity rarity, TargetType targetType, bool shouldShowInCardLibrary = true)
 	{
 		CanonicalEnergyCost = canonicalEnergyCost;
@@ -874,16 +1092,27 @@ public abstract class CardModel : AbstractModel
 		ShouldShowInCardLibrary = shouldShowInCardLibrary;
 	}
 
+	/// <summary>
+	/// WARNING: Only use this in tests.
+	/// Set this card's energy cost.
+	/// </summary>
 	protected void MockSetEnergyCost(CardEnergyCost cost)
 	{
 		_energyCost = cost;
 	}
 
+	/// <summary>
+	/// Internal method for <see cref="T:MegaCrit.Sts2.Core.Entities.Cards.CardEnergyCost" /> to invoke the EnergyCostChanged event.
+	/// </summary>
 	public void InvokeEnergyCostChanged()
 	{
 		this.EnergyCostChanged?.Invoke();
 	}
 
+	/// <summary>
+	/// Resolve this card's X energy value.
+	/// Takes modifications to X values (like <see cref="T:MegaCrit.Sts2.Core.Models.Relics.ChemicalX" />) into account.
+	/// </summary>
 	public int ResolveEnergyXValue()
 	{
 		if (!EnergyCost.CostsX)
@@ -893,11 +1122,19 @@ public abstract class CardModel : AbstractModel
 		return Hook.ModifyXValue(CombatState, this, EnergyCost.CapturedXValue);
 	}
 
+	/// <summary>
+	/// The number of extra times this card's logic should be executed when it's played, including any effects from
+	/// this card's enchantment if it has one.
+	/// </summary>
 	public int GetEnchantedReplayCount()
 	{
 		return Enchantment?.EnchantPlayCount(BaseReplayCount) ?? BaseReplayCount;
 	}
 
+	/// <summary>
+	/// Resolve this card's X star value.
+	/// Takes modifications to X values (like <see cref="T:MegaCrit.Sts2.Core.Models.Relics.ChemicalX" />) into account.
+	/// </summary>
 	public int ResolveStarXValue()
 	{
 		if (!HasStarCostX)
@@ -907,6 +1144,11 @@ public abstract class CardModel : AbstractModel
 		return Hook.ModifyXValue(CombatState, this, LastStarsSpent);
 	}
 
+	/// <summary>
+	/// Get this card's keywords, including the specified source types.
+	/// This mirrors <see cref="M:MegaCrit.Sts2.Core.Entities.Cards.CardEnergyCost.GetWithModifiers(MegaCrit.Sts2.Core.Entities.Cards.CostModifiers)" />: local keywords live on the card, while global
+	/// keywords are computed on demand from other models in the combat state and are never stored.
+	/// </summary>
 	public IReadOnlySet<CardKeyword> GetKeywordsWithSources(KeywordSources sources)
 	{
 		bool flag = sources.HasFlag(KeywordSources.Local);
@@ -996,10 +1238,18 @@ public abstract class CardModel : AbstractModel
 		this.Upgraded = null;
 	}
 
+	/// <summary>
+	/// Extra logic that should be run after the card is created (NOT during deserialization).
+	/// At this point, the card will have an owner, and will be in a <see cref="P:MegaCrit.Sts2.Core.Models.CardModel.CombatState" /> or <see cref="P:MegaCrit.Sts2.Core.Models.CardModel.RunState" />.
+	/// </summary>
 	public virtual void AfterCreated()
 	{
 	}
 
+	/// <summary>
+	/// Extra logic that should be run after deserializing.
+	/// This should rarely be overridden, just for very unusual cards like <see cref="T:MegaCrit.Sts2.Core.Models.Cards.MadScience" />.
+	/// </summary>
 	protected virtual void AfterDeserialized()
 	{
 	}
@@ -1052,6 +1302,11 @@ public abstract class CardModel : AbstractModel
 		this.StarCostChanged?.Invoke();
 	}
 
+	/// <summary>
+	/// Upgrade the star cost of this card by the specified amount.
+	/// This is meant to be called in OnUpgrade.
+	/// </summary>
+	/// <param name="addend">Amount to add to the current cost (usually negative).</param>
 	protected void UpgradeStarCostBy(int addend)
 	{
 		if (HasStarCostX)
@@ -1085,11 +1340,19 @@ public abstract class CardModel : AbstractModel
 		this.KeywordsChanged?.Invoke();
 	}
 
+	/// <summary>
+	/// Set this card to be retained this turn.
+	/// Will be cleared at the end of the turn.
+	/// </summary>
 	public void GiveSingleTurnRetain()
 	{
 		HasSingleTurnRetain = true;
 	}
 
+	/// <summary>
+	/// Set this card to be Sly this turn.
+	/// Will be cleared at the end of the turn.
+	/// </summary>
 	public void GiveSingleTurnSly()
 	{
 		HasSingleTurnSly = true;
@@ -1176,6 +1439,15 @@ public abstract class CardModel : AbstractModel
 		return string.Join('\n', list2.Where((string l) => !string.IsNullOrEmpty(l)));
 	}
 
+	/// <summary>
+	/// Updates the dynamic variables of this card based on hooks (i.e damage, block, and powers).
+	/// This is so powers and relic modifications to these values can be reflected in card descriptions.
+	/// </summary>
+	/// <param name="previewMode">
+	/// The type of preview to show in the card's visuals. See <see cref="T:MegaCrit.Sts2.Core.Entities.Cards.CardPreviewMode" /> for details.
+	/// </param>
+	/// <param name="target">Creature who this card is targeting, if it exists.</param>
+	/// <param name="dynamicVarSet">The dynamic variables for this card.</param>
 	public void UpdateDynamicVarPreview(CardPreviewMode previewMode, Creature? target, DynamicVarSet dynamicVarSet)
 	{
 		if (RunState == null && CombatState == null)
@@ -1207,6 +1479,15 @@ public abstract class CardModel : AbstractModel
 		}
 	}
 
+	/// <summary>
+	/// Add an Enchantment to this card.
+	/// </summary>
+	/// <remarks>
+	/// You should generally use CardCommands.Enchant instead of this method. If you do use this method, you may need to
+	/// call <see cref="M:MegaCrit.Sts2.Core.Models.EnchantmentModel.ModifyCard" /> after.
+	/// </remarks>
+	/// <param name="enchantment">Enchantment to add.</param>
+	/// <param name="amount">Amount to set on the added enchantment.</param>
 	public void EnchantInternal(EnchantmentModel enchantment, decimal amount)
 	{
 		AssertMutable();
@@ -1216,6 +1497,13 @@ public abstract class CardModel : AbstractModel
 		this.EnchantmentChanged?.Invoke();
 	}
 
+	/// <summary>
+	/// Add an Affliction to this card.
+	/// </summary>
+	/// <remarks>You should generally use CardCmd.Afflict instead of this method.</remarks>
+	/// <param name="affliction">Affliction to add.</param>
+	/// <param name="amount">Amount to set on the added affliction</param>
+	/// <returns>Whether or not adding the affliction was successful.</returns>
 	public void AfflictInternal(AfflictionModel affliction, decimal amount)
 	{
 		AssertMutable();
@@ -1257,6 +1545,13 @@ public abstract class CardModel : AbstractModel
 	{
 	}
 
+	/// <summary>
+	/// Get this card's current star cost, including all modifiers.
+	/// Usually, this will just be the same as CurrentStarCost, but there are 2 exceptions:
+	/// 1. X-cost cards will return the amount of stars that will be spent to play them instead of a 0 placeholder value.
+	/// 2. Effects that modify star costs will be reflected here.
+	/// </summary>
+	/// <returns>Current energy cost including modifiers.</returns>
 	public int GetStarCostWithModifiers()
 	{
 		if (HasStarCostX)
@@ -1271,6 +1566,15 @@ public abstract class CardModel : AbstractModel
 		return CurrentStarCost;
 	}
 
+	/// <summary>
+	/// Does this card have an energy or star (or both) cost?
+	/// Used by effects that make cards totally free (no energy OR star cost), to avoid selecting cards that are already
+	/// free.
+	/// </summary>
+	/// <param name="includeGlobalModifiers">
+	/// Whether to include global modifiers in the cost.
+	/// See <see cref="F:MegaCrit.Sts2.Core.Entities.Cards.CostModifiers.Global" /> for details.
+	/// </param>
 	public bool CostsEnergyOrStars(bool includeGlobalModifiers)
 	{
 		if (includeGlobalModifiers)
@@ -1331,20 +1635,45 @@ public abstract class CardModel : AbstractModel
 		this.Forged?.Invoke();
 	}
 
+	/// <summary>
+	/// Override this method for when this card is played.
+	/// </summary>
+	/// <param name="choiceContext"></param>
+	/// <param name="cardPlay">The CardPlay that is being executed.</param>
 	protected virtual Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
 		return Task.CompletedTask;
 	}
 
+	/// <summary>
+	/// Override this method to add VFX that should run the moment the mouse is released when playing this card.
+	/// This is different from OnPlay, which is meant for game logic (dealing damage, gaining block, etc.), and won't
+	/// run until the card play action is dequeued from the action queue.
+	/// WARNING: Don't put any game logic in here! It might do things you don't expect.
+	/// </summary>
+	/// <param name="target">Creature that this card is targeting. Should be null for un-targeted cards.</param>
 	public virtual Task OnEnqueuePlayVfx(Creature? target)
 	{
 		return Task.CompletedTask;
 	}
 
+	/// <summary>
+	/// Override this method with logic for when this card is upgraded.
+	/// To upgrade a card's dynamic vars, use <see cref="M:MegaCrit.Sts2.Core.Localization.DynamicVars.DynamicVar.UpgradeValueBy(System.Decimal)" />.
+	/// To upgrade a card's energy cost, use <see cref="M:MegaCrit.Sts2.Core.Entities.Cards.CardEnergyCost.UpgradeBy(System.Int32)" />.
+	/// </summary>
 	protected virtual void OnUpgrade()
 	{
 	}
 
+	/// <summary>
+	/// Override this method for when the player ends the turn with this card in their hand.
+	/// NOTES:
+	/// * You must also override <see cref="P:MegaCrit.Sts2.Core.Models.CardModel.HasTurnEndInHandEffect" /> to return true.
+	/// * While this method is being run, this card will be in the Play pile.
+	/// * After this method is run, this card will be added to the Discard pile.
+	/// </summary>
+	/// <param name="choiceContext">The choice context to use in the event of a player choice.</param>
 	protected virtual Task OnTurnEndInHand(PlayerChoiceContext choiceContext)
 	{
 		return Task.CompletedTask;
@@ -1368,6 +1697,11 @@ public abstract class CardModel : AbstractModel
 		}
 	}
 
+	/// <summary>
+	/// Can this card be played with the specified creature as the target?
+	/// </summary>
+	/// <param name="target">Creature for this card to target. Null when attempting to play with no target (like Defend).</param>
+	/// <returns>Whether the card can be played with the specified target.</returns>
 	public bool CanPlayTargeting(Creature? target)
 	{
 		if (!IsValidTarget(target))
@@ -1377,6 +1711,9 @@ public abstract class CardModel : AbstractModel
 		return CanPlay();
 	}
 
+	/// <summary>
+	/// Can this card be played?
+	/// </summary>
 	public bool CanPlay()
 	{
 		UnplayableReason reason;
@@ -1384,6 +1721,16 @@ public abstract class CardModel : AbstractModel
 		return CanPlay(out reason, out preventer);
 	}
 
+	/// <summary>
+	/// Can this card be played?
+	/// </summary>
+	/// <param name="reason">
+	/// Out param containing the reason that this card cannot be played (None if it can be played).
+	/// </param>
+	/// <param name="preventer">
+	/// First model that made this card unable to be played (null if there is no preventer).
+	/// </param>
+	/// <returns>Whether this card can be played.</returns>
 	public bool CanPlay(out UnplayableReason reason, out AbstractModel? preventer)
 	{
 		reason = UnplayableReason.None;
@@ -1416,6 +1763,11 @@ public abstract class CardModel : AbstractModel
 		return reason == UnplayableReason.None;
 	}
 
+	/// <summary>
+	/// Returns true if target is valid for this card.
+	/// NOTE: This operates differently than potions! Do not try to unify this with PotionModel.IsValidTarget unless you
+	/// change UI targeting; namely, PotionModel's TargetType.Self passes a target, whereas this one doesn't.
+	/// </summary>
 	public bool IsValidTarget(Creature? target)
 	{
 		if (target == null)
@@ -1457,6 +1809,10 @@ public abstract class CardModel : AbstractModel
 		RunManager.Instance.ActionQueueSynchronizer.RequestEnqueue(new PlayCardAction(this, target));
 	}
 
+	/// <summary>
+	/// Spend the resources required to play this card.
+	/// </summary>
+	/// <returns>The energy and stars spent.</returns>
 	public async Task<(int, int)> SpendResources()
 	{
 		int energy = Owner.PlayerCombatState.Energy;
@@ -1496,6 +1852,18 @@ public abstract class CardModel : AbstractModel
 		}
 	}
 
+	/// <summary>
+	/// Run all the logic for playing this card.
+	/// </summary>
+	/// <param name="choiceContext">The context that is signalled in the event of a player choice.</param>
+	/// <param name="target">The creature that this card is targeting. Null for un-targeted cards.</param>
+	/// <param name="isAutoPlay">
+	/// Whether this card is being auto-played.
+	/// False when the player plays the card manually from their hand.
+	/// True when played automatically by an effect like <see cref="T:MegaCrit.Sts2.Core.Models.Powers.MayhemPower" />.
+	/// </param>
+	/// <param name="resources">Info about the resources used when playing this card.</param>
+	/// <param name="skipCardPileVisuals">Skip card pile visuals (tween to/from pile, smoke puff VFX, etc).</param>
 	public async Task OnPlayWrapper(PlayerChoiceContext choiceContext, Creature? target, bool isAutoPlay, ResourceInfo resources, bool skipCardPileVisuals = false)
 	{
 		choiceContext.PushModel(this);
@@ -1636,6 +2004,14 @@ public abstract class CardModel : AbstractModel
 		choiceContext.PopModel(this);
 	}
 
+	/// <summary>
+	/// Generate the number of times this card's OnPlay effects should be executed when it's played.
+	/// Runs hooks to modify the play count, including state-modifying hooks like
+	/// <see cref="M:MegaCrit.Sts2.Core.Hooks.Hook.AfterModifyingCardPlayCount(MegaCrit.Sts2.Core.Combat.ICombatState,MegaCrit.Sts2.Core.Models.CardModel,System.Collections.Generic.IEnumerable{MegaCrit.Sts2.Core.Models.AbstractModel})" />. This means you can only run this method in situations where it's
+	/// okay to modify combat state (i.e. not as part of previews).
+	/// </summary>
+	/// <param name="combatState">The combat state that this card is being played in.</param>
+	/// <param name="target">The creature that this card is targeting. Null for un-targeted cards.</param>
 	protected async Task<int> GeneratePlayCount(ICombatState combatState, Creature? target)
 	{
 		int playCount = GetEnchantedReplayCount() + 1;
@@ -1644,6 +2020,10 @@ public abstract class CardModel : AbstractModel
 		return playCount;
 	}
 
+	/// <summary>
+	/// Plays the VFX which makes the card swirl and fly into the player.
+	/// Should only be done for power cards.
+	/// </summary>
 	private async Task PlayPowerCardFlyVfx()
 	{
 		NCard node = NCard.FindOnTable(this);
@@ -1684,6 +2064,9 @@ public abstract class CardModel : AbstractModel
 		}
 	}
 
+	/// <summary>
+	/// Get the pile that this card should be moved to after being played.
+	/// </summary>
 	protected virtual PileType GetResultPileTypeForCardPlay()
 	{
 		if (IsDupe || Type == CardType.Power)
@@ -1698,6 +2081,11 @@ public abstract class CardModel : AbstractModel
 		return PileType.Discard;
 	}
 
+	/// <summary>
+	/// Send the card to the correct pile after it was attempted to be played while unplayable.
+	/// This is the same as MoveCardToResultPileAfterPlay with one important exception: Power cards do not get sent
+	/// to Limbo, and instead get sent to the discard.
+	/// </summary>
 	public async Task MoveToResultPileWithoutPlaying(PlayerChoiceContext choiceContext)
 	{
 		CardPile? pile = Pile;
@@ -1718,6 +2106,12 @@ public abstract class CardModel : AbstractModel
 		}
 	}
 
+	/// <summary>
+	/// WARNING: If you're thinking of calling this from inside a model, you probably want
+	/// <see cref="M:MegaCrit.Sts2.Core.Commands.CardCmd.Upgrade(MegaCrit.Sts2.Core.Models.CardModel,MegaCrit.Sts2.Core.Nodes.CommonUi.CardPreviewStyle)" /> instead.
+	///
+	/// Upgrade this card. This does not run any hooks.
+	/// </summary>
 	public void UpgradeInternal()
 	{
 		AssertMutable();
@@ -1727,6 +2121,10 @@ public abstract class CardModel : AbstractModel
 		this.Upgraded?.Invoke();
 	}
 
+	/// <summary>
+	/// Finalize an upgrade after calling UpgradeInternal. This clears out state that is used for displaying an upgrade
+	/// preview.
+	/// </summary>
 	public void FinalizeUpgradeInternal()
 	{
 		DynamicVars.FinalizeUpgrade();
@@ -1749,6 +2147,10 @@ public abstract class CardModel : AbstractModel
 		this.Upgraded?.Invoke();
 	}
 
+	/// <summary>
+	/// Gives cards a chance to add extra "cleanup" logic for downgrades.
+	/// No-op by default.
+	/// </summary>
 	protected virtual void AfterDowngraded()
 	{
 	}
@@ -1758,6 +2160,11 @@ public abstract class CardModel : AbstractModel
 		this.Drawn?.Invoke();
 	}
 
+	/// <summary>
+	/// Create a clone of this card.
+	/// Clones must only be created in combat; for run-level clones, see <see cref="M:MegaCrit.Sts2.Core.Runs.ICardScope.CloneCard(MegaCrit.Sts2.Core.Models.CardModel)" />.
+	/// See <see cref="P:MegaCrit.Sts2.Core.Models.CardModel.CloneOf" /> for more info on clones, and the difference between a clone and a dupe.
+	/// </summary>
 	public CardModel CreateClone()
 	{
 		if (Pile != null && !Pile.Type.IsCombatPile())
@@ -1771,6 +2178,10 @@ public abstract class CardModel : AbstractModel
 		return cardModel;
 	}
 
+	/// <summary>
+	/// Create a dupe of this card.
+	/// See <see cref="P:MegaCrit.Sts2.Core.Models.CardModel.DupeOf" /> for more info on dupes, and the difference between a clone and a dupe.
+	/// </summary>
 	public CardModel CreateDupe()
 	{
 		if (IsDupe)
@@ -1797,6 +2208,11 @@ public abstract class CardModel : AbstractModel
 		};
 	}
 
+	/// <summary>
+	/// Create a CardModel from a SerializableCard.
+	/// Be careful calling this! Make sure all callers eventually use <see cref="T:MegaCrit.Sts2.Core.Runs.ICardScope" /> to add the card to the
+	/// correct scope.
+	/// </summary>
 	public static CardModel FromSerializable(SerializableCard save)
 	{
 		CardModel cardModel = SaveUtil.CardOrDeprecated(save.Id).ToMutable();

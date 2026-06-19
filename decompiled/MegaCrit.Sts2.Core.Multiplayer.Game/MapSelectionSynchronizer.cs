@@ -28,6 +28,10 @@ public class MapSelectionSynchronizer
 
 	private readonly Rng _multiplayerMapPointSelection;
 
+	/// <summary>
+	/// Each time we generate a map, this counter goes up. It is used to keep track of multiplayer map votes and to
+	/// discard map votes that are for old maps.
+	/// </summary>
 	public int MapGenerationCount { get; private set; }
 
 	public event Action<Player, MapVote?, MapVote?>? PlayerVoteChanged;
@@ -41,7 +45,7 @@ public class MapSelectionSynchronizer
 		_netService = netService;
 		_actionQueueSynchronizer = actionQueueSynchronizer;
 		_runState = runState;
-		_multiplayerMapPointSelection = new Rng(_runState.Rng.Seed);
+		_multiplayerMapPointSelection = new Rng(_runState.Rng.Seed, "map_point_selection");
 		OnLocationChanged(_runState.MapLocation);
 	}
 

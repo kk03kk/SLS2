@@ -30,8 +30,14 @@ public class CombatRoom : AbstractRoom, ICombatRoomVisuals
 
 	public override ModelId ModelId => Encounter.Id;
 
+	/// <summary>
+	/// The mutable encounter that the player is facing in this room.
+	/// </summary>
 	public EncounterModel Encounter => CombatState.Encounter;
 
+	/// <summary>
+	/// The state of the combat that is currently in progress in this room.
+	/// </summary>
 	public CombatState CombatState { get; }
 
 	public IEnumerable<Creature> Allies => CombatState.Allies;
@@ -46,12 +52,31 @@ public class CombatRoom : AbstractRoom, ICombatRoomVisuals
 
 	public IReadOnlyDictionary<Player, List<Reward>> ExtraRewards => _extraRewards;
 
+	/// <summary>
+	/// Whether to create a combat room node for this combat room.
+	/// Usually true, but false for "delayed-start" combats, like events with combat-style layouts that can transition
+	/// to combats if certain options are selected.
+	/// </summary>
 	public bool ShouldCreateCombat { get; init; } = true;
 
+	/// <summary>
+	/// If this combat room is nested within an event room, should we resume the parent event after combat ends?
+	/// Usually true, but false for some combat-style events. In many of these cases, you transition from a visual-only
+	/// combat room into a real combat, and then you just proceed to the next map point after combat ends.
+	/// </summary>
 	public bool ShouldResumeParentEventAfterCombat { get; init; } = true;
 
+	/// <summary>
+	/// If this combat room is nested within an event room that should resume after combat,
+	/// this stores the parent event's ID so the event room can be recreated on load.
+	/// </summary>
 	public ModelId? ParentEventId { get; init; }
 
+	/// <summary>
+	/// Creates a combat room for the given encounter.
+	/// </summary>
+	/// <param name="encounter">Encounter that is taking place in this combat room.</param>
+	/// <param name="runState">State of the run that this combat room is a part of.</param>
 	public CombatRoom(EncounterModel encounter, IRunState? runState)
 	{
 		encounter.AssertMutable();

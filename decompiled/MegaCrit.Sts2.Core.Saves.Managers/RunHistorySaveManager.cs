@@ -35,6 +35,10 @@ public class RunHistorySaveManager
 		_profileIdProvider = profileIdProvider;
 	}
 
+	/// <summary>
+	/// This should be called right after the profile ID is initialized so that there is a directory we can save run
+	/// histories to.
+	/// </summary>
 	public void CreateRunHistoryDirectory()
 	{
 		_saveStore.CreateDirectory(HistoryPath);
@@ -73,6 +77,11 @@ public class RunHistorySaveManager
 		return _saveStore.GetFilesInDirectory(HistoryPath).Length;
 	}
 
+	/// <summary>
+	/// Loads a single run history file with migration support.
+	/// </summary>
+	/// <param name="fileName">The history file name (e.g., "1234567890.run")</param>
+	/// <returns>The result of the load operation</returns>
 	public ReadSaveResult<RunHistory> LoadHistory(string fileName)
 	{
 		string filePath = Path.Combine(HistoryPath, fileName);
@@ -88,6 +97,10 @@ public class RunHistorySaveManager
 		return readSaveResult;
 	}
 
+	/// <summary>
+	/// Returns a list of all the run histories that we have available to load.
+	/// To actually load the history, use <see cref="M:MegaCrit.Sts2.Core.Saves.Managers.RunHistorySaveManager.LoadHistory(System.String)" />.
+	/// </summary>
 	public List<string> LoadAllRunHistoryNames()
 	{
 		string[] filesInDirectory = _saveStore.GetFilesInDirectory(HistoryPath);

@@ -33,6 +33,9 @@ public sealed class DrowningBeacon : EventModel
 		});
 	}
 
+	/// <summary>
+	/// Player chose to bottle the water and get a Glowwater Potion.
+	/// </summary>
 	private async Task BottleOption()
 	{
 		await RewardsCmd.OfferCustom(base.Owner, new List<Reward>(1)
@@ -42,6 +45,9 @@ public sealed class DrowningBeacon : EventModel
 		SetEventFinished(L10NLookup("DROWNING_BEACON.pages.BOTTLE.description"));
 	}
 
+	/// <summary>
+	/// Player chose to climb the Lighthouse. They lose Max HP and get the Fresnel Lens relic.
+	/// </summary>
 	private async Task ClimbOption()
 	{
 		await CreatureCmd.LoseMaxHp(new ThrowingPlayerChoiceContext(), base.Owner.Creature, base.DynamicVars.HpLoss.BaseValue, isFromCard: false);

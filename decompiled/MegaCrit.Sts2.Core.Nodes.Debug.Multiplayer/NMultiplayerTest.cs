@@ -48,64 +48,151 @@ public class NMultiplayerTest : Control, IStartRunLobbyListener
 		public Label playerName;
 	}
 
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Control.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the '_EnterTree' method.
+		/// </summary>
 		public new static readonly StringName _EnterTree = "_EnterTree";
 
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 
+		/// <summary>
+		/// Cached name for the 'AddGame' method.
+		/// </summary>
 		public static readonly StringName AddGame = "AddGame";
 
+		/// <summary>
+		/// Cached name for the 'HostButtonPressed' method.
+		/// </summary>
 		public static readonly StringName HostButtonPressed = "HostButtonPressed";
 
+		/// <summary>
+		/// Cached name for the 'SteamHostButtonPressed' method.
+		/// </summary>
 		public static readonly StringName SteamHostButtonPressed = "SteamHostButtonPressed";
 
+		/// <summary>
+		/// Cached name for the 'JoinButtonPressed' method.
+		/// </summary>
 		public static readonly StringName JoinButtonPressed = "JoinButtonPressed";
 
+		/// <summary>
+		/// Cached name for the 'ReadyButtonPressed' method.
+		/// </summary>
 		public static readonly StringName ReadyButtonPressed = "ReadyButtonPressed";
 
+		/// <summary>
+		/// Cached name for the 'Disconnect' method.
+		/// </summary>
 		public new static readonly StringName Disconnect = "Disconnect";
 
+		/// <summary>
+		/// Cached name for the 'AfterMultiplayerStarted' method.
+		/// </summary>
 		public static readonly StringName AfterMultiplayerStarted = "AfterMultiplayerStarted";
 
+		/// <summary>
+		/// Cached name for the 'ChooseReplayToLoad' method.
+		/// </summary>
 		public static readonly StringName ChooseReplayToLoad = "ChooseReplayToLoad";
 
+		/// <summary>
+		/// Cached name for the 'LoadReplay' method.
+		/// </summary>
 		public static readonly StringName LoadReplay = "LoadReplay";
 
+		/// <summary>
+		/// Cached name for the '_Process' method.
+		/// </summary>
 		public new static readonly StringName _Process = "_Process";
 
+		/// <summary>
+		/// Cached name for the 'AscensionChanged' method.
+		/// </summary>
 		public static readonly StringName AscensionChanged = "AscensionChanged";
 
+		/// <summary>
+		/// Cached name for the 'SeedChanged' method.
+		/// </summary>
 		public static readonly StringName SeedChanged = "SeedChanged";
 
+		/// <summary>
+		/// Cached name for the 'ModifiersChanged' method.
+		/// </summary>
 		public static readonly StringName ModifiersChanged = "ModifiersChanged";
 
+		/// <summary>
+		/// Cached name for the 'MaxAscensionChanged' method.
+		/// </summary>
 		public static readonly StringName MaxAscensionChanged = "MaxAscensionChanged";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Control.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the '_ipField' field.
+		/// </summary>
 		public static readonly StringName _ipField = "_ipField";
 
+		/// <summary>
+		/// Cached name for the '_idField' field.
+		/// </summary>
 		public static readonly StringName _idField = "_idField";
 
+		/// <summary>
+		/// Cached name for the '_readyButton' field.
+		/// </summary>
 		public static readonly StringName _readyButton = "_readyButton";
 
+		/// <summary>
+		/// Cached name for the '_readyIndicator' field.
+		/// </summary>
 		public static readonly StringName _readyIndicator = "_readyIndicator";
 
+		/// <summary>
+		/// Cached name for the '_loadingPanel' field.
+		/// </summary>
 		public static readonly StringName _loadingPanel = "_loadingPanel";
 
+		/// <summary>
+		/// Cached name for the '_characterPaginator' field.
+		/// </summary>
 		public static readonly StringName _characterPaginator = "_characterPaginator";
 
+		/// <summary>
+		/// Cached name for the '_game' field.
+		/// </summary>
 		public static readonly StringName _game = "_game";
 
+		/// <summary>
+		/// Cached name for the '_ignoreReplayModelIdHash' field.
+		/// </summary>
 		public static readonly StringName _ignoreReplayModelIdHash = "_ignoreReplayModelIdHash";
 
+		/// <summary>
+		/// Cached name for the '_beginningRun' field.
+		/// </summary>
 		public static readonly StringName _beginningRun = "_beginningRun";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Control.SignalName
 	{
 	}
@@ -560,6 +647,11 @@ public class NMultiplayerTest : Control, IStartRunLobbyListener
 		_characterPaginator.SetIndex(0);
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -593,6 +685,7 @@ public class NMultiplayerTest : Control, IStartRunLobbyListener
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -701,6 +794,7 @@ public class NMultiplayerTest : Control, IStartRunLobbyListener
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -775,6 +869,7 @@ public class NMultiplayerTest : Control, IStartRunLobbyListener
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -826,6 +921,7 @@ public class NMultiplayerTest : Control, IStartRunLobbyListener
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -877,6 +973,11 @@ public class NMultiplayerTest : Control, IStartRunLobbyListener
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -893,6 +994,7 @@ public class NMultiplayerTest : Control, IStartRunLobbyListener
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -908,6 +1010,7 @@ public class NMultiplayerTest : Control, IStartRunLobbyListener
 		info.AddProperty(PropertyName._beginningRun, Variant.From(in _beginningRun));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

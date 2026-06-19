@@ -108,6 +108,11 @@ public sealed class VoidFormPower : PowerModel
 		return true;
 	}
 
+	/// <summary>
+	/// HACK: If Void Form is the first card played in a turn, there's a brief period before the turn is auto-ended
+	/// where we show a zero energy cost on all cards.
+	/// To avoid this, we max out cardsPlayedThisTurn, which doesn't matter anyways since the turn is ending.
+	/// </summary>
 	private void HideTemporaryZeroCostVisual()
 	{
 		GetInternalData<Data>().cardsPlayedThisTurn = 999999999;

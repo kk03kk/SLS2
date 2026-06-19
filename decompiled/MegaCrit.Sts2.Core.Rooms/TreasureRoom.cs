@@ -58,11 +58,20 @@ public class TreasureRoom : AbstractRoom
 		throw new NotImplementedException();
 	}
 
+	/// <summary>
+	/// Offer the normal treasure room rewards (gold, relics, etc.)
+	/// </summary>
+	/// <returns>The amount of gold given to the player.</returns>
 	public Task<int> DoNormalRewards()
 	{
 		return RunManager.Instance.OneOffSynchronizer.DoLocalTreasureRoomRewards();
 	}
 
+	/// <summary>
+	/// Offer extra rewards.
+	/// Normally this does nothing but if extra rewards were added by a relic then this will show the rewards screen.
+	/// Note that this only awaits the local player's reward task, and not everyone's.
+	/// </summary>
 	public async Task DoExtraRewardsIfNeeded()
 	{
 		Task localTask = null;

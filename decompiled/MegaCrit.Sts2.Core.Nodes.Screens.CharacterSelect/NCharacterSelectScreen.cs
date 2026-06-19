@@ -45,110 +45,266 @@ namespace MegaCrit.Sts2.Core.Nodes.Screens.CharacterSelect;
 [ScriptPath("res://src/Core/Nodes/Screens/CharacterSelect/NCharacterSelectScreen.cs")]
 public class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, ICharacterSelectButtonDelegate
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : NSubmenu.MethodName
 	{
+		/// <summary>
+		/// Cached name for the 'Create' method.
+		/// </summary>
 		public static readonly StringName Create = "Create";
 
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the 'CheckForMultiplayerAscensionPopup' method.
+		/// </summary>
 		public static readonly StringName CheckForMultiplayerAscensionPopup = "CheckForMultiplayerAscensionPopup";
 
+		/// <summary>
+		/// Cached name for the 'InitializeSingleplayer' method.
+		/// </summary>
 		public static readonly StringName InitializeSingleplayer = "InitializeSingleplayer";
 
+		/// <summary>
+		/// Cached name for the 'InitCharacterButtons' method.
+		/// </summary>
 		public static readonly StringName InitCharacterButtons = "InitCharacterButtons";
 
+		/// <summary>
+		/// Cached name for the 'UpdateRandomCharacterVisibility' method.
+		/// </summary>
 		public static readonly StringName UpdateRandomCharacterVisibility = "UpdateRandomCharacterVisibility";
 
+		/// <summary>
+		/// Cached name for the '_Input' method.
+		/// </summary>
 		public new static readonly StringName _Input = "_Input";
 
+		/// <summary>
+		/// Cached name for the 'DebugUnlockAllCharacters' method.
+		/// </summary>
 		public static readonly StringName DebugUnlockAllCharacters = "DebugUnlockAllCharacters";
 
+		/// <summary>
+		/// Cached name for the 'OnSubmenuOpened' method.
+		/// </summary>
 		public new static readonly StringName OnSubmenuOpened = "OnSubmenuOpened";
 
+		/// <summary>
+		/// Cached name for the 'OnSubmenuClosed' method.
+		/// </summary>
 		public new static readonly StringName OnSubmenuClosed = "OnSubmenuClosed";
 
+		/// <summary>
+		/// Cached name for the 'OnEmbarkPressed' method.
+		/// </summary>
 		public static readonly StringName OnEmbarkPressed = "OnEmbarkPressed";
 
+		/// <summary>
+		/// Cached name for the '_Process' method.
+		/// </summary>
 		public new static readonly StringName _Process = "_Process";
 
+		/// <summary>
+		/// Cached name for the 'CleanUpLobby' method.
+		/// </summary>
 		public static readonly StringName CleanUpLobby = "CleanUpLobby";
 
+		/// <summary>
+		/// Cached name for the 'OnAscensionPanelLevelChanged' method.
+		/// </summary>
 		public static readonly StringName OnAscensionPanelLevelChanged = "OnAscensionPanelLevelChanged";
 
+		/// <summary>
+		/// Cached name for the 'OnUnreadyPressed' method.
+		/// </summary>
 		public static readonly StringName OnUnreadyPressed = "OnUnreadyPressed";
 
+		/// <summary>
+		/// Cached name for the 'UpdateRichPresence' method.
+		/// </summary>
 		public static readonly StringName UpdateRichPresence = "UpdateRichPresence";
 
+		/// <summary>
+		/// Cached name for the 'MaxAscensionChanged' method.
+		/// </summary>
 		public static readonly StringName MaxAscensionChanged = "MaxAscensionChanged";
 
+		/// <summary>
+		/// Cached name for the 'AscensionChanged' method.
+		/// </summary>
 		public static readonly StringName AscensionChanged = "AscensionChanged";
 
+		/// <summary>
+		/// Cached name for the 'SeedChanged' method.
+		/// </summary>
 		public static readonly StringName SeedChanged = "SeedChanged";
 
+		/// <summary>
+		/// Cached name for the 'ModifiersChanged' method.
+		/// </summary>
 		public static readonly StringName ModifiersChanged = "ModifiersChanged";
 
+		/// <summary>
+		/// Cached name for the 'AfterInitialized' method.
+		/// </summary>
 		public static readonly StringName AfterInitialized = "AfterInitialized";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : NSubmenu.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'InitialFocusedControl' property.
+		/// </summary>
 		public new static readonly StringName InitialFocusedControl = "InitialFocusedControl";
 
+		/// <summary>
+		/// Cached name for the 'ShouldShowActDropdown' property.
+		/// </summary>
 		public static readonly StringName ShouldShowActDropdown = "ShouldShowActDropdown";
 
+		/// <summary>
+		/// Cached name for the '_name' field.
+		/// </summary>
 		public static readonly StringName _name = "_name";
 
+		/// <summary>
+		/// Cached name for the '_infoPanel' field.
+		/// </summary>
 		public static readonly StringName _infoPanel = "_infoPanel";
 
+		/// <summary>
+		/// Cached name for the '_description' field.
+		/// </summary>
 		public static readonly StringName _description = "_description";
 
+		/// <summary>
+		/// Cached name for the '_hp' field.
+		/// </summary>
 		public static readonly StringName _hp = "_hp";
 
+		/// <summary>
+		/// Cached name for the '_gold' field.
+		/// </summary>
 		public static readonly StringName _gold = "_gold";
 
+		/// <summary>
+		/// Cached name for the '_relicTitle' field.
+		/// </summary>
 		public static readonly StringName _relicTitle = "_relicTitle";
 
+		/// <summary>
+		/// Cached name for the '_relicDescription' field.
+		/// </summary>
 		public static readonly StringName _relicDescription = "_relicDescription";
 
+		/// <summary>
+		/// Cached name for the '_relicIcon' field.
+		/// </summary>
 		public static readonly StringName _relicIcon = "_relicIcon";
 
+		/// <summary>
+		/// Cached name for the '_relicIconOutline' field.
+		/// </summary>
 		public static readonly StringName _relicIconOutline = "_relicIconOutline";
 
+		/// <summary>
+		/// Cached name for the '_selectedButton' field.
+		/// </summary>
 		public static readonly StringName _selectedButton = "_selectedButton";
 
+		/// <summary>
+		/// Cached name for the '_charButtonContainer' field.
+		/// </summary>
 		public static readonly StringName _charButtonContainer = "_charButtonContainer";
 
+		/// <summary>
+		/// Cached name for the '_bgContainer' field.
+		/// </summary>
 		public static readonly StringName _bgContainer = "_bgContainer";
 
+		/// <summary>
+		/// Cached name for the '_readyAndWaitingContainer' field.
+		/// </summary>
 		public static readonly StringName _readyAndWaitingContainer = "_readyAndWaitingContainer";
 
+		/// <summary>
+		/// Cached name for the '_backButton' field.
+		/// </summary>
 		public new static readonly StringName _backButton = "_backButton";
 
+		/// <summary>
+		/// Cached name for the '_unreadyButton' field.
+		/// </summary>
 		public static readonly StringName _unreadyButton = "_unreadyButton";
 
+		/// <summary>
+		/// Cached name for the '_embarkButton' field.
+		/// </summary>
 		public static readonly StringName _embarkButton = "_embarkButton";
 
+		/// <summary>
+		/// Cached name for the '_ascensionPanel' field.
+		/// </summary>
 		public static readonly StringName _ascensionPanel = "_ascensionPanel";
 
+		/// <summary>
+		/// Cached name for the '_actDropdown' field.
+		/// </summary>
 		public static readonly StringName _actDropdown = "_actDropdown";
 
+		/// <summary>
+		/// Cached name for the '_actDropdownLabel' field.
+		/// </summary>
 		public static readonly StringName _actDropdownLabel = "_actDropdownLabel";
 
+		/// <summary>
+		/// Cached name for the '_remotePlayerContainer' field.
+		/// </summary>
 		public static readonly StringName _remotePlayerContainer = "_remotePlayerContainer";
 
+		/// <summary>
+		/// Cached name for the '_characterUnlockAnimationBackstop' field.
+		/// </summary>
 		public static readonly StringName _characterUnlockAnimationBackstop = "_characterUnlockAnimationBackstop";
 
+		/// <summary>
+		/// Cached name for the '_randomCharacterButton' field.
+		/// </summary>
 		public static readonly StringName _randomCharacterButton = "_randomCharacterButton";
 
+		/// <summary>
+		/// Cached name for the '_infoPanelTween' field.
+		/// </summary>
 		public static readonly StringName _infoPanelTween = "_infoPanelTween";
 
+		/// <summary>
+		/// Cached name for the '_infoPanelPosFinalVal' field.
+		/// </summary>
 		public static readonly StringName _infoPanelPosFinalVal = "_infoPanelPosFinalVal";
 
+		/// <summary>
+		/// Cached name for the '_delayEmbarkForCharacterSelect' field.
+		/// </summary>
 		public static readonly StringName _delayEmbarkForCharacterSelect = "_delayEmbarkForCharacterSelect";
 
+		/// <summary>
+		/// Cached name for the '_charSelectButtonScene' field.
+		/// </summary>
 		public static readonly StringName _charSelectButtonScene = "_charSelectButtonScene";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : NSubmenu.SignalName
 	{
 	}
@@ -306,6 +462,9 @@ public class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, ICharact
 		AfterInitialized();
 	}
 
+	/// <summary>
+	/// Checks if we need to show the Ascension Multiplayer FTUE-like popup and displays one if so.
+	/// </summary>
 	private void CheckForMultiplayerAscensionPopup()
 	{
 		if (SaveManager.Instance.Progress.MaxMultiplayerAscension > 0 && !SaveManager.Instance.SeenPopup("ascension_multiplayer_ftue"))
@@ -318,6 +477,9 @@ public class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, ICharact
 		}
 	}
 
+	/// <summary>
+	/// Opens this screen
+	/// </summary>
 	public void InitializeSingleplayer()
 	{
 		_lobby = new StartRunLobby(GameMode.Standard, new NetSingleplayerGameService(), this, 1);
@@ -633,6 +795,9 @@ public class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, ICharact
 		}
 	}
 
+	/// <summary>
+	/// Called when the player selects a Character! Also called when you open the character select screen.
+	/// </summary>
 	public void SelectCharacter(NCharacterSelectButton charSelectButton, CharacterModel characterModel)
 	{
 		if (!charSelectButton.IsRandom)
@@ -727,6 +892,11 @@ public class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, ICharact
 		}
 	}
 
+	/// <summary>
+	/// Called when the ascension is changed from the ascension panel.
+	/// When the host hits the left and right arrow, we want to send the ascension change to clients.
+	/// On the clients, this is called when the ascension sync message is received, but we don't want to do anything.
+	/// </summary>
 	private void OnAscensionPanelLevelChanged()
 	{
 		if (_lobby.NetService.Type != NetGameType.Client && _lobby.Ascension != _ascensionPanel.Ascension)
@@ -735,6 +905,9 @@ public class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, ICharact
 		}
 	}
 
+	/// <summary>
+	/// Called when the player presses the unready button in multiplayer. You can't unready in singleplayer.
+	/// </summary>
 	private void OnUnreadyPressed(NButton _)
 	{
 		_lobby.SetReady(ready: false);
@@ -757,6 +930,12 @@ public class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, ICharact
 		}
 	}
 
+	/// <summary>
+	/// Called when another player joins with a max ascension level lower than the current one.
+	/// Also called when the lobby is first initialized.
+	/// Also called in singleplayer if choosing a character changes the max ascension.
+	/// Called on both host and client.
+	/// </summary>
 	public void MaxAscensionChanged()
 	{
 		_ascensionPanel.SetMaxAscension(_lobby.MaxAscension);
@@ -840,6 +1019,7 @@ public class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, ICharact
 		}
 		NAudioManager.Instance?.StopMusic();
 		_ascensionPanel.Cleanup();
+		_ascensionPanel.Disable();
 		_embarkButton.Disable();
 		_unreadyButton.Disable();
 		if (_lobby.NetService.Type == NetGameType.Singleplayer)
@@ -894,6 +1074,11 @@ public class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, ICharact
 		NGame.Instance.DebugSeedOverride = null;
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<MethodInfo> GetGodotMethodList()
 	{
@@ -938,6 +1123,7 @@ public class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, ICharact
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -1081,6 +1267,7 @@ public class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, ICharact
 		return false;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -1171,6 +1358,7 @@ public class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, ICharact
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -1307,6 +1495,7 @@ public class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, ICharact
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -1453,6 +1642,11 @@ public class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, ICharact
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -1488,6 +1682,7 @@ public class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, ICharact
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -1520,6 +1715,7 @@ public class NCharacterSelectScreen : NSubmenu, IStartRunLobbyListener, ICharact
 		info.AddProperty(PropertyName._charSelectButtonScene, Variant.From(in _charSelectButtonScene));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

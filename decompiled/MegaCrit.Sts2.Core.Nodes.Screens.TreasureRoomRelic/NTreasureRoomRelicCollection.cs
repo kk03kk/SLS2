@@ -25,51 +25,119 @@ using MegaCrit.Sts2.addons.mega_text;
 
 namespace MegaCrit.Sts2.Core.Nodes.Screens.TreasureRoomRelic;
 
+/// <summary>
+/// Selection screen for relics at the treasure room screen.
+/// In singleplayer, this just shows one relic. In multiplayer, this shows multiple relics and handles animation that
+/// occurs after all players select a relic.
+/// </summary>
 [ScriptPath("res://src/Core/Nodes/Screens/TreasureRoomRelic/NTreasureRoomRelicCollection.cs")]
 public class NTreasureRoomRelicCollection : Control, IScreenContext
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Control.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the '_EnterTree' method.
+		/// </summary>
 		public new static readonly StringName _EnterTree = "_EnterTree";
 
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 
+		/// <summary>
+		/// Cached name for the 'InitializeRelics' method.
+		/// </summary>
 		public static readonly StringName InitializeRelics = "InitializeRelics";
 
+		/// <summary>
+		/// Cached name for the 'SpawnEmptyChestVfx' method.
+		/// </summary>
 		public static readonly StringName SpawnEmptyChestVfx = "SpawnEmptyChestVfx";
 
+		/// <summary>
+		/// Cached name for the 'SetSelectionEnabled' method.
+		/// </summary>
 		public static readonly StringName SetSelectionEnabled = "SetSelectionEnabled";
 
+		/// <summary>
+		/// Cached name for the 'AnimIn' method.
+		/// </summary>
 		public static readonly StringName AnimIn = "AnimIn";
 
+		/// <summary>
+		/// Cached name for the 'AnimOut' method.
+		/// </summary>
 		public static readonly StringName AnimOut = "AnimOut";
 
+		/// <summary>
+		/// Cached name for the 'PickRelic' method.
+		/// </summary>
 		public static readonly StringName PickRelic = "PickRelic";
 
+		/// <summary>
+		/// Cached name for the 'RefreshVotes' method.
+		/// </summary>
 		public static readonly StringName RefreshVotes = "RefreshVotes";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Control.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'SingleplayerRelicHolder' property.
+		/// </summary>
 		public static readonly StringName SingleplayerRelicHolder = "SingleplayerRelicHolder";
 
+		/// <summary>
+		/// Cached name for the 'DefaultFocusedControl' property.
+		/// </summary>
 		public static readonly StringName DefaultFocusedControl = "DefaultFocusedControl";
 
+		/// <summary>
+		/// Cached name for the '_fightBackstop' field.
+		/// </summary>
 		public static readonly StringName _fightBackstop = "_fightBackstop";
 
+		/// <summary>
+		/// Cached name for the '_fightLabel' field.
+		/// </summary>
 		public static readonly StringName _fightLabel = "_fightLabel";
 
+		/// <summary>
+		/// Cached name for the '_emptyVfxTween' field.
+		/// </summary>
 		public static readonly StringName _emptyVfxTween = "_emptyVfxTween";
 
+		/// <summary>
+		/// Cached name for the '_hands' field.
+		/// </summary>
 		public static readonly StringName _hands = "_hands";
 
+		/// <summary>
+		/// Cached name for the '_openedTicks' field.
+		/// </summary>
 		public static readonly StringName _openedTicks = "_openedTicks";
 
+		/// <summary>
+		/// Cached name for the '_isEmptyChest' field.
+		/// </summary>
 		public static readonly StringName _isEmptyChest = "_isEmptyChest";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Control.SignalName
 	{
 	}
@@ -156,6 +224,10 @@ public class NTreasureRoomRelicCollection : Control, IScreenContext
 		_hands.Initialize(runState);
 	}
 
+	/// <summary>
+	/// Initialize the relic display.
+	/// This can't get called in _Ready because RelicPickingSynchronizer.BeginRelicPicking has not been called by then.
+	/// </summary>
 	public void InitializeRelics()
 	{
 		IReadOnlyList<RelicModel> currentRelics = RunManager.Instance.TreasureRoomRelicSynchronizer.CurrentRelics;
@@ -277,16 +349,26 @@ public class NTreasureRoomRelicCollection : Control, IScreenContext
 		}
 	}
 
+	/// <summary>
+	/// Await this to know when relic picking begins.
+	/// </summary>
 	public Task RelicPickingBegan()
 	{
 		return _relicPickingBeganTaskCompletionSource.Task;
 	}
 
+	/// <summary>
+	/// Await this to know when to hide the screen.
+	/// </summary>
 	public Task RelicPickingFinished()
 	{
 		return _relicPickingCompleteTaskCompletionSource.Task;
 	}
 
+	/// <summary>
+	/// Animates in the relic collection.
+	/// </summary>
+	/// <param name="chestVisual">Chest visual to fade out.</param>
 	public void AnimIn(Node chestVisual)
 	{
 		base.Visible = true;
@@ -323,6 +405,10 @@ public class NTreasureRoomRelicCollection : Control, IScreenContext
 		_hands.AnimateHandsIn();
 	}
 
+	/// <summary>
+	/// Animates out the relic collection, after relic picking is done.
+	/// </summary>
+	/// <param name="chestVisual">Chest visual to fade back in.</param>
 	public void AnimOut(Node chestVisual)
 	{
 		base.Modulate = Colors.White;
@@ -442,6 +528,11 @@ public class NTreasureRoomRelicCollection : Control, IScreenContext
 		}
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -471,6 +562,7 @@ public class NTreasureRoomRelicCollection : Control, IScreenContext
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -537,6 +629,7 @@ public class NTreasureRoomRelicCollection : Control, IScreenContext
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -583,6 +676,7 @@ public class NTreasureRoomRelicCollection : Control, IScreenContext
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -624,6 +718,7 @@ public class NTreasureRoomRelicCollection : Control, IScreenContext
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -670,6 +765,11 @@ public class NTreasureRoomRelicCollection : Control, IScreenContext
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -685,6 +785,7 @@ public class NTreasureRoomRelicCollection : Control, IScreenContext
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -698,6 +799,7 @@ public class NTreasureRoomRelicCollection : Control, IScreenContext
 		info.AddProperty(PropertyName._isEmptyChest, Variant.From(in _isEmptyChest));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

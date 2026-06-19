@@ -21,6 +21,10 @@ namespace MegaCrit.Sts2.Core.Models.Monsters;
 
 public sealed class KnowledgeDemon : MonsterModel
 {
+	/// <summary>
+	/// For cards that specifically come from Knowledge Demon's Curse of Knowledge move.
+	/// Unlike normal cards, these have an immediate effect when chosen by the player.
+	/// </summary>
 	public interface IChoosable
 	{
 		Task OnChosen();

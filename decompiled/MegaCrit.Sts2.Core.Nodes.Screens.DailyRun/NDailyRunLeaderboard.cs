@@ -19,56 +19,131 @@ namespace MegaCrit.Sts2.Core.Nodes.Screens.DailyRun;
 [ScriptPath("res://src/Core/Nodes/Screens/DailyRun/NDailyRunLeaderboard.cs")]
 public class NDailyRunLeaderboard : Control
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Control.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the 'ToggleGlobalRank' method.
+		/// </summary>
 		public static readonly StringName ToggleGlobalRank = "ToggleGlobalRank";
 
+		/// <summary>
+		/// Cached name for the 'SetLocalizedText' method.
+		/// </summary>
 		public static readonly StringName SetLocalizedText = "SetLocalizedText";
 
+		/// <summary>
+		/// Cached name for the 'Cleanup' method.
+		/// </summary>
 		public static readonly StringName Cleanup = "Cleanup";
 
+		/// <summary>
+		/// Cached name for the 'ChangePage' method.
+		/// </summary>
 		public static readonly StringName ChangePage = "ChangePage";
 
+		/// <summary>
+		/// Cached name for the 'SetPage' method.
+		/// </summary>
 		public static readonly StringName SetPage = "SetPage";
 
+		/// <summary>
+		/// Cached name for the 'NavigateGlobalRank' method.
+		/// </summary>
 		public static readonly StringName NavigateGlobalRank = "NavigateGlobalRank";
 
+		/// <summary>
+		/// Cached name for the 'ClearEntries' method.
+		/// </summary>
 		public static readonly StringName ClearEntries = "ClearEntries";
 
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Control.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the '_paginator' field.
+		/// </summary>
 		public static readonly StringName _paginator = "_paginator";
 
+		/// <summary>
+		/// Cached name for the '_scoreContainer' field.
+		/// </summary>
 		public static readonly StringName _scoreContainer = "_scoreContainer";
 
+		/// <summary>
+		/// Cached name for the '_leftArrow' field.
+		/// </summary>
 		public static readonly StringName _leftArrow = "_leftArrow";
 
+		/// <summary>
+		/// Cached name for the '_rightArrow' field.
+		/// </summary>
 		public static readonly StringName _rightArrow = "_rightArrow";
 
+		/// <summary>
+		/// Cached name for the '_loadingIndicator' field.
+		/// </summary>
 		public static readonly StringName _loadingIndicator = "_loadingIndicator";
 
+		/// <summary>
+		/// Cached name for the '_noScoresIndicator' field.
+		/// </summary>
 		public static readonly StringName _noScoresIndicator = "_noScoresIndicator";
 
+		/// <summary>
+		/// Cached name for the '_noFriendsIndicator' field.
+		/// </summary>
 		public static readonly StringName _noFriendsIndicator = "_noFriendsIndicator";
 
+		/// <summary>
+		/// Cached name for the '_noScoreUploadIndicator' field.
+		/// </summary>
 		public static readonly StringName _noScoreUploadIndicator = "_noScoreUploadIndicator";
 
+		/// <summary>
+		/// Cached name for the '_separators' field.
+		/// </summary>
 		public static readonly StringName _separators = "_separators";
 
+		/// <summary>
+		/// Cached name for the '_globalTickbox' field.
+		/// </summary>
 		public static readonly StringName _globalTickbox = "_globalTickbox";
 
+		/// <summary>
+		/// Cached name for the '_currentPage' field.
+		/// </summary>
 		public static readonly StringName _currentPage = "_currentPage";
 
+		/// <summary>
+		/// Cached name for the '_currentIndex' field.
+		/// </summary>
 		public static readonly StringName _currentIndex = "_currentIndex";
 
+		/// <summary>
+		/// Cached name for the '_hasNegativeScore' field.
+		/// </summary>
 		public static readonly StringName _hasNegativeScore = "_hasNegativeScore";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Control.SignalName
 	{
 	}
@@ -188,6 +263,10 @@ public class NDailyRunLeaderboard : Control
 		ClearEntries();
 	}
 
+	/// <summary>
+	/// Does first-time initialization with the given day. Should only be called when the page loads and when a new
+	/// player joins the run.
+	/// </summary>
 	public void Initialize(DateTimeOffset dateTime, IEnumerable<ulong> playersInRun, bool allowPagination)
 	{
 		_playersInRun.Clear();
@@ -198,6 +277,9 @@ public class NDailyRunLeaderboard : Control
 		SetDay(dateTime);
 	}
 
+	/// <summary>
+	/// Called by the paginator when the day in the paginator changes.
+	/// </summary>
 	public void SetDay(DateTimeOffset dateTime)
 	{
 		_leaderboardTime = dateTime;
@@ -222,6 +304,10 @@ public class NDailyRunLeaderboard : Control
 		TaskHelper.RunSafely(LoadLeaderboard(_leaderboardTime, _currentPage, LeaderboardQueryType.FriendsOnly));
 	}
 
+	/// <summary>
+	/// Called when we press left/right arrows when viewing Global Rank.
+	/// Lets other players view the scores and names of other players ranked above/below them.
+	/// </summary>
 	private void NavigateGlobalRank()
 	{
 		TaskHelper.RunSafely(LoadLeaderboard(_leaderboardTime, _currentPage, LeaderboardQueryType.AroundUser));
@@ -408,6 +494,11 @@ public class NDailyRunLeaderboard : Control
 		_loadCts = null;
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -433,6 +524,7 @@ public class NDailyRunLeaderboard : Control
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -493,6 +585,7 @@ public class NDailyRunLeaderboard : Control
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -535,6 +628,7 @@ public class NDailyRunLeaderboard : Control
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -606,6 +700,7 @@ public class NDailyRunLeaderboard : Control
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -677,6 +772,11 @@ public class NDailyRunLeaderboard : Control
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -697,6 +797,7 @@ public class NDailyRunLeaderboard : Control
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -716,6 +817,7 @@ public class NDailyRunLeaderboard : Control
 		info.AddProperty(PropertyName._hasNegativeScore, Variant.From(in _hasNegativeScore));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

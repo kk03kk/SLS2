@@ -8,6 +8,9 @@ using MegaCrit.Sts2.Core.Logging;
 
 namespace MegaCrit.Sts2.Core.Debug;
 
+/// <summary>
+/// Hashes assemblies to aid in mod detection.
+/// </summary>
 public static class AssemblyHasher
 {
 	private static int? _mainAssemblyHash;

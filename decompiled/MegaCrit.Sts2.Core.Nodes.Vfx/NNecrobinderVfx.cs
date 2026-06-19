@@ -11,30 +11,66 @@ namespace MegaCrit.Sts2.Core.Nodes.Vfx;
 [ScriptPath("res://src/Core/Nodes/Vfx/NNecrobinderVfx.cs")]
 public class NNecrobinderVfx : Node
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Node.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the 'OnAnimationEvent' method.
+		/// </summary>
 		public static readonly StringName OnAnimationEvent = "OnAnimationEvent";
 
+		/// <summary>
+		/// Cached name for the 'UpdateFlameVisibility' method.
+		/// </summary>
 		public static readonly StringName UpdateFlameVisibility = "UpdateFlameVisibility";
 
+		/// <summary>
+		/// Cached name for the 'OnScytheFlame1' method.
+		/// </summary>
 		public static readonly StringName OnScytheFlame1 = "OnScytheFlame1";
 
+		/// <summary>
+		/// Cached name for the 'OnScytheFlame2' method.
+		/// </summary>
 		public static readonly StringName OnScytheFlame2 = "OnScytheFlame2";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Node.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the '_parent' field.
+		/// </summary>
 		public static readonly StringName _parent = "_parent";
 
+		/// <summary>
+		/// Cached name for the '_headRef' field.
+		/// </summary>
 		public static readonly StringName _headRef = "_headRef";
 
+		/// <summary>
+		/// Cached name for the '_scytheFireParticles1' field.
+		/// </summary>
 		public static readonly StringName _scytheFireParticles1 = "_scytheFireParticles1";
 
+		/// <summary>
+		/// Cached name for the '_scytheFireParticles2' field.
+		/// </summary>
 		public static readonly StringName _scytheFireParticles2 = "_scytheFireParticles2";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Node.SignalName
 	{
 	}
@@ -95,6 +131,11 @@ public class NNecrobinderVfx : Node
 		_scytheFireParticles2?.Restart();
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -118,6 +159,7 @@ public class NNecrobinderVfx : Node
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -154,6 +196,7 @@ public class NNecrobinderVfx : Node
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -180,6 +223,7 @@ public class NNecrobinderVfx : Node
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -206,6 +250,7 @@ public class NNecrobinderVfx : Node
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -232,6 +277,11 @@ public class NNecrobinderVfx : Node
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -243,6 +293,7 @@ public class NNecrobinderVfx : Node
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -253,6 +304,7 @@ public class NNecrobinderVfx : Node
 		info.AddProperty(PropertyName._scytheFireParticles2, Variant.From(in _scytheFireParticles2));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

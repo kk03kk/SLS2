@@ -10,6 +10,9 @@ using MegaCrit.Sts2.Core.Saves;
 
 namespace MegaCrit.Sts2.Core.Modding;
 
+/// <summary>
+/// Represents the JSON file which defines mod manifests.
+/// </summary>
 public class ModManifest
 {
 	[JsonPropertyName("id")]

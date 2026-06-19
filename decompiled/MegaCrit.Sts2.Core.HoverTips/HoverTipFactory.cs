@@ -53,6 +53,9 @@ public static class HoverTipFactory
 		return model.GetDumbHoverTip(amount);
 	}
 
+	/// <summary>
+	/// Generate a HoverTip-sized preview of the specified power along with the power's hovertips.
+	/// </summary>
 	public static IEnumerable<IHoverTip> FromPowerWithPowerHoverTips<T>(int? amount = null) where T : PowerModel
 	{
 		return new IHoverTip[1] { FromPower<T>(amount) }.Concat(ModelDb.Power<T>().HoverTips);
@@ -97,16 +100,35 @@ public static class HoverTipFactory
 		return relic.HoverTipsExcludingRelic;
 	}
 
+	/// <summary>
+	/// Generate a HoverTip-sized preview of the specified card along with the card's hovertips.
+	/// </summary>
+	/// <typeparam name="T">CardModel subclass</typeparam>
+	/// <returns>HoverTip card preview</returns>
 	public static IEnumerable<IHoverTip> FromCardWithCardHoverTips<T>(bool upgrade = false) where T : CardModel
 	{
 		return new IHoverTip[1] { FromCard<T>(upgrade) }.Concat(ModelDb.Card<T>().HoverTips);
 	}
 
+	/// <summary>
+	/// Generate a HoverTip-sized preview of the specified card.
+	/// </summary>
+	/// <param name="upgrade">Whether the card should appear upgraded.</param>
+	/// <typeparam name="T">CardModel subclass</typeparam>
+	/// <returns>HoverTip card preview</returns>
 	public static IHoverTip FromCard<T>(bool upgrade = false) where T : CardModel
 	{
 		return FromCard(ModelDb.Card<T>(), upgrade);
 	}
 
+	/// <summary>
+	/// Generate a HoverTip-sized preview of the specified card.
+	/// Note: You should usually use the generic version of this method. Only use this version if you need to modify
+	/// the base version of the card (like to show an upgrade or something).
+	/// </summary>
+	/// <param name="card">CardModel to preview</param>
+	/// <param name="upgrade">Whether the card should appear upgraded.</param>
+	/// <returns>HoverTip card preview</returns>
 	public static IHoverTip FromCard(CardModel card, bool upgrade = false)
 	{
 		if (upgrade)

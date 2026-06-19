@@ -8,39 +8,90 @@ using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 
 namespace MegaCrit.Sts2.Core.Nodes.Vfx.Utilities;
 
+/// <summary>
+/// ScreenShake VFX script. Lives as a Node which shakes a specified Control node (_shakeTarget).
+/// Multiple effects can be stacked
+/// Can be called from anywhere using NGame.Instance.ScreenShake(), Screenpunch(), Rumble(), etc.
+/// See CombatRoom for example to attach this effect to other screens.
+/// </summary>
 [ScriptPath("res://src/Core/Nodes/Vfx/Utilities/NScreenShake.cs")]
 public class NScreenShake : Node
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Node.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the 'SetTarget' method.
+		/// </summary>
 		public static readonly StringName SetTarget = "SetTarget";
 
+		/// <summary>
+		/// Cached name for the '_Process' method.
+		/// </summary>
 		public new static readonly StringName _Process = "_Process";
 
+		/// <summary>
+		/// Cached name for the 'Shake' method.
+		/// </summary>
 		public static readonly StringName Shake = "Shake";
 
+		/// <summary>
+		/// Cached name for the 'Rumble' method.
+		/// </summary>
 		public static readonly StringName Rumble = "Rumble";
 
+		/// <summary>
+		/// Cached name for the 'AddTrauma' method.
+		/// </summary>
 		public static readonly StringName AddTrauma = "AddTrauma";
 
+		/// <summary>
+		/// Cached name for the 'ClearTarget' method.
+		/// </summary>
 		public static readonly StringName ClearTarget = "ClearTarget";
 
+		/// <summary>
+		/// Cached name for the 'StopRumble' method.
+		/// </summary>
 		public static readonly StringName StopRumble = "StopRumble";
 
+		/// <summary>
+		/// Cached name for the 'SetMultiplier' method.
+		/// </summary>
 		public static readonly StringName SetMultiplier = "SetMultiplier";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Node.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'ShakeTarget' property.
+		/// </summary>
 		public static readonly StringName ShakeTarget = "ShakeTarget";
 
+		/// <summary>
+		/// Cached name for the '_originalTargetPosition' field.
+		/// </summary>
 		public static readonly StringName _originalTargetPosition = "_originalTargetPosition";
 
+		/// <summary>
+		/// Cached name for the '_multiplier' field.
+		/// </summary>
 		public static readonly StringName _multiplier = "_multiplier";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Node.SignalName
 	{
 	}
@@ -154,6 +205,11 @@ public class NScreenShake : Node
 		_traumaRumble.SetMultiplier(multiplier);
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -192,6 +248,7 @@ public class NScreenShake : Node
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -252,6 +309,7 @@ public class NScreenShake : Node
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -294,6 +352,7 @@ public class NScreenShake : Node
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -315,6 +374,7 @@ public class NScreenShake : Node
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -336,6 +396,11 @@ public class NScreenShake : Node
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -346,6 +411,7 @@ public class NScreenShake : Node
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -355,6 +421,7 @@ public class NScreenShake : Node
 		info.AddProperty(PropertyName._multiplier, Variant.From(in _multiplier));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

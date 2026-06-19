@@ -31,61 +31,144 @@ using MegaCrit.Sts2.addons.mega_text;
 
 namespace MegaCrit.Sts2.Core.Nodes.Screens.CardSelection;
 
+/// <summary>
+/// Selection screen for card rewards after winning combat.
+/// NOTE: The card reward selection screen is only set up to look good with exactly 3 cards right now. Any more or less
+/// than that and things may start to look wonky. We'll need do some UI work to make it look nicer if that's required.
+/// </summary>
 [ScriptPath("res://src/Core/Nodes/Screens/CardSelection/NCardRewardSelectionScreen.cs")]
 public class NCardRewardSelectionScreen : Control, IOverlayScreen, IScreenContext
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Control.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_EnterTree' method.
+		/// </summary>
 		public new static readonly StringName _EnterTree = "_EnterTree";
 
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 
+		/// <summary>
+		/// Cached name for the 'OnAlternateRewardSelected' method.
+		/// </summary>
 		public static readonly StringName OnAlternateRewardSelected = "OnAlternateRewardSelected";
 
+		/// <summary>
+		/// Cached name for the 'SelectCard' method.
+		/// </summary>
 		public static readonly StringName SelectCard = "SelectCard";
 
+		/// <summary>
+		/// Cached name for the 'InspectCard' method.
+		/// </summary>
 		public static readonly StringName InspectCard = "InspectCard";
 
+		/// <summary>
+		/// Cached name for the 'AfterOverlayOpened' method.
+		/// </summary>
 		public static readonly StringName AfterOverlayOpened = "AfterOverlayOpened";
 
+		/// <summary>
+		/// Cached name for the 'PowerCardFtueCheck' method.
+		/// </summary>
 		public static readonly StringName PowerCardFtueCheck = "PowerCardFtueCheck";
 
+		/// <summary>
+		/// Cached name for the 'AfterOverlayClosed' method.
+		/// </summary>
 		public static readonly StringName AfterOverlayClosed = "AfterOverlayClosed";
 
+		/// <summary>
+		/// Cached name for the 'AfterOverlayShown' method.
+		/// </summary>
 		public static readonly StringName AfterOverlayShown = "AfterOverlayShown";
 
+		/// <summary>
+		/// Cached name for the 'AfterOverlayHidden' method.
+		/// </summary>
 		public static readonly StringName AfterOverlayHidden = "AfterOverlayHidden";
 
+		/// <summary>
+		/// Cached name for the 'UpdateControllerIcons' method.
+		/// </summary>
 		public static readonly StringName UpdateControllerIcons = "UpdateControllerIcons";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Control.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'ScreenType' property.
+		/// </summary>
 		public static readonly StringName ScreenType = "ScreenType";
 
+		/// <summary>
+		/// Cached name for the 'UseSharedBackstop' property.
+		/// </summary>
 		public static readonly StringName UseSharedBackstop = "UseSharedBackstop";
 
+		/// <summary>
+		/// Cached name for the 'DefaultFocusedControl' property.
+		/// </summary>
 		public static readonly StringName DefaultFocusedControl = "DefaultFocusedControl";
 
+		/// <summary>
+		/// Cached name for the '_ui' field.
+		/// </summary>
 		public static readonly StringName _ui = "_ui";
 
+		/// <summary>
+		/// Cached name for the '_banner' field.
+		/// </summary>
 		public static readonly StringName _banner = "_banner";
 
+		/// <summary>
+		/// Cached name for the '_cardRow' field.
+		/// </summary>
 		public static readonly StringName _cardRow = "_cardRow";
 
+		/// <summary>
+		/// Cached name for the '_rewardAlternativesContainer' field.
+		/// </summary>
 		public static readonly StringName _rewardAlternativesContainer = "_rewardAlternativesContainer";
 
+		/// <summary>
+		/// Cached name for the '_inspectPrompt' field.
+		/// </summary>
 		public static readonly StringName _inspectPrompt = "_inspectPrompt";
 
+		/// <summary>
+		/// Cached name for the '_cardTween' field.
+		/// </summary>
 		public static readonly StringName _cardTween = "_cardTween";
 
+		/// <summary>
+		/// Cached name for the '_buttonTween' field.
+		/// </summary>
 		public static readonly StringName _buttonTween = "_buttonTween";
 
+		/// <summary>
+		/// Cached name for the '_lastFocusedControl' field.
+		/// </summary>
 		public static readonly StringName _lastFocusedControl = "_lastFocusedControl";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Control.SignalName
 	{
 	}
@@ -176,6 +259,9 @@ public class NCardRewardSelectionScreen : Control, IOverlayScreen, IScreenContex
 		NInputManager.Instance.Connect(NInputManager.SignalName.InputRebound, Callable.From(UpdateControllerIcons));
 	}
 
+	/// <summary>
+	/// Called both in _Ready and if someone re-rolls the options of the associated CardReward.
+	/// </summary>
 	public void RefreshOptions(IReadOnlyList<CardCreationResult> options, IReadOnlyList<CardRewardAlternative> extraOptions)
 	{
 		_options = options;
@@ -286,6 +372,8 @@ public class NCardRewardSelectionScreen : Control, IOverlayScreen, IScreenContex
 		}
 	}
 
+	/// <returns>The index of the selected option. If the index is greater than or equal to the number of cards, then
+	/// it represents the index of an alternative option.</returns>
 	public async Task<int?> OptionSelected()
 	{
 		_completionSource = new TaskCompletionSource<int?>();
@@ -303,6 +391,11 @@ public class NCardRewardSelectionScreen : Control, IOverlayScreen, IScreenContex
 		TaskHelper.RunSafely(DisableCardsForShortTimeAfterOpening());
 	}
 
+	/// <summary>
+	/// For a short time after opening the screen, set the cards to unselectable.
+	/// Common mistake is for the player to click right after opening the screen, selecting a reward by mistake.
+	/// Note that this only makes it so the player cannot select the cards. They can still navigate
+	/// </summary>
 	private async Task DisableCardsForShortTimeAfterOpening()
 	{
 		foreach (NGridCardHolder item in _cardRow.GetChildren().OfType<NGridCardHolder>())
@@ -356,6 +449,11 @@ public class NCardRewardSelectionScreen : Control, IOverlayScreen, IScreenContex
 		_inspectPrompt.GetNode<MegaLabel>("Label").SetTextAutoSize(new LocString("gameplay_ui", "TO_INSPECT_PROMPT").GetFormattedText());
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -384,6 +482,7 @@ public class NCardRewardSelectionScreen : Control, IOverlayScreen, IScreenContex
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -462,6 +561,7 @@ public class NCardRewardSelectionScreen : Control, IOverlayScreen, IScreenContex
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -516,6 +616,7 @@ public class NCardRewardSelectionScreen : Control, IOverlayScreen, IScreenContex
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -562,6 +663,7 @@ public class NCardRewardSelectionScreen : Control, IOverlayScreen, IScreenContex
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -623,6 +725,11 @@ public class NCardRewardSelectionScreen : Control, IOverlayScreen, IScreenContex
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -641,6 +748,7 @@ public class NCardRewardSelectionScreen : Control, IOverlayScreen, IScreenContex
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -655,6 +763,7 @@ public class NCardRewardSelectionScreen : Control, IOverlayScreen, IScreenContex
 		info.AddProperty(PropertyName._lastFocusedControl, Variant.From(in _lastFocusedControl));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

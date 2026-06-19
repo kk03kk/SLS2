@@ -11,61 +11,144 @@ using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 
 namespace MegaCrit.Sts2.Core.Nodes.CommonUi;
 
+/// <summary>
+/// Confirm Button used in various places to confirm choices, embark on a run, etc.
+/// Very useful but not as cool as Back Button but that's life.
+/// Use the ButtonReleased Action to handle events.
+/// </summary>
 [ScriptPath("res://src/Core/Nodes/CommonUi/NConfirmButton.cs")]
 public class NConfirmButton : NButton
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : NButton.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 
+		/// <summary>
+		/// Cached name for the 'OnWindowChange' method.
+		/// </summary>
 		public static readonly StringName OnWindowChange = "OnWindowChange";
 
+		/// <summary>
+		/// Cached name for the 'OnEnable' method.
+		/// </summary>
 		public new static readonly StringName OnEnable = "OnEnable";
 
+		/// <summary>
+		/// Cached name for the 'OnDisable' method.
+		/// </summary>
 		public new static readonly StringName OnDisable = "OnDisable";
 
+		/// <summary>
+		/// Cached name for the 'OnFocus' method.
+		/// </summary>
 		public new static readonly StringName OnFocus = "OnFocus";
 
+		/// <summary>
+		/// Cached name for the 'OnUnfocus' method.
+		/// </summary>
 		public new static readonly StringName OnUnfocus = "OnUnfocus";
 
+		/// <summary>
+		/// Cached name for the 'OnPress' method.
+		/// </summary>
 		public new static readonly StringName OnPress = "OnPress";
 
+		/// <summary>
+		/// Cached name for the 'OverrideHotkeys' method.
+		/// </summary>
 		public static readonly StringName OverrideHotkeys = "OverrideHotkeys";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : NButton.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'Hotkeys' property.
+		/// </summary>
 		public new static readonly StringName Hotkeys = "Hotkeys";
 
+		/// <summary>
+		/// Cached name for the '_outline' field.
+		/// </summary>
 		public static readonly StringName _outline = "_outline";
 
+		/// <summary>
+		/// Cached name for the '_buttonImage' field.
+		/// </summary>
 		public static readonly StringName _buttonImage = "_buttonImage";
 
+		/// <summary>
+		/// Cached name for the '_defaultOutlineColor' field.
+		/// </summary>
 		public static readonly StringName _defaultOutlineColor = "_defaultOutlineColor";
 
+		/// <summary>
+		/// Cached name for the '_hoveredOutlineColor' field.
+		/// </summary>
 		public static readonly StringName _hoveredOutlineColor = "_hoveredOutlineColor";
 
+		/// <summary>
+		/// Cached name for the '_downColor' field.
+		/// </summary>
 		public static readonly StringName _downColor = "_downColor";
 
+		/// <summary>
+		/// Cached name for the '_outlineColor' field.
+		/// </summary>
 		public static readonly StringName _outlineColor = "_outlineColor";
 
+		/// <summary>
+		/// Cached name for the '_outlineTransparentColor' field.
+		/// </summary>
 		public static readonly StringName _outlineTransparentColor = "_outlineTransparentColor";
 
+		/// <summary>
+		/// Cached name for the '_viewport' field.
+		/// </summary>
 		public static readonly StringName _viewport = "_viewport";
 
+		/// <summary>
+		/// Cached name for the '_hotkeys' field.
+		/// </summary>
 		public static readonly StringName _hotkeys = "_hotkeys";
 
+		/// <summary>
+		/// Cached name for the '_posOffset' field.
+		/// </summary>
 		public static readonly StringName _posOffset = "_posOffset";
 
+		/// <summary>
+		/// Cached name for the '_showPos' field.
+		/// </summary>
 		public static readonly StringName _showPos = "_showPos";
 
+		/// <summary>
+		/// Cached name for the '_hidePos' field.
+		/// </summary>
 		public static readonly StringName _hidePos = "_hidePos";
 
+		/// <summary>
+		/// Cached name for the '_moveTween' field.
+		/// </summary>
 		public static readonly StringName _moveTween = "_moveTween";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : NButton.SignalName
 	{
 	}
@@ -141,6 +224,9 @@ public class NConfirmButton : NButton
 		base.Position = (_isEnabled ? _showPos : _hidePos);
 	}
 
+	/// <summary>
+	/// Call when we want this button to animate in.
+	/// </summary>
 	protected override void OnEnable()
 	{
 		base.OnEnable();
@@ -153,6 +239,9 @@ public class NConfirmButton : NButton
 			.FromCurrent();
 	}
 
+	/// <summary>
+	/// Call when we want this button to hide this button (Disables clickability/hotkeys)
+	/// </summary>
 	protected override void OnDisable()
 	{
 		base.OnDisable();
@@ -238,6 +327,11 @@ public class NConfirmButton : NButton
 		_hotkeys = hotkeys;
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<MethodInfo> GetGodotMethodList()
 	{
@@ -257,6 +351,7 @@ public class NConfirmButton : NButton
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -317,6 +412,7 @@ public class NConfirmButton : NButton
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -359,6 +455,7 @@ public class NConfirmButton : NButton
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -430,6 +527,7 @@ public class NConfirmButton : NButton
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -506,6 +604,11 @@ public class NConfirmButton : NButton
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -527,6 +630,7 @@ public class NConfirmButton : NButton
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -546,6 +650,7 @@ public class NConfirmButton : NButton
 		info.AddProperty(PropertyName._moveTween, Variant.From(in _moveTween));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

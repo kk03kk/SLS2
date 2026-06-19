@@ -15,6 +15,10 @@ using Sentry;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Game;
 
+/// <summary>
+/// Calculates checksums, sends them to peers, and validates received checksums to ensure there are no state divergences
+/// during deterministic execution (currently: during combat, after events, and after rest sites).
+/// </summary>
 public class ChecksumTracker : IDisposable
 {
 	private struct TrackedChecksum
@@ -73,6 +77,13 @@ public class ChecksumTracker : IDisposable
 		_netService.UnregisterMessageHandler<StateDivergenceMessage>(OnReceivedStateDivergenceMessage);
 	}
 
+	/// <summary>
+	/// Main entry point for this class. Generates a checksum of the full combat state for validation against peers'.
+	/// On host, the checksum is saved for comparison against those received from clients.
+	/// On clients, the checksum is saved and sent to the host for validation.
+	/// This should be called the exact same amount of times for every peer, otherwise false positive mismatches will be
+	/// generated.
+	/// </summary>
 	public NetChecksumData GenerateChecksum(string context, GameAction? action)
 	{
 		if (!IsEnabled)
@@ -92,6 +103,9 @@ public class ChecksumTracker : IDisposable
 		return netChecksumData;
 	}
 
+	/// <summary>
+	/// Called on the host when a client sends a message containing the checksum for their current game state.
+	/// </summary>
 	private void OnReceivedChecksumDataMessage(ChecksumDataMessage message, ulong senderId)
 	{
 		if (_netService.Type != NetGameType.Host)
@@ -115,6 +129,11 @@ public class ChecksumTracker : IDisposable
 		}
 	}
 
+	/// <summary>
+	/// Called on client when the host sends a message indicating that the client's state has diverged from the host's.
+	/// Also called on the host when the client receives the host's message, so that the host knows what state the client
+	/// was in and can log both.
+	/// </summary>
 	private void OnReceivedStateDivergenceMessage(StateDivergenceMessage message, ulong senderId)
 	{
 		NetChecksumData remoteChecksumData = message.senderChecksum;
@@ -139,6 +158,9 @@ public class ChecksumTracker : IDisposable
 		}
 	}
 
+	/// <summary>
+	/// Call this to obtain checksum data that may be sent over the network with a message.
+	/// </summary>
 	private NetChecksumData ObtainAndTrackChecksum(string context, GameAction? action)
 	{
 		NetFullCombatState netFullCombatState = NetFullCombatState.FromRun(_runState, action);

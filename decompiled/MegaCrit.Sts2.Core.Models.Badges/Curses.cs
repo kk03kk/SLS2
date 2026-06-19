@@ -4,12 +4,18 @@ using MegaCrit.Sts2.Core.Saves.Runs;
 
 namespace MegaCrit.Sts2.Core.Models.Badges;
 
+/// <summary>
+/// Won with 5 or more Curses.
+/// </summary>
 public class Curses : Badge
 {
 	private const int _curseRequirement = 5;
 
 	public override BadgeRarity Rarity => BadgeRarity.Bronze;
 
+	/// <summary>
+	/// Won with 5 or more Curses.
+	/// </summary>
 	public Curses(SerializableRun run, bool won, ulong playerId)
 		: base(run, won, playerId, "CURSES", requiresWin: true, multiplayerOnly: false)
 	{

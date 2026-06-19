@@ -8,6 +8,11 @@ using Steamworks;
 
 namespace MegaCrit.Sts2.Core.Entities.Multiplayer;
 
+/// <summary>
+/// Contains information about why a network operation failed, or why we disconnected from a multiplayer session.
+/// Prefer passing this instead of NetError, as this contains more information about the underlying error that might
+/// have been mapped to our NetError.
+/// </summary>
 public readonly struct NetErrorInfo
 {
 	private readonly NetError? _reason;
@@ -106,6 +111,9 @@ public readonly struct NetErrorInfo
 		SelfInitiated = true;
 	}
 
+	/// <summary>
+	/// Returns a disconnection reason mapped from the underlying transport disconnection reason.
+	/// </summary>
 	public NetError GetReason()
 	{
 		if (_reason.HasValue)
@@ -204,6 +212,10 @@ public readonly struct NetErrorInfo
 		throw new InvalidOperationException("Tried to get DisconnectionReason from DisconnectionInfo without any assigned errors");
 	}
 
+	/// <summary>
+	/// Returns a string with more human-readable details about the underlying cause of the disconnection.
+	/// This is suitable for displaying to users as long as platform requirements allow plain error codes in messages.
+	/// </summary>
 	public string GetErrorString()
 	{
 		if (_reason.HasValue)
@@ -252,6 +264,9 @@ public readonly struct NetErrorInfo
 		return "<null>";
 	}
 
+	/// <summary>
+	/// Returns a string that should not be displayed to the user. Use this in debug logs.
+	/// </summary>
 	public override string ToString()
 	{
 		if (_reason.HasValue)

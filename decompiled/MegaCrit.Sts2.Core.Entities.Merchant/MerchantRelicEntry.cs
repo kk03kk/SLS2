@@ -13,6 +13,9 @@ using MegaCrit.Sts2.Core.Saves;
 
 namespace MegaCrit.Sts2.Core.Entities.Merchant;
 
+/// <summary>
+/// Manages a purchasable relic in the merchant shop
+/// </summary>
 public sealed class MerchantRelicEntry : MerchantEntry
 {
 	public RelicModel? Model { get; private set; }

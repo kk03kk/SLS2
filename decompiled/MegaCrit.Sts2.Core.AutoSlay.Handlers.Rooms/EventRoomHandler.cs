@@ -24,6 +24,11 @@ using MegaCrit.Sts2.Core.Runs;
 
 namespace MegaCrit.Sts2.Core.AutoSlay.Handlers.Rooms;
 
+/// <summary>
+/// Handles event rooms by selecting random choices.
+/// Some events trigger combat mid-event (e.g., DenseVegetation's "Rest" option).
+/// This handler detects and handles those combats before returning to the event.
+/// </summary>
 public class EventRoomHandler : IRoomHandler, IHandler
 {
 	private const string _roomPath = "/root/Game/RootSceneContainer/Run/RoomContainer/EventRoom";
@@ -240,6 +245,10 @@ public class EventRoomHandler : IRoomHandler, IHandler
 		return await WaitHelper.ForNode<Node>(root, "/root/Game/RootSceneContainer/Run/RoomContainer/EventRoom", ct);
 	}
 
+	/// <summary>
+	/// Waits for event options to become available.
+	/// </summary>
+	/// <returns>True if the event was fully handled (custom events), false if options loop should run.</returns>
 	private async Task<bool> WaitForEventOptions(Node eventRoom, CancellationToken ct)
 	{
 		NAncientEventLayout nAncientEventLayout = UiHelper.FindFirst<NAncientEventLayout>(eventRoom);
@@ -270,6 +279,11 @@ public class EventRoomHandler : IRoomHandler, IHandler
 		return false;
 	}
 
+	/// <summary>
+	/// Handles the FakeMerchant custom event.
+	/// This event uses NProceedButton instead of NEventOptionButton.
+	/// We simply click the proceed button to leave.
+	/// </summary>
 	private async Task HandleFakeMerchantEvent(NFakeMerchant fakeMerchant, CancellationToken ct)
 	{
 		AutoSlayLog.Action("Handling FakeMerchant event");
@@ -283,6 +297,9 @@ public class EventRoomHandler : IRoomHandler, IHandler
 		await UiHelper.Click(proceedButton);
 	}
 
+	/// <summary>
+	/// Handles Ancient events which require clicking through dialogue before options appear.
+	/// </summary>
 	private async Task HandleAncientEventDialogue(NAncientEventLayout ancientLayout, CancellationToken ct)
 	{
 		AutoSlayLog.Info("Detected Ancient event, clicking through dialogue");

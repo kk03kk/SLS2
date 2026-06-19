@@ -13,6 +13,9 @@ public class GenericHookGameAction : GameAction
 
 	private readonly GameActionType _gameActionType;
 
+	/// <summary>
+	/// See CombatManagerMultiplayerTest.
+	/// </summary>
 	public Task? debugArtificialDelayAfterTask;
 
 	public override bool RecordableToReplay => false;

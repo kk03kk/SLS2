@@ -10,6 +10,9 @@ using MegaCrit.Sts2.Core.Runs;
 
 namespace MegaCrit.Sts2.Core.DevConsole.ConsoleCommands;
 
+/// <summary>
+/// remove_card console cmd. Attempts to remove a card from both Hand and Deck at the same time.
+/// </summary>
 public class RemoveCardConsoleCmd : AbstractConsoleCmd
 {
 	public override string CmdName => "remove_card";

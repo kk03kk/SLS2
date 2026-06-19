@@ -9,8 +9,19 @@ using MegaCrit.Sts2.Core.Logging;
 
 namespace MegaCrit.Sts2.Core.Saves;
 
+/// <summary>
+/// Implements the ISaveStore interface for managing game save files within Godot.
+/// Handles file operations including reading, writing, and managing save directories.
+/// All file I/O operations related to game saves should use this class to ensure
+/// proper path handling, atomic writes, and consistent error handling across the application.
+/// </summary>
 public class GodotFileIo : ISaveStore
 {
+	/// <summary>
+	/// WARNING: ONLY CHANGE THIS IN TESTS.
+	/// The directory that your save files live at.
+	/// On Windows, these will be at: C:\Users\{USER}\AppData\Roaming\SlayTheSpire2\{platform}\{userId}\profile{profileId}\saves
+	/// </summary>
 	public string SaveDir { get; set; }
 
 	public GodotFileIo(string saveDir)
@@ -262,6 +273,12 @@ public class GodotFileIo : ISaveStore
 		}
 	}
 
+	/// <summary>
+	/// Copies the current save to a .backup file using temp+rename for crash safety.
+	/// The .backup serves as a fallback for the non-atomic rename on Windows and for
+	/// recovery when the primary save is corrupted. Writing to a .tmp file first ensures
+	/// the old .backup is preserved if a crash occurs mid-write.
+	/// </summary>
 	private void CopyBackup(string fullPath)
 	{
 		if (!Godot.FileAccess.FileExists(fullPath))
@@ -301,6 +318,22 @@ public class GodotFileIo : ISaveStore
 		}
 	}
 
+	/// <summary>
+	/// Forces the OS to flush all buffered data for the specified file to the storage device.
+	/// Without this, data may sit in the OS page cache and be lost on power loss or OS crash.
+	///
+	/// Why .NET FileStream instead of Godot's FileAccess.Flush()?
+	/// Godot's Flush() calls fflush() (see file_access_unix.cpp:322 and file_access_windows.cpp:374)
+	/// which only pushes data from the C stdio buffer to the OS kernel page cache. Godot does not
+	/// expose fsync/fdatasync/FlushFileBuffers anywhere in its FileAccess API. .NET's Flush(flushToDisk: true)
+	/// calls fsync (Linux) / FlushFileBuffers (Windows) which forces the kernel to write to the physical device.
+	///
+	/// This is a platform-dependent call and may not work on all OSes (e.g. consoles with sandboxed
+	/// filesystems). On unsupported platforms, the catch block logs a warning and the save proceeds
+	/// without durability guarantees (same as before this change). Console ports will need a
+	/// platform-specific ISaveStore implementation in C# anyway, which can use that platform's
+	/// native flush/commit API directly.
+	/// </summary>
 	private static void FsyncFile(string godotPath)
 	{
 		try

@@ -43,6 +43,9 @@ public sealed class Discovery : CardModel
 		RemoveKeyword(CardKeyword.Exhaust);
 	}
 
+	/// <summary>
+	/// ONLY USE THIS IN TESTS!
+	/// </summary>
 	public void MockSelectedCard(CardModel card)
 	{
 		AssertMutable();

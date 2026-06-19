@@ -13,6 +13,9 @@ using MegaCrit.Sts2.Core.Runs;
 
 namespace MegaCrit.Sts2.Core.AutoSlay.Handlers.Screens;
 
+/// <summary>
+/// Handles map screen navigation between rooms.
+/// </summary>
 public class MapScreenHandler : IScreenHandler, IHandler
 {
 	private TaskCompletionSource? _roomEnteredTcs;

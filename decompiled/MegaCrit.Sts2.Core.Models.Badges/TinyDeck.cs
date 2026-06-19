@@ -2,6 +2,9 @@ using MegaCrit.Sts2.Core.Saves;
 
 namespace MegaCrit.Sts2.Core.Models.Badges;
 
+/// <summary>
+/// Won a run with 20, 10, 5 or fewer cards.
+/// </summary>
 public class TinyDeck : Badge
 {
 	public override BadgeRarity Rarity
@@ -25,6 +28,9 @@ public class TinyDeck : Badge
 		}
 	}
 
+	/// <summary>
+	/// Won a run with 20, 10, 5 or fewer cards.
+	/// </summary>
 	public TinyDeck(SerializableRun run, bool won, ulong playerId)
 		: base(run, won, playerId, "TINY_DECK", requiresWin: true, multiplayerOnly: false)
 	{

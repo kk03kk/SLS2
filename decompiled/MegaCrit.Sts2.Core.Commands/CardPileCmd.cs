@@ -34,11 +34,21 @@ namespace MegaCrit.Sts2.Core.Commands;
 
 public static class CardPileCmd
 {
+	/// <summary>
+	/// Remove a card from the deck and play an animation.
+	/// </summary>
+	/// <param name="card">Card to remove.</param>
+	/// <param name="showPreview">Whether to show a preview of the card being removed.</param>
 	public static async Task RemoveFromDeck(CardModel card, bool showPreview = true)
 	{
 		await RemoveFromDeck(new global::_003C_003Ez__ReadOnlySingleElementList<CardModel>(card), showPreview);
 	}
 
+	/// <summary>
+	/// Remove cards from the deck and play an animation.
+	/// </summary>
+	/// <param name="cards">Cards to remove.</param>
+	/// <param name="showPreview">Whether to show a preview of the card being removed.</param>
 	public static async Task RemoveFromDeck(IReadOnlyList<CardModel> cards, bool showPreview = true)
 	{
 		foreach (CardModel card in cards)
@@ -70,11 +80,25 @@ public static class CardPileCmd
 		}
 	}
 
+	/// <summary>
+	/// Remove a card from combat and play an animation.
+	/// This will remove the card from any combat pile (<see cref="M:MegaCrit.Sts2.Core.Entities.Cards.PileTypeExtensions.IsCombatPile(MegaCrit.Sts2.Core.Entities.Cards.PileType)" />) it's in,
+	/// but not from the player's deck.
+	/// </summary>
+	/// <param name="card">Card to remove.</param>
+	/// <param name="skipVisuals">Skip card pile visuals (tween to/from pile, smoke puff VFX, etc).</param>
 	public static async Task RemoveFromCombat(CardModel card, bool skipVisuals = false)
 	{
 		await RemoveFromCombat(new global::_003C_003Ez__ReadOnlySingleElementList<CardModel>(card), skipVisuals);
 	}
 
+	/// <summary>
+	/// Remove cards from combat and play an animation.
+	/// This will remove the cards from any combat pile (<see cref="M:MegaCrit.Sts2.Core.Entities.Cards.PileTypeExtensions.IsCombatPile(MegaCrit.Sts2.Core.Entities.Cards.PileType)" />) they're
+	/// in, but not from the player's deck.
+	/// </summary>
+	/// <param name="cards">Cards to remove.</param>
+	/// <param name="skipVisuals">Skip card pile visuals (tween to/from pile, smoke puff VFX, etc).</param>
 	public static async Task RemoveFromCombat(IEnumerable<CardModel> cards, bool skipVisuals = false)
 	{
 		if (!cards.Any())
@@ -166,11 +190,29 @@ public static class CardPileCmd
 		}
 	}
 
+	/// <summary>
+	/// Adds a new card into one of the combat piles.
+	/// Card must have just been generated (ie shivs, infernal blade generation, attack potion).
+	/// We do this, instead of a regular add, because this adds the generated card entry to the combat history.
+	/// </summary>
+	/// <param name="card">Card to add.</param>
+	/// <param name="newPileType">Type of pile to add the card to.</param>
+	/// <param name="creator">Player that created this card if there is one</param>
+	/// <param name="position">Optional position in the pile to add the cards to. Defaults to bottom.</param>
 	public static async Task<CardPileAddResult> AddGeneratedCardToCombat(CardModel card, PileType newPileType, Player? creator, CardPilePosition position = CardPilePosition.Bottom)
 	{
 		return (await AddGeneratedCardsToCombat(new global::_003C_003Ez__ReadOnlySingleElementList<CardModel>(card), newPileType, creator, position))[0];
 	}
 
+	/// <summary>
+	/// Adds a new card into one of the combat piles.
+	/// Card must have just been generated (ie shivs, infernal blade generation, attack potion).
+	/// We do this, instead of a regular add, because this adds the generated card entry to the combat history.
+	/// </summary>
+	/// <param name="cards">Cards to add.</param>
+	/// <param name="newPileType">Type of pile to add the card to.</param>
+	/// <param name="creator">Player that created this card if ther is one</param>
+	/// <param name="position">Optional position in the pile to add the cards to. Defaults to bottom.</param>
 	public static async Task<IReadOnlyList<CardPileAddResult>> AddGeneratedCardsToCombat(IEnumerable<CardModel> cards, PileType newPileType, Player? creator, CardPilePosition position = CardPilePosition.Bottom)
 	{
 		List<CardModel> list = cards.ToList();
@@ -206,6 +248,14 @@ public static class CardPileCmd
 		return results;
 	}
 
+	/// <summary>
+	/// Add a card to a pile.
+	/// </summary>
+	/// <param name="card">Card to add.</param>
+	/// <param name="newPileType">Type of pile to add the card to.</param>
+	/// <param name="position">Optional position in the pile to add the cards to. Defaults to bottom.</param>
+	/// <param name="clonedBy">The model that cloned this card, if applicable. Used to prevent copy effects from recursing.</param>
+	/// <param name="skipVisuals">Skip card pile visuals (tween to/from pile, smoke puff VFX, etc).</param>
 	public static async Task<CardPileAddResult> Add(CardModel card, PileType newPileType, CardPilePosition position = CardPilePosition.Bottom, AbstractModel? clonedBy = null, bool skipVisuals = false)
 	{
 		if (card.Owner == null)
@@ -215,11 +265,27 @@ public static class CardPileCmd
 		return await Add(card, newPileType.GetPile(card.Owner), position, clonedBy, skipVisuals);
 	}
 
+	/// <summary>
+	/// Add a card to a pile.
+	/// </summary>
+	/// <param name="card">Card to add.</param>
+	/// <param name="newPile">Pile to add the card to.</param>
+	/// <param name="position">Optional position in the pile to add the cards to. Defaults to bottom.</param>
+	/// <param name="clonedBy">The model that cloned this card, if applicable. Used to prevent copy effects from recursing.</param>
+	/// <param name="skipVisuals">Skip card pile visuals (tween to/from pile, smoke puff VFX, etc).</param>
 	public static async Task<CardPileAddResult> Add(CardModel card, CardPile newPile, CardPilePosition position = CardPilePosition.Bottom, AbstractModel? clonedBy = null, bool skipVisuals = false)
 	{
 		return (await Add(new global::_003C_003Ez__ReadOnlySingleElementList<CardModel>(card), newPile, position, clonedBy, skipVisuals))[0];
 	}
 
+	/// <summary>
+	/// Add multiple cards to a pile.
+	/// </summary>
+	/// <param name="cards">Cards to add.</param>
+	/// <param name="newPileType">Type of pile to add the cards to.</param>
+	/// <param name="position">Optional position in the pile to add the cards to. Defaults to bottom.</param>
+	/// <param name="clonedBy">The model that cloned this card, if applicable. Used to prevent copy effects from recursing.</param>
+	/// <param name="skipVisuals">Skip card pile visuals (tween to/from pile, smoke puff VFX, etc).</param>
 	public static async Task<IReadOnlyList<CardPileAddResult>> Add(IEnumerable<CardModel> cards, PileType newPileType, CardPilePosition position = CardPilePosition.Bottom, AbstractModel? clonedBy = null, bool skipVisuals = false)
 	{
 		if (!cards.Any())
@@ -229,6 +295,14 @@ public static class CardPileCmd
 		return await Add(cards, newPileType.GetPile(cards.First().Owner), position, clonedBy, skipVisuals);
 	}
 
+	/// <summary>
+	/// Add multiple cards to a pile.
+	/// </summary>
+	/// <param name="cards">Cards to add.</param>
+	/// <param name="newPile">Pile to add the cards to.</param>
+	/// <param name="position">Optional position in the pile to add the cards to. Defaults to bottom.</param>
+	/// <param name="clonedBy">The model that cloned this card, if applicable. Used to prevent copy effects from recursing.</param>
+	/// <param name="skipVisuals">Skip card pile visuals (tween to/from pile, smoke puff VFX, etc).</param>
 	public static async Task<IReadOnlyList<CardPileAddResult>> Add(IEnumerable<CardModel> cards, CardPile newPile, CardPilePosition position = CardPilePosition.Bottom, AbstractModel? clonedBy = null, bool skipVisuals = false)
 	{
 		if (!cards.Any())
@@ -564,6 +638,12 @@ public static class CardPileCmd
 		return results;
 	}
 
+	/// <summary>
+	/// Add a card to the play pile during manual card play.
+	/// This is a highly simplified version of <see cref="M:MegaCrit.Sts2.Core.Commands.CardPileCmd.Add(MegaCrit.Sts2.Core.Models.CardModel,MegaCrit.Sts2.Core.Entities.Cards.CardPile,MegaCrit.Sts2.Core.Entities.Cards.CardPilePosition,MegaCrit.Sts2.Core.Models.AbstractModel,System.Boolean)" />
+	/// that makes a bunch of assumptions, and also that doesn't wait on its tweens. This makes most card plays feel more responsive.
+	/// Autoplay from effects like <see cref="T:MegaCrit.Sts2.Core.Models.Cards.Havoc" /> don't use this, because they need to wait on their tweens.
+	/// </summary>
 	public static async Task AddDuringManualCardPlay(CardModel card)
 	{
 		if (CombatManager.Instance.IsOverOrEnding)
@@ -696,11 +776,25 @@ public static class CardPileCmd
 		}
 	}
 
+	/// <summary>
+	/// Draw a card.
+	/// </summary>
+	/// <param name="choiceContext">The context with which to handle player choices.</param>
+	/// <param name="player">Player who the hand and draw pile belongs to.</param>
+	/// <returns>Card that was drawn, or null if no cards were drawn.</returns>
 	public static async Task<CardModel?> Draw(PlayerChoiceContext choiceContext, Player player)
 	{
 		return (await Draw(choiceContext, 1m, player)).FirstOrDefault();
 	}
 
+	/// <summary>
+	/// Draw cards.
+	/// </summary>
+	/// <param name="choiceContext">The context with which to handle player choices.</param>
+	/// <param name="count">Number of cards to draw.</param>
+	/// <param name="player">Player who the hand and draw pile belongs to.</param>
+	/// <param name="fromHandDraw">If this draw happened as part of the initial card draws at the start of your turn.</param>
+	/// <returns>Cards that were drawn.</returns>
 	public static async Task<IEnumerable<CardModel>> Draw(PlayerChoiceContext choiceContext, decimal count, Player player, bool fromHandDraw = false)
 	{
 		if (CombatManager.Instance.IsOverOrEnding)
@@ -762,6 +856,11 @@ public static class CardPileCmd
 		return result;
 	}
 
+	/// <summary>
+	/// Shuffle the player's discard pile into their draw pile.
+	/// </summary>
+	/// <param name="choiceContext">The context that is signalled in the event of a player choice.</param>
+	/// <param name="player">Player whose piles we should shuffle.</param>
 	public static async Task Shuffle(PlayerChoiceContext choiceContext, Player player)
 	{
 		if (CombatManager.Instance.IsOverOrEnding)
@@ -819,6 +918,16 @@ public static class CardPileCmd
 		}
 	}
 
+	/// <summary>
+	/// Play cards directly from the draw pile.
+	/// If the draw pile becomes empty before the specified number of cards are played, the discard pile will
+	/// automatically be shuffled into it.
+	/// </summary>
+	/// <param name="choiceContext">The context that is signalled in the event of a player choice.</param>
+	/// <param name="player">Player whose draw pile we should play from.</param>
+	/// <param name="count">Number of cards to play.</param>
+	/// <param name="position">Position to play the cards from.</param>
+	/// <param name="forceExhaust">Whether or not to force the played cards to be exhausted after.</param>
 	public static async Task AutoPlayFromDrawPile(PlayerChoiceContext choiceContext, Player player, int count, CardPilePosition position, bool forceExhaust)
 	{
 		if (CombatManager.Instance.IsOverOrEnding)
@@ -856,6 +965,10 @@ public static class CardPileCmd
 		}
 	}
 
+	/// <summary>
+	/// Shuffle the specified player's discard pile into their draw pile IF their draw pile is currently empty.
+	/// If their draw pile has at least one card in it OR their discard pile is empty, this method will do nothing.
+	/// </summary>
 	public static async Task ShuffleIfNecessary(PlayerChoiceContext choiceContext, Player player)
 	{
 		CardPile pile = PileType.Draw.GetPile(player);
@@ -867,6 +980,9 @@ public static class CardPileCmd
 		}
 	}
 
+	/// <summary>
+	/// The first time the discard pile is shuffled into the draw pile, the Shuffle FTUE shows up
+	/// </summary>
 	private static async Task ShuffleFtueCheck()
 	{
 		if (!SaveManager.Instance.SeenFtue("shuffle_ftue") && NModalContainer.Instance != null)

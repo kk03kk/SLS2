@@ -12,8 +12,17 @@ using MegaCrit.Sts2.Core.Localization;
 
 namespace MegaCrit.Sts2.Core.Models.Powers;
 
+/// <summary>
+/// This class represents a buff/debuff that gives/takes focus.
+/// We never instantiate this directly. See <see cref="T:MegaCrit.Sts2.Core.Models.Powers.TemporaryStrengthPower" /> for context around how this is used.
+/// </summary>
 public abstract class TemporaryFocusPower : PowerModel, ITemporaryPower
 {
+	/// <summary>
+	/// If this is true, the next application of this power will not be applied.
+	/// This is used when debuffs are copied by Misery. The negative <see cref="T:MegaCrit.Sts2.Core.Models.Powers.FocusPower" /> gets copied along with this
+	/// power, and upon copying, it should not apply negative <see cref="T:MegaCrit.Sts2.Core.Models.Powers.FocusPower" /> down again.
+	/// </summary>
 	private bool _shouldIgnoreNextInstance;
 
 	public override PowerType Type
@@ -30,12 +39,21 @@ public abstract class TemporaryFocusPower : PowerModel, ITemporaryPower
 
 	public override PowerStackType StackType => PowerStackType.Counter;
 
+	/// <summary>
+	/// The canonical model that applies this power. For example, <see cref="T:MegaCrit.Sts2.Core.Models.Cards.Hotfix" />.
+	/// </summary>
 	public abstract AbstractModel OriginModel { get; }
 
 	public PowerModel InternallyAppliedPower => ModelDb.Power<FocusPower>();
 
+	/// <summary>
+	/// If this power is supposed to apply negative Focus, make this false
+	/// </summary>
 	protected virtual bool IsPositive => true;
 
+	/// <summary>
+	/// Shorthand indicating the sign of the amount to apply
+	/// </summary>
 	private int Sign
 	{
 		get

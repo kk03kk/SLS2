@@ -5,6 +5,10 @@ using MegaCrit.Sts2.Core.Multiplayer.Transport;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Messages.Lobby;
 
+/// <summary>
+/// Sent from host to clients when a client has joined.
+/// The newly joined client receives ClientSlotGrantedMessage and not this message.
+/// </summary>
 public struct PlayerJoinedMessage : INetMessage, IPacketSerializable
 {
 	public LobbyPlayer lobbyPlayer;

@@ -21,8 +21,17 @@ public class EventRoom : AbstractRoom
 
 	public override ModelId ModelId => CanonicalEvent.Id;
 
+	/// <summary>
+	/// The canonical version of the event that the player is doing in this room.
+	/// Unlike CombatRoom.Encounter, we want this to be canonical, because we create a separate mutable copy for each
+	/// player.
+	/// </summary>
 	public EventModel CanonicalEvent { get; }
 
+	/// <summary>
+	/// The mutable version of the event that the local player is doing in this room.
+	/// When using this, keep in mind that the
+	/// </summary>
 	public EventModel LocalMutableEvent => RunManager.Instance.EventSynchronizer.GetLocalEvent();
 
 	public Action<EventModel>? OnStart { private get; init; }

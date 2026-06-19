@@ -11,6 +11,9 @@ using MegaCrit.Sts2.Core.Runs;
 
 namespace MegaCrit.Sts2.Core.DevConsole.ConsoleCommands;
 
+/// <summary>
+/// Console commands which gives the player godmode.
+/// </summary>
 public class GodModeConsoleCmd : AbstractConsoleCmd
 {
 	private bool _godModeActive;

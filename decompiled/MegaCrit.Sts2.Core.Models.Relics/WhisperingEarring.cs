@@ -35,6 +35,9 @@ public sealed class WhisperingEarring : RelicModel
 		return amount + base.DynamicVars.Energy.BaseValue;
 	}
 
+	/// <remarks>
+	/// We do this in Late because we want this to trigger after all other triggers fire (i.e. <see cref="T:MegaCrit.Sts2.Core.Models.Enchantments.Imbued" />).
+	/// </remarks>
 	public override async Task AfterAutoPrePlayPhaseEnteredLate(PlayerChoiceContext choiceContext, Player player)
 	{
 		if (player != base.Owner)
@@ -86,6 +89,10 @@ public sealed class WhisperingEarring : RelicModel
 		TalkCmd.Play(line, base.Owner.Creature, VfxColor.Purple);
 	}
 
+	/// <summary>
+	/// Gets the target for a card during Vakuu's auto-play.
+	/// Enemies: leftmost first. Allies: random.
+	/// </summary>
 	private Creature? GetTarget(CardModel card, ICombatState combatState)
 	{
 		Rng combatTargets = base.Owner.RunState.Rng.CombatTargets;

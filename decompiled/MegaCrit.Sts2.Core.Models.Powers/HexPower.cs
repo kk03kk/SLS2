@@ -18,6 +18,11 @@ public sealed class HexPower : PowerModel
 
 	protected override IEnumerable<IHoverTip> ExtraHoverTips => HoverTipFactory.FromAffliction<Hexed>(base.Amount);
 
+	/// <summary>
+	/// Ethereal is granted globally for as long as this power exists, gated on the card being afflicted with
+	/// <see cref="T:MegaCrit.Sts2.Core.Models.Afflictions.Hexed" />. When this power is removed, it stops contributing here automatically, so any Ethereal from
+	/// another source (e.g. <see cref="T:MegaCrit.Sts2.Core.Models.Relics.MusicBox" />) is left untouched.
+	/// </summary>
 	public override bool TryModifyKeywordsInCombat(CardModel card, ISet<CardKeyword> keywords)
 	{
 		if (card.Owner != base.Owner.Player)

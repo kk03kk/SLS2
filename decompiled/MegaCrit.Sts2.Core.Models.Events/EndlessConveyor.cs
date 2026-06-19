@@ -198,6 +198,10 @@ public sealed class EndlessConveyor : EventModel
 		return Task.CompletedTask;
 	}
 
+	/// <summary>
+	/// Generates a list of possible dishes and uses a weighted roll to determine a dish.
+	/// Lots of exceptions and info here.
+	/// </summary>
 	private void RollDish()
 	{
 		NumOfGrabs++;
@@ -252,6 +256,9 @@ public sealed class EndlessConveyor : EventModel
 		}
 	}
 
+	/// <summary>
+	/// Player chose not to partake in the feast. Sad.
+	/// </summary>
 	private Task ObserveChef()
 	{
 		IEnumerable<CardModel> enumerable = base.Owner.Deck.Cards.Where((CardModel c) => c.IsUpgradable);

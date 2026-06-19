@@ -4,6 +4,9 @@ using MegaCrit.Sts2.Core.Saves;
 
 namespace MegaCrit.Sts2.Core.Timeline.Epochs;
 
+/// <summary>
+/// Neow
+/// </summary>
 public class NeowEpoch : EpochModel
 {
 	public override string Id => "NEOW_EPOCH";

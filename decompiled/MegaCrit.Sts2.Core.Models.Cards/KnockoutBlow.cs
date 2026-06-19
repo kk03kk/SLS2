@@ -11,6 +11,9 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace MegaCrit.Sts2.Core.Models.Cards;
 
+/// <summary>
+/// The only difference between the starting Strike cards are portrait, attack vfx, and color.
+/// </summary>
 public sealed class KnockoutBlow : CardModel
 {
 	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
@@ -19,6 +22,9 @@ public sealed class KnockoutBlow : CardModel
 		new StarsVar(5)
 	});
 
+	/// <summary>
+	/// The only difference between the starting Strike cards are portrait, attack vfx, and color.
+	/// </summary>
 	public KnockoutBlow()
 		: base(3, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 	{

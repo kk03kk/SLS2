@@ -22,6 +22,10 @@ public class CombatStateTracker
 
 	private CombatState? _state;
 
+	/// <summary>
+	/// Fired whenever any part of the combat's state changes (card changes piles, power applied/removed, damage dealt,
+	/// block gained/lost, etc.).
+	/// </summary>
 	public event Action<CombatState>? CombatStateChanged;
 
 	public CombatStateTracker(CombatManager combatManager)
@@ -185,6 +189,10 @@ public class CombatStateTracker
 		NotifyCombatStateChanged("OnTurnEnded");
 	}
 
+	/// <summary>
+	/// Notify the world that something in the combat state changed.
+	/// </summary>
+	/// <param name="caller">The name of the method that triggered this.</param>
 	private void NotifyCombatStateChanged(string caller)
 	{
 		if (TestMode.IsOn)

@@ -5,6 +5,9 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace MegaCrit.Sts2.Core.Models.Badges;
 
+/// <summary>
+/// Keeps track of how many debuffs a player has applied.
+/// </summary>
 public class DebufferModel : BadgeModel
 {
 	public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)

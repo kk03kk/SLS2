@@ -43,6 +43,10 @@ public sealed class ScrollBoxes : RelicModel
 		}
 	}
 
+	/// <summary>
+	/// Checks if random bundles can be generated for the given player.
+	/// Requires at least 4 unlocked commons and 2 unlocked uncommons.
+	/// </summary>
 	public static bool CanGenerateBundles(Player player)
 	{
 		IEnumerable<CardModel> unlockedCards = GetCardPool(player.Character).GetUnlockedCards(player.UnlockState, player.RunState.CardMultiplayerConstraint);
@@ -55,6 +59,11 @@ public sealed class ScrollBoxes : RelicModel
 		return false;
 	}
 
+	/// <summary>
+	/// Generates 2 random bundles for the player. Each bundle contains 2 commons and 1 uncommon.
+	/// All 6 cards across both bundles are unique.
+	/// For Defect, each bundle has a 1% chance to be 3x Claw instead.
+	/// </summary>
 	public static List<IReadOnlyList<CardModel>> GenerateRandomBundles(Player player)
 	{
 		Rng rewards = player.PlayerRng.Rewards;

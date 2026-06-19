@@ -37,11 +37,17 @@ public static class TestRngInjector
 		return _relicRarityOverride;
 	}
 
+	/// <summary>
+	/// Force specific cards to show up for CardFactory.GetDistinctForCombat.
+	/// </summary>
 	public static void SetCombatCardGenerationOverride(List<CardModel> cards)
 	{
 		_combatCardGenerationOverride = cards;
 	}
 
+	/// <summary>
+	/// Consume the combat cards generation override and clear it out.
+	/// </summary>
 	public static List<CardModel>? ConsumeCombatCardGenerationOverride()
 	{
 		List<CardModel> combatCardGenerationOverride = _combatCardGenerationOverride;
@@ -49,11 +55,17 @@ public static class TestRngInjector
 		return combatCardGenerationOverride;
 	}
 
+	/// <summary>
+	/// Force a specific order for the initial shuffle.
+	/// </summary>
 	public static void SetInitialShuffleOverride(Action<List<CardModel>> reorder)
 	{
 		_initialShuffleOverride = reorder;
 	}
 
+	/// <summary>
+	/// Consume the initial shuffle override and clear it out.
+	/// </summary>
 	public static Action<List<CardModel>>? ConsumeInitialShuffleOverride()
 	{
 		Action<List<CardModel>> initialShuffleOverride = _initialShuffleOverride;

@@ -25,6 +25,9 @@ namespace MegaCrit.Sts2.Core.Models.Events;
 
 public sealed class PunchOff : EventModel
 {
+	/// <summary>
+	/// Used to end the enemies punching each other.
+	/// </summary>
 	private CancellationTokenSource? _punchCts;
 
 	public override EventLayoutType LayoutType => EventLayoutType.Combat;

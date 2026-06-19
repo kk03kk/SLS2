@@ -35,6 +35,11 @@ public sealed class PaelsEye : RelicModel
 		}
 	}
 
+	/// <summary>
+	/// If two players both have Pael's Eye in multiplayer, and only one player uses it, then only that player gets a turn.
+	/// In this case, we force the other player not to draw any cards and we auto-end their turn. But even though they
+	/// haven't played any cards, that "turn" shouldn't count towards Pael's Eye for them.
+	/// </summary>
 	private bool WasOwnerPartOfLastPlayerTurn
 	{
 		get

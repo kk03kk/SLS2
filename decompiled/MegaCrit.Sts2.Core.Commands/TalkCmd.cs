@@ -9,6 +9,9 @@ using MegaCrit.Sts2.Core.Settings;
 
 namespace MegaCrit.Sts2.Core.Commands;
 
+/// <summary>
+/// Creates a speech bubble. Used when a creature talks/screams/whispers to you. Generally during combat
+/// </summary>
 public static class TalkCmd
 {
 	public static NSpeechBubbleVfx? Play(LocString line, Creature speaker, VfxColor vfxColor, VfxDuration duration = VfxDuration.Custom)
@@ -55,6 +58,13 @@ public static class TalkCmd
 		};
 	}
 
+	/// <summary>
+	/// Calculates how many characters in a string without the bbcode. Also strips out new line, brackets, optionals.
+	/// Example:
+	/// [jitter][gold]Money![/gold][/jitter]
+	/// [sine][orange]Money![/orange][/sine]
+	/// returns Money!Money! -&gt; 12 characters -&gt; 1.2 second speech bubble
+	/// </summary>
 	private static int GetRawCharCount(string bbcodeText)
 	{
 		string text = Regex.Replace(bbcodeText, "\\[/?[^\\]]+\\]", "");

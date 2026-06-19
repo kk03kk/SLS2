@@ -37,6 +37,12 @@ public sealed class FakeOrichalcum : RelicModel
 		}
 	}
 
+	/// <summary>
+	/// This uses the _very early_ hook because it needs to check the player's block before <see cref="T:MegaCrit.Sts2.Core.Models.Powers.PlatingPower" />
+	/// triggers (otherwise, <see cref="T:MegaCrit.Sts2.Core.Models.Powers.PlatingPower" /> will prevent this relic's block gain), and
+	/// <see cref="T:MegaCrit.Sts2.Core.Models.Powers.PlatingPower" /> in turn needs to run early so it can give you block before you take damage from
+	/// another end-of-turn effect.
+	/// </summary>
 	public override Task BeforeSideTurnEndVeryEarly(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
 	{
 		if (!participants.Contains(base.Owner.Creature))

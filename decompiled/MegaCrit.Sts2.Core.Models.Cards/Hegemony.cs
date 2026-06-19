@@ -11,6 +11,9 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace MegaCrit.Sts2.Core.Models.Cards;
 
+/// <summary>
+/// The only difference between the starting Strike cards are portrait, attack vfx, and color.
+/// </summary>
 public sealed class Hegemony : CardModel
 {
 	protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
@@ -21,6 +24,9 @@ public sealed class Hegemony : CardModel
 
 	protected override IEnumerable<IHoverTip> ExtraHoverTips => new global::_003C_003Ez__ReadOnlySingleElementList<IHoverTip>(base.EnergyHoverTip);
 
+	/// <summary>
+	/// The only difference between the starting Strike cards are portrait, attack vfx, and color.
+	/// </summary>
 	public Hegemony()
 		: base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 	{

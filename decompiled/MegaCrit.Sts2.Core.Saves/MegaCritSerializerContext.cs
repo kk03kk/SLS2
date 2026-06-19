@@ -444,344 +444,854 @@ internal class MegaCritSerializerContext : JsonSerializerContext, IJsonTypeInfoR
 
 	public static JsonSerializerOptions DefaultGeneratedSerializerOptions => Default.GeneratedSerializerOptions;
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<bool> Boolean => _Boolean ?? (_Boolean = (JsonTypeInfo<bool>)base.Options.GetTypeInfo(typeof(bool)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<double> Double => _Double ?? (_Double = (JsonTypeInfo<double>)base.Options.GetTypeInfo(typeof(double)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<float> Single => _Single ?? (_Single = (JsonTypeInfo<float>)base.Options.GetTypeInfo(typeof(float)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<Vector2> Vector2 => _Vector2 ?? (_Vector2 = (JsonTypeInfo<Vector2>)base.Options.GetTypeInfo(typeof(Vector2)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<Vector2I> Vector2I => _Vector2I ?? (_Vector2I = (JsonTypeInfo<Vector2I>)base.Options.GetTypeInfo(typeof(Vector2I)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<ControllerMappingType> ControllerMappingType => _ControllerMappingType ?? (_ControllerMappingType = (JsonTypeInfo<ControllerMappingType>)base.Options.GetTypeInfo(typeof(ControllerMappingType)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<RelicRarity> RelicRarity => _RelicRarity ?? (_RelicRarity = (JsonTypeInfo<RelicRarity>)base.Options.GetTypeInfo(typeof(RelicRarity)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<PlayerRngType> PlayerRngType => _PlayerRngType ?? (_PlayerRngType = (JsonTypeInfo<PlayerRngType>)base.Options.GetTypeInfo(typeof(PlayerRngType)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<RunRngType> RunRngType => _RunRngType ?? (_RunRngType = (JsonTypeInfo<RunRngType>)base.Options.GetTypeInfo(typeof(RunRngType)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<LocString> LocString => _LocString ?? (_LocString = (JsonTypeInfo<LocString>)base.Options.GetTypeInfo(typeof(LocString)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<MapCoord> MapCoord => _MapCoord ?? (_MapCoord = (JsonTypeInfo<MapCoord>)base.Options.GetTypeInfo(typeof(MapCoord)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<MapPointType> MapPointType => _MapPointType ?? (_MapPointType = (JsonTypeInfo<MapPointType>)base.Options.GetTypeInfo(typeof(MapPointType)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<ModDependency> ModDependency => _ModDependency ?? (_ModDependency = (JsonTypeInfo<ModDependency>)base.Options.GetTypeInfo(typeof(ModDependency)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<ModManifest> ModManifest => _ModManifest ?? (_ModManifest = (JsonTypeInfo<ModManifest>)base.Options.GetTypeInfo(typeof(ModManifest)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<ModSettings> ModSettings => _ModSettings ?? (_ModSettings = (JsonTypeInfo<ModSettings>)base.Options.GetTypeInfo(typeof(ModSettings)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<ModSource> ModSource => _ModSource ?? (_ModSource = (JsonTypeInfo<ModSource>)base.Options.GetTypeInfo(typeof(ModSource)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SettingsSaveMod> SettingsSaveMod => _SettingsSaveMod ?? (_SettingsSaveMod = (JsonTypeInfo<SettingsSaveMod>)base.Options.GetTypeInfo(typeof(SettingsSaveMod)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<BadgeRarity> BadgeRarity => _BadgeRarity ?? (_BadgeRarity = (JsonTypeInfo<BadgeRarity>)base.Options.GetTypeInfo(typeof(BadgeRarity)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<ModelId> ModelId => _ModelId ?? (_ModelId = (JsonTypeInfo<ModelId>)base.Options.GetTypeInfo(typeof(ModelId)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<FeedbackData> FeedbackData => _FeedbackData ?? (_FeedbackData = (JsonTypeInfo<FeedbackData>)base.Options.GetTypeInfo(typeof(FeedbackData)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<NullLeaderboard> NullLeaderboard => _NullLeaderboard ?? (_NullLeaderboard = (JsonTypeInfo<NullLeaderboard>)base.Options.GetTypeInfo(typeof(NullLeaderboard)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<NullLeaderboardFile> NullLeaderboardFile => _NullLeaderboardFile ?? (_NullLeaderboardFile = (JsonTypeInfo<NullLeaderboardFile>)base.Options.GetTypeInfo(typeof(NullLeaderboardFile)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<NullLeaderboardFileEntry> NullLeaderboardFileEntry => _NullLeaderboardFileEntry ?? (_NullLeaderboardFileEntry = (JsonTypeInfo<NullLeaderboardFileEntry>)base.Options.GetTypeInfo(typeof(NullLeaderboardFileEntry)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<NullMultiplayerName> NullMultiplayerName => _NullMultiplayerName ?? (_NullMultiplayerName = (JsonTypeInfo<NullMultiplayerName>)base.Options.GetTypeInfo(typeof(NullMultiplayerName)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<PlatformType> PlatformType => _PlatformType ?? (_PlatformType = (JsonTypeInfo<PlatformType>)base.Options.GetTypeInfo(typeof(PlatformType)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<RewardType> RewardType => _RewardType ?? (_RewardType = (JsonTypeInfo<RewardType>)base.Options.GetTypeInfo(typeof(RewardType)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<RoomType> RoomType => _RoomType ?? (_RoomType = (JsonTypeInfo<RoomType>)base.Options.GetTypeInfo(typeof(RoomType)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<CardCreationSource> CardCreationSource => _CardCreationSource ?? (_CardCreationSource = (JsonTypeInfo<CardCreationSource>)base.Options.GetTypeInfo(typeof(CardCreationSource)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<CardRarityOddsType> CardRarityOddsType => _CardRarityOddsType ?? (_CardRarityOddsType = (JsonTypeInfo<CardRarityOddsType>)base.Options.GetTypeInfo(typeof(CardRarityOddsType)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<GameMode> GameMode => _GameMode ?? (_GameMode = (JsonTypeInfo<GameMode>)base.Options.GetTypeInfo(typeof(GameMode)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<AncientChoiceHistoryEntry> AncientChoiceHistoryEntry => _AncientChoiceHistoryEntry ?? (_AncientChoiceHistoryEntry = (JsonTypeInfo<AncientChoiceHistoryEntry>)base.Options.GetTypeInfo(typeof(AncientChoiceHistoryEntry)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<CardChoiceHistoryEntry> CardChoiceHistoryEntry => _CardChoiceHistoryEntry ?? (_CardChoiceHistoryEntry = (JsonTypeInfo<CardChoiceHistoryEntry>)base.Options.GetTypeInfo(typeof(CardChoiceHistoryEntry)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<CardEnchantmentHistoryEntry> CardEnchantmentHistoryEntry => _CardEnchantmentHistoryEntry ?? (_CardEnchantmentHistoryEntry = (JsonTypeInfo<CardEnchantmentHistoryEntry>)base.Options.GetTypeInfo(typeof(CardEnchantmentHistoryEntry)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<CardTransformationHistoryEntry> CardTransformationHistoryEntry => _CardTransformationHistoryEntry ?? (_CardTransformationHistoryEntry = (JsonTypeInfo<CardTransformationHistoryEntry>)base.Options.GetTypeInfo(typeof(CardTransformationHistoryEntry)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<EventOptionHistoryEntry> EventOptionHistoryEntry => _EventOptionHistoryEntry ?? (_EventOptionHistoryEntry = (JsonTypeInfo<EventOptionHistoryEntry>)base.Options.GetTypeInfo(typeof(EventOptionHistoryEntry)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<MapPointHistoryEntry> MapPointHistoryEntry => _MapPointHistoryEntry ?? (_MapPointHistoryEntry = (JsonTypeInfo<MapPointHistoryEntry>)base.Options.GetTypeInfo(typeof(MapPointHistoryEntry)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<MapPointRoomHistoryEntry> MapPointRoomHistoryEntry => _MapPointRoomHistoryEntry ?? (_MapPointRoomHistoryEntry = (JsonTypeInfo<MapPointRoomHistoryEntry>)base.Options.GetTypeInfo(typeof(MapPointRoomHistoryEntry)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<ModelChoiceHistoryEntry> ModelChoiceHistoryEntry => _ModelChoiceHistoryEntry ?? (_ModelChoiceHistoryEntry = (JsonTypeInfo<ModelChoiceHistoryEntry>)base.Options.GetTypeInfo(typeof(ModelChoiceHistoryEntry)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<PlayerMapPointHistoryEntry> PlayerMapPointHistoryEntry => _PlayerMapPointHistoryEntry ?? (_PlayerMapPointHistoryEntry = (JsonTypeInfo<PlayerMapPointHistoryEntry>)base.Options.GetTypeInfo(typeof(PlayerMapPointHistoryEntry)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<RunHistory> RunHistory => _RunHistory ?? (_RunHistory = (JsonTypeInfo<RunHistory>)base.Options.GetTypeInfo(typeof(RunHistory)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<RunHistoryPlayer> RunHistoryPlayer => _RunHistoryPlayer ?? (_RunHistoryPlayer = (JsonTypeInfo<RunHistoryPlayer>)base.Options.GetTypeInfo(typeof(RunHistoryPlayer)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<AncientCharacterStats> AncientCharacterStats => _AncientCharacterStats ?? (_AncientCharacterStats = (JsonTypeInfo<AncientCharacterStats>)base.Options.GetTypeInfo(typeof(AncientCharacterStats)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<AncientStats> AncientStats => _AncientStats ?? (_AncientStats = (JsonTypeInfo<AncientStats>)base.Options.GetTypeInfo(typeof(AncientStats)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<BadgeStats> BadgeStats => _BadgeStats ?? (_BadgeStats = (JsonTypeInfo<BadgeStats>)base.Options.GetTypeInfo(typeof(BadgeStats)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<CardStats> CardStats => _CardStats ?? (_CardStats = (JsonTypeInfo<CardStats>)base.Options.GetTypeInfo(typeof(CardStats)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<CharacterStats> CharacterStats => _CharacterStats ?? (_CharacterStats = (JsonTypeInfo<CharacterStats>)base.Options.GetTypeInfo(typeof(CharacterStats)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<EncounterStats> EncounterStats => _EncounterStats ?? (_EncounterStats = (JsonTypeInfo<EncounterStats>)base.Options.GetTypeInfo(typeof(EncounterStats)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<EnemyStats> EnemyStats => _EnemyStats ?? (_EnemyStats = (JsonTypeInfo<EnemyStats>)base.Options.GetTypeInfo(typeof(EnemyStats)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<EpochState> EpochState => _EpochState ?? (_EpochState = (JsonTypeInfo<EpochState>)base.Options.GetTypeInfo(typeof(EpochState)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<FightStats> FightStats => _FightStats ?? (_FightStats = (JsonTypeInfo<FightStats>)base.Options.GetTypeInfo(typeof(FightStats)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializableMapDrawingLine> SerializableMapDrawingLine => _SerializableMapDrawingLine ?? (_SerializableMapDrawingLine = (JsonTypeInfo<SerializableMapDrawingLine>)base.Options.GetTypeInfo(typeof(SerializableMapDrawingLine)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializableMapDrawings> SerializableMapDrawings => _SerializableMapDrawings ?? (_SerializableMapDrawings = (JsonTypeInfo<SerializableMapDrawings>)base.Options.GetTypeInfo(typeof(SerializableMapDrawings)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializablePlayerMapDrawings> SerializablePlayerMapDrawings => _SerializablePlayerMapDrawings ?? (_SerializablePlayerMapDrawings = (JsonTypeInfo<SerializablePlayerMapDrawings>)base.Options.GetTypeInfo(typeof(SerializablePlayerMapDrawings)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<MigratingData> MigratingData => _MigratingData ?? (_MigratingData = (JsonTypeInfo<MigratingData>)base.Options.GetTypeInfo(typeof(MigratingData)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<PrefsSave> PrefsSave => _PrefsSave ?? (_PrefsSave = (JsonTypeInfo<PrefsSave>)base.Options.GetTypeInfo(typeof(PrefsSave)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<ProfileSave> ProfileSave => _ProfileSave ?? (_ProfileSave = (JsonTypeInfo<ProfileSave>)base.Options.GetTypeInfo(typeof(ProfileSave)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SavedProperties> SavedProperties => _SavedProperties ?? (_SavedProperties = (JsonTypeInfo<SavedProperties>)base.Options.GetTypeInfo(typeof(SavedProperties)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SavedProperties.SavedProperty<bool>> SavedPropertyBoolean => _SavedPropertyBoolean ?? (_SavedPropertyBoolean = (JsonTypeInfo<SavedProperties.SavedProperty<bool>>)base.Options.GetTypeInfo(typeof(SavedProperties.SavedProperty<bool>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SavedProperties.SavedProperty<ModelId>> SavedPropertyModelId => _SavedPropertyModelId ?? (_SavedPropertyModelId = (JsonTypeInfo<SavedProperties.SavedProperty<ModelId>>)base.Options.GetTypeInfo(typeof(SavedProperties.SavedProperty<ModelId>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SavedProperties.SavedProperty<SerializableCard[]>> SavedPropertySerializableCardArray => _SavedPropertySerializableCardArray ?? (_SavedPropertySerializableCardArray = (JsonTypeInfo<SavedProperties.SavedProperty<SerializableCard[]>>)base.Options.GetTypeInfo(typeof(SavedProperties.SavedProperty<SerializableCard[]>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SavedProperties.SavedProperty<SerializableCard>> SavedPropertySerializableCard => _SavedPropertySerializableCard ?? (_SavedPropertySerializableCard = (JsonTypeInfo<SavedProperties.SavedProperty<SerializableCard>>)base.Options.GetTypeInfo(typeof(SavedProperties.SavedProperty<SerializableCard>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SavedProperties.SavedProperty<int[]>> SavedPropertyInt32Array => _SavedPropertyInt32Array ?? (_SavedPropertyInt32Array = (JsonTypeInfo<SavedProperties.SavedProperty<int[]>>)base.Options.GetTypeInfo(typeof(SavedProperties.SavedProperty<int[]>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SavedProperties.SavedProperty<int>> SavedPropertyInt32 => _SavedPropertyInt32 ?? (_SavedPropertyInt32 = (JsonTypeInfo<SavedProperties.SavedProperty<int>>)base.Options.GetTypeInfo(typeof(SavedProperties.SavedProperty<int>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SavedProperties.SavedProperty<string>> SavedPropertyString => _SavedPropertyString ?? (_SavedPropertyString = (JsonTypeInfo<SavedProperties.SavedProperty<string>>)base.Options.GetTypeInfo(typeof(SavedProperties.SavedProperty<string>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializableActMap> SerializableActMap => _SerializableActMap ?? (_SerializableActMap = (JsonTypeInfo<SerializableActMap>)base.Options.GetTypeInfo(typeof(SerializableActMap)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializableActModel> SerializableActModel => _SerializableActModel ?? (_SerializableActModel = (JsonTypeInfo<SerializableActModel>)base.Options.GetTypeInfo(typeof(SerializableActModel)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializableBadge> SerializableBadge => _SerializableBadge ?? (_SerializableBadge = (JsonTypeInfo<SerializableBadge>)base.Options.GetTypeInfo(typeof(SerializableBadge)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializableCard> SerializableCard => _SerializableCard ?? (_SerializableCard = (JsonTypeInfo<SerializableCard>)base.Options.GetTypeInfo(typeof(SerializableCard)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializableCard[]> SerializableCardArray => _SerializableCardArray ?? (_SerializableCardArray = (JsonTypeInfo<SerializableCard[]>)base.Options.GetTypeInfo(typeof(SerializableCard[])));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializableEnchantment> SerializableEnchantment => _SerializableEnchantment ?? (_SerializableEnchantment = (JsonTypeInfo<SerializableEnchantment>)base.Options.GetTypeInfo(typeof(SerializableEnchantment)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializableExtraRunFields> SerializableExtraRunFields => _SerializableExtraRunFields ?? (_SerializableExtraRunFields = (JsonTypeInfo<SerializableExtraRunFields>)base.Options.GetTypeInfo(typeof(SerializableExtraRunFields)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializableMapPoint> SerializableMapPoint => _SerializableMapPoint ?? (_SerializableMapPoint = (JsonTypeInfo<SerializableMapPoint>)base.Options.GetTypeInfo(typeof(SerializableMapPoint)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializableModifier> SerializableModifier => _SerializableModifier ?? (_SerializableModifier = (JsonTypeInfo<SerializableModifier>)base.Options.GetTypeInfo(typeof(SerializableModifier)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializablePlayer> SerializablePlayer => _SerializablePlayer ?? (_SerializablePlayer = (JsonTypeInfo<SerializablePlayer>)base.Options.GetTypeInfo(typeof(SerializablePlayer)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializablePlayerOddsSet> SerializablePlayerOddsSet => _SerializablePlayerOddsSet ?? (_SerializablePlayerOddsSet = (JsonTypeInfo<SerializablePlayerOddsSet>)base.Options.GetTypeInfo(typeof(SerializablePlayerOddsSet)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializablePotion> SerializablePotion => _SerializablePotion ?? (_SerializablePotion = (JsonTypeInfo<SerializablePotion>)base.Options.GetTypeInfo(typeof(SerializablePotion)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializableRelic> SerializableRelic => _SerializableRelic ?? (_SerializableRelic = (JsonTypeInfo<SerializableRelic>)base.Options.GetTypeInfo(typeof(SerializableRelic)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializableRelicGrabBag> SerializableRelicGrabBag => _SerializableRelicGrabBag ?? (_SerializableRelicGrabBag = (JsonTypeInfo<SerializableRelicGrabBag>)base.Options.GetTypeInfo(typeof(SerializableRelicGrabBag)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializableReward> SerializableReward => _SerializableReward ?? (_SerializableReward = (JsonTypeInfo<SerializableReward>)base.Options.GetTypeInfo(typeof(SerializableReward)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializableRoom> SerializableRoom => _SerializableRoom ?? (_SerializableRoom = (JsonTypeInfo<SerializableRoom>)base.Options.GetTypeInfo(typeof(SerializableRoom)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializableRoomSet> SerializableRoomSet => _SerializableRoomSet ?? (_SerializableRoomSet = (JsonTypeInfo<SerializableRoomSet>)base.Options.GetTypeInfo(typeof(SerializableRoomSet)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializableRunOddsSet> SerializableRunOddsSet => _SerializableRunOddsSet ?? (_SerializableRunOddsSet = (JsonTypeInfo<SerializableRunOddsSet>)base.Options.GetTypeInfo(typeof(SerializableRunOddsSet)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializableRunRngSet> SerializableRunRngSet => _SerializableRunRngSet ?? (_SerializableRunRngSet = (JsonTypeInfo<SerializableRunRngSet>)base.Options.GetTypeInfo(typeof(SerializableRunRngSet)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializableEpoch> SerializableEpoch => _SerializableEpoch ?? (_SerializableEpoch = (JsonTypeInfo<SerializableEpoch>)base.Options.GetTypeInfo(typeof(SerializableEpoch)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializableExtraPlayerFields> SerializableExtraPlayerFields => _SerializableExtraPlayerFields ?? (_SerializableExtraPlayerFields = (JsonTypeInfo<SerializableExtraPlayerFields>)base.Options.GetTypeInfo(typeof(SerializableExtraPlayerFields)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializablePlayerRngSet> SerializablePlayerRngSet => _SerializablePlayerRngSet ?? (_SerializablePlayerRngSet = (JsonTypeInfo<SerializablePlayerRngSet>)base.Options.GetTypeInfo(typeof(SerializablePlayerRngSet)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializableProgress> SerializableProgress => _SerializableProgress ?? (_SerializableProgress = (JsonTypeInfo<SerializableProgress>)base.Options.GetTypeInfo(typeof(SerializableProgress)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializableRun> SerializableRun => _SerializableRun ?? (_SerializableRun = (JsonTypeInfo<SerializableRun>)base.Options.GetTypeInfo(typeof(SerializableRun)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializableUnlockedAchievement> SerializableUnlockedAchievement => _SerializableUnlockedAchievement ?? (_SerializableUnlockedAchievement = (JsonTypeInfo<SerializableUnlockedAchievement>)base.Options.GetTypeInfo(typeof(SerializableUnlockedAchievement)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SettingsSave> SettingsSave => _SettingsSave ?? (_SettingsSave = (JsonTypeInfo<SettingsSave>)base.Options.GetTypeInfo(typeof(SettingsSave)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<AspectRatioSetting> AspectRatioSetting => _AspectRatioSetting ?? (_AspectRatioSetting = (JsonTypeInfo<AspectRatioSetting>)base.Options.GetTypeInfo(typeof(AspectRatioSetting)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<FastModeType> FastModeType => _FastModeType ?? (_FastModeType = (JsonTypeInfo<FastModeType>)base.Options.GetTypeInfo(typeof(FastModeType)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<VSyncType> VSyncType => _VSyncType ?? (_VSyncType = (JsonTypeInfo<VSyncType>)base.Options.GetTypeInfo(typeof(VSyncType)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SerializableUnlockState> SerializableUnlockState => _SerializableUnlockState ?? (_SerializableUnlockState = (JsonTypeInfo<SerializableUnlockState>)base.Options.GetTypeInfo(typeof(SerializableUnlockState)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<Dictionary<RelicRarity, List<ModelId>>> DictionaryRelicRarityListModelId => _DictionaryRelicRarityListModelId ?? (_DictionaryRelicRarityListModelId = (JsonTypeInfo<Dictionary<RelicRarity, List<ModelId>>>)base.Options.GetTypeInfo(typeof(Dictionary<RelicRarity, List<ModelId>>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<Dictionary<PlayerRngType, int>> DictionaryPlayerRngTypeInt32 => _DictionaryPlayerRngTypeInt32 ?? (_DictionaryPlayerRngTypeInt32 = (JsonTypeInfo<Dictionary<PlayerRngType, int>>)base.Options.GetTypeInfo(typeof(Dictionary<PlayerRngType, int>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<Dictionary<RunRngType, int>> DictionaryRunRngTypeInt32 => _DictionaryRunRngTypeInt32 ?? (_DictionaryRunRngTypeInt32 = (JsonTypeInfo<Dictionary<RunRngType, int>>)base.Options.GetTypeInfo(typeof(Dictionary<RunRngType, int>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<Dictionary<string, object>> DictionaryStringObject => _DictionaryStringObject ?? (_DictionaryStringObject = (JsonTypeInfo<Dictionary<string, object>>)base.Options.GetTypeInfo(typeof(Dictionary<string, object>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<Dictionary<string, string>> DictionaryStringString => _DictionaryStringString ?? (_DictionaryStringString = (JsonTypeInfo<Dictionary<string, string>>)base.Options.GetTypeInfo(typeof(Dictionary<string, string>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<Dictionary<ulong, List<SerializableReward>>> DictionaryUInt64ListSerializableReward => _DictionaryUInt64ListSerializableReward ?? (_DictionaryUInt64ListSerializableReward = (JsonTypeInfo<Dictionary<ulong, List<SerializableReward>>>)base.Options.GetTypeInfo(typeof(Dictionary<ulong, List<SerializableReward>>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<IEnumerable<SerializableBadge>> IEnumerableSerializableBadge => _IEnumerableSerializableBadge ?? (_IEnumerableSerializableBadge = (JsonTypeInfo<IEnumerable<SerializableBadge>>)base.Options.GetTypeInfo(typeof(IEnumerable<SerializableBadge>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<IEnumerable<SerializableCard>> IEnumerableSerializableCard => _IEnumerableSerializableCard ?? (_IEnumerableSerializableCard = (JsonTypeInfo<IEnumerable<SerializableCard>>)base.Options.GetTypeInfo(typeof(IEnumerable<SerializableCard>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<IEnumerable<SerializablePotion>> IEnumerableSerializablePotion => _IEnumerableSerializablePotion ?? (_IEnumerableSerializablePotion = (JsonTypeInfo<IEnumerable<SerializablePotion>>)base.Options.GetTypeInfo(typeof(IEnumerable<SerializablePotion>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<IEnumerable<SerializableRelic>> IEnumerableSerializableRelic => _IEnumerableSerializableRelic ?? (_IEnumerableSerializableRelic = (JsonTypeInfo<IEnumerable<SerializableRelic>>)base.Options.GetTypeInfo(typeof(IEnumerable<SerializableRelic>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<Vector2>> ListVector2 => _ListVector2 ?? (_ListVector2 = (JsonTypeInfo<List<Vector2>>)base.Options.GetTypeInfo(typeof(List<Vector2>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<MapCoord>> ListMapCoord => _ListMapCoord ?? (_ListMapCoord = (JsonTypeInfo<List<MapCoord>>)base.Options.GetTypeInfo(typeof(List<MapCoord>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<ModDependency>> ListModDependency => _ListModDependency ?? (_ListModDependency = (JsonTypeInfo<List<ModDependency>>)base.Options.GetTypeInfo(typeof(List<ModDependency>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<SettingsSaveMod>> ListSettingsSaveMod => _ListSettingsSaveMod ?? (_ListSettingsSaveMod = (JsonTypeInfo<List<SettingsSaveMod>>)base.Options.GetTypeInfo(typeof(List<SettingsSaveMod>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<ModelId>> ListModelId => _ListModelId ?? (_ListModelId = (JsonTypeInfo<List<ModelId>>)base.Options.GetTypeInfo(typeof(List<ModelId>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<NullLeaderboard>> ListNullLeaderboard => _ListNullLeaderboard ?? (_ListNullLeaderboard = (JsonTypeInfo<List<NullLeaderboard>>)base.Options.GetTypeInfo(typeof(List<NullLeaderboard>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<NullLeaderboardFileEntry>> ListNullLeaderboardFileEntry => _ListNullLeaderboardFileEntry ?? (_ListNullLeaderboardFileEntry = (JsonTypeInfo<List<NullLeaderboardFileEntry>>)base.Options.GetTypeInfo(typeof(List<NullLeaderboardFileEntry>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<NullMultiplayerName>> ListNullMultiplayerName => _ListNullMultiplayerName ?? (_ListNullMultiplayerName = (JsonTypeInfo<List<NullMultiplayerName>>)base.Options.GetTypeInfo(typeof(List<NullMultiplayerName>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<AncientChoiceHistoryEntry>> ListAncientChoiceHistoryEntry => _ListAncientChoiceHistoryEntry ?? (_ListAncientChoiceHistoryEntry = (JsonTypeInfo<List<AncientChoiceHistoryEntry>>)base.Options.GetTypeInfo(typeof(List<AncientChoiceHistoryEntry>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<CardChoiceHistoryEntry>> ListCardChoiceHistoryEntry => _ListCardChoiceHistoryEntry ?? (_ListCardChoiceHistoryEntry = (JsonTypeInfo<List<CardChoiceHistoryEntry>>)base.Options.GetTypeInfo(typeof(List<CardChoiceHistoryEntry>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<CardEnchantmentHistoryEntry>> ListCardEnchantmentHistoryEntry => _ListCardEnchantmentHistoryEntry ?? (_ListCardEnchantmentHistoryEntry = (JsonTypeInfo<List<CardEnchantmentHistoryEntry>>)base.Options.GetTypeInfo(typeof(List<CardEnchantmentHistoryEntry>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<CardTransformationHistoryEntry>> ListCardTransformationHistoryEntry => _ListCardTransformationHistoryEntry ?? (_ListCardTransformationHistoryEntry = (JsonTypeInfo<List<CardTransformationHistoryEntry>>)base.Options.GetTypeInfo(typeof(List<CardTransformationHistoryEntry>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<EventOptionHistoryEntry>> ListEventOptionHistoryEntry => _ListEventOptionHistoryEntry ?? (_ListEventOptionHistoryEntry = (JsonTypeInfo<List<EventOptionHistoryEntry>>)base.Options.GetTypeInfo(typeof(List<EventOptionHistoryEntry>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<MapPointHistoryEntry>> ListMapPointHistoryEntry => _ListMapPointHistoryEntry ?? (_ListMapPointHistoryEntry = (JsonTypeInfo<List<MapPointHistoryEntry>>)base.Options.GetTypeInfo(typeof(List<MapPointHistoryEntry>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<MapPointRoomHistoryEntry>> ListMapPointRoomHistoryEntry => _ListMapPointRoomHistoryEntry ?? (_ListMapPointRoomHistoryEntry = (JsonTypeInfo<List<MapPointRoomHistoryEntry>>)base.Options.GetTypeInfo(typeof(List<MapPointRoomHistoryEntry>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<ModelChoiceHistoryEntry>> ListModelChoiceHistoryEntry => _ListModelChoiceHistoryEntry ?? (_ListModelChoiceHistoryEntry = (JsonTypeInfo<List<ModelChoiceHistoryEntry>>)base.Options.GetTypeInfo(typeof(List<ModelChoiceHistoryEntry>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<PlayerMapPointHistoryEntry>> ListPlayerMapPointHistoryEntry => _ListPlayerMapPointHistoryEntry ?? (_ListPlayerMapPointHistoryEntry = (JsonTypeInfo<List<PlayerMapPointHistoryEntry>>)base.Options.GetTypeInfo(typeof(List<PlayerMapPointHistoryEntry>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<RunHistoryPlayer>> ListRunHistoryPlayer => _ListRunHistoryPlayer ?? (_ListRunHistoryPlayer = (JsonTypeInfo<List<RunHistoryPlayer>>)base.Options.GetTypeInfo(typeof(List<RunHistoryPlayer>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<AncientCharacterStats>> ListAncientCharacterStats => _ListAncientCharacterStats ?? (_ListAncientCharacterStats = (JsonTypeInfo<List<AncientCharacterStats>>)base.Options.GetTypeInfo(typeof(List<AncientCharacterStats>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<AncientStats>> ListAncientStats => _ListAncientStats ?? (_ListAncientStats = (JsonTypeInfo<List<AncientStats>>)base.Options.GetTypeInfo(typeof(List<AncientStats>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<BadgeStats>> ListBadgeStats => _ListBadgeStats ?? (_ListBadgeStats = (JsonTypeInfo<List<BadgeStats>>)base.Options.GetTypeInfo(typeof(List<BadgeStats>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<CardStats>> ListCardStats => _ListCardStats ?? (_ListCardStats = (JsonTypeInfo<List<CardStats>>)base.Options.GetTypeInfo(typeof(List<CardStats>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<CharacterStats>> ListCharacterStats => _ListCharacterStats ?? (_ListCharacterStats = (JsonTypeInfo<List<CharacterStats>>)base.Options.GetTypeInfo(typeof(List<CharacterStats>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<EncounterStats>> ListEncounterStats => _ListEncounterStats ?? (_ListEncounterStats = (JsonTypeInfo<List<EncounterStats>>)base.Options.GetTypeInfo(typeof(List<EncounterStats>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<EnemyStats>> ListEnemyStats => _ListEnemyStats ?? (_ListEnemyStats = (JsonTypeInfo<List<EnemyStats>>)base.Options.GetTypeInfo(typeof(List<EnemyStats>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<FightStats>> ListFightStats => _ListFightStats ?? (_ListFightStats = (JsonTypeInfo<List<FightStats>>)base.Options.GetTypeInfo(typeof(List<FightStats>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<SerializableMapDrawingLine>> ListSerializableMapDrawingLine => _ListSerializableMapDrawingLine ?? (_ListSerializableMapDrawingLine = (JsonTypeInfo<List<SerializableMapDrawingLine>>)base.Options.GetTypeInfo(typeof(List<SerializableMapDrawingLine>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<SerializablePlayerMapDrawings>> ListSerializablePlayerMapDrawings => _ListSerializablePlayerMapDrawings ?? (_ListSerializablePlayerMapDrawings = (JsonTypeInfo<List<SerializablePlayerMapDrawings>>)base.Options.GetTypeInfo(typeof(List<SerializablePlayerMapDrawings>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<MigratingData>> ListMigratingData => _ListMigratingData ?? (_ListMigratingData = (JsonTypeInfo<List<MigratingData>>)base.Options.GetTypeInfo(typeof(List<MigratingData>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<SavedProperties.SavedProperty<bool>>> ListSavedPropertyBoolean => _ListSavedPropertyBoolean ?? (_ListSavedPropertyBoolean = (JsonTypeInfo<List<SavedProperties.SavedProperty<bool>>>)base.Options.GetTypeInfo(typeof(List<SavedProperties.SavedProperty<bool>>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<SavedProperties.SavedProperty<ModelId>>> ListSavedPropertyModelId => _ListSavedPropertyModelId ?? (_ListSavedPropertyModelId = (JsonTypeInfo<List<SavedProperties.SavedProperty<ModelId>>>)base.Options.GetTypeInfo(typeof(List<SavedProperties.SavedProperty<ModelId>>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<SavedProperties.SavedProperty<SerializableCard[]>>> ListSavedPropertySerializableCardArray => _ListSavedPropertySerializableCardArray ?? (_ListSavedPropertySerializableCardArray = (JsonTypeInfo<List<SavedProperties.SavedProperty<SerializableCard[]>>>)base.Options.GetTypeInfo(typeof(List<SavedProperties.SavedProperty<SerializableCard[]>>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<SavedProperties.SavedProperty<SerializableCard>>> ListSavedPropertySerializableCard => _ListSavedPropertySerializableCard ?? (_ListSavedPropertySerializableCard = (JsonTypeInfo<List<SavedProperties.SavedProperty<SerializableCard>>>)base.Options.GetTypeInfo(typeof(List<SavedProperties.SavedProperty<SerializableCard>>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<SavedProperties.SavedProperty<int[]>>> ListSavedPropertyInt32Array => _ListSavedPropertyInt32Array ?? (_ListSavedPropertyInt32Array = (JsonTypeInfo<List<SavedProperties.SavedProperty<int[]>>>)base.Options.GetTypeInfo(typeof(List<SavedProperties.SavedProperty<int[]>>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<SavedProperties.SavedProperty<int>>> ListSavedPropertyInt32 => _ListSavedPropertyInt32 ?? (_ListSavedPropertyInt32 = (JsonTypeInfo<List<SavedProperties.SavedProperty<int>>>)base.Options.GetTypeInfo(typeof(List<SavedProperties.SavedProperty<int>>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<SavedProperties.SavedProperty<string>>> ListSavedPropertyString => _ListSavedPropertyString ?? (_ListSavedPropertyString = (JsonTypeInfo<List<SavedProperties.SavedProperty<string>>>)base.Options.GetTypeInfo(typeof(List<SavedProperties.SavedProperty<string>>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<SerializableActModel>> ListSerializableActModel => _ListSerializableActModel ?? (_ListSerializableActModel = (JsonTypeInfo<List<SerializableActModel>>)base.Options.GetTypeInfo(typeof(List<SerializableActModel>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<SerializableCard>> ListSerializableCard => _ListSerializableCard ?? (_ListSerializableCard = (JsonTypeInfo<List<SerializableCard>>)base.Options.GetTypeInfo(typeof(List<SerializableCard>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<SerializableMapPoint>> ListSerializableMapPoint => _ListSerializableMapPoint ?? (_ListSerializableMapPoint = (JsonTypeInfo<List<SerializableMapPoint>>)base.Options.GetTypeInfo(typeof(List<SerializableMapPoint>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<SerializableModifier>> ListSerializableModifier => _ListSerializableModifier ?? (_ListSerializableModifier = (JsonTypeInfo<List<SerializableModifier>>)base.Options.GetTypeInfo(typeof(List<SerializableModifier>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<SerializablePlayer>> ListSerializablePlayer => _ListSerializablePlayer ?? (_ListSerializablePlayer = (JsonTypeInfo<List<SerializablePlayer>>)base.Options.GetTypeInfo(typeof(List<SerializablePlayer>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<SerializablePotion>> ListSerializablePotion => _ListSerializablePotion ?? (_ListSerializablePotion = (JsonTypeInfo<List<SerializablePotion>>)base.Options.GetTypeInfo(typeof(List<SerializablePotion>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<SerializableRelic>> ListSerializableRelic => _ListSerializableRelic ?? (_ListSerializableRelic = (JsonTypeInfo<List<SerializableRelic>>)base.Options.GetTypeInfo(typeof(List<SerializableRelic>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<SerializableReward>> ListSerializableReward => _ListSerializableReward ?? (_ListSerializableReward = (JsonTypeInfo<List<SerializableReward>>)base.Options.GetTypeInfo(typeof(List<SerializableReward>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<SerializableEpoch>> ListSerializableEpoch => _ListSerializableEpoch ?? (_ListSerializableEpoch = (JsonTypeInfo<List<SerializableEpoch>>)base.Options.GetTypeInfo(typeof(List<SerializableEpoch>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<SerializableUnlockedAchievement>> ListSerializableUnlockedAchievement => _ListSerializableUnlockedAchievement ?? (_ListSerializableUnlockedAchievement = (JsonTypeInfo<List<SerializableUnlockedAchievement>>)base.Options.GetTypeInfo(typeof(List<SerializableUnlockedAchievement>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<Dictionary<string, object>>> ListDictionaryStringObject => _ListDictionaryStringObject ?? (_ListDictionaryStringObject = (JsonTypeInfo<List<Dictionary<string, object>>>)base.Options.GetTypeInfo(typeof(List<Dictionary<string, object>>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<List<MapPointHistoryEntry>>> ListListMapPointHistoryEntry => _ListListMapPointHistoryEntry ?? (_ListListMapPointHistoryEntry = (JsonTypeInfo<List<List<MapPointHistoryEntry>>>)base.Options.GetTypeInfo(typeof(List<List<MapPointHistoryEntry>>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<List<PlayerMapPointHistoryEntry>>> ListListPlayerMapPointHistoryEntry => _ListListPlayerMapPointHistoryEntry ?? (_ListListPlayerMapPointHistoryEntry = (JsonTypeInfo<List<List<PlayerMapPointHistoryEntry>>>)base.Options.GetTypeInfo(typeof(List<List<PlayerMapPointHistoryEntry>>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<JsonNode>> ListJsonNode => _ListJsonNode ?? (_ListJsonNode = (JsonTypeInfo<List<JsonNode>>)base.Options.GetTypeInfo(typeof(List<JsonNode>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<string>> ListString => _ListString ?? (_ListString = (JsonTypeInfo<List<string>>)base.Options.GetTypeInfo(typeof(List<string>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<ulong>> ListUInt64 => _ListUInt64 ?? (_ListUInt64 = (JsonTypeInfo<List<ulong>>)base.Options.GetTypeInfo(typeof(List<ulong>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<DateTimeOffset> DateTimeOffset => _DateTimeOffset ?? (_DateTimeOffset = (JsonTypeInfo<DateTimeOffset>)base.Options.GetTypeInfo(typeof(DateTimeOffset)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<DateTimeOffset?> NullableDateTimeOffset => _NullableDateTimeOffset ?? (_NullableDateTimeOffset = (JsonTypeInfo<DateTimeOffset?>)base.Options.GetTypeInfo(typeof(DateTimeOffset?)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<JsonNode> JsonNode => _JsonNode ?? (_JsonNode = (JsonTypeInfo<JsonNode>)base.Options.GetTypeInfo(typeof(JsonNode)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<JsonObject> JsonObject => _JsonObject ?? (_JsonObject = (JsonTypeInfo<JsonObject>)base.Options.GetTypeInfo(typeof(JsonObject)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<int> Int32 => _Int32 ?? (_Int32 = (JsonTypeInfo<int>)base.Options.GetTypeInfo(typeof(int)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<int?> NullableInt32 => _NullableInt32 ?? (_NullableInt32 = (JsonTypeInfo<int?>)base.Options.GetTypeInfo(typeof(int?)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<int[]> Int32Array => _Int32Array ?? (_Int32Array = (JsonTypeInfo<int[]>)base.Options.GetTypeInfo(typeof(int[])));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<long> Int64 => _Int64 ?? (_Int64 = (JsonTypeInfo<long>)base.Options.GetTypeInfo(typeof(long)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<object> Object => _Object ?? (_Object = (JsonTypeInfo<object>)base.Options.GetTypeInfo(typeof(object)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<string> String => _String ?? (_String = (JsonTypeInfo<string>)base.Options.GetTypeInfo(typeof(string)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<uint> UInt32 => _UInt32 ?? (_UInt32 = (JsonTypeInfo<uint>)base.Options.GetTypeInfo(typeof(uint)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<ulong> UInt64 => _UInt64 ?? (_UInt64 = (JsonTypeInfo<ulong>)base.Options.GetTypeInfo(typeof(ulong)));
 
+	/// <summary>
+	/// The default <see cref="T:System.Text.Json.Serialization.JsonSerializerContext" /> associated with a default <see cref="T:System.Text.Json.JsonSerializerOptions" /> instance.
+	/// </summary>
 	public static MegaCritSerializerContext Default { get; } = new MegaCritSerializerContext(new JsonSerializerOptions(s_defaultOptions));
 
+	/// <summary>
+	/// The source-generated options associated with this context.
+	/// </summary>
 	protected override JsonSerializerOptions? GeneratedSerializerOptions { get; } = s_defaultOptions;
 
 	private JsonTypeInfo<bool> Create_Boolean(JsonSerializerOptions options)
@@ -12956,11 +13466,13 @@ internal class MegaCritSerializerContext : JsonSerializerContext, IJsonTypeInfoR
 		return jsonTypeInfo;
 	}
 
+	/// <inheritdoc />
 	public MegaCritSerializerContext()
 		: base(null)
 	{
 	}
 
+	/// <inheritdoc />
 	public MegaCritSerializerContext(JsonSerializerOptions options)
 		: base(options)
 	{
@@ -13008,6 +13520,7 @@ internal class MegaCritSerializerContext : JsonSerializerContext, IJsonTypeInfoR
 		return converter;
 	}
 
+	/// <inheritdoc />
 	public override JsonTypeInfo? GetTypeInfo(Type type)
 	{
 		base.Options.TryGetTypeInfo(type, out JsonTypeInfo typeInfo);

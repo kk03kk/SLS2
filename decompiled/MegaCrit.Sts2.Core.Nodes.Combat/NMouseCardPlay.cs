@@ -26,50 +26,116 @@ namespace MegaCrit.Sts2.Core.Nodes.Combat;
 [ScriptPath("res://src/Core/Nodes/Combat/NMouseCardPlay.cs")]
 public class NMouseCardPlay : NCardPlay
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : NCardPlay.MethodName
 	{
+		/// <summary>
+		/// Cached name for the 'Create' method.
+		/// </summary>
 		public static readonly StringName Create = "Create";
 
+		/// <summary>
+		/// Cached name for the '_Input' method.
+		/// </summary>
 		public new static readonly StringName _Input = "_Input";
 
+		/// <summary>
+		/// Cached name for the 'Start' method.
+		/// </summary>
 		public new static readonly StringName Start = "Start";
 
+		/// <summary>
+		/// Cached name for the '_EnterTree' method.
+		/// </summary>
 		public new static readonly StringName _EnterTree = "_EnterTree";
 
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 
+		/// <summary>
+		/// Cached name for the 'DisconnectTargetingSignals' method.
+		/// </summary>
 		public static readonly StringName DisconnectTargetingSignals = "DisconnectTargetingSignals";
 
+		/// <summary>
+		/// Cached name for the 'OnCancelPlayCard' method.
+		/// </summary>
 		public new static readonly StringName OnCancelPlayCard = "OnCancelPlayCard";
 
+		/// <summary>
+		/// Cached name for the 'IsCardInPlayZone' method.
+		/// </summary>
 		public static readonly StringName IsCardInPlayZone = "IsCardInPlayZone";
 
+		/// <summary>
+		/// Cached name for the 'IsCardInCancelZone' method.
+		/// </summary>
 		public static readonly StringName IsCardInCancelZone = "IsCardInCancelZone";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : NCardPlay.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'PlayZoneThreshold' property.
+		/// </summary>
 		public static readonly StringName PlayZoneThreshold = "PlayZoneThreshold";
 
+		/// <summary>
+		/// Cached name for the 'CancelZoneThreshold' property.
+		/// </summary>
 		public static readonly StringName CancelZoneThreshold = "CancelZoneThreshold";
 
+		/// <summary>
+		/// Cached name for the '_hasLeftCardCancelZoneOnce' field.
+		/// </summary>
 		public static readonly StringName _hasLeftCardCancelZoneOnce = "_hasLeftCardCancelZoneOnce";
 
+		/// <summary>
+		/// Cached name for the '_dragStartYPosition' field.
+		/// </summary>
 		public static readonly StringName _dragStartYPosition = "_dragStartYPosition";
 
+		/// <summary>
+		/// Cached name for the '_isLeftMouseDown' field.
+		/// </summary>
 		public static readonly StringName _isLeftMouseDown = "_isLeftMouseDown";
 
+		/// <summary>
+		/// Cached name for the '_onCreatureHoverCallable' field.
+		/// </summary>
 		public static readonly StringName _onCreatureHoverCallable = "_onCreatureHoverCallable";
 
+		/// <summary>
+		/// Cached name for the '_onCreatureUnhoverCallable' field.
+		/// </summary>
 		public static readonly StringName _onCreatureUnhoverCallable = "_onCreatureUnhoverCallable";
 
+		/// <summary>
+		/// Cached name for the '_signalsConnected' field.
+		/// </summary>
 		public static readonly StringName _signalsConnected = "_signalsConnected";
 
+		/// <summary>
+		/// Cached name for the '_cancelShortcut' field.
+		/// </summary>
 		public static readonly StringName _cancelShortcut = "_cancelShortcut";
 
+		/// <summary>
+		/// Cached name for the '_skipStartCardDrag' field.
+		/// </summary>
 		public static readonly StringName _skipStartCardDrag = "_skipStartCardDrag";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : NCardPlay.SignalName
 	{
 	}
@@ -98,6 +164,9 @@ public class NMouseCardPlay : NCardPlay
 
 	private bool _signalsConnected;
 
+	/// <summary>
+	/// shortcut to cancel the card play. Usually we set this to be the index of the card holder in the hand,
+	/// </summary>
 	private StringName _cancelShortcut;
 
 	private bool _skipStartCardDrag;
@@ -360,11 +429,26 @@ public class NMouseCardPlay : NCardPlay
 		await this.AwaitProcessFrame();
 	}
 
+	/// <summary>
+	/// Has the card moved up into the Play Zone?
+	/// This happens when the card was near the bottom of the screen (meaning you just started dragging it) and then you
+	/// drag it up higher to start targeting it.
+	/// </summary>
 	private bool IsCardInPlayZone()
 	{
 		return _viewport.GetMousePosition().Y < PlayZoneThreshold;
 	}
 
+	/// <summary>
+	/// Has the card moved down into the Cancel Zone?
+	/// This happens when the card was in the Play Zone (meaning you were targeting it) and then you drag it back down
+	/// to cancel the play.
+	///
+	/// We use a greater value (further down the screen) for the Cancel Zone than the Play Zone because:
+	/// 1. We want you to have to move the card down a meaningful amount before we stop targeting.
+	/// 2. For multi-target cards, we want an "intermediate" zone where the card doesn't show targeting visuals but we
+	///    haven't canceled yet.
+	/// </summary>
 	private bool IsCardInCancelZone()
 	{
 		_hasLeftCardCancelZoneOnce |= _viewport.GetMousePosition().Y <= CancelZoneThreshold;
@@ -375,6 +459,11 @@ public class NMouseCardPlay : NCardPlay
 		return false;
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<MethodInfo> GetGodotMethodList()
 	{
@@ -399,6 +488,7 @@ public class NMouseCardPlay : NCardPlay
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -468,6 +558,7 @@ public class NMouseCardPlay : NCardPlay
 		return false;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -510,6 +601,7 @@ public class NMouseCardPlay : NCardPlay
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -556,6 +648,7 @@ public class NMouseCardPlay : NCardPlay
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -615,6 +708,11 @@ public class NMouseCardPlay : NCardPlay
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -632,6 +730,7 @@ public class NMouseCardPlay : NCardPlay
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -646,6 +745,7 @@ public class NMouseCardPlay : NCardPlay
 		info.AddProperty(PropertyName._skipStartCardDrag, Variant.From(in _skipStartCardDrag));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

@@ -5,6 +5,9 @@ using MegaCrit.Sts2.Core.Nodes.Screens.Map;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Messages.Game.Flavor;
 
+/// <summary>
+/// Sent when a player presses the pencil button at the bottom-left of the map screen.
+/// </summary>
 public struct MapDrawingModeChangedMessage : INetMessage, IPacketSerializable
 {
 	public DrawingMode drawingMode;

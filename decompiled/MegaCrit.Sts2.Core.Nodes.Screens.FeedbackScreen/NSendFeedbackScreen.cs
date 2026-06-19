@@ -33,100 +33,241 @@ namespace MegaCrit.Sts2.Core.Nodes.Screens.FeedbackScreen;
 [ScriptPath("res://src/Core/Nodes/Screens/FeedbackScreen/NSendFeedbackScreen.cs")]
 public class NSendFeedbackScreen : Control, IScreenContext
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Control.MethodName
 	{
+		/// <summary>
+		/// Cached name for the 'Create' method.
+		/// </summary>
 		public static readonly StringName Create = "Create";
 
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the 'Relocalize' method.
+		/// </summary>
 		public static readonly StringName Relocalize = "Relocalize";
 
+		/// <summary>
+		/// Cached name for the 'OnDescriptionChanged' method.
+		/// </summary>
 		public static readonly StringName OnDescriptionChanged = "OnDescriptionChanged";
 
+		/// <summary>
+		/// Cached name for the 'SetScreenshot' method.
+		/// </summary>
 		public static readonly StringName SetScreenshot = "SetScreenshot";
 
+		/// <summary>
+		/// Cached name for the 'EmojiButtonSelected' method.
+		/// </summary>
 		public static readonly StringName EmojiButtonSelected = "EmojiButtonSelected";
 
+		/// <summary>
+		/// Cached name for the 'SendButtonFocused' method.
+		/// </summary>
 		public static readonly StringName SendButtonFocused = "SendButtonFocused";
 
+		/// <summary>
+		/// Cached name for the 'SendButtonUnfocused' method.
+		/// </summary>
 		public static readonly StringName SendButtonUnfocused = "SendButtonUnfocused";
 
+		/// <summary>
+		/// Cached name for the 'Open' method.
+		/// </summary>
 		public static readonly StringName Open = "Open";
 
+		/// <summary>
+		/// Cached name for the 'Close' method.
+		/// </summary>
 		public static readonly StringName Close = "Close";
 
+		/// <summary>
+		/// Cached name for the 'ClearInput' method.
+		/// </summary>
 		public static readonly StringName ClearInput = "ClearInput";
 
+		/// <summary>
+		/// Cached name for the 'SetSelectedEmoji' method.
+		/// </summary>
 		public static readonly StringName SetSelectedEmoji = "SetSelectedEmoji";
 
+		/// <summary>
+		/// Cached name for the 'SendButtonSelected' method.
+		/// </summary>
 		public static readonly StringName SendButtonSelected = "SendButtonSelected";
 
+		/// <summary>
+		/// Cached name for the 'ReturnToGameSelected' method.
+		/// </summary>
 		public static readonly StringName ReturnToGameSelected = "ReturnToGameSelected";
 
+		/// <summary>
+		/// Cached name for the 'ReturnToGameFocused' method.
+		/// </summary>
 		public static readonly StringName ReturnToGameFocused = "ReturnToGameFocused";
 
+		/// <summary>
+		/// Cached name for the 'ReturnToGameUnfocused' method.
+		/// </summary>
 		public static readonly StringName ReturnToGameUnfocused = "ReturnToGameUnfocused";
 
+		/// <summary>
+		/// Cached name for the 'WiggleCartoons1' method.
+		/// </summary>
 		public static readonly StringName WiggleCartoons1 = "WiggleCartoons1";
 
+		/// <summary>
+		/// Cached name for the 'WiggleCartoons2' method.
+		/// </summary>
 		public static readonly StringName WiggleCartoons2 = "WiggleCartoons2";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Control.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'DefaultFocusedControl' property.
+		/// </summary>
 		public static readonly StringName DefaultFocusedControl = "DefaultFocusedControl";
 
+		/// <summary>
+		/// Cached name for the '_backButton' field.
+		/// </summary>
 		public static readonly StringName _backButton = "_backButton";
 
+		/// <summary>
+		/// Cached name for the '_mainPanel' field.
+		/// </summary>
 		public static readonly StringName _mainPanel = "_mainPanel";
 
+		/// <summary>
+		/// Cached name for the '_descriptionInput' field.
+		/// </summary>
 		public static readonly StringName _descriptionInput = "_descriptionInput";
 
+		/// <summary>
+		/// Cached name for the '_emojiLabel' field.
+		/// </summary>
 		public static readonly StringName _emojiLabel = "_emojiLabel";
 
+		/// <summary>
+		/// Cached name for the '_sendButton' field.
+		/// </summary>
 		public static readonly StringName _sendButton = "_sendButton";
 
+		/// <summary>
+		/// Cached name for the '_sendLabel' field.
+		/// </summary>
 		public static readonly StringName _sendLabel = "_sendLabel";
 
+		/// <summary>
+		/// Cached name for the '_categoryLabel' field.
+		/// </summary>
 		public static readonly StringName _categoryLabel = "_categoryLabel";
 
+		/// <summary>
+		/// Cached name for the '_returnToGameButton' field.
+		/// </summary>
 		public static readonly StringName _returnToGameButton = "_returnToGameButton";
 
+		/// <summary>
+		/// Cached name for the '_returnToGameLabel' field.
+		/// </summary>
 		public static readonly StringName _returnToGameLabel = "_returnToGameLabel";
 
+		/// <summary>
+		/// Cached name for the '_returnToGameHoverLabel' field.
+		/// </summary>
 		public static readonly StringName _returnToGameHoverLabel = "_returnToGameHoverLabel";
 
+		/// <summary>
+		/// Cached name for the '_categoryDropdown' field.
+		/// </summary>
 		public static readonly StringName _categoryDropdown = "_categoryDropdown";
 
+		/// <summary>
+		/// Cached name for the '_sendBackstop' field.
+		/// </summary>
 		public static readonly StringName _sendBackstop = "_sendBackstop";
 
+		/// <summary>
+		/// Cached name for the '_sendPanel' field.
+		/// </summary>
 		public static readonly StringName _sendPanel = "_sendPanel";
 
+		/// <summary>
+		/// Cached name for the '_successLabel' field.
+		/// </summary>
 		public static readonly StringName _successLabel = "_successLabel";
 
+		/// <summary>
+		/// Cached name for the '_failedLabel' field.
+		/// </summary>
 		public static readonly StringName _failedLabel = "_failedLabel";
 
+		/// <summary>
+		/// Cached name for the '_sendingLabel' field.
+		/// </summary>
 		public static readonly StringName _sendingLabel = "_sendingLabel";
 
+		/// <summary>
+		/// Cached name for the '_flower' field.
+		/// </summary>
 		public static readonly StringName _flower = "_flower";
 
+		/// <summary>
+		/// Cached name for the '_selectedEmoteButton' field.
+		/// </summary>
 		public static readonly StringName _selectedEmoteButton = "_selectedEmoteButton";
 
+		/// <summary>
+		/// Cached name for the '_screenshotBytes' field.
+		/// </summary>
 		public static readonly StringName _screenshotBytes = "_screenshotBytes";
 
+		/// <summary>
+		/// Cached name for the '_originalSuccessPosition' field.
+		/// </summary>
 		public static readonly StringName _originalSuccessPosition = "_originalSuccessPosition";
 
+		/// <summary>
+		/// Cached name for the '_lastClosedMsec' field.
+		/// </summary>
 		public static readonly StringName _lastClosedMsec = "_lastClosedMsec";
 
+		/// <summary>
+		/// Cached name for the '_descriptionText' field.
+		/// </summary>
 		public static readonly StringName _descriptionText = "_descriptionText";
 
+		/// <summary>
+		/// Cached name for the '_descriptionCaretLine' field.
+		/// </summary>
 		public static readonly StringName _descriptionCaretLine = "_descriptionCaretLine";
 
+		/// <summary>
+		/// Cached name for the '_descriptionCaretColumn' field.
+		/// </summary>
 		public static readonly StringName _descriptionCaretColumn = "_descriptionCaretColumn";
 
+		/// <summary>
+		/// Cached name for the '_wiggleTween' field.
+		/// </summary>
 		public static readonly StringName _wiggleTween = "_wiggleTween";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Control.SignalName
 	{
 	}
@@ -306,6 +447,9 @@ public class NSendFeedbackScreen : Control, IScreenContext
 		_sendLabel.RefreshFont();
 	}
 
+	/// <summary>
+	/// Used to limit the number of characters that can be typed into the description box.
+	/// </summary>
 	private void OnDescriptionChanged()
 	{
 		if (_descriptionInput.Text.Length > 8000)
@@ -322,6 +466,11 @@ public class NSendFeedbackScreen : Control, IScreenContext
 		}
 	}
 
+	/// <summary>
+	/// Set the screenshot that will be uploaded with the feedback. The screenshot will be automatically scaled to a
+	/// smaller size so that the upload isn't massive.
+	/// </summary>
+	/// <param name="screenshot"></param>
 	public void SetScreenshot(Image screenshot)
 	{
 		int width = screenshot.GetWidth();
@@ -432,6 +581,9 @@ public class NSendFeedbackScreen : Control, IScreenContext
 		_returnToGameHoverLabel.Visible = false;
 	}
 
+	/// <summary>
+	/// Send feedback, allowing the player to exit the menu if they want to get back to playing.
+	/// </summary>
 	private async Task SendFeedbackWrapper()
 	{
 		if (string.IsNullOrEmpty(_descriptionText))
@@ -494,6 +646,11 @@ public class NSendFeedbackScreen : Control, IScreenContext
 		}
 	}
 
+	/// <summary>
+	/// Send feedback and log after close.
+	/// This is purposefully static so that we ensure that nothing from the screen is used, as it can be deallocated
+	/// before the method completes.
+	/// </summary>
 	private static async Task<bool> SendFeedback(FeedbackData data, Stream screenshotStream, Stream logsMemoryStream)
 	{
 		_ = 2;
@@ -663,6 +820,11 @@ public class NSendFeedbackScreen : Control, IScreenContext
 		}
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -715,6 +877,7 @@ public class NSendFeedbackScreen : Control, IScreenContext
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -840,6 +1003,7 @@ public class NSendFeedbackScreen : Control, IScreenContext
 		return false;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -918,6 +1082,7 @@ public class NSendFeedbackScreen : Control, IScreenContext
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -1049,6 +1214,7 @@ public class NSendFeedbackScreen : Control, IScreenContext
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -1185,6 +1351,11 @@ public class NSendFeedbackScreen : Control, IScreenContext
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -1218,6 +1389,7 @@ public class NSendFeedbackScreen : Control, IScreenContext
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -1249,6 +1421,7 @@ public class NSendFeedbackScreen : Control, IScreenContext
 		info.AddProperty(PropertyName._wiggleTween, Variant.From(in _wiggleTween));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

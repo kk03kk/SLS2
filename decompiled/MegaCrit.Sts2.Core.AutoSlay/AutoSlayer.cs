@@ -34,6 +34,9 @@ using MegaCrit.Sts2.addons.mega_text;
 
 namespace MegaCrit.Sts2.Core.AutoSlay;
 
+/// <summary>
+/// Main orchestrator for AutoSlay. Runs the game automatically for smoke testing.
+/// </summary>
 public class AutoSlayer
 {
 	private readonly Dictionary<RoomType, IRoomHandler> _roomHandlers;
@@ -52,8 +55,10 @@ public class AutoSlayer
 
 	private static int _exitCode;
 
+	/// <summary>Static flag indicating if AutoSlay is currently running.</summary>
 	public static bool IsActive { get; private set; }
 
+	/// <summary>Gets the current watchdog instance (for WaitHelper integration).</summary>
 	public static Watchdog? CurrentWatchdog { get; private set; }
 
 	static AutoSlayer()
@@ -92,6 +97,7 @@ public class AutoSlayer
 		};
 	}
 
+	/// <summary>Starts an AutoSlay run with the given seed.</summary>
 	public void Start(string seed, string? logFile = null)
 	{
 		if (logFile != null)
@@ -106,6 +112,7 @@ public class AutoSlayer
 		TaskHelper.RunSafely(task);
 	}
 
+	/// <summary>Stops the current AutoSlay run.</summary>
 	public void Stop()
 	{
 		IsActive = false;
@@ -113,6 +120,7 @@ public class AutoSlayer
 		_cts = null;
 	}
 
+	/// <summary>Gets the current overlay screen cast to the expected type.</summary>
 	public static T GetCurrentScreen<T>() where T : Node
 	{
 		return (T)NOverlayStack.Instance.Peek();

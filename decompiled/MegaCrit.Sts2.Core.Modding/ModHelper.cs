@@ -8,6 +8,9 @@ using MegaCrit.Sts2.Core.Runs;
 
 namespace MegaCrit.Sts2.Core.Modding;
 
+/// <summary>
+/// Some helper methods for modding.
+/// </summary>
 public static class ModHelper
 {
 	private class ModPoolContent
@@ -37,6 +40,12 @@ public static class ModHelper
 
 	private static readonly List<ModCombatHookSubscriber> _combatHookSubscribers = new List<ModCombatHookSubscriber>();
 
+	/// <summary>
+	/// Called by mods to add their models to a pool.
+	/// Throws if the pool has already concatenated models to that pool (i.e. the mod was too late in calling this method).
+	/// </summary>
+	/// <typeparam name="TPoolType">The pool type to add to.</typeparam>
+	/// <typeparam name="TModelType">The model to add to the pool.</typeparam>
 	public static void AddModelToPool<TPoolType, TModelType>() where TPoolType : AbstractModel, IPoolModel where TModelType : AbstractModel
 	{
 		AddModelToPool(typeof(TPoolType), typeof(TModelType));
@@ -59,6 +68,13 @@ public static class ModHelper
 		value.modelsToAdd.Add(modelType);
 	}
 
+	/// <summary>
+	/// Called by a pool when it is ready to add modded content to its pool of content.
+	/// </summary>
+	/// <param name="poolModel">The pool that is consuming the content.</param>
+	/// <param name="pool">The current pool of content.</param>
+	/// <typeparam name="TModelType">The model type of the content that should have been added by mods.</typeparam>
+	/// <returns>A new pool with all modded content concatenated to pool.</returns>
 	public static IEnumerable<TModelType> ConcatModelsFromMods<TModelType>(IPoolModel poolModel, IEnumerable<TModelType> pool) where TModelType : AbstractModel
 	{
 		Type type = poolModel.GetType();
@@ -76,6 +92,11 @@ public static class ModHelper
 		return pool.Concat(second);
 	}
 
+	/// <summary>
+	/// Called by mods when they wish to provide custom model types to a RunState when IterateHookListeners is called.
+	/// </summary>
+	/// <param name="id">An ID to identify the subscription. Usually the name of the mod.</param>
+	/// <param name="del">The delegate provided by the mod, which returns the models to iterate over.</param>
 	public static void SubscribeForRunStateHooks(string id, RunHookSubscriptionDelegate del)
 	{
 		if (_runHookSubscribers.Any((ModRunHookSubscriber s) => s.id == id))
@@ -91,6 +112,11 @@ public static class ModHelper
 		_runHookSubscribers.Sort((ModRunHookSubscriber x, ModRunHookSubscriber y) => string.CompareOrdinal(x.id, y.id));
 	}
 
+	/// <summary>
+	/// Called by mods when they wish to provide custom model types to a CombatState when IterateHookListeners is called.
+	/// </summary>
+	/// <param name="id">An ID to identify the subscription. Usually the name of the mod.</param>
+	/// <param name="del">The delegate provided by the mod, which returns the models to iterate over.</param>
 	public static void SubscribeForCombatStateHooks(string id, CombatHookSubscriptionDelegate del)
 	{
 		if (_combatHookSubscribers.Any((ModCombatHookSubscriber s) => s.id == id))
@@ -106,6 +132,12 @@ public static class ModHelper
 		_combatHookSubscribers.Sort((ModCombatHookSubscriber x, ModCombatHookSubscriber y) => string.CompareOrdinal(x.id, y.id));
 	}
 
+	/// <summary>
+	/// Called by RunState when it is iterating hook listeners, so that custom mod AbstractModel types have hooks called
+	/// on them.
+	/// </summary>
+	/// <param name="runState">The RunState which is iterating hook listeners.</param>
+	/// <returns>All the model types from all subscribing mods who wish to receive hooks.</returns>
 	public static IEnumerable<AbstractModel> IterateAllRunStateSubscribers(RunState runState)
 	{
 		foreach (ModRunHookSubscriber runHookSubscriber in _runHookSubscribers)
@@ -125,6 +157,12 @@ public static class ModHelper
 		}
 	}
 
+	/// <summary>
+	/// Called by CombatState when it is iterating hook listeners, so that custom mod AbstractModel types have hooks
+	/// called on them.
+	/// </summary>
+	/// <param name="combatState">The CombatState which is iterating hook listeners.</param>
+	/// <returns>All the model types from all subscribing mods who wish to receive hooks.</returns>
 	public static IEnumerable<AbstractModel> IterateAllCombatStateSubscribers(CombatState combatState)
 	{
 		foreach (ModCombatHookSubscriber combatHookSubscriber in _combatHookSubscribers)

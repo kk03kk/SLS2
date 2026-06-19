@@ -11,6 +11,9 @@ using MegaCrit.Sts2.Core.Localization;
 
 namespace MegaCrit.Sts2.Core.MonsterMoves.Intents;
 
+/// <summary>
+/// The data backend for intents. See NIntent.cs to update visuals
+/// </summary>
 public abstract class AbstractIntent
 {
 	protected const string _locTable = "intents";

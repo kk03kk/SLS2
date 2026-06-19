@@ -2,6 +2,9 @@ using MegaCrit.Sts2.Core.Saves;
 
 namespace MegaCrit.Sts2.Core.Models.Badges;
 
+/// <summary>
+/// Increased Max HP by a great amount and won.
+/// </summary>
 public class Glutton : Badge
 {
 	public override BadgeRarity Rarity
@@ -26,6 +29,9 @@ public class Glutton : Badge
 		}
 	}
 
+	/// <summary>
+	/// Increased Max HP by a great amount and won.
+	/// </summary>
 	public Glutton(SerializableRun run, bool won, ulong playerId)
 		: base(run, won, playerId, "GLUTTON", requiresWin: true, multiplayerOnly: false)
 	{

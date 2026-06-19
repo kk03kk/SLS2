@@ -58,8 +58,17 @@ public abstract class MonsterModel : AbstractModel
 
 	public virtual bool IsHealthBarVisible => true;
 
+	/// <summary>
+	/// At time of death, a SubViewport is created with the bounds of the creature's spine body in its current pose.
+	/// If the creature needs additional padding (usually because the death animation changes its bounds), this property
+	/// can be adjusted so that the spawned SubViewport is larger.
+	/// </summary>
 	public virtual Vector2 ExtraDeathVfxPadding => defaultDeathVfxPadding;
 
+	/// <summary>
+	/// For specific creatures that are very close, this value can be made some positive value so that their health bars
+	/// do not overlap each other.
+	/// </summary>
 	public virtual float HpBarSizeReduction => 0f;
 
 	protected virtual string VisualsPath => SceneHelper.GetScenePath("creature_visuals/" + base.Id.Entry.ToLowerInvariant());
@@ -83,6 +92,11 @@ public abstract class MonsterModel : AbstractModel
 		}
 	}
 
+	/// <summary>
+	/// This RNG should be used for things that are nice to have synced between players. It should be deterministic as
+	/// long as you only use it in deterministic contexts.
+	/// It should ONLY be set in <see cref="M:MegaCrit.Sts2.Core.Combat.CombatState.CreateCreature(MegaCrit.Sts2.Core.Models.MonsterModel,MegaCrit.Sts2.Core.Combat.CombatSide,System.String)" />.
+	/// </summary>
 	public Rng Rng
 	{
 		get
@@ -100,6 +114,9 @@ public abstract class MonsterModel : AbstractModel
 		}
 	}
 
+	/// <summary>
+	/// Run-scoped RNG set for the run that this monster is in.
+	/// </summary>
 	public RunRngSet RunRng
 	{
 		get
@@ -144,12 +161,21 @@ public abstract class MonsterModel : AbstractModel
 
 	protected virtual bool HasPhobiaSpineSkin => false;
 
+	/// <summary>
+	/// Should the default fade animation be played after this monster dies?
+	/// Usually true, but false for monsters with certain special death animations (Decimillipede, etc.) or that we want
+	/// to keep around after death (Osty, etc.).
+	/// </summary>
 	public virtual bool ShouldFadeAfterDeath => true;
 
 	public virtual bool ShouldDisappearFromDoom => true;
 
 	public virtual bool ShouldShowInCompendium => true;
 
+	/// <summary>
+	/// Used for creatures where we can't rely on the length of their death animations to delay the rewards screen.
+	/// For example, <see cref="T:MegaCrit.Sts2.Core.Models.Monsters.Crusher" />'s and <see cref="T:MegaCrit.Sts2.Core.Models.Monsters.Rocket" />'s visuals are part of the combat background.
+	/// </summary>
 	public virtual float DeathAnimLengthOverride => 0f;
 
 	public bool HasDeathAnimLengthOverride => DeathAnimLengthOverride > 0f;
@@ -160,6 +186,11 @@ public abstract class MonsterModel : AbstractModel
 
 	public virtual string TakeDamageSfx => "event:/sfx/enemy/enemy_impact_enemy_size/enemy_impact_" + StringHelper.Slugify(TakeDamageSfxType.ToString()).ToLowerInvariant();
 
+	/// <summary>
+	/// The creature that represents this monster in combat.
+	/// Will technically be null on a canonical monster model, but we should never be checking that, so we leave this as
+	/// non-nullable for convenience.
+	/// </summary>
 	public Creature Creature
 	{
 		get
@@ -177,8 +208,17 @@ public abstract class MonsterModel : AbstractModel
 		}
 	}
 
+	/// <summary>
+	/// The CombatState that this monster's creature exists in.
+	/// Will technically be null on a canonical monster model, but we should never be checking that, so we leave this as
+	/// non-nullable for convenience.
+	/// </summary>
 	public ICombatState CombatState => Creature.CombatState;
 
+	/// <summary>
+	/// Get this monster's move state machine.
+	/// Null for canonical monster models.
+	/// </summary>
 	public MonsterMoveStateMachine? MoveStateMachine
 	{
 		get
@@ -267,11 +307,17 @@ public abstract class MonsterModel : AbstractModel
 		return list;
 	}
 
+	/// <summary>
+	/// Logic to run after the monster is first added to the combat room. No-op by default.
+	/// </summary>
 	public virtual Task AfterAddedToRoom()
 	{
 		return Task.CompletedTask;
 	}
 
+	/// <summary>
+	/// Logic to run after the monster is removed from the combat room. No-op by default.
+	/// </summary>
 	public virtual void BeforeRemovedFromRoom()
 	{
 	}
@@ -337,6 +383,9 @@ public abstract class MonsterModel : AbstractModel
 		}
 	}
 
+	/// <summary>
+	/// Destroys the monster's move state machine.
+	/// </summary>
 	public void ResetStateMachine()
 	{
 		_moveStateMachine = null;
@@ -433,10 +482,17 @@ public abstract class MonsterModel : AbstractModel
 		SpawnedThisTurn = false;
 	}
 
+	/// <summary>
+	/// Called when this monster is about to die to Doom.
+	/// Primarily used set up the creature visuals for the Doom vfx (ie hiding nodes that have additive materials)
+	/// </summary>
 	public virtual void OnDieToDoom()
 	{
 	}
 
+	/// <summary>
+	/// Helper to get the move name label for the Bestiary entry.
+	/// </summary>
 	protected LocString GetBestiaryMoveName(string moveId)
 	{
 		return new LocString("monsters", base.Id.Entry + ".moves." + moveId + ".title");

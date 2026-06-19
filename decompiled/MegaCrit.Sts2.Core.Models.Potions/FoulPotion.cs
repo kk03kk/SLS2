@@ -119,6 +119,10 @@ public sealed class FoulPotion : PotionModel
 		}
 	}
 
+	/// <summary>
+	/// Tries to grab the merchant button and its parent screen context from the Shop/Fake shop room.
+	/// Used for Foul Potion targeting.
+	/// </summary>
 	public static (NMerchantButton? button, Control? screenContext) GetFoulPotionMerchantTarget(AbstractRoom room)
 	{
 		if (room.RoomType == RoomType.Shop)

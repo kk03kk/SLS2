@@ -8,6 +8,9 @@ using MegaCrit.Sts2.Core.Runs;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Game.PeerInput;
 
+/// <summary>
+/// Keeps track of the local player's screen state and synchronizes it to remote peers via the PeerInputSynchronizer.
+/// </summary>
 public class ScreenStateTracker
 {
 	private NetScreenType _capstoneScreen;
@@ -18,6 +21,11 @@ public class ScreenStateTracker
 
 	private bool _isInSharedRelicPicking;
 
+	/// <summary>
+	/// Callable.From() creates a new delegate each call, so we store it to ensure IsConnected() can match the same
+	/// instance used to Connect(). This prevents Godot's "signal already connected" error when the rewards screen
+	/// re-emerges as the top overlay after another overlay is pushed on top and later popped.
+	/// </summary>
 	private readonly Callable _onRewardsScreenCompleted;
 
 	public ScreenStateTracker(NMapScreen mapScreen, NCapstoneContainer capstoneContainer, NOverlayStack overlayStack)
@@ -56,12 +64,19 @@ public class ScreenStateTracker
 		RunManager.Instance.InputSynchronizer.SyncLocalScreen(GetCurrentScreen());
 	}
 
+	/// <summary>
+	/// The map is not an overlay or a capstone, it's part of <see cref="T:MegaCrit.Sts2.Core.Nodes.NRun" />.
+	/// </summary>
 	private void OnMapScreenVisibilityChanged()
 	{
 		_mapScreenVisible = NMapScreen.Instance.Visible;
 		RunManager.Instance.InputSynchronizer.SyncLocalScreen(GetCurrentScreen());
 	}
 
+	/// <summary>
+	/// The shared relic picking screen at the treasure room is not an overlay or a capstone, it's part of the state of
+	/// the room, so it needs to get synchronized manually.
+	/// </summary>
 	public void SetIsInSharedRelicPickingScreen(bool isInSharedRelicPicking)
 	{
 		_isInSharedRelicPicking = isInSharedRelicPicking;

@@ -22,76 +22,181 @@ namespace MegaCrit.Sts2.Core.Nodes.Screens.Credits;
 [ScriptPath("res://src/Core/Nodes/Screens/Credits/NCreditsScreen.cs")]
 public class NCreditsScreen : Control, IScreenContext
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Control.MethodName
 	{
+		/// <summary>
+		/// Cached name for the 'Create' method.
+		/// </summary>
 		public static readonly StringName Create = "Create";
 
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the 'InitMegaCrit' method.
+		/// </summary>
 		public static readonly StringName InitMegaCrit = "InitMegaCrit";
 
+		/// <summary>
+		/// Cached name for the 'InitComposer' method.
+		/// </summary>
 		public static readonly StringName InitComposer = "InitComposer";
 
+		/// <summary>
+		/// Cached name for the 'InitAdditionalProgramming' method.
+		/// </summary>
 		public static readonly StringName InitAdditionalProgramming = "InitAdditionalProgramming";
 
+		/// <summary>
+		/// Cached name for the 'InitAdditionalVfx' method.
+		/// </summary>
 		public static readonly StringName InitAdditionalVfx = "InitAdditionalVfx";
 
+		/// <summary>
+		/// Cached name for the 'InitMarketingSupport' method.
+		/// </summary>
 		public static readonly StringName InitMarketingSupport = "InitMarketingSupport";
 
+		/// <summary>
+		/// Cached name for the 'InitConsultants' method.
+		/// </summary>
 		public static readonly StringName InitConsultants = "InitConsultants";
 
+		/// <summary>
+		/// Cached name for the 'InitVoices' method.
+		/// </summary>
 		public static readonly StringName InitVoices = "InitVoices";
 
+		/// <summary>
+		/// Cached name for the 'InitLocalization' method.
+		/// </summary>
 		public static readonly StringName InitLocalization = "InitLocalization";
 
+		/// <summary>
+		/// Cached name for the 'InitTwitchExtension' method.
+		/// </summary>
 		public static readonly StringName InitTwitchExtension = "InitTwitchExtension";
 
+		/// <summary>
+		/// Cached name for the 'InitModdingSupport' method.
+		/// </summary>
 		public static readonly StringName InitModdingSupport = "InitModdingSupport";
 
+		/// <summary>
+		/// Cached name for the 'InitPlaytesters' method.
+		/// </summary>
 		public static readonly StringName InitPlaytesters = "InitPlaytesters";
 
+		/// <summary>
+		/// Cached name for the 'InitTrailer' method.
+		/// </summary>
 		public static readonly StringName InitTrailer = "InitTrailer";
 
+		/// <summary>
+		/// Cached name for the 'InitFmod' method.
+		/// </summary>
 		public static readonly StringName InitFmod = "InitFmod";
 
+		/// <summary>
+		/// Cached name for the 'InitSpine' method.
+		/// </summary>
 		public static readonly StringName InitSpine = "InitSpine";
 
+		/// <summary>
+		/// Cached name for the 'InitGodot' method.
+		/// </summary>
 		public static readonly StringName InitGodot = "InitGodot";
 
+		/// <summary>
+		/// Cached name for the 'InitExitMessage' method.
+		/// </summary>
 		public static readonly StringName InitExitMessage = "InitExitMessage";
 
+		/// <summary>
+		/// Cached name for the '_EnterTree' method.
+		/// </summary>
 		public new static readonly StringName _EnterTree = "_EnterTree";
 
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 
+		/// <summary>
+		/// Cached name for the 'CloseScreenDebug' method.
+		/// </summary>
 		public static readonly StringName CloseScreenDebug = "CloseScreenDebug";
 
+		/// <summary>
+		/// Cached name for the '_GuiInput' method.
+		/// </summary>
 		public new static readonly StringName _GuiInput = "_GuiInput";
 
+		/// <summary>
+		/// Cached name for the '_Process' method.
+		/// </summary>
 		public new static readonly StringName _Process = "_Process";
 
+		/// <summary>
+		/// Cached name for the 'ProcessScrollEvent' method.
+		/// </summary>
 		public static readonly StringName ProcessScrollEvent = "ProcessScrollEvent";
 
+		/// <summary>
+		/// Cached name for the 'ShuffleOneColumn' method.
+		/// </summary>
 		public static readonly StringName ShuffleOneColumn = "ShuffleOneColumn";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Control.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'DefaultFocusedControl' property.
+		/// </summary>
 		public static readonly StringName DefaultFocusedControl = "DefaultFocusedControl";
 
+		/// <summary>
+		/// Cached name for the '_canClose' field.
+		/// </summary>
 		public static readonly StringName _canClose = "_canClose";
 
+		/// <summary>
+		/// Cached name for the '_exitingScreen' field.
+		/// </summary>
 		public static readonly StringName _exitingScreen = "_exitingScreen";
 
+		/// <summary>
+		/// Cached name for the '_tween' field.
+		/// </summary>
 		public static readonly StringName _tween = "_tween";
 
+		/// <summary>
+		/// Cached name for the '_screenContents' field.
+		/// </summary>
 		public static readonly StringName _screenContents = "_screenContents";
 
+		/// <summary>
+		/// Cached name for the '_backButton' field.
+		/// </summary>
 		public static readonly StringName _backButton = "_backButton";
 
+		/// <summary>
+		/// Cached name for the '_targetPosition' field.
+		/// </summary>
 		public static readonly StringName _targetPosition = "_targetPosition";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Control.SignalName
 	{
 	}
@@ -320,6 +425,10 @@ public class NCreditsScreen : Control, IScreenContext
 		NHotkeyManager.Instance.RemoveBlockingScreen(this);
 	}
 
+	/// <summary>
+	/// The screen must be up for 2 seconds before you can exit.
+	/// Otherwise, you can open it and close it before seeing it (confusion).
+	/// </summary>
 	private async Task EnableScreenExit()
 	{
 		await Task.Delay(2000);
@@ -362,6 +471,10 @@ public class NCreditsScreen : Control, IScreenContext
 		_screenContents.Position = _screenContents.Position.Lerp(new Vector2(_screenContents.Position.X, _targetPosition), num * 20f);
 	}
 
+	/// <summary>
+	/// Processes mouse wheel to zoom in and out of the Timeline screen.
+	/// </summary>
+	/// <param name="inputEvent"></param>
 	private void ProcessScrollEvent(InputEvent inputEvent)
 	{
 		if (inputEvent is InputEventMouseButton inputEventMouseButton)
@@ -381,6 +494,10 @@ public class NCreditsScreen : Control, IScreenContext
 		}
 	}
 
+	/// <summary>
+	/// When you want to randomize the order for a section with just names.
+	/// Used for Modding Support section.
+	/// </summary>
 	private static string ShuffleOneColumn(string input)
 	{
 		if (string.IsNullOrWhiteSpace(input))
@@ -423,6 +540,9 @@ public class NCreditsScreen : Control, IScreenContext
 		return (Roles: string.Join("\n", list), Names: string.Join("\n", list2));
 	}
 
+	/// <summary>
+	/// Takes all the playtester credits, shuffles it
+	/// </summary>
 	private (string Column1, string Column2, string Column3) SplitThreeColumnPlaytesters(string input)
 	{
 		string[] array = (from p in input.Split(new string[1] { "||" }, StringSplitOptions.RemoveEmptyEntries)
@@ -491,6 +611,11 @@ public class NCreditsScreen : Control, IScreenContext
 		return (left: string.Join("\n", list), right: string.Join("\n", list2));
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -535,6 +660,7 @@ public class NCreditsScreen : Control, IScreenContext
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -706,6 +832,7 @@ public class NCreditsScreen : Control, IScreenContext
 		return false;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -812,6 +939,7 @@ public class NCreditsScreen : Control, IScreenContext
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -848,6 +976,7 @@ public class NCreditsScreen : Control, IScreenContext
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -889,6 +1018,11 @@ public class NCreditsScreen : Control, IScreenContext
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -903,6 +1037,7 @@ public class NCreditsScreen : Control, IScreenContext
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -915,6 +1050,7 @@ public class NCreditsScreen : Control, IScreenContext
 		info.AddProperty(PropertyName._targetPosition, Variant.From(in _targetPosition));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

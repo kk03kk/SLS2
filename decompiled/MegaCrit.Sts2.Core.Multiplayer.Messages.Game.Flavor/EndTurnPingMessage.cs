@@ -5,6 +5,9 @@ using MegaCrit.Sts2.Core.Multiplayer.Transport;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Messages.Game.Flavor;
 
+/// <summary>
+/// Sent when a player has ended their turn and presses the "Ping" button to annoy other players.
+/// </summary>
 [StructLayout(LayoutKind.Sequential, Size = 1)]
 public struct EndTurnPingMessage : INetMessage, IPacketSerializable
 {

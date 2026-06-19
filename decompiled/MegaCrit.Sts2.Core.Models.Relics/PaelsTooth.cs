@@ -128,6 +128,9 @@ public sealed class PaelsTooth : RelicModel
 		InvokeDisplayAmountChanged();
 	}
 
+	/// <summary>
+	/// DO NOT USE, this is only public for tests.
+	/// </summary>
 	public void DebugAddCard(SerializableCard card)
 	{
 		SerializableCards.Add(card);

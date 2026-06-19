@@ -8,6 +8,9 @@ using MegaCrit.Sts2.Core.Runs;
 
 namespace MegaCrit.Sts2.Core.Entities.Merchant;
 
+/// <summary>
+/// Manages the card removal option of a merchant shop
+/// </summary>
 public sealed class MerchantCardRemovalEntry : MerchantEntry
 {
 	public bool Used { get; private set; }

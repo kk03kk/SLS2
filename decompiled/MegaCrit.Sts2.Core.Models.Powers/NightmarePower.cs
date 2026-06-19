@@ -14,6 +14,12 @@ public sealed class NightmarePower : PowerModel
 {
 	private class Data
 	{
+		/// <summary>
+		/// This will be null for the moment after this power is applied but before this is set by Nightmare.OnPlay.
+		/// For all current use cases, this means we should never see this being null.
+		/// However, if we needed to override AfterApplied in here in the future, this would be null in it, so let's
+		/// leave this nullable for future-proofing.
+		/// </summary>
 		public CardModel? selectedCard;
 	}
 

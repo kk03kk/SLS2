@@ -203,62 +203,149 @@ internal class MetricsSerializerContext : JsonSerializerContext, IJsonTypeInfoRe
 
 	private static readonly JsonEncodedText PropName_totalEpochs = JsonEncodedText.Encode("totalEpochs");
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<bool> Boolean => _Boolean ?? (_Boolean = (JsonTypeInfo<bool>)base.Options.GetTypeInfo(typeof(bool)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<float> Single => _Single ?? (_Single = (JsonTypeInfo<float>)base.Options.GetTypeInfo(typeof(float)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<Vector2I> Vector2I => _Vector2I ?? (_Vector2I = (JsonTypeInfo<Vector2I>)base.Options.GetTypeInfo(typeof(Vector2I)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<AchievementMetric> AchievementMetric => _AchievementMetric ?? (_AchievementMetric = (JsonTypeInfo<AchievementMetric>)base.Options.GetTypeInfo(typeof(AchievementMetric)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<ModelId> ModelId => _ModelId ?? (_ModelId = (JsonTypeInfo<ModelId>)base.Options.GetTypeInfo(typeof(ModelId)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<ActWinMetric> ActWinMetric => _ActWinMetric ?? (_ActWinMetric = (JsonTypeInfo<ActWinMetric>)base.Options.GetTypeInfo(typeof(ActWinMetric)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<AncientMetric> AncientMetric => _AncientMetric ?? (_AncientMetric = (JsonTypeInfo<AncientMetric>)base.Options.GetTypeInfo(typeof(AncientMetric)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<CardChoiceMetric> CardChoiceMetric => _CardChoiceMetric ?? (_CardChoiceMetric = (JsonTypeInfo<CardChoiceMetric>)base.Options.GetTypeInfo(typeof(CardChoiceMetric)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<EncounterMetric> EncounterMetric => _EncounterMetric ?? (_EncounterMetric = (JsonTypeInfo<EncounterMetric>)base.Options.GetTypeInfo(typeof(EncounterMetric)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<EventChoiceMetric> EventChoiceMetric => _EventChoiceMetric ?? (_EventChoiceMetric = (JsonTypeInfo<EventChoiceMetric>)base.Options.GetTypeInfo(typeof(EventChoiceMetric)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<RunMetrics> RunMetrics => _RunMetrics ?? (_RunMetrics = (JsonTypeInfo<RunMetrics>)base.Options.GetTypeInfo(typeof(RunMetrics)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<SettingsDataMetric> SettingsDataMetric => _SettingsDataMetric ?? (_SettingsDataMetric = (JsonTypeInfo<SettingsDataMetric>)base.Options.GetTypeInfo(typeof(SettingsDataMetric)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<AspectRatioSetting> AspectRatioSetting => _AspectRatioSetting ?? (_AspectRatioSetting = (JsonTypeInfo<AspectRatioSetting>)base.Options.GetTypeInfo(typeof(AspectRatioSetting)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<FastModeType> FastModeType => _FastModeType ?? (_FastModeType = (JsonTypeInfo<FastModeType>)base.Options.GetTypeInfo(typeof(FastModeType)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<VSyncType> VSyncType => _VSyncType ?? (_VSyncType = (JsonTypeInfo<VSyncType>)base.Options.GetTypeInfo(typeof(VSyncType)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<EpochMetric> EpochMetric => _EpochMetric ?? (_EpochMetric = (JsonTypeInfo<EpochMetric>)base.Options.GetTypeInfo(typeof(EpochMetric)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<IEnumerable<ModelId>> IEnumerableModelId => _IEnumerableModelId ?? (_IEnumerableModelId = (JsonTypeInfo<IEnumerable<ModelId>>)base.Options.GetTypeInfo(typeof(IEnumerable<ModelId>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<ModelId>> ListModelId => _ListModelId ?? (_ListModelId = (JsonTypeInfo<List<ModelId>>)base.Options.GetTypeInfo(typeof(List<ModelId>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<ActWinMetric>> ListActWinMetric => _ListActWinMetric ?? (_ListActWinMetric = (JsonTypeInfo<List<ActWinMetric>>)base.Options.GetTypeInfo(typeof(List<ActWinMetric>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<AncientMetric>> ListAncientMetric => _ListAncientMetric ?? (_ListAncientMetric = (JsonTypeInfo<List<AncientMetric>>)base.Options.GetTypeInfo(typeof(List<AncientMetric>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<CardChoiceMetric>> ListCardChoiceMetric => _ListCardChoiceMetric ?? (_ListCardChoiceMetric = (JsonTypeInfo<List<CardChoiceMetric>>)base.Options.GetTypeInfo(typeof(List<CardChoiceMetric>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<EncounterMetric>> ListEncounterMetric => _ListEncounterMetric ?? (_ListEncounterMetric = (JsonTypeInfo<List<EncounterMetric>>)base.Options.GetTypeInfo(typeof(List<EncounterMetric>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<EventChoiceMetric>> ListEventChoiceMetric => _ListEventChoiceMetric ?? (_ListEventChoiceMetric = (JsonTypeInfo<List<EventChoiceMetric>>)base.Options.GetTypeInfo(typeof(List<EventChoiceMetric>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<List<string>> ListString => _ListString ?? (_ListString = (JsonTypeInfo<List<string>>)base.Options.GetTypeInfo(typeof(List<string>)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<int> Int32 => _Int32 ?? (_Int32 = (JsonTypeInfo<int>)base.Options.GetTypeInfo(typeof(int)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<long> Int64 => _Int64 ?? (_Int64 = (JsonTypeInfo<long>)base.Options.GetTypeInfo(typeof(long)));
 
+	/// <summary>
+	/// Defines the source generated JSON serialization contract metadata for a given type.
+	/// </summary>
 	public JsonTypeInfo<string> String => _String ?? (_String = (JsonTypeInfo<string>)base.Options.GetTypeInfo(typeof(string)));
 
+	/// <summary>
+	/// The default <see cref="T:System.Text.Json.Serialization.JsonSerializerContext" /> associated with a default <see cref="T:System.Text.Json.JsonSerializerOptions" /> instance.
+	/// </summary>
 	public static MetricsSerializerContext Default { get; } = new MetricsSerializerContext(new JsonSerializerOptions(s_defaultOptions));
 
+	/// <summary>
+	/// The source-generated options associated with this context.
+	/// </summary>
 	protected override JsonSerializerOptions? GeneratedSerializerOptions { get; } = s_defaultOptions;
 
 	private JsonTypeInfo<bool> Create_Boolean(JsonSerializerOptions options)
@@ -2972,11 +3059,13 @@ internal class MetricsSerializerContext : JsonSerializerContext, IJsonTypeInfoRe
 		return jsonTypeInfo;
 	}
 
+	/// <inheritdoc />
 	public MetricsSerializerContext()
 		: base(null)
 	{
 	}
 
+	/// <inheritdoc />
 	public MetricsSerializerContext(JsonSerializerOptions options)
 		: base(options)
 	{
@@ -3024,6 +3113,7 @@ internal class MetricsSerializerContext : JsonSerializerContext, IJsonTypeInfoRe
 		return converter;
 	}
 
+	/// <inheritdoc />
 	public override JsonTypeInfo? GetTypeInfo(Type type)
 	{
 		base.Options.TryGetTypeInfo(type, out JsonTypeInfo typeInfo);

@@ -40,6 +40,9 @@ public abstract class OrbModel : AbstractModel
 
 	public abstract decimal EvokeVal { get; }
 
+	/// <summary>
+	/// Set to true when this is removed from a player's orb queue.
+	/// </summary>
 	public bool HasBeenRemovedFromState { get; private set; }
 
 	public LocString Title => new LocString("orbs", base.Id.Entry + ".title");
@@ -50,6 +53,10 @@ public abstract class OrbModel : AbstractModel
 
 	private string SmartDescriptionLocKey => base.Id.Entry + ".smartDescription";
 
+	/// <summary>
+	/// NOTE: Unlike other models' DynamicDescription, this doesn't include any variables. Someone should probably do that
+	/// but it's a bit larger of a refactor than I want to do right now
+	/// </summary>
 	public LocString SmartDescription
 	{
 		get
@@ -144,6 +151,10 @@ public abstract class OrbModel : AbstractModel
 		}
 	}
 
+	/// <summary>
+	/// Get the CombatState of the orb's owner.
+	/// Will never be null, since orbs are combat-only.
+	/// </summary>
 	public ICombatState CombatState => Owner.Creature.CombatState;
 
 	public override bool ShouldReceiveCombatHooks => true;

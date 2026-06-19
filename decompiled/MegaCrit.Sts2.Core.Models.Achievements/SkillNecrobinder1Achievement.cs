@@ -8,6 +8,9 @@ using MegaCrit.Sts2.Core.Platform;
 
 namespace MegaCrit.Sts2.Core.Models.Achievements;
 
+/// <summary>
+/// Grants an achievement when a player applies a large amount of Doom to a single creature.
+/// </summary>
 public class SkillNecrobinder1Achievement : AchievementModel
 {
 	private const int _doomThreshold = 999;

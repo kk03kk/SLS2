@@ -35,88 +35,211 @@ public class NRewardsScreen : Control, IOverlayScreen, IScreenContext
 	[Signal]
 	public delegate void CompletedEventHandler();
 
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Control.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the 'RewardCollectedFrom' method.
+		/// </summary>
 		public static readonly StringName RewardCollectedFrom = "RewardCollectedFrom";
 
+		/// <summary>
+		/// Cached name for the 'RewardSkippedFrom' method.
+		/// </summary>
 		public static readonly StringName RewardSkippedFrom = "RewardSkippedFrom";
 
+		/// <summary>
+		/// Cached name for the 'UpdateScreenState' method.
+		/// </summary>
 		public static readonly StringName UpdateScreenState = "UpdateScreenState";
 
+		/// <summary>
+		/// Cached name for the 'RemoveButton' method.
+		/// </summary>
 		public static readonly StringName RemoveButton = "RemoveButton";
 
+		/// <summary>
+		/// Cached name for the 'OnProceedButtonPressed' method.
+		/// </summary>
 		public static readonly StringName OnProceedButtonPressed = "OnProceedButtonPressed";
 
+		/// <summary>
+		/// Cached name for the 'AfterOverlayOpened' method.
+		/// </summary>
 		public static readonly StringName AfterOverlayOpened = "AfterOverlayOpened";
 
+		/// <summary>
+		/// Cached name for the 'AfterOverlayClosed' method.
+		/// </summary>
 		public static readonly StringName AfterOverlayClosed = "AfterOverlayClosed";
 
+		/// <summary>
+		/// Cached name for the 'TryEnableProceedButton' method.
+		/// </summary>
 		public static readonly StringName TryEnableProceedButton = "TryEnableProceedButton";
 
+		/// <summary>
+		/// Cached name for the 'AfterOverlayShown' method.
+		/// </summary>
 		public static readonly StringName AfterOverlayShown = "AfterOverlayShown";
 
+		/// <summary>
+		/// Cached name for the 'AfterOverlayHidden' method.
+		/// </summary>
 		public static readonly StringName AfterOverlayHidden = "AfterOverlayHidden";
 
+		/// <summary>
+		/// Cached name for the '_GuiInput' method.
+		/// </summary>
 		public new static readonly StringName _GuiInput = "_GuiInput";
 
+		/// <summary>
+		/// Cached name for the 'ProcessScrollEvent' method.
+		/// </summary>
 		public static readonly StringName ProcessScrollEvent = "ProcessScrollEvent";
 
+		/// <summary>
+		/// Cached name for the 'ProcessGuiFocus' method.
+		/// </summary>
 		public static readonly StringName ProcessGuiFocus = "ProcessGuiFocus";
 
+		/// <summary>
+		/// Cached name for the '_Process' method.
+		/// </summary>
 		public new static readonly StringName _Process = "_Process";
 
+		/// <summary>
+		/// Cached name for the 'UpdateScrollPosition' method.
+		/// </summary>
 		public static readonly StringName UpdateScrollPosition = "UpdateScrollPosition";
 
+		/// <summary>
+		/// Cached name for the 'HideWaitingForPlayersScreen' method.
+		/// </summary>
 		public static readonly StringName HideWaitingForPlayersScreen = "HideWaitingForPlayersScreen";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Control.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'CanScroll' property.
+		/// </summary>
 		public static readonly StringName CanScroll = "CanScroll";
 
+		/// <summary>
+		/// Cached name for the 'ScrollLimitBottom' property.
+		/// </summary>
 		public static readonly StringName ScrollLimitBottom = "ScrollLimitBottom";
 
+		/// <summary>
+		/// Cached name for the 'IsComplete' property.
+		/// </summary>
 		public static readonly StringName IsComplete = "IsComplete";
 
+		/// <summary>
+		/// Cached name for the 'ScreenType' property.
+		/// </summary>
 		public static readonly StringName ScreenType = "ScreenType";
 
+		/// <summary>
+		/// Cached name for the 'UseSharedBackstop' property.
+		/// </summary>
 		public static readonly StringName UseSharedBackstop = "UseSharedBackstop";
 
+		/// <summary>
+		/// Cached name for the 'DefaultFocusedControl' property.
+		/// </summary>
 		public static readonly StringName DefaultFocusedControl = "DefaultFocusedControl";
 
+		/// <summary>
+		/// Cached name for the 'FocusedControlFromTopBar' property.
+		/// </summary>
 		public static readonly StringName FocusedControlFromTopBar = "FocusedControlFromTopBar";
 
+		/// <summary>
+		/// Cached name for the '_proceedButton' field.
+		/// </summary>
 		public static readonly StringName _proceedButton = "_proceedButton";
 
+		/// <summary>
+		/// Cached name for the '_rewardsContainer' field.
+		/// </summary>
 		public static readonly StringName _rewardsContainer = "_rewardsContainer";
 
+		/// <summary>
+		/// Cached name for the '_scrollbar' field.
+		/// </summary>
 		public static readonly StringName _scrollbar = "_scrollbar";
 
+		/// <summary>
+		/// Cached name for the '_headerLabel' field.
+		/// </summary>
 		public static readonly StringName _headerLabel = "_headerLabel";
 
+		/// <summary>
+		/// Cached name for the '_rewardContainerMask' field.
+		/// </summary>
 		public static readonly StringName _rewardContainerMask = "_rewardContainerMask";
 
+		/// <summary>
+		/// Cached name for the '_waitingForOtherPlayersOverlay' field.
+		/// </summary>
 		public static readonly StringName _waitingForOtherPlayersOverlay = "_waitingForOtherPlayersOverlay";
 
+		/// <summary>
+		/// Cached name for the '_rewardsWindow' field.
+		/// </summary>
 		public static readonly StringName _rewardsWindow = "_rewardsWindow";
 
+		/// <summary>
+		/// Cached name for the '_targetDragPos' field.
+		/// </summary>
 		public static readonly StringName _targetDragPos = "_targetDragPos";
 
+		/// <summary>
+		/// Cached name for the '_scrollbarPressed' field.
+		/// </summary>
 		public static readonly StringName _scrollbarPressed = "_scrollbarPressed";
 
+		/// <summary>
+		/// Cached name for the '_fadeTween' field.
+		/// </summary>
 		public static readonly StringName _fadeTween = "_fadeTween";
 
+		/// <summary>
+		/// Cached name for the '_lastRewardFocused' field.
+		/// </summary>
 		public static readonly StringName _lastRewardFocused = "_lastRewardFocused";
 
+		/// <summary>
+		/// Cached name for the '_isTerminal' field.
+		/// </summary>
 		public static readonly StringName _isTerminal = "_isTerminal";
 
+		/// <summary>
+		/// Cached name for the '_skipDisallowed' field.
+		/// </summary>
 		public static readonly StringName _skipDisallowed = "_skipDisallowed";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Control.SignalName
 	{
+		/// <summary>
+		/// Cached name for the 'Completed' signal.
+		/// </summary>
 		public static readonly StringName Completed = "Completed";
 	}
 
@@ -154,8 +277,16 @@ public class NRewardsScreen : Control, IOverlayScreen, IScreenContext
 
 	private RewardsSet _rewardsSet;
 
+	/// <summary>
+	/// Whether this screen is the last thing you'll see in the current room.
+	///
+	/// See <see cref="M:MegaCrit.Sts2.Core.Runs.RunManager.ProceedFromTerminalRewardsScreen" /> for more info.
+	/// </summary>
 	private bool _isTerminal;
 
+	/// <summary>
+	/// If this rewards screen requires the player to take all rewards, then the skip button cannot be shown.
+	/// </summary>
 	private bool _skipDisallowed;
 
 	private static readonly LocString _waitingLoc = new LocString("gameplay_ui", "MULTIPLAYER_WAITING");
@@ -170,6 +301,10 @@ public class NRewardsScreen : Control, IOverlayScreen, IScreenContext
 
 	public static IEnumerable<string> AssetPaths => new global::_003C_003Ez__ReadOnlySingleElementList<string>(ScenePath);
 
+	/// <summary>
+	/// If the rewards screen is terminal, this is true once the player has taken all rewards or skipped them.
+	/// False if the rewards screen is not terminal or the player has not taken all rewards yet.
+	/// </summary>
 	public bool IsComplete { get; private set; }
 
 	public NetScreenType ScreenType => NetScreenType.Rewards;
@@ -200,6 +335,7 @@ public class NRewardsScreen : Control, IOverlayScreen, IScreenContext
 		}
 	}
 
+	/// <inheritdoc cref="T:MegaCrit.Sts2.Core.Nodes.Screens.NRewardsScreen.CompletedEventHandler" />
 	public event CompletedEventHandler Completed
 	{
 		add
@@ -509,6 +645,10 @@ public class NRewardsScreen : Control, IOverlayScreen, IScreenContext
 		}
 	}
 
+	/// <summary>
+	/// Detects mouse wheel up/down and updates our scroll target accordingly
+	/// </summary>
+	/// <param name="inputEvent"></param>
 	private void ProcessScrollEvent(InputEvent inputEvent)
 	{
 		_targetDragPos += new Vector2(0f, ScrollHelper.GetDragForScrollEvent(inputEvent));
@@ -560,6 +700,10 @@ public class NRewardsScreen : Control, IOverlayScreen, IScreenContext
 		}
 	}
 
+	/// <summary>
+	/// If the player attempts to skip rewards AND they have encountered less than 3 rewards, we show the Rewards FTUE to
+	/// let them know that they shouldn't skip rewards. You have to click em to get em!
+	/// </summary>
 	private async Task RewardFtueCheck()
 	{
 		_proceedButton.Hide();
@@ -575,6 +719,11 @@ public class NRewardsScreen : Control, IOverlayScreen, IScreenContext
 		_waitingForOtherPlayersOverlay.Visible = false;
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -626,6 +775,7 @@ public class NRewardsScreen : Control, IOverlayScreen, IScreenContext
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -734,6 +884,7 @@ public class NRewardsScreen : Control, IOverlayScreen, IScreenContext
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -808,6 +959,7 @@ public class NRewardsScreen : Control, IOverlayScreen, IScreenContext
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -884,6 +1036,7 @@ public class NRewardsScreen : Control, IOverlayScreen, IScreenContext
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -997,6 +1150,11 @@ public class NRewardsScreen : Control, IOverlayScreen, IScreenContext
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -1024,6 +1182,7 @@ public class NRewardsScreen : Control, IOverlayScreen, IScreenContext
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -1045,6 +1204,7 @@ public class NRewardsScreen : Control, IOverlayScreen, IScreenContext
 		info.AddSignalEventDelegate(SignalName.Completed, backing_Completed);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{
@@ -1111,6 +1271,11 @@ public class NRewardsScreen : Control, IOverlayScreen, IScreenContext
 		}
 	}
 
+	/// <summary>
+	/// Get the signal information for all the signals declared in this class.
+	/// This method is used by Godot to register the available signals in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotSignalList()
 	{
@@ -1124,6 +1289,7 @@ public class NRewardsScreen : Control, IOverlayScreen, IScreenContext
 		EmitSignal(SignalName.Completed);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RaiseGodotClassSignalCallbacks(in godot_string_name signal, NativeVariantPtrArgs args)
 	{
@@ -1137,6 +1303,7 @@ public class NRewardsScreen : Control, IOverlayScreen, IScreenContext
 		}
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassSignal(in godot_string_name signal)
 	{

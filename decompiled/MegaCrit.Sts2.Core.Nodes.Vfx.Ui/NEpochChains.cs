@@ -18,38 +18,86 @@ public class NEpochChains : TextureRect
 	[Signal]
 	public delegate void OnAnimationFinishedEventHandler();
 
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : TextureRect.MethodName
 	{
+		/// <summary>
+		/// Cached name for the 'UpdateParticles' method.
+		/// </summary>
 		public static readonly StringName UpdateParticles = "UpdateParticles";
 
+		/// <summary>
+		/// Cached name for the 'SetProperties' method.
+		/// </summary>
 		public static readonly StringName SetProperties = "SetProperties";
 
+		/// <summary>
+		/// Cached name for the 'Unlock' method.
+		/// </summary>
 		public static readonly StringName Unlock = "Unlock";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : TextureRect.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the '_duration' field.
+		/// </summary>
 		public static readonly StringName _duration = "_duration";
 
+		/// <summary>
+		/// Cached name for the '_particles' field.
+		/// </summary>
 		public static readonly StringName _particles = "_particles";
 
+		/// <summary>
+		/// Cached name for the '_endParticles' field.
+		/// </summary>
 		public static readonly StringName _endParticles = "_endParticles";
 
+		/// <summary>
+		/// Cached name for the '_particlesCurve' field.
+		/// </summary>
 		public static readonly StringName _particlesCurve = "_particlesCurve";
 
+		/// <summary>
+		/// Cached name for the '_brightEnabledCurve' field.
+		/// </summary>
 		public static readonly StringName _brightEnabledCurve = "_brightEnabledCurve";
 
+		/// <summary>
+		/// Cached name for the '_erosionEnabledCurve' field.
+		/// </summary>
 		public static readonly StringName _erosionEnabledCurve = "_erosionEnabledCurve";
 
+		/// <summary>
+		/// Cached name for the '_erosionBaseCurve' field.
+		/// </summary>
 		public static readonly StringName _erosionBaseCurve = "_erosionBaseCurve";
 
+		/// <summary>
+		/// Cached name for the '_previousParticleIndex' field.
+		/// </summary>
 		public static readonly StringName _previousParticleIndex = "_previousParticleIndex";
 
+		/// <summary>
+		/// Cached name for the '_asShaderMaterial' field.
+		/// </summary>
 		public static readonly StringName _asShaderMaterial = "_asShaderMaterial";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : TextureRect.SignalName
 	{
+		/// <summary>
+		/// Cached name for the 'OnAnimationFinished' signal.
+		/// </summary>
 		public static readonly StringName OnAnimationFinished = "OnAnimationFinished";
 	}
 
@@ -86,6 +134,7 @@ public class NEpochChains : TextureRect
 
 	private OnAnimationFinishedEventHandler backing_OnAnimationFinished;
 
+	/// <inheritdoc cref="T:MegaCrit.Sts2.Core.Nodes.Vfx.Ui.NEpochChains.OnAnimationFinishedEventHandler" />
 	public event OnAnimationFinishedEventHandler OnAnimationFinished
 	{
 		add
@@ -158,6 +207,11 @@ public class NEpochChains : TextureRect
 		EmitSignal(SignalName.OnAnimationFinished);
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -174,6 +228,7 @@ public class NEpochChains : TextureRect
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -198,6 +253,7 @@ public class NEpochChains : TextureRect
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -216,6 +272,7 @@ public class NEpochChains : TextureRect
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -267,6 +324,7 @@ public class NEpochChains : TextureRect
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -318,6 +376,11 @@ public class NEpochChains : TextureRect
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -334,6 +397,7 @@ public class NEpochChains : TextureRect
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -350,6 +414,7 @@ public class NEpochChains : TextureRect
 		info.AddSignalEventDelegate(SignalName.OnAnimationFinished, backing_OnAnimationFinished);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{
@@ -396,6 +461,11 @@ public class NEpochChains : TextureRect
 		}
 	}
 
+	/// <summary>
+	/// Get the signal information for all the signals declared in this class.
+	/// This method is used by Godot to register the available signals in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotSignalList()
 	{
@@ -409,6 +479,7 @@ public class NEpochChains : TextureRect
 		EmitSignal(SignalName.OnAnimationFinished);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RaiseGodotClassSignalCallbacks(in godot_string_name signal, NativeVariantPtrArgs args)
 	{
@@ -422,6 +493,7 @@ public class NEpochChains : TextureRect
 		}
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassSignal(in godot_string_name signal)
 	{

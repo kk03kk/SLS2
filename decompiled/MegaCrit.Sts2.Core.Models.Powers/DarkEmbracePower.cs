@@ -15,6 +15,11 @@ public sealed class DarkEmbracePower : PowerModel
 {
 	private class Data
 	{
+		/// <summary>
+		/// If Ethereal cards are exhausted at turn end, we want to give the resulting cards to the player after the
+		/// flush occurs. In STS1 this is handled because the card draws are put on the queue, but here we have to
+		/// manually defer.
+		/// </summary>
 		public int etherealCount;
 	}
 

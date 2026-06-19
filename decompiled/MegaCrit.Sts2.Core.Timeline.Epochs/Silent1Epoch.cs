@@ -5,6 +5,9 @@ using MegaCrit.Sts2.Core.Saves;
 
 namespace MegaCrit.Sts2.Core.Timeline.Epochs;
 
+/// <summary>
+/// Dance of Death
+/// </summary>
 public class Silent1Epoch : EpochModel
 {
 	public override string Id => "SILENT1_EPOCH";

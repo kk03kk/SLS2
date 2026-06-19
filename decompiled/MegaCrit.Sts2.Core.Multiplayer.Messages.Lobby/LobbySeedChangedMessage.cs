@@ -4,6 +4,9 @@ using MegaCrit.Sts2.Core.Multiplayer.Transport;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Messages.Lobby;
 
+/// <summary>
+/// Sent by the host when the overridden seed in the custom run menu changes.
+/// </summary>
 public struct LobbySeedChangedMessage : INetMessage, IPacketSerializable
 {
 	public string? seed;

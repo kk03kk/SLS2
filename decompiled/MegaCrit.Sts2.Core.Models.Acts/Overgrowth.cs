@@ -46,6 +46,10 @@ public sealed class Overgrowth : ActModel
 
 	protected override int BaseNumberOfRooms => 15;
 
+	public override int Index => 0;
+
+	public override bool IsDefault => true;
+
 	public override string[] BgMusicOptions => new string[2] { "event:/music/act1_a1_v1", "event:/music/act1_a2_v2" };
 
 	public override string[] MusicBankPaths => new string[2] { "res://banks/desktop/act1_a1.bank", "res://banks/desktop/act1_a2.bank" };
@@ -120,6 +124,11 @@ public sealed class Overgrowth : ActModel
 			RoomSet.SwapToOrCreateAtIndex<EncounterModel, ByrdonisElite>(_rooms.eliteEncounters, 0);
 			RoomSet.SwapToOrCreateAtIndex<EncounterModel, PhrogParasiteElite>(_rooms.eliteEncounters, 1);
 		}
+	}
+
+	public override bool IsUnlocked(UnlockState unlockState)
+	{
+		return true;
 	}
 
 	public override MapPointTypeCounts GetMapPointTypes(Rng mapRng)

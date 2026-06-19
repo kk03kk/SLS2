@@ -70,6 +70,10 @@ public class RunSaveManager
 		_profileIdProvider = profileIdProvider;
 	}
 
+	/// <summary>
+	/// Save a run while one is currently in progress.
+	/// </summary>
+	/// <param name="preFinishedRoom"></param>
 	public async Task SaveRun(AbstractRoom? preFinishedRoom)
 	{
 		if (RunManager.Instance.ShouldSave && (RunManager.Instance.NetService.Type == NetGameType.Singleplayer || RunManager.Instance.NetService.Type == NetGameType.Host))
@@ -79,6 +83,13 @@ public class RunSaveManager
 		}
 	}
 
+	/// <summary>
+	/// Save a run when you just have a SerializableRun field, independent of whether run manager has been set up yet.
+	/// WARNING: Only use this if you know what you are doing
+	/// This exists so we can resave a serializable run without already having a run in progress
+	/// Important for resaving SerializableRun.NumReloads right after we've started a run.
+	/// in most cases you should call the other SaveRun overload.
+	/// </summary>
 	public async Task SaveRun(SerializableRun save, bool isMultiplayer)
 	{
 		string savePath = (isMultiplayer ? CurrentMultiplayerRunSavePath : CurrentRunSavePath);
@@ -142,6 +153,12 @@ public class RunSaveManager
 		return readSaveResult;
 	}
 
+	/// <summary>
+	/// Loads the multiplayer run and canonicalizes it.
+	/// In this case, "canonicalize" means that we load the save, detect any deprecated content, and replace it with
+	/// the deprecated version of that model (e.g. <see cref="T:MegaCrit.Sts2.Core.Models.Events.DeprecatedEvent" />.)
+	/// </summary>
+	/// <param name="localPlayerId">The local player ID who is loading the save.</param>
 	public ReadSaveResult<SerializableRun> LoadAndCanonicalizeMultiplayerRunSave(ulong localPlayerId)
 	{
 		ReadSaveResult<SerializableRun> readSaveResult = LoadMultiplayerRunSave();

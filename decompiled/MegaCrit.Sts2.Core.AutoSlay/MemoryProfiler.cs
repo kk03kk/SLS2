@@ -7,6 +7,10 @@ using MegaCrit.Sts2.Core.Nodes;
 
 namespace MegaCrit.Sts2.Core.AutoSlay;
 
+/// <summary>
+/// Captures memory and resource snapshots during AutoSlay runs, logging deltas
+/// from a baseline to detect memory/resource leaks.
+/// </summary>
 public static class MemoryProfiler
 {
 	private record struct MemorySnapshot(ulong StaticMemBytes, ulong VramBytes, long GcTotalMemory, int ObjectCount, int ResourceCount, int NodeCount, int OrphanNodeCount, int CachedAssets, int MissedCacheAssets, int RootViewportSignals, int GcGen0, int GcGen1, int GcGen2);

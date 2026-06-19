@@ -5,6 +5,10 @@ using MegaCrit.Sts2.Core.Multiplayer.Transport;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Messages.Game.Checksums;
 
+/// <summary>
+/// Sent when a state divergence is detected due to the host and client checksums mismatching.
+/// First this is sent from host to client, then it is sent from client to host.
+/// </summary>
 public struct StateDivergenceMessage : INetMessage, IPacketSerializable
 {
 	public NetChecksumData senderChecksum;

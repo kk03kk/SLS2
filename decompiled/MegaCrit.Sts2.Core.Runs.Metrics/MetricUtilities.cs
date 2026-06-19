@@ -36,6 +36,14 @@ public static class MetricUtilities
 
 	private const int _runLengthThreshold = 5;
 
+	/// <summary>
+	/// Uploads run history to the metrics server.
+	/// DO NOT UPLOAD WHEN:
+	/// - Abandon
+	/// - Not a release build
+	/// - The run ended before floor 5 (these are invalid runs)
+	/// For multiplayer runs, each individual player uploads their individual metrics.
+	/// </summary>
 	public static void UploadRunMetrics(SerializableRun run, bool isVictory, ulong localPlayerId)
 	{
 		try
@@ -226,6 +234,12 @@ public static class MetricUtilities
 		}
 	}
 
+	/// <summary>
+	/// Uploads a player's Settings preferences and Graphics info.
+	/// This is only uploaded a single time, at the end of their 5th run. This allows
+	/// players to have a chance to play and figure out which settings they want to use.
+	/// This info is used to figure out which options and display settings are frequently used.
+	/// </summary>
 	public static void UploadSettingsMetric()
 	{
 		if (ShouldUploadMetrics())

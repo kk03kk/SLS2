@@ -15,6 +15,11 @@ namespace MegaCrit.Sts2.Core.Commands;
 
 public static class OrbCmd
 {
+	/// <summary>
+	/// Add orb slots to a creature.
+	/// </summary>
+	/// <param name="player">Player to add orb slots to.</param>
+	/// <param name="amount">Number of orb slots to add.</param>
 	public static Task AddSlots(Player player, int amount)
 	{
 		if (CombatManager.Instance.IsOverOrEnding)
@@ -27,6 +32,12 @@ public static class OrbCmd
 		return Task.CompletedTask;
 	}
 
+	/// <summary>
+	/// Remove orb slots from the creature. Starts from the back of the list.
+	/// Orb slots with orbs already in them are also removed.
+	/// </summary>
+	/// <param name="player">Player to remove orb slots from.</param>
+	/// <param name="amount">Number of orb slots to remove.</param>
 	public static void RemoveSlots(Player player, int amount)
 	{
 		if (!CombatManager.Instance.IsOverOrEnding)
@@ -37,11 +48,23 @@ public static class OrbCmd
 		}
 	}
 
+	/// <summary>
+	/// Channel an orb of the specified type.
+	/// </summary>
+	/// <param name="choiceContext">The context with which to handle player choices.</param>
+	/// <param name="player">Player who is channeling the orb.</param>
+	/// <typeparam name="T">Type of orb to channel.</typeparam>
 	public static async Task Channel<T>(PlayerChoiceContext choiceContext, Player player) where T : OrbModel
 	{
 		await Channel(choiceContext, ModelDb.Orb<T>().ToMutable(), player);
 	}
 
+	/// <summary>
+	/// Channel an orb.
+	/// </summary>
+	/// <param name="choiceContext">The context with which to handle player choices.</param>
+	/// <param name="orb">Orb to channel.</param>
+	/// <param name="player">Player who is channeling the orb.</param>
 	public static async Task Channel(PlayerChoiceContext choiceContext, OrbModel orb, Player player)
 	{
 		if (!CombatManager.Instance.IsOverOrEnding)
@@ -92,6 +115,13 @@ public static class OrbCmd
 		}
 	}
 
+	/// <summary>
+	/// Evoke the orb.
+	/// </summary>
+	/// <param name="choiceContext">The context with which to handle player choices.</param>
+	/// <param name="player">Player whose next orb we're evoking.</param>
+	/// <param name="evokedOrb">orb being evoked.</param>
+	/// <param name="dequeue">Whether or not to dequeue the orb from the creature's orb queue after evoking (usually true).</param>
 	private static async Task Evoke(PlayerChoiceContext choiceContext, Player player, OrbModel evokedOrb, bool dequeue = true)
 	{
 		if (CombatManager.Instance.IsOverOrEnding)

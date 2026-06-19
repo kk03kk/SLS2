@@ -11,6 +11,11 @@ using MegaCrit.Sts2.Core.Runs;
 
 namespace MegaCrit.Sts2.Core.GameActions;
 
+/// <summary>
+/// Represents the result of a choice that the player makes while playing a card or using a potion. For example, it
+/// could contain the choice of card to discard during a Survivor play, or the choice of card to add to hand at the
+/// beginning of combat from Toolbox.
+/// </summary>
 public class PlayerChoiceResult
 {
 	private List<CardModel>? _canonicalCards;
@@ -271,6 +276,11 @@ public class PlayerChoiceResult
 		};
 	}
 
+	/// <summary>
+	/// Returns the selection assuming that it was a single canonical card.
+	/// Will be null if the player skipped the choice.
+	/// </summary>
+	/// <exception cref="T:System.InvalidOperationException">Thrown if the selection was not a canonical card.</exception>
 	public CardModel? AsCanonicalCard()
 	{
 		if (ChoiceType != PlayerChoiceType.CanonicalCard)
@@ -280,6 +290,10 @@ public class PlayerChoiceResult
 		return _canonicalCards.FirstOrDefault();
 	}
 
+	/// <summary>
+	/// Returns the selection assuming that it was a collection of canonical cards.
+	/// </summary>
+	/// <exception cref="T:System.InvalidOperationException">Thrown if the selection was not a collection of combat cards.</exception>
 	public IEnumerable<CardModel> AsCanonicalCards()
 	{
 		if (ChoiceType != PlayerChoiceType.CanonicalCard)
@@ -289,6 +303,10 @@ public class PlayerChoiceResult
 		return _canonicalCards;
 	}
 
+	/// <summary>
+	/// Returns the selection assuming that it was a collection of combat cards.
+	/// </summary>
+	/// <exception cref="T:System.InvalidOperationException">Thrown if the selection was not a collection of combat cards.</exception>
 	public IEnumerable<CardModel> AsCombatCards()
 	{
 		if (ChoiceType != PlayerChoiceType.CombatCard)
@@ -298,6 +316,10 @@ public class PlayerChoiceResult
 		return _combatCards;
 	}
 
+	/// <summary>
+	/// Returns the selection assuming that it was a collection of deck cards.
+	/// </summary>
+	/// <exception cref="T:System.InvalidOperationException">Thrown if the selection was not a collection of deck cards.</exception>
 	public IEnumerable<CardModel> AsDeckCards()
 	{
 		if (ChoiceType != PlayerChoiceType.DeckCard)
@@ -307,6 +329,11 @@ public class PlayerChoiceResult
 		return _deckCards;
 	}
 
+	/// <summary>
+	/// Returns the selection assuming that it was a single mutable card without owner.
+	/// Will be null if the player skipped the choice.
+	/// </summary>
+	/// <exception cref="T:System.InvalidOperationException">Thrown if the selection was not a mutable card without owner.</exception>
 	public CardModel? AsMutableCard()
 	{
 		if (ChoiceType != PlayerChoiceType.MutableCard)
@@ -316,6 +343,10 @@ public class PlayerChoiceResult
 		return _mutableCards.FirstOrDefault();
 	}
 
+	/// <summary>
+	/// Returns the selection assuming that it was a collection of mutable cards without owners.
+	/// </summary>
+	/// <exception cref="T:System.InvalidOperationException">Thrown if the selection was not a collection of mutable cards without owners.</exception>
 	public IEnumerable<CardModel> AsMutableCards()
 	{
 		if (ChoiceType != PlayerChoiceType.MutableCard)
@@ -325,6 +356,11 @@ public class PlayerChoiceResult
 		return _mutableCards;
 	}
 
+	/// <summary>
+	/// Returns a set of card models based on the type passed.
+	/// </summary>
+	/// <param name="type">The type of selection that the remote player chose.</param>
+	/// <exception cref="T:System.InvalidOperationException">Thrown if the selection was not of the passed type.</exception>
 	public IEnumerable<CardModel> AsCards(PlayerChoiceType type)
 	{
 		if (ChoiceType != type)
@@ -341,6 +377,10 @@ public class PlayerChoiceResult
 		};
 	}
 
+	/// <summary>
+	/// Returns the selection assuming that it is a player.
+	/// </summary>
+	/// <exception cref="T:System.InvalidOperationException">Thrown if the selection was not a player.</exception>
 	public ulong? AsPlayerId()
 	{
 		if (ChoiceType != PlayerChoiceType.Player)
@@ -350,6 +390,10 @@ public class PlayerChoiceResult
 		return _playerId;
 	}
 
+	/// <summary>
+	/// Returns the selection assuming that it is a non-null index.
+	/// </summary>
+	/// <exception cref="T:System.InvalidOperationException">Thrown if the selection was not an index.</exception>
 	public int AsIndex()
 	{
 		if (ChoiceType != PlayerChoiceType.Index)
@@ -359,6 +403,10 @@ public class PlayerChoiceResult
 		return _indexes?.FirstOrDefault() ?? (-1);
 	}
 
+	/// <summary>
+	/// Returns the selection as an index, or null if there is no index.
+	/// </summary>
+	/// <exception cref="T:System.InvalidOperationException">Thrown if the selection was not an index.</exception>
 	public int? AsIndexOrNull()
 	{
 		if (ChoiceType != PlayerChoiceType.Index)
@@ -373,6 +421,10 @@ public class PlayerChoiceResult
 		return _indexes[0];
 	}
 
+	/// <summary>
+	/// Returns the selection assuming that it is a list of indexes.
+	/// </summary>
+	/// <exception cref="T:System.InvalidOperationException">Thrown if the selection was not a list of indexes.</exception>
 	public List<int> AsIndexes()
 	{
 		if (ChoiceType != PlayerChoiceType.Index)
@@ -382,6 +434,13 @@ public class PlayerChoiceResult
 		return _indexes;
 	}
 
+	/// <summary>
+	/// Generates a player choice result from a serialized network data.
+	/// Remember that player choices may involve cards that are created within combat! For example, if a remote player
+	/// plays a Survivor which discards a Shiv that was just created using a Blade Dance, it is possible to receive an
+	/// exception from this method if it is called at a point before the Shiv was created. It is the responsibility of
+	/// the caller to ensure that this is not the case.
+	/// </summary>
 	public static PlayerChoiceResult FromNetData(Player sender, IPlayerCollection players, NetPlayerChoiceResult netData)
 	{
 		PlayerChoiceResult playerChoiceResult = new PlayerChoiceResult

@@ -99,6 +99,9 @@ public static class SfxCmd
 		}
 	}
 
+	/// <summary>
+	/// Plays the correct swoosh sfx depending on the pile the carf came from and is going to
+	/// </summary>
 	public static void PlayCardSwooshSfx(CardPile currentPile, CardPile? prevPile = null)
 	{
 		if (currentPile.Type == PileType.Draw)

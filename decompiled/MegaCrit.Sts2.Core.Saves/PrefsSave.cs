@@ -3,8 +3,17 @@ using MegaCrit.Sts2.Core.Settings;
 
 namespace MegaCrit.Sts2.Core.Saves;
 
+/// <summary>
+/// This class serves as a schema for the Preferences save file.
+/// It's used for serializing and deserializing data in the options screen.
+/// This file is synced across devices/platforms.
+/// It is also scoped per-profile.
+/// </summary>
 public class PrefsSave : ISaveSchema
 {
+	/// <summary>
+	/// The schema version of this save.
+	/// </summary>
 	[JsonPropertyName("schema_version")]
 	public int SchemaVersion { get; set; }
 

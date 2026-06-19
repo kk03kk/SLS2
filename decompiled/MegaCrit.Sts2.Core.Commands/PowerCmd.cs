@@ -16,6 +16,23 @@ namespace MegaCrit.Sts2.Core.Commands;
 
 public static class PowerCmd
 {
+	/// <summary>
+	/// Apply a power to multiple creatures.
+	/// </summary>
+	/// <param name="choiceContext">The context that is signalled in the event of a player choice.</param>
+	/// <param name="targets">Creatures to apply the power to.</param>
+	/// <param name="amount">Amount of the power to apply.</param>
+	/// <param name="applier">Creature applying the power.</param>
+	/// <param name="cardSource">Optional card that is applying the power.</param>
+	/// <param name="silent">Pass true if no flashes should play for this power application.</param>
+	/// <typeparam name="T">Type of power to apply.</typeparam>
+	/// <returns>
+	/// The power that was applied.
+	/// Can be null if:
+	/// * Combat is over.
+	/// * Something blocked application (like Artifact).
+	/// * The power's amount was changed to 0 (like if you had 3 Strength and applied -3 Strength).
+	/// </returns>
 	public static async Task<IReadOnlyList<T>> Apply<T>(PlayerChoiceContext choiceContext, IEnumerable<Creature> targets, decimal amount, Creature? applier, CardModel? cardSource, bool silent = false) where T : PowerModel
 	{
 		List<T> powers = new List<T>();
@@ -30,6 +47,23 @@ public static class PowerCmd
 		return powers;
 	}
 
+	/// <summary>
+	/// Apply a power to a creature.
+	/// </summary>
+	/// <param name="choiceContext">The context that is signalled in the event of a player choice.</param>
+	/// <param name="target">Creature to apply the power to.</param>
+	/// <param name="amount">Amount of the power to apply.</param>
+	/// <param name="applier">Creature applying the power.</param>
+	/// <param name="cardSource">Optional card that is applying the power.</param>
+	/// <param name="silent">Pass true if no flashes should play for this power application.</param>
+	/// <typeparam name="T">Type of power to apply.</typeparam>
+	/// <returns>
+	/// The power that was applied.
+	/// Can be null if:
+	/// * Combat is over.
+	/// * Something blocked application (like Artifact).
+	/// * The power's amount was changed to 0 (like if you had 3 Strength and applied -3 Strength).
+	/// </returns>
 	public static async Task<T?> Apply<T>(PlayerChoiceContext choiceContext, Creature target, decimal amount, Creature? applier, CardModel? cardSource, bool silent = false) where T : PowerModel
 	{
 		if (CombatManager.Instance.IsEnding)
@@ -54,6 +88,16 @@ public static class PowerCmd
 		return power as T;
 	}
 
+	/// <summary>
+	/// Apply a power to a creature.
+	/// </summary>
+	/// <param name="choiceContext">The context that is signalled in the event of a player choice.</param>
+	/// <param name="power">Power to apply.</param>
+	/// <param name="target">Creature to apply the power to.</param>
+	/// <param name="amount">Amount of the power to apply.</param>
+	/// <param name="applier">Creature applying the power.</param>
+	/// <param name="cardSource">Optional card that is applying the power.</param>
+	/// <param name="silent">Pass true if no flashes should play for this power application.</param>
 	public static async Task Apply(PlayerChoiceContext choiceContext, PowerModel power, Creature target, decimal amount, Creature? applier, CardModel? cardSource, bool silent = false)
 	{
 		if (CombatManager.Instance.IsEnding || amount == 0m || !target.CanReceivePowers)
@@ -114,6 +158,10 @@ public static class PowerCmd
 		}
 	}
 
+	/// <summary>
+	/// Looks for a valid existing instance for a given power within the target
+	///  for the sake of adjusting the amount on them.
+	/// </summary>
 	public static PowerModel? FindExistingInstanceForStacking(PowerModel basePower, Creature target, Creature? applier)
 	{
 		return basePower.InstanceType switch
@@ -125,11 +173,20 @@ public static class PowerCmd
 		};
 	}
 
+	/// <summary>
+	/// Decrement the amount of a power by 1.
+	/// </summary>
+	/// <param name="power">Power to decrement.</param>
 	public static async Task Decrement(PowerModel power)
 	{
 		await ModifyAmount(new ThrowingPlayerChoiceContext(), power, -1m, null, null);
 	}
 
+	/// <summary>
+	/// Tick down the amount of a duration-based power (Vulnerable, Weak, etc.).
+	/// Similar to Decrement, but respects some extra rules about turn ordering.
+	/// </summary>
+	/// <param name="power">Power to tick down.</param>
 	public static async Task TickDownDuration(PowerModel power)
 	{
 		if (power.SkipNextDurationTick)
@@ -142,6 +199,19 @@ public static class PowerCmd
 		}
 	}
 
+	/// <summary>
+	/// Modify the amount of a power.
+	/// </summary>
+	/// <param name="choiceContext">The context that is signalled in the event of a player choice.</param>
+	/// <param name="power">Power to modify.</param>
+	/// <param name="offset">Amount to modify it by (can be positive or negative).</param>
+	/// <param name="applier">Creature applying the power.</param>
+	/// <param name="cardSource">Optional card that is modifying the power amount.</param>
+	/// <param name="silent">Pass true if no flashes should play for this power application.</param>
+	/// <returns>
+	/// The new amount of the power.
+	/// For example, if you have 1 Strength and modify it by 3, this will return 4.
+	/// </returns>
 	public static async Task<int> ModifyAmount(PlayerChoiceContext choiceContext, PowerModel power, decimal offset, Creature? applier, CardModel? cardSource, bool silent = false)
 	{
 		if (CombatManager.Instance.IsEnding)
@@ -200,11 +270,20 @@ public static class PowerCmd
 		return newAmount;
 	}
 
+	/// <summary>
+	/// Remove a power.
+	/// </summary>
+	/// <param name="creature">Creature to remove the power from.</param>
+	/// <typeparam name="T">Type of power to remove.</typeparam>
 	public static async Task Remove<T>(Creature creature) where T : PowerModel
 	{
 		await Remove(creature.GetPower<T>());
 	}
 
+	/// <summary>
+	/// Remove a power.
+	/// </summary>
+	/// <param name="power">Power to remove.</param>
 	public static async Task Remove(PowerModel? power)
 	{
 		if (power != null)

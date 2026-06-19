@@ -10,6 +10,10 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace MegaCrit.Sts2.Core.Models.Powers.Mocks;
 
+/// <summary>
+/// Test-only power that records <see cref="P:MegaCrit.Sts2.Core.Entities.Players.PlayerCombatState.Phase" /> at the moment each turn lifecycle hook fires.
+/// Tests should call <see cref="M:MegaCrit.Sts2.Core.Models.Powers.Mocks.MockPhaseObserverPower.ResetObservations" /> before each scenario and read <see cref="P:MegaCrit.Sts2.Core.Models.Powers.Mocks.MockPhaseObserverPower.Observations" /> after.
+/// </summary>
 public sealed class MockPhaseObserverPower : PowerModel
 {
 	public override PowerType Type => PowerType.Buff;
@@ -18,6 +22,10 @@ public sealed class MockPhaseObserverPower : PowerModel
 
 	public static List<(string Hook, PlayerTurnPhase Phase)> Observations { get; } = new List<(string, PlayerTurnPhase)>();
 
+	/// <summary>
+	/// Optional callback invoked during <see cref="M:MegaCrit.Sts2.Core.Models.Powers.Mocks.MockPhaseObserverPower.Record(System.String,MegaCrit.Sts2.Core.Entities.Players.Player)" />. Useful for multiplayer tests that need to
+	/// inspect other players' phases at the moment a hook fires.
+	/// </summary>
 	public static Action<string, Player>? OnRecordCallback { get; set; }
 
 	public static void ResetObservations()

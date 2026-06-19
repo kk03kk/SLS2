@@ -11,6 +11,12 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace MegaCrit.Sts2.Core.Combat.History;
 
+/// <summary>
+/// A history of most events that have happened in combat.
+/// Each entry should be logged immediately after the event occurs, but before its AfterX hook is executed.
+/// For example, a CardPlayedEntry is logged immediately after the card is played, but before AfterCardPlayed is
+/// executed.
+/// </summary>
 public class CombatHistory
 {
 	private readonly List<CombatHistoryEntry> _entries = new List<CombatHistoryEntry>();

@@ -41,6 +41,10 @@ public sealed class Bombardment : CardModel
 			.Execute(choiceContext);
 	}
 
+	/// <remarks>
+	/// We use Early here to prevent it from double-triggering if another auto-pre-play phase effect (like
+	/// <see cref="T:MegaCrit.Sts2.Core.Models.Powers.MayhemPower" />) also causes it to Exhaust.
+	/// </remarks>
 	public override async Task AfterAutoPrePlayPhaseEnteredEarly(PlayerChoiceContext choiceContext, Player player)
 	{
 		CardPile? pile = base.Pile;

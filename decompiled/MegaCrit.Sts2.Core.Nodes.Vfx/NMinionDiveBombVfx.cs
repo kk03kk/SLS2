@@ -21,66 +21,156 @@ namespace MegaCrit.Sts2.Core.Nodes.Vfx;
 [ScriptPath("res://src/Core/Nodes/Vfx/NMinionDiveBombVfx.cs")]
 public class NMinionDiveBombVfx : Node2D
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Node2D.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 
+		/// <summary>
+		/// Cached name for the 'Create' method.
+		/// </summary>
 		public static readonly StringName Create = "Create";
 
+		/// <summary>
+		/// Cached name for the 'Initialize' method.
+		/// </summary>
 		public static readonly StringName Initialize = "Initialize";
 
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the 'SetMinionVisible' method.
+		/// </summary>
 		public static readonly StringName SetMinionVisible = "SetMinionVisible";
 
+		/// <summary>
+		/// Cached name for the 'UpdateMinionSprite' method.
+		/// </summary>
 		public static readonly StringName UpdateMinionSprite = "UpdateMinionSprite";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Node2D.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'SourceFinalPosition' property.
+		/// </summary>
 		public static readonly StringName SourceFinalPosition = "SourceFinalPosition";
 
+		/// <summary>
+		/// Cached name for the 'DestinationFinalPosition' property.
+		/// </summary>
 		public static readonly StringName DestinationFinalPosition = "DestinationFinalPosition";
 
+		/// <summary>
+		/// Cached name for the '_minionSprite' field.
+		/// </summary>
 		public static readonly StringName _minionSprite = "_minionSprite";
 
+		/// <summary>
+		/// Cached name for the '_minionTextures' field.
+		/// </summary>
 		public static readonly StringName _minionTextures = "_minionTextures";
 
+		/// <summary>
+		/// Cached name for the '_minionAnimator' field.
+		/// </summary>
 		public static readonly StringName _minionAnimator = "_minionAnimator";
 
+		/// <summary>
+		/// Cached name for the '_minionAnimations' field.
+		/// </summary>
 		public static readonly StringName _minionAnimations = "_minionAnimations";
 
+		/// <summary>
+		/// Cached name for the '_minionVfx' field.
+		/// </summary>
 		public static readonly StringName _minionVfx = "_minionVfx";
 
+		/// <summary>
+		/// Cached name for the '_fallingTrail' field.
+		/// </summary>
 		public static readonly StringName _fallingTrail = "_fallingTrail";
 
+		/// <summary>
+		/// Cached name for the '_fallingVfx' field.
+		/// </summary>
 		public static readonly StringName _fallingVfx = "_fallingVfx";
 
+		/// <summary>
+		/// Cached name for the '_impactVfx' field.
+		/// </summary>
 		public static readonly StringName _impactVfx = "_impactVfx";
 
+		/// <summary>
+		/// Cached name for the '_flightTime' field.
+		/// </summary>
 		public static readonly StringName _flightTime = "_flightTime";
 
+		/// <summary>
+		/// Cached name for the '_fallingVfxEntryTime' field.
+		/// </summary>
 		public static readonly StringName _fallingVfxEntryTime = "_fallingVfxEntryTime";
 
+		/// <summary>
+		/// Cached name for the '_horizontalCurve' field.
+		/// </summary>
 		public static readonly StringName _horizontalCurve = "_horizontalCurve";
 
+		/// <summary>
+		/// Cached name for the '_verticalCurve' field.
+		/// </summary>
 		public static readonly StringName _verticalCurve = "_verticalCurve";
 
+		/// <summary>
+		/// Cached name for the '_textureCurve' field.
+		/// </summary>
 		public static readonly StringName _textureCurve = "_textureCurve";
 
+		/// <summary>
+		/// Cached name for the '_maxHeight' field.
+		/// </summary>
 		public static readonly StringName _maxHeight = "_maxHeight";
 
+		/// <summary>
+		/// Cached name for the '_sourceOffset' field.
+		/// </summary>
 		public static readonly StringName _sourceOffset = "_sourceOffset";
 
+		/// <summary>
+		/// Cached name for the '_destinationOffset' field.
+		/// </summary>
 		public static readonly StringName _destinationOffset = "_destinationOffset";
 
+		/// <summary>
+		/// Cached name for the '_previousIndex' field.
+		/// </summary>
 		public static readonly StringName _previousIndex = "_previousIndex";
 
+		/// <summary>
+		/// Cached name for the '_sourcePosition' field.
+		/// </summary>
 		public static readonly StringName _sourcePosition = "_sourcePosition";
 
+		/// <summary>
+		/// Cached name for the '_destinationPosition' field.
+		/// </summary>
 		public static readonly StringName _destinationPosition = "_destinationPosition";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Node2D.SignalName
 	{
 	}
@@ -263,6 +353,11 @@ public class NMinionDiveBombVfx : Node2D
 		this.QueueFreeSafely();
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -290,6 +385,7 @@ public class NMinionDiveBombVfx : Node2D
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -343,6 +439,7 @@ public class NMinionDiveBombVfx : Node2D
 		return false;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -373,6 +470,7 @@ public class NMinionDiveBombVfx : Node2D
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -474,6 +572,7 @@ public class NMinionDiveBombVfx : Node2D
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -588,6 +687,11 @@ public class NMinionDiveBombVfx : Node2D
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -616,6 +720,7 @@ public class NMinionDiveBombVfx : Node2D
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -641,6 +746,7 @@ public class NMinionDiveBombVfx : Node2D
 		info.AddProperty(PropertyName._destinationPosition, Variant.From(in _destinationPosition));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

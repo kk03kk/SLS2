@@ -83,6 +83,9 @@ public sealed class TwoTailedRat : MonsterModel
 		}
 	}
 
+	/// <summary>
+	/// Track how many times call for backup has happened this combat. This is so we can limit it to 3.
+	/// </summary>
 	public int CallForBackupCount
 	{
 		get

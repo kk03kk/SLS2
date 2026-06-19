@@ -18,32 +18,71 @@ namespace MegaCrit.Sts2.Core.Nodes.Potions;
 [ScriptPath("res://src/Core/Nodes/Potions/NPotion.cs")]
 public class NPotion : Control
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Control.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 
+		/// <summary>
+		/// Cached name for the 'Reload' method.
+		/// </summary>
 		public static readonly StringName Reload = "Reload";
 
+		/// <summary>
+		/// Cached name for the 'DoFlash' method.
+		/// </summary>
 		public static readonly StringName DoFlash = "DoFlash";
 
+		/// <summary>
+		/// Cached name for the 'DoBounce' method.
+		/// </summary>
 		public static readonly StringName DoBounce = "DoBounce";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Control.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'Image' property.
+		/// </summary>
 		public static readonly StringName Image = "Image";
 
+		/// <summary>
+		/// Cached name for the 'Outline' property.
+		/// </summary>
 		public static readonly StringName Outline = "Outline";
 
+		/// <summary>
+		/// Cached name for the '_container' field.
+		/// </summary>
 		public static readonly StringName _container = "_container";
 
+		/// <summary>
+		/// Cached name for the '_bounceTween' field.
+		/// </summary>
 		public static readonly StringName _bounceTween = "_bounceTween";
 
+		/// <summary>
+		/// Cached name for the '_obtainedTween' field.
+		/// </summary>
 		public static readonly StringName _obtainedTween = "_obtainedTween";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Control.SignalName
 	{
 	}
@@ -89,6 +128,10 @@ public class NPotion : Control
 		}
 	}
 
+	/// <summary>
+	/// Create an instance of the node.
+	/// Null if we're in test mode.
+	/// </summary>
 	public static NPotion? Create(PotionModel potion)
 	{
 		if (TestMode.IsOn)
@@ -180,6 +223,11 @@ public class NPotion : Control
 		_bounceTween.TweenProperty(_container, "position:y", 0f, 0.125).SetEase(Tween.EaseType.In).SetTrans(Tween.TransitionType.Sine);
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -192,6 +240,7 @@ public class NPotion : Control
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -228,6 +277,7 @@ public class NPotion : Control
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -254,6 +304,7 @@ public class NPotion : Control
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -285,6 +336,7 @@ public class NPotion : Control
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -319,6 +371,11 @@ public class NPotion : Control
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -331,6 +388,7 @@ public class NPotion : Control
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -342,6 +400,7 @@ public class NPotion : Control
 		info.AddProperty(PropertyName._obtainedTween, Variant.From(in _obtainedTween));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

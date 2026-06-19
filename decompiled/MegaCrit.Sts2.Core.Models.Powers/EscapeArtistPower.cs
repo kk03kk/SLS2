@@ -9,6 +9,9 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace MegaCrit.Sts2.Core.Models.Powers;
 
+/// <summary>
+/// Just a visual timer for when <see cref="T:MegaCrit.Sts2.Core.Models.Monsters.ThievingHopper" /> will escape.
+/// </summary>
 public sealed class EscapeArtistPower : PowerModel
 {
 	public override PowerType Type => PowerType.Buff;

@@ -15,40 +15,98 @@ using MegaCrit.Sts2.Core.Runs;
 
 namespace MegaCrit.Sts2.Core.Combat;
 
+/// <summary>
+/// An object containing all of the state that represents the current combat.
+///
+/// Some state details are derived from higher-level objects. For example:
+/// * All players in the combat state are derived by checking the Player property of all the creatures.
+/// * All cards in the combat state are derived by checking the combat piles of all those players.
+/// </summary>
 public class CombatState : ICombatState, ICardScope
 {
 	private readonly List<Creature> _allies = new List<Creature>();
 
 	private readonly List<Creature> _enemies = new List<Creature>();
 
+	/// <summary>
+	/// This is the ID that will be assigned to the next spawned creature's CombatId field.
+	/// If we receive an action targeting a creature with an ID less than this one, then it must either be in the creature
+	/// list or it had died at some point in the past.
+	/// If we receive an action targeting a creature with an ID greater than or equal to this one, then it has yet to
+	/// spawn (or there is some other error).
+	/// </summary>
 	private uint _nextCreatureId;
 
 	private readonly EncounterModel? _encounter;
 
 	private readonly List<Creature> _escapedCreatures = new List<Creature>();
 
+	/// <summary>
+	/// All cards that have been created within this state.
+	/// This allows us to keep track of "floating" cards that have not been added to any piles (like fake cards in
+	/// upgrade previews).
+	/// </summary>
 	private readonly List<CardModel> _allCards = new List<CardModel>();
 
+	/// <summary>
+	/// The state of the run that this combat exists in.
+	/// Will be <see cref="P:MegaCrit.Sts2.Core.Combat.CombatState.RunState" /> in gameplay and <see cref="T:MegaCrit.Sts2.Core.Runs.NullRunState" /> in some test/debug scenarios.
+	/// </summary>
 	public IRunState RunState { get; }
 
+	/// <summary>
+	/// Get all creatures on the Allies side.
+	/// </summary>
 	public IReadOnlyList<Creature> Allies => _allies;
 
+	/// <summary>
+	/// Get all creatures on the Enemies side.
+	/// </summary>
 	public IReadOnlyList<Creature> Enemies => _enemies;
 
+	/// <summary>
+	/// Get all creatures in the combat on all sides.
+	/// </summary>
 	public IReadOnlyList<Creature> Creatures => _allies.Concat(_enemies).ToList();
 
+	/// <summary>
+	/// Get all the player creatures in the combat.
+	/// </summary>
 	public IReadOnlyList<Creature> PlayerCreatures => Creatures.Where((Creature c) => c.IsPlayer).ToList();
 
+	/// <summary>
+	/// Get all players in the combat.
+	/// </summary>
 	public IReadOnlyList<Player> Players => PlayerCreatures.Select((Creature c) => c.Player).ToList();
 
+	/// <summary>
+	/// List of custom modifiers applied to this combat, usually via daily or custom runs.
+	/// </summary>
 	public IReadOnlyList<ModifierModel> Modifiers { get; }
 
+	/// <summary>
+	/// List badge models, used when unlocking badges.
+	/// </summary>
 	public IReadOnlyList<BadgeModel> BadgeModels { get; }
 
+	/// <summary>
+	/// The model used to scale various things (block, power application) in multiplayer.
+	/// </summary>
 	public MultiplayerScalingModel? MultiplayerScalingModel { get; private set; }
 
+	/// <summary>
+	/// The round of combat that we're on in this combat.
+	/// A "round" encompasses both the player's turn and the enemy's turn.
+	/// This starts at 1, so it should never be 0.
+	/// </summary>
 	public int RoundNumber { get; set; }
 
+	/// <summary>
+	/// The side that is active in this combat.
+	/// A round starts with the player side being active, then switches to the enemy side after all players have ended
+	/// their turn.
+	/// When the enemy turn ends, the current side changes back to the player side, and the round number is incremented.
+	/// </summary>
 	public CombatSide CurrentSide { get; set; }
 
 	public EncounterModel? Encounter
@@ -64,12 +122,31 @@ public class CombatState : ICombatState, ICardScope
 		}
 	}
 
+	/// <summary>
+	/// A list of creatures that escaped (were removed without dying) during the encounter. Used when rewards are given.
+	/// </summary>
 	public IReadOnlyList<Creature> EscapedCreatures => _escapedCreatures;
 
+	/// <summary>
+	/// Get all the creatures on the currently-active side.
+	/// </summary>
 	public IReadOnlyList<Creature> CreaturesOnCurrentSide => GetCreaturesOnSide(CurrentSide);
 
+	/// <summary>
+	/// Get all hittable enemies.
+	/// See <see cref="P:MegaCrit.Sts2.Core.Entities.Creatures.Creature.IsHittable" /> for a definition.
+	///
+	/// NOTE: We shouldn't add too many methods like this, this one is just extremely common because it's used for AOE
+	/// and random attack targeting.
+	/// </summary>
 	public IReadOnlyList<Creature> HittableEnemies => Enemies.Where((Creature e) => e.IsHittable).ToList();
 
+	/// <summary>
+	/// Fired whenever the arrangement of creatures in the combat changes. Specifically, when:
+	/// * A creature is added.
+	/// * A creature is removed.
+	/// * A creature's index changes.
+	/// </summary>
 	public event Action<ICombatState>? CreaturesChanged;
 
 	public CombatState(EncounterModel? encounter = null, IRunState? runState = null, IReadOnlyList<ModifierModel>? modifiers = null, IReadOnlyList<BadgeModel>? badgeModels = null, MultiplayerScalingModel? multiplayerScalingModel = null)
@@ -84,11 +161,17 @@ public class CombatState : ICombatState, ICardScope
 		MultiplayerScalingModel = multiplayerScalingModel;
 	}
 
+	/// <summary>
+	/// See <see cref="M:MegaCrit.Sts2.Core.Runs.ICardScope.CreateCard``1(MegaCrit.Sts2.Core.Entities.Players.Player)" />.
+	/// </summary>
 	public T CreateCard<T>(Player owner) where T : CardModel
 	{
 		return (T)CreateCard(ModelDb.Card<T>(), owner);
 	}
 
+	/// <summary>
+	/// See <see cref="M:MegaCrit.Sts2.Core.Runs.ICardScope.CreateCard(MegaCrit.Sts2.Core.Models.CardModel,MegaCrit.Sts2.Core.Entities.Players.Player)" />.
+	/// </summary>
 	public CardModel CreateCard(CardModel canonicalCard, Player owner)
 	{
 		CardModel cardModel = canonicalCard.ToMutable();
@@ -97,6 +180,11 @@ public class CombatState : ICombatState, ICardScope
 		return cardModel;
 	}
 
+	/// <summary>
+	/// WARNING: If you're specifically intending to create a clone in combat for an effect like <see cref="T:MegaCrit.Sts2.Core.Models.Cards.DualWield" />,
+	/// you should use <see cref="M:MegaCrit.Sts2.Core.Models.CardModel.CreateClone" /> instead.
+	/// See <see cref="M:MegaCrit.Sts2.Core.Runs.ICardScope.CloneCard(MegaCrit.Sts2.Core.Models.CardModel)" />.
+	/// </summary>
 	public CardModel CloneCard(CardModel mutableCard)
 	{
 		CardModel cardModel = (CardModel)mutableCard.ClonePreservingMutability();
@@ -104,6 +192,9 @@ public class CombatState : ICombatState, ICardScope
 		return cardModel;
 	}
 
+	/// <summary>
+	/// See <see cref="M:MegaCrit.Sts2.Core.Runs.ICardScope.AddCard(MegaCrit.Sts2.Core.Models.CardModel,MegaCrit.Sts2.Core.Entities.Players.Player)" />.
+	/// </summary>
 	public void AddCard(CardModel card, Player owner)
 	{
 		card.Owner = owner;
@@ -116,17 +207,28 @@ public class CombatState : ICombatState, ICardScope
 		card.Owner = null;
 	}
 
+	/// <summary>
+	/// Does this state contain the specified card?
+	/// </summary>
 	public bool ContainsCard(CardModel card)
 	{
 		return _allCards.Contains(card);
 	}
 
+	/// <summary>
+	/// Add a player's creature on the Allies side.
+	/// </summary>
 	public void AddPlayer(Player player)
 	{
 		AttachCreature(player.Creature);
 		AddCreature(player.Creature);
 	}
 
+	/// <summary>
+	/// Creates a new creature from a monster in this combat state.
+	/// After you create the creature, you should call AddCreature to add it to combat. This can be done immediately
+	/// or after some time.
+	/// </summary>
 	public Creature CreateCreature(MonsterModel monster, CombatSide side, string? slot)
 	{
 		monster.AssertMutable();
@@ -144,6 +246,13 @@ public class CombatState : ICombatState, ICardScope
 		return creature;
 	}
 
+	/// <summary>
+	/// Attaches an existing creature to this combat state without adding it to the combat.
+	/// This sets up the creature to be added to combat without actually putting it into the combat (i.e. it's not
+	/// targeted by cards that hit all enemies, powers don't proc on it, etc).
+	/// For players and almost all monsters, this is called just before adding their creature to the combat. Currently,
+	/// the Doormaker is the only creature that doesn't get added to combat immediately after this is called.
+	/// </summary>
 	private void AttachCreature(Creature creature)
 	{
 		creature.CombatState = this;
@@ -151,12 +260,20 @@ public class CombatState : ICombatState, ICardScope
 		_nextCreatureId++;
 	}
 
+	/// <summary>
+	/// Call this to remove a creature that escaped rather than dying.
+	/// </summary>
 	public void CreatureEscaped(Creature creature)
 	{
 		_escapedCreatures.Add(creature);
 		RemoveCreature(creature);
 	}
 
+	/// <summary>
+	/// Removes the creature from combat.
+	/// </summary>
+	/// <param name="creature">The creature that will be removed.</param>
+	/// <param name="unattach">If true, then the creature cannot be re-added to the combat state.</param>
 	public void RemoveCreature(Creature creature, bool unattach = true)
 	{
 		if (creature.CombatState == null)
@@ -200,6 +317,9 @@ public class CombatState : ICombatState, ICardScope
 		return _enemies.Any((Creature c) => c.Monster is T);
 	}
 
+	/// <summary>
+	/// Get the creature with the specified combat ID. Null if not found.
+	/// </summary>
 	public Creature? GetCreature(uint? combatId)
 	{
 		if (!combatId.HasValue)
@@ -209,6 +329,13 @@ public class CombatState : ICombatState, ICardScope
 		return Creatures.FirstOrDefault((Creature c) => c.CombatId == combatId);
 	}
 
+	/// <summary>
+	/// Get the creature with the specified combat ID.
+	/// If the creature doesn't exist, keep checking for a while before timing out and returning null.
+	/// </summary>
+	/// <param name="combatId">Combat ID of the creature to get.</param>
+	/// <param name="timeoutSec">How long to wait for the creature to appear.</param>
+	/// <returns>Specified Creature, or null if it doesn't exist and we've waited long enough.</returns>
 	public async Task<Creature?> GetCreatureAsync(uint? combatId, double timeoutSec)
 	{
 		if (!combatId.HasValue)
@@ -244,6 +371,9 @@ public class CombatState : ICombatState, ICardScope
 		}
 	}
 
+	/// <summary>
+	/// Get all the creatures on the specified side.
+	/// </summary>
 	public IReadOnlyList<Creature> GetCreaturesOnSide(CombatSide side)
 	{
 		if (side != CombatSide.Enemy)
@@ -253,11 +383,17 @@ public class CombatState : ICombatState, ICardScope
 		return Enemies;
 	}
 
+	/// <summary>
+	/// Get all opponents of a creature.
+	/// </summary>
 	public IReadOnlyList<Creature> GetOpponentsOf(Creature creature)
 	{
 		return GetCreaturesOnSide(creature.Side.GetOppositeSide());
 	}
 
+	/// <summary>
+	/// Get all teammates of a creature, including the creature itself.
+	/// </summary>
 	public IReadOnlyList<Creature> GetTeammatesOf(Creature creature)
 	{
 		return GetCreaturesOnSide(creature.Side);
@@ -268,6 +404,9 @@ public class CombatState : ICombatState, ICardScope
 		return Players.FirstOrDefault((Player p) => p.NetId == playerId);
 	}
 
+	/// <summary>
+	/// Get all the models that should have combat hooks called on them.
+	/// </summary>
 	public IEnumerable<AbstractModel> IterateHookListeners()
 	{
 		List<AbstractModel> list = new List<AbstractModel>(Players.Count * 50);
@@ -385,6 +524,13 @@ public class CombatState : ICombatState, ICardScope
 		_allCards.Add(card);
 	}
 
+	/// <summary>
+	/// Adds a creature to the combat.
+	/// This should almost always be called right after CreateCreature. Until this is called, creatures cannot be targeted
+	/// and their powers will not be triggered. It is separate so that creatures can be removed from combat and re-added
+	/// to it later. Currently, this is only used in the Doormaker combat.
+	/// </summary>
+	/// <param name="creature">The creature to add to the combat.</param>
 	public void AddCreature(Creature creature)
 	{
 		if (creature.CombatState != this)

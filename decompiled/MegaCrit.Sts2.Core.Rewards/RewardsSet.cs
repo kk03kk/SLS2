@@ -23,6 +23,13 @@ using MegaCrit.Sts2.Core.TestSupport;
 
 namespace MegaCrit.Sts2.Core.Rewards;
 
+/// <summary>
+/// Represents a set of rewards that can be presented to the player.
+/// One of these is always generated at the end of combat, but events and relics can also present rewards.
+/// This class will always apply reward modifications from relics and other hooks.
+/// There are currently no cases in which you need to use this class directly. In the future, if there are complicated
+/// reward cases that are hard to build into RewardsCmd, change this class to support them.
+/// </summary>
 public class RewardsSet
 {
 	public static Func<RewardsSet, Task>? testSelector;
@@ -47,6 +54,9 @@ public class RewardsSet
 
 	public bool AllRewardsSuccessfullySelected => Rewards.All((Reward r) => r.SuccessfullySelected);
 
+	/// <summary>
+	/// Set by RewardsSetSynchronizer.
+	/// </summary>
 	public int Id { get; set; } = -1;
 
 	public RewardsSet(Player player, RewardsSetSynchronizer? synchronizer = null)
@@ -55,6 +65,11 @@ public class RewardsSet
 		_synchronizer = synchronizer ?? RunManager.Instance.RewardsSetSynchronizer;
 	}
 
+	/// <summary>
+	/// Associates this rewards set with a room without generating rewards for it, and allows the rewards screen
+	/// to be shown even with no rewards. This determines whether the rewards screen is terminal (has a proceed
+	/// button). Use <see cref="M:MegaCrit.Sts2.Core.Rewards.RewardsSet.WithRewardsFromRoom(MegaCrit.Sts2.Core.Rooms.AbstractRoom)" /> to both associate a room and generate its rewards.
+	/// </summary>
 	public RewardsSet EmptyForRoom(AbstractRoom room)
 	{
 		Room = room;
@@ -62,6 +77,11 @@ public class RewardsSet
 		return this;
 	}
 
+	/// <summary>
+	/// Generate a list of rewards to offer for the specified room.
+	/// Should only be used with combat or treasure rooms.
+	/// </summary>
+	/// <param name="room">Room to generate rewards for.</param>
 	public RewardsSet WithRewardsFromRoom(AbstractRoom room)
 	{
 		Room = room;
@@ -80,18 +100,28 @@ public class RewardsSet
 		return this;
 	}
 
+	/// <summary>
+	/// Used when custom rewards are offered, like in an event or by a relic.
+	/// </summary>
 	public RewardsSet WithCustomRewards(List<Reward> rewards)
 	{
 		Rewards.AddRange(rewards);
 		return this;
 	}
 
+	/// <summary>
+	/// Call this to disallow skipping the rewards. The player must take all the rewards before the screen is dismissed.
+	/// </summary>
 	public RewardsSet WithSkippingDisallowed()
 	{
 		_disallowSkipping = true;
 		return this;
 	}
 
+	/// <summary>
+	/// Populates the reward instances in Rewards, calls modify hooks on them, and returns the result.
+	/// Usually you want to use Offer instead. This is mostly for tests where we inspect the rewards that are generated.
+	/// </summary>
 	public async Task GenerateWithoutOffering()
 	{
 		if (_isGenerated)
@@ -116,6 +146,10 @@ public class RewardsSet
 		_isGenerated = true;
 	}
 
+	/// <summary>
+	/// Populates the reward instances in Rewards, calls modify hooks on them, and offers the rewards to the player.
+	/// If the player is not the local player, then rewards are only generated on the backend and not shown to the player.
+	/// </summary>
 	public async Task Offer()
 	{
 		if (Player.Creature.IsDead)
@@ -161,6 +195,14 @@ public class RewardsSet
 		await task;
 	}
 
+	/// <summary>
+	/// Generates a list of default rewards to offer at the end of the specified room.
+	/// This does _not_ include hook modifications, like from Prayer Wheel.
+	/// Calling this may increment RNG counters and make other run state changes.
+	/// </summary>
+	/// <param name="player">Player to generate rewards for.</param>
+	/// <param name="room">Room to generate rewards for.</param>
+	/// <returns>List of rewards.</returns>
 	private List<Reward> GenerateRewardsFor(Player player, AbstractRoom room)
 	{
 		if (RunManager.Instance == null)

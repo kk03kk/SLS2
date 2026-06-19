@@ -1,5 +1,8 @@
 namespace MegaCrit.Sts2.Core.Map;
 
+/// <summary>
+/// A single-point map specifically used for tests.
+/// </summary>
 public class MockSinglePointActMap : ActMap
 {
 	private readonly MapPoint _currentMapPoint = new MapPoint(0, 0);

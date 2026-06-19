@@ -8,29 +8,62 @@ using MegaCrit.Sts2.Core.Saves;
 
 namespace MegaCrit.Sts2.Core.Nodes;
 
+/// <summary>
+/// Responsible for muting audio when the game enters the background, if the player has the setting set.
+/// </summary>
 [ScriptPath("res://src/Core/Nodes/NMuteInBackgroundHandler.cs")]
 public class NMuteInBackgroundHandler : Node
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Node.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Notification' method.
+		/// </summary>
 		public new static readonly StringName _Notification = "_Notification";
 
+		/// <summary>
+		/// Cached name for the 'Mute' method.
+		/// </summary>
 		public static readonly StringName Mute = "Mute";
 
+		/// <summary>
+		/// Cached name for the 'Unmute' method.
+		/// </summary>
 		public static readonly StringName Unmute = "Unmute";
 
+		/// <summary>
+		/// Cached name for the 'SetMasterVolume' method.
+		/// </summary>
 		public static readonly StringName SetMasterVolume = "SetMasterVolume";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Node.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the '_tween' field.
+		/// </summary>
 		public static readonly StringName _tween = "_tween";
 
+		/// <summary>
+		/// Cached name for the '_lastFocusOutMsec' field.
+		/// </summary>
 		public static readonly StringName _lastFocusOutMsec = "_lastFocusOutMsec";
 
+		/// <summary>
+		/// Cached name for the '_loggedEnvironment' field.
+		/// </summary>
 		public static readonly StringName _loggedEnvironment = "_loggedEnvironment";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Node.SignalName
 	{
 	}
@@ -101,6 +134,11 @@ public class NMuteInBackgroundHandler : Node
 		NGame.Instance.DebugAudio.SetMasterAudioVolume(volume);
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -118,6 +156,7 @@ public class NMuteInBackgroundHandler : Node
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -161,6 +200,7 @@ public class NMuteInBackgroundHandler : Node
 		return false;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -183,6 +223,7 @@ public class NMuteInBackgroundHandler : Node
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -204,6 +245,7 @@ public class NMuteInBackgroundHandler : Node
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -225,6 +267,11 @@ public class NMuteInBackgroundHandler : Node
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -235,6 +282,7 @@ public class NMuteInBackgroundHandler : Node
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -244,6 +292,7 @@ public class NMuteInBackgroundHandler : Node
 		info.AddProperty(PropertyName._loggedEnvironment, Variant.From(in _loggedEnvironment));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

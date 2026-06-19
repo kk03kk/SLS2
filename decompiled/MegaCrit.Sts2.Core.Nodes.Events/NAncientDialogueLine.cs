@@ -18,40 +18,91 @@ namespace MegaCrit.Sts2.Core.Nodes.Events;
 [ScriptPath("res://src/Core/Nodes/Events/NAncientDialogueLine.cs")]
 public class NAncientDialogueLine : NButton
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : NButton.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the 'PlaySfx' method.
+		/// </summary>
 		public static readonly StringName PlaySfx = "PlaySfx";
 
+		/// <summary>
+		/// Cached name for the 'SetAncientAsSpeaker' method.
+		/// </summary>
 		public static readonly StringName SetAncientAsSpeaker = "SetAncientAsSpeaker";
 
+		/// <summary>
+		/// Cached name for the 'SetCharacterAsSpeaker' method.
+		/// </summary>
 		public static readonly StringName SetCharacterAsSpeaker = "SetCharacterAsSpeaker";
 
+		/// <summary>
+		/// Cached name for the 'SetSpeakerIconVisible' method.
+		/// </summary>
 		public static readonly StringName SetSpeakerIconVisible = "SetSpeakerIconVisible";
 
+		/// <summary>
+		/// Cached name for the 'SetTransparency' method.
+		/// </summary>
 		public static readonly StringName SetTransparency = "SetTransparency";
 
+		/// <summary>
+		/// Cached name for the 'FadeInStaleDialogue' method.
+		/// </summary>
 		public static readonly StringName FadeInStaleDialogue = "FadeInStaleDialogue";
 
+		/// <summary>
+		/// Cached name for the 'FadeOutStaleDialogue' method.
+		/// </summary>
 		public static readonly StringName FadeOutStaleDialogue = "FadeOutStaleDialogue";
 
+		/// <summary>
+		/// Cached name for the 'OnAnimInSetVisible' method.
+		/// </summary>
 		public static readonly StringName OnAnimInSetVisible = "OnAnimInSetVisible";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : NButton.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'HoveredSfx' property.
+		/// </summary>
 		public new static readonly StringName HoveredSfx = "HoveredSfx";
 
+		/// <summary>
+		/// Cached name for the 'ClickedSfx' property.
+		/// </summary>
 		public new static readonly StringName ClickedSfx = "ClickedSfx";
 
+		/// <summary>
+		/// Cached name for the '_iconNode' field.
+		/// </summary>
 		public static readonly StringName _iconNode = "_iconNode";
 
+		/// <summary>
+		/// Cached name for the '_tween' field.
+		/// </summary>
 		public static readonly StringName _tween = "_tween";
 
+		/// <summary>
+		/// Cached name for the '_targetAlpha' field.
+		/// </summary>
 		public static readonly StringName _targetAlpha = "_targetAlpha";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : NButton.SignalName
 	{
 	}
@@ -137,6 +188,9 @@ public class NAncientDialogueLine : NButton
 		node2.SelfModulate = _character.DialogueColor;
 	}
 
+	/// <summary>
+	/// Because the speaker's icon peeks through. This hack makes the icons visible when they animate in.
+	/// </summary>
 	public void SetSpeakerIconVisible()
 	{
 		_iconNode.Visible = true;
@@ -148,11 +202,17 @@ public class NAncientDialogueLine : NButton
 		base.Modulate = new Color(1f, 1f, 1f, alpha);
 	}
 
+	/// <summary>
+	/// Special method called when players hover older dialogue lines to view them.
+	/// </summary>
 	public void FadeInStaleDialogue()
 	{
 		OnAnimInSetVisible();
 	}
 
+	/// <summary>
+	/// Opposite of FadeInStaleDialogue, hide these stale dialogues again.
+	/// </summary>
 	public void FadeOutStaleDialogue()
 	{
 		_tween?.Kill();
@@ -167,6 +227,11 @@ public class NAncientDialogueLine : NButton
 		_tween.TweenProperty(this, "modulate:a", 1f, 0.1);
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<MethodInfo> GetGodotMethodList()
 	{
@@ -186,6 +251,7 @@ public class NAncientDialogueLine : NButton
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -246,6 +312,7 @@ public class NAncientDialogueLine : NButton
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -288,6 +355,7 @@ public class NAncientDialogueLine : NButton
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -309,6 +377,7 @@ public class NAncientDialogueLine : NButton
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -343,6 +412,11 @@ public class NAncientDialogueLine : NButton
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -355,6 +429,7 @@ public class NAncientDialogueLine : NButton
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -364,6 +439,7 @@ public class NAncientDialogueLine : NButton
 		info.AddProperty(PropertyName._targetAlpha, Variant.From(in _targetAlpha));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

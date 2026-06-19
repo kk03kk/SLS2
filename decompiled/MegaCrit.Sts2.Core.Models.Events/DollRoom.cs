@@ -100,11 +100,17 @@ public sealed class DollRoom : EventModel
 		return Task.CompletedTask;
 	}
 
+	/// <summary>
+	/// The top option. Get a random one without taking damage.
+	/// </summary>
 	private async Task ChooseRandom()
 	{
 		await ChooseDollAndShowDescription(base.Rng.NextItem(_dolls));
 	}
 
+	/// <summary>
+	/// Choose 1 of 2
+	/// </summary>
 	private async Task TakeSomeTime()
 	{
 		await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), base.Owner.Creature, (DamageVar)base.DynamicVars["TakeTimeHpLoss"], null, null);
@@ -117,6 +123,9 @@ public sealed class DollRoom : EventModel
 		SetEventState(L10NLookup("DOLL_ROOM.pages.TAKE_SOME_TIME.description"), list);
 	}
 
+	/// <summary>
+	/// Choose 1 of 3
+	/// </summary>
 	private async Task Examine()
 	{
 		await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), base.Owner.Creature, (DamageVar)base.DynamicVars["ExamineHpLoss"], null, null);

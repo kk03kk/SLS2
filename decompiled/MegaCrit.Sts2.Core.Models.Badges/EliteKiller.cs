@@ -3,6 +3,9 @@ using MegaCrit.Sts2.Core.Saves;
 
 namespace MegaCrit.Sts2.Core.Models.Badges;
 
+/// <summary>
+/// Defeat X Elites. The more you kill, the higher the rarity.
+/// </summary>
 public class EliteKiller : Badge
 {
 	public override BadgeRarity Rarity
@@ -26,6 +29,9 @@ public class EliteKiller : Badge
 		}
 	}
 
+	/// <summary>
+	/// Defeat X Elites. The more you kill, the higher the rarity.
+	/// </summary>
 	public EliteKiller(SerializableRun run, bool won, ulong playerId)
 		: base(run, won, playerId, "ELITE", requiresWin: false, multiplayerOnly: false)
 	{

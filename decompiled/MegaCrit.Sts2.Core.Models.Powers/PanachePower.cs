@@ -16,6 +16,9 @@ public sealed class PanachePower : PowerModel
 {
 	private class Data
 	{
+		/// <summary>
+		/// We track this so we don't count the Panache card towards itself.
+		/// </summary>
 		public bool alreadyApplied;
 	}
 

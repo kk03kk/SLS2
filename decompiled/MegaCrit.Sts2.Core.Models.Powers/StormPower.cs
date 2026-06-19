@@ -13,6 +13,11 @@ public sealed class StormPower : PowerModel
 {
 	private class Data
 	{
+		/// <summary>
+		/// Keep track of the Power cards we've seen played and the power amount at the time they were played.
+		/// This lets Storm avoid triggering on cards that started play before it was applied, and avoid channeling
+		/// extra lightning on multiple plays of Storm.
+		/// </summary>
 		public readonly Dictionary<CardModel, int> amountsForPlayedCards = new Dictionary<CardModel, int>();
 	}
 

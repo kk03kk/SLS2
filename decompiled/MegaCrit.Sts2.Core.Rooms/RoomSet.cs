@@ -31,8 +31,14 @@ public class RoomSet
 
 	private EncounterModel? _boss;
 
+	/// <summary>
+	/// This is false in exactly one scenario: when Neow is not spawned as part of the player's first run
+	/// </summary>
 	public bool HasAncient => _ancient != null;
 
+	/// <summary>
+	/// Whether this act has a second boss (Double Boss ascension mode).
+	/// </summary>
 	public bool HasSecondBoss => SecondBoss != null;
 
 	public AncientEventModel Ancient
@@ -157,6 +163,17 @@ public class RoomSet
 		return roomSet;
 	}
 
+	/// <summary>
+	/// This forces a specific model type to be at a specific index in a list.
+	/// First, it searches for a model of type TSpecificModel in the list. If one already exists in the list, it is
+	/// swapped with the model at the passed index. Otherwise, the model at the passed index is replaced a new instance
+	/// of TSpecificModel.
+	/// Used when setting order of specific encounters or events in the tutorial.
+	/// </summary>
+	/// <param name="list">The list to search in.</param>
+	/// <param name="desiredIndex">The index where the model type will be at, in the end.</param>
+	/// <typeparam name="TBaseModel">The type of models contained in the list.</typeparam>
+	/// <typeparam name="TSpecificModel">The specific kind of model we'll force to be at desiredIndex.</typeparam>
 	public static void SwapToOrCreateAtIndex<TBaseModel, TSpecificModel>(List<TBaseModel> list, int desiredIndex) where TBaseModel : AbstractModel where TSpecificModel : TBaseModel
 	{
 		int num = list.FindIndex((TBaseModel elem) => elem is TSpecificModel);

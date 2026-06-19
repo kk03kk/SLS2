@@ -32,6 +32,9 @@ public sealed class SovereignBlade : CardModel
 
 	protected override IEnumerable<string> ExtraRunAssetPaths => NSovereignBladeVfx.AssetPaths;
 
+	/// <remarks>
+	/// Dynamic TargetType based on whether the player has <see cref="T:MegaCrit.Sts2.Core.Models.Powers.SeekingEdgePower" />.
+	/// </remarks>
 	public override TargetType TargetType
 	{
 		get
@@ -44,6 +47,9 @@ public sealed class SovereignBlade : CardModel
 		}
 	}
 
+	/// <remarks>
+	/// Dynamic GainsBlock based on whether the player has <see cref="T:MegaCrit.Sts2.Core.Models.Powers.ParryPower" />.
+	/// </remarks>
 	public override bool GainsBlock => GetOwnerParryAmount(this) > 0m;
 
 	private decimal CurrentDamage

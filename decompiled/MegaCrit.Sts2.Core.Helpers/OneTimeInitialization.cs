@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Godot;
 using MegaCrit.Sts2.Core.Assets;
 using MegaCrit.Sts2.Core.Debug;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Modding;
@@ -15,6 +16,10 @@ using SmartFormat.Extensions;
 
 namespace MegaCrit.Sts2.Core.Helpers;
 
+/// <summary>
+/// Contains methods that are called as part of initialization.
+/// The methods are called both in normal startup and in test mode, so only call things that need to be done in both.
+/// </summary>
 public static class OneTimeInitialization
 {
 	private enum State
@@ -31,6 +36,10 @@ public static class OneTimeInitialization
 
 	public static ReadSaveResult<SettingsSave> SettingsReadResult { get; private set; }
 
+	/// <summary>
+	/// Initializes stuff that has to happen very early.
+	/// This gets called in both tests and in real games!! Only do stuff that needs to happen in both here.
+	/// </summary>
 	public static async Task ExecuteVeryEarly()
 	{
 		if (_state != State.None)
@@ -52,6 +61,10 @@ public static class OneTimeInitialization
 		SentryService.DisableGdExtensionIfModded();
 	}
 
+	/// <summary>
+	/// Essential initialization needed before main menu can display.
+	/// Loads only ui_atlas and core systems (settings, mods, localization, model DB init).
+	/// </summary>
 	public static void ExecuteEssential()
 	{
 		if (_state != State.VeryEarly)
@@ -67,8 +80,14 @@ public static class OneTimeInitialization
 		ModelDb.Init();
 		ModelIdSerializationCache.Init();
 		ModelDb.InitIds();
+		MessageTypes.Initialize();
+		ActionTypes.Initialize();
 	}
 
+	/// <summary>
+	/// Deferred initialization that can run after main menu is displayed.
+	/// Loads remaining atlases and runs expensive precomputation.
+	/// </summary>
 	public static void ExecuteDeferred()
 	{
 		if (_state != State.Essential)

@@ -5,6 +5,9 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace MegaCrit.Sts2.Core.Combat.History.Entries;
 
+/// <summary>
+/// Tracks every time a creature receives damage.
+/// </summary>
 public class DamageReceivedEntry : CombatHistoryEntry
 {
 	public DamageResult Result { get; }

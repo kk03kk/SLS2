@@ -25,6 +25,9 @@ namespace MegaCrit.Sts2.Core.Models.Monsters;
 
 public sealed class ThievingHopper : MonsterModel
 {
+	/// <summary>
+	/// The priorities used to determine which card to steal from the player's deck.
+	/// </summary>
 	private static readonly Func<CardModel, bool>[] _stealPriorities = new Func<CardModel, bool>[4]
 	{
 		(CardModel c) => !(c.Enchantment is Imbued) && c.Rarity == CardRarity.Uncommon,

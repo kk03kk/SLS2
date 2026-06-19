@@ -12,6 +12,10 @@ using MegaCrit.Sts2.Core.Runs;
 
 namespace MegaCrit.Sts2.Core.Nodes.Screens.Map;
 
+/// <summary>
+/// Represents the animation which plays when players don't all vote for the same map point.
+/// The amount of state to keep track of was getting a little unwieldy to put directly into the map screen.
+/// </summary>
 public class MapSplitVoteAnimation
 {
 	private NMapScreen _mapScreen;
@@ -35,6 +39,10 @@ public class MapSplitVoteAnimation
 		_mapPointDictionary = mapPointDictionary;
 	}
 
+	/// <summary>
+	/// Plays the animation if necessary.
+	/// The animation is not played if all players voted for the same coordinate.
+	/// </summary>
 	public async Task TryPlay(MapCoord selectedCoord)
 	{
 		MapCoord? mapCoord = null;

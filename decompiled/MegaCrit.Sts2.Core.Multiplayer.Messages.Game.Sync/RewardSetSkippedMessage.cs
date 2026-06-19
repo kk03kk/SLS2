@@ -5,6 +5,9 @@ using MegaCrit.Sts2.Core.Runs;
 
 namespace MegaCrit.Sts2.Core.Multiplayer.Messages.Game.Sync;
 
+/// <summary>
+/// Message sent when a player chooses to skip the remaining rewards in a set of rewards.
+/// </summary>
 public class RewardSetSkippedMessage : INetMessage, IPacketSerializable, IRunLocationTargetedMessage
 {
 	public RunLocation location;

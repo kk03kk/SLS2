@@ -17,78 +17,180 @@ using MegaCrit.Sts2.Core.Saves;
 
 namespace MegaCrit.Sts2.Core.Nodes.Screens.Shops;
 
+/// <summary>
+/// Manages the shop items for a shop.
+/// </summary>
 [ScriptPath("res://src/Core/Nodes/Screens/Shops/NMerchantInventory.cs")]
 public class NMerchantInventory : Control, IScreenContext
 {
 	[Signal]
 	public delegate void InventoryClosedEventHandler();
 
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Control.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the '_EnterTree' method.
+		/// </summary>
 		public new static readonly StringName _EnterTree = "_EnterTree";
 
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 
+		/// <summary>
+		/// Cached name for the 'Open' method.
+		/// </summary>
 		public static readonly StringName Open = "Open";
 
+		/// <summary>
+		/// Cached name for the 'SubscribeToEntries' method.
+		/// </summary>
 		public static readonly StringName SubscribeToEntries = "SubscribeToEntries";
 
+		/// <summary>
+		/// Cached name for the 'Close' method.
+		/// </summary>
 		public static readonly StringName Close = "Close";
 
+		/// <summary>
+		/// Cached name for the 'OnCardRemovalUsed' method.
+		/// </summary>
 		public static readonly StringName OnCardRemovalUsed = "OnCardRemovalUsed";
 
+		/// <summary>
+		/// Cached name for the 'UpdateNavigation' method.
+		/// </summary>
 		public static readonly StringName UpdateNavigation = "UpdateNavigation";
 
+		/// <summary>
+		/// Cached name for the 'UpdateHorizontalNavigation' method.
+		/// </summary>
 		public static readonly StringName UpdateHorizontalNavigation = "UpdateHorizontalNavigation";
 
+		/// <summary>
+		/// Cached name for the 'UpdateVerticalNavigation' method.
+		/// </summary>
 		public static readonly StringName UpdateVerticalNavigation = "UpdateVerticalNavigation";
 
+		/// <summary>
+		/// Cached name for the 'BlockInput' method.
+		/// </summary>
 		public static readonly StringName BlockInput = "BlockInput";
 
+		/// <summary>
+		/// Cached name for the 'UnblockInput' method.
+		/// </summary>
 		public static readonly StringName UnblockInput = "UnblockInput";
 
+		/// <summary>
+		/// Cached name for the 'OnActiveScreenUpdated' method.
+		/// </summary>
 		public static readonly StringName OnActiveScreenUpdated = "OnActiveScreenUpdated";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Control.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'IsOpen' property.
+		/// </summary>
 		public static readonly StringName IsOpen = "IsOpen";
 
+		/// <summary>
+		/// Cached name for the 'MerchantHand' property.
+		/// </summary>
 		public static readonly StringName MerchantHand = "MerchantHand";
 
+		/// <summary>
+		/// Cached name for the 'DefaultFocusedControl' property.
+		/// </summary>
 		public static readonly StringName DefaultFocusedControl = "DefaultFocusedControl";
 
+		/// <summary>
+		/// Cached name for the '_characterCardContainer' field.
+		/// </summary>
 		public static readonly StringName _characterCardContainer = "_characterCardContainer";
 
+		/// <summary>
+		/// Cached name for the '_colorlessCardContainer' field.
+		/// </summary>
 		public static readonly StringName _colorlessCardContainer = "_colorlessCardContainer";
 
+		/// <summary>
+		/// Cached name for the '_relicContainer' field.
+		/// </summary>
 		public static readonly StringName _relicContainer = "_relicContainer";
 
+		/// <summary>
+		/// Cached name for the '_potionContainer' field.
+		/// </summary>
 		public static readonly StringName _potionContainer = "_potionContainer";
 
+		/// <summary>
+		/// Cached name for the '_cardRemovalNode' field.
+		/// </summary>
 		public static readonly StringName _cardRemovalNode = "_cardRemovalNode";
 
+		/// <summary>
+		/// Cached name for the '_backButton' field.
+		/// </summary>
 		public static readonly StringName _backButton = "_backButton";
 
+		/// <summary>
+		/// Cached name for the '_merchantDialogue' field.
+		/// </summary>
 		public static readonly StringName _merchantDialogue = "_merchantDialogue";
 
+		/// <summary>
+		/// Cached name for the '_inventoryTween' field.
+		/// </summary>
 		public static readonly StringName _inventoryTween = "_inventoryTween";
 
+		/// <summary>
+		/// Cached name for the '_slotsContainer' field.
+		/// </summary>
 		public static readonly StringName _slotsContainer = "_slotsContainer";
 
+		/// <summary>
+		/// Cached name for the '_backstop' field.
+		/// </summary>
 		public static readonly StringName _backstop = "_backstop";
 
+		/// <summary>
+		/// Cached name for the '_inputBlocker' field.
+		/// </summary>
 		public static readonly StringName _inputBlocker = "_inputBlocker";
 
+		/// <summary>
+		/// Cached name for the '_isInputBlocked' field.
+		/// </summary>
 		public static readonly StringName _isInputBlocked = "_isInputBlocked";
 
+		/// <summary>
+		/// Cached name for the '_lastSlot' field.
+		/// </summary>
 		public static readonly StringName _lastSlot = "_lastSlot";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Control.SignalName
 	{
+		/// <summary>
+		/// Cached name for the 'InventoryClosed' signal.
+		/// </summary>
 		public static readonly StringName InventoryClosed = "InventoryClosed";
 	}
 
@@ -151,6 +253,7 @@ public class NMerchantInventory : Control, IScreenContext
 		}
 	}
 
+	/// <inheritdoc cref="T:MegaCrit.Sts2.Core.Nodes.Screens.Shops.NMerchantInventory.InventoryClosedEventHandler" />
 	public event InventoryClosedEventHandler InventoryClosed
 	{
 		add
@@ -617,6 +720,11 @@ public class NMerchantInventory : Control, IScreenContext
 		}
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -637,6 +745,7 @@ public class NMerchantInventory : Control, IScreenContext
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -721,6 +830,7 @@ public class NMerchantInventory : Control, IScreenContext
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -779,6 +889,7 @@ public class NMerchantInventory : Control, IScreenContext
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -860,6 +971,7 @@ public class NMerchantInventory : Control, IScreenContext
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -946,6 +1058,11 @@ public class NMerchantInventory : Control, IScreenContext
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -969,6 +1086,7 @@ public class NMerchantInventory : Control, IScreenContext
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -991,6 +1109,7 @@ public class NMerchantInventory : Control, IScreenContext
 		info.AddSignalEventDelegate(SignalName.InventoryClosed, backing_InventoryClosed);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{
@@ -1061,6 +1180,11 @@ public class NMerchantInventory : Control, IScreenContext
 		}
 	}
 
+	/// <summary>
+	/// Get the signal information for all the signals declared in this class.
+	/// This method is used by Godot to register the available signals in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotSignalList()
 	{
@@ -1074,6 +1198,7 @@ public class NMerchantInventory : Control, IScreenContext
 		EmitSignal(SignalName.InventoryClosed);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RaiseGodotClassSignalCallbacks(in godot_string_name signal, NativeVariantPtrArgs args)
 	{
@@ -1087,6 +1212,7 @@ public class NMerchantInventory : Control, IScreenContext
 		}
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassSignal(in godot_string_name signal)
 	{

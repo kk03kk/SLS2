@@ -20,8 +20,19 @@ public class RelicReward : Reward
 {
 	private readonly RelicRarity _rarity;
 
+	/// <summary>
+	/// The relic that this reward gives, if it's predetermined.
+	/// For randomly-rolled relic rewards (like from Elite combats), this is null.
+	/// For predetermined relic rewards (like from <see cref="T:MegaCrit.Sts2.Core.Models.Events.FakeMerchant" />), this is set to the predetermined relic.
+	/// </summary>
 	private RelicModel? _predeterminedRelic;
 
+	/// <summary>
+	/// The relic that this reward gives.
+	/// For randomly-rolled relic rewards (like from Elite combats), this starts out null, and is populated by
+	/// <see cref="M:MegaCrit.Sts2.Core.Rewards.RelicReward.Populate" />.
+	/// For predetermined relic rewards (like from <see cref="T:MegaCrit.Sts2.Core.Models.Events.FakeMerchant" />), this is set to the predetermined relic.
+	/// </summary>
 	private RelicModel? _relic;
 
 	private bool _wasTaken;

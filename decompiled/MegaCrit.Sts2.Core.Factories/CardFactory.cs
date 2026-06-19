@@ -31,6 +31,12 @@ public static class CardFactory
 		return options.Where((CardModel c) => c.MultiplayerConstraint != CardMultiplayerConstraint.MultiplayerOnly);
 	}
 
+	/// <summary>
+	/// Creates a card to display to the player at the merchant. Takes in a card type, and rarity is rolled.
+	/// </summary>
+	/// <param name="player">The player for which we're creating cards to display.</param>
+	/// <param name="options">The cards to pull from.</param>
+	/// <param name="type">The card type to generate.</param>
 	public static CardCreationResult CreateForMerchant(Player player, IEnumerable<CardModel> options, CardType type)
 	{
 		if (player.Character is Deprived)
@@ -53,6 +59,13 @@ public static class CardFactory
 		return new CardCreationResult(cardModel);
 	}
 
+	/// <summary>
+	/// Creates a set of cards to display to the player at the merchant.
+	/// The rarity of cards are affected by the source.
+	/// </summary>
+	/// <param name="player">The player for which we're creating cards to display.</param>
+	/// <param name="options">The cards to pull from.</param>
+	/// <param name="rarity">The card rarity to generate. This rarity may be modified by hooks.</param>
 	public static CardCreationResult CreateForMerchant(Player player, IEnumerable<CardModel> options, CardRarity rarity)
 	{
 		options = Hook.ModifyMerchantCardPool(player.RunState, player, options);
@@ -66,6 +79,13 @@ public static class CardFactory
 		return new CardCreationResult(cardModel);
 	}
 
+	/// <summary>
+	/// Creates a set of cards for the player to choose 1 from.
+	/// The rarity of cards are affected by the source.
+	/// </summary>
+	/// <param name="player">The player for which we're creating rewards.</param>
+	/// <param name="cardCount">How many choices to offer (usually 3).</param>
+	/// <param name="options">The options to use when creating the cards.</param>
 	public static IEnumerable<CardCreationResult> CreateForReward(Player player, int cardCount, CardCreationOptions options)
 	{
 		List<CardModel> list = new List<CardModel>();
@@ -88,6 +108,14 @@ public static class CardFactory
 		return list2;
 	}
 
+	/// <summary>
+	/// Get a set of distinct cards for use in combat generation effects like Attack Potion or Discovery.
+	/// </summary>
+	/// <param name="player">The owner of the newly created cards.</param>
+	/// <param name="cards">Cards to choose from.</param>
+	/// <param name="count">Number of cards to get.</param>
+	/// <param name="rng">RNG to use.</param>
+	/// <returns>Mutable cards owned by the player and created within its combat state, for combat generation effects.</returns>
 	public static IEnumerable<CardModel> GetDistinctForCombat(Player player, IEnumerable<CardModel> cards, int count, Rng rng)
 	{
 		List<CardModel> list = TestRngInjector.ConsumeCombatCardGenerationOverride();
@@ -100,6 +128,15 @@ public static class CardFactory
 			select player.Creature.CombatState.CreateCard(c, player);
 	}
 
+	/// <summary>
+	/// Get a set of cards for use in combat generation effects like Calamity.
+	/// Can include multiple of the same card, unlike <see cref="M:MegaCrit.Sts2.Core.Factories.CardFactory.GetDistinctForCombat(MegaCrit.Sts2.Core.Entities.Players.Player,System.Collections.Generic.IEnumerable{MegaCrit.Sts2.Core.Models.CardModel},System.Int32,MegaCrit.Sts2.Core.Random.Rng)" />.
+	/// </summary>
+	/// <param name="player">The owner of the newly created cards.</param>
+	/// <param name="cards">Cards to choose from.</param>
+	/// <param name="count">Number of cards to get.</param>
+	/// <param name="rng">RNG to use.</param>
+	/// <returns>Cards for combat generation effects.</returns>
 	public static IEnumerable<CardModel> GetForCombat(Player player, IEnumerable<CardModel> cards, int count, Rng rng)
 	{
 		List<CardModel> options = FilterForCombat(cards).ToList();
@@ -114,11 +151,22 @@ public static class CardFactory
 		return list;
 	}
 
+	/// <summary>
+	/// Filter out cards that should not be included in combat card generation effects like Attack Potion or Discovery.
+	/// </summary>
+	/// <param name="cards">Cards to filter.</param>
+	/// <returns>Cards for combat generation effects.</returns>
 	public static IEnumerable<CardModel> FilterForCombat(IEnumerable<CardModel> cards)
 	{
 		return cards.Where((CardModel c) => c.CanBeGeneratedInCombat && c.Rarity != CardRarity.Basic && c.Rarity != CardRarity.Ancient && c.Rarity != CardRarity.Event).Distinct();
 	}
 
+	/// <summary>
+	/// Get the default set of cards that the specified card should be able to be transformed into.
+	/// </summary>
+	/// <param name="original">Card that will be transformed.</param>
+	/// <param name="isInCombat">Whether the transformation is happening in combat.</param>
+	/// <returns>The set of cards that the card can be transformed into.</returns>
 	public static IEnumerable<CardModel> GetDefaultTransformationOptions(CardModel original, bool isInCombat)
 	{
 		CardPoolModel cardPoolModel = ((original.Type != CardType.Quest && original.Rarity != CardRarity.Event && original.Rarity != CardRarity.Ancient && original.Rarity != CardRarity.Token) ? original.Pool : ModelDb.CardPool<ColorlessCardPool>());

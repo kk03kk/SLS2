@@ -18,6 +18,10 @@ using MegaCrit.Sts2.Core.Random;
 
 namespace MegaCrit.Sts2.Core.Nodes.Screens.TreasureRoomRelic;
 
+/// <summary>
+/// Image of a literal hand.
+/// This name is kind of wonky because it's definitely not the same as NPlayerHand.
+/// </summary>
 [ScriptPath("res://src/Core/Nodes/Screens/TreasureRoomRelic/NHandImage.cs")]
 public class NHandImage : Control
 {
@@ -28,64 +32,151 @@ public class NHandImage : Control
 		GrabbingRelic
 	}
 
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Control.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the '_EnterTree' method.
+		/// </summary>
 		public new static readonly StringName _EnterTree = "_EnterTree";
 
+		/// <summary>
+		/// Cached name for the '_ExitTree' method.
+		/// </summary>
 		public new static readonly StringName _ExitTree = "_ExitTree";
 
+		/// <summary>
+		/// Cached name for the 'SetIsInFight' method.
+		/// </summary>
 		public static readonly StringName SetIsInFight = "SetIsInFight";
 
+		/// <summary>
+		/// Cached name for the 'SetFrozenForRelicAwards' method.
+		/// </summary>
 		public static readonly StringName SetFrozenForRelicAwards = "SetFrozenForRelicAwards";
 
+		/// <summary>
+		/// Cached name for the 'DoFightMove' method.
+		/// </summary>
 		public static readonly StringName DoFightMove = "DoFightMove";
 
+		/// <summary>
+		/// Cached name for the 'SetTextureToFightMove' method.
+		/// </summary>
 		public static readonly StringName SetTextureToFightMove = "SetTextureToFightMove";
 
+		/// <summary>
+		/// Cached name for the 'SetPointingPosition' method.
+		/// </summary>
 		public static readonly StringName SetPointingPosition = "SetPointingPosition";
 
+		/// <summary>
+		/// Cached name for the 'AnimateAway' method.
+		/// </summary>
 		public static readonly StringName AnimateAway = "AnimateAway";
 
+		/// <summary>
+		/// Cached name for the 'AnimateIn' method.
+		/// </summary>
 		public static readonly StringName AnimateIn = "AnimateIn";
 
+		/// <summary>
+		/// Cached name for the 'SetIsDown' method.
+		/// </summary>
 		public static readonly StringName SetIsDown = "SetIsDown";
 
+		/// <summary>
+		/// Cached name for the 'SetSkipped' method.
+		/// </summary>
 		public static readonly StringName SetSkipped = "SetSkipped";
 
+		/// <summary>
+		/// Cached name for the 'SetAnimateInProgress' method.
+		/// </summary>
 		public static readonly StringName SetAnimateInProgress = "SetAnimateInProgress";
 
+		/// <summary>
+		/// Cached name for the '_Process' method.
+		/// </summary>
 		public new static readonly StringName _Process = "_Process";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Control.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'Index' property.
+		/// </summary>
 		public static readonly StringName Index = "Index";
 
+		/// <summary>
+		/// Cached name for the 'IsDown' property.
+		/// </summary>
 		public static readonly StringName IsDown = "IsDown";
 
+		/// <summary>
+		/// Cached name for the 'IsShown' property.
+		/// </summary>
 		public static readonly StringName IsShown = "IsShown";
 
+		/// <summary>
+		/// Cached name for the '_grabMarker' field.
+		/// </summary>
 		public static readonly StringName _grabMarker = "_grabMarker";
 
+		/// <summary>
+		/// Cached name for the '_textureRect' field.
+		/// </summary>
 		public static readonly StringName _textureRect = "_textureRect";
 
+		/// <summary>
+		/// Cached name for the '_currentVelocity' field.
+		/// </summary>
 		public static readonly StringName _currentVelocity = "_currentVelocity";
 
+		/// <summary>
+		/// Cached name for the '_desiredPosition' field.
+		/// </summary>
 		public static readonly StringName _desiredPosition = "_desiredPosition";
 
+		/// <summary>
+		/// Cached name for the '_downTween' field.
+		/// </summary>
 		public static readonly StringName _downTween = "_downTween";
 
+		/// <summary>
+		/// Cached name for the '_state' field.
+		/// </summary>
 		public static readonly StringName _state = "_state";
 
+		/// <summary>
+		/// Cached name for the '_isInFight' field.
+		/// </summary>
 		public static readonly StringName _isInFight = "_isInFight";
 
+		/// <summary>
+		/// Cached name for the '_originalPosition' field.
+		/// </summary>
 		public static readonly StringName _originalPosition = "_originalPosition";
 
+		/// <summary>
+		/// Cached name for the '_handAnimateInProgress' field.
+		/// </summary>
 		public static readonly StringName _handAnimateInProgress = "_handAnimateInProgress";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Control.SignalName
 	{
 	}
@@ -162,6 +253,12 @@ public class NHandImage : Control
 		_cts.Cancel();
 	}
 
+	/// <summary>
+	/// If true: Z-indexes hand to 1 so that they appear above the fight backdrop, modulates them to white regardless of
+	/// whether they belong to the local player, and adjusts their pivot in preparation for throwing RPS moves.
+	/// If false: undoes all the above.
+	/// </summary>
+	/// <param name="inFight"></param>
 	public void SetIsInFight(bool inFight)
 	{
 		_isInFight = inFight;
@@ -180,6 +277,10 @@ public class NHandImage : Control
 		base.ZIndex = 0;
 	}
 
+	/// <summary>
+	/// If true is passed, stops the hand from following the mouse cursor (local or remote), and tweens the hand towards
+	/// the edge of the screen.
+	/// </summary>
 	public void SetFrozenForRelicAwards(bool frozenForRelicAwards)
 	{
 		if (frozenForRelicAwards)
@@ -195,6 +296,12 @@ public class NHandImage : Control
 		}
 	}
 
+	/// <summary>
+	/// Emulates a person throwing a rock-paper-scissors move; that is, the hand shakes three times, then shows an image
+	/// that looks like a fist, a peace sign, or a hand with all fingers spread.
+	/// </summary>
+	/// <param name="move">The RPS move to show.</param>
+	/// <param name="duration">How long, in total, the three shakes should take to animate.</param>
 	public Tween DoFightMove(RelicPickingFightMove move, float duration)
 	{
 		float num = 0.666f * duration / 3f;
@@ -255,6 +362,11 @@ public class NHandImage : Control
 		};
 	}
 
+	/// <summary>
+	/// Sets the position at which the hand will point.
+	/// If SetFrozenForRelicAwards has been called with true, then this does nothing.
+	/// </summary>
+	/// <param name="position"></param>
 	public void SetPointingPosition(Vector2 position)
 	{
 		if (_state == State.None)
@@ -263,6 +375,9 @@ public class NHandImage : Control
 		}
 	}
 
+	/// <summary>
+	/// Called after relic picking is done and the hand should go away.
+	/// </summary>
 	public void AnimateAway()
 	{
 		Rect2 viewportRect = GetViewportRect();
@@ -271,6 +386,9 @@ public class NHandImage : Control
 		IsShown = false;
 	}
 
+	/// <summary>
+	/// Called when the hand is shown and we should animate it in from off-screen.
+	/// </summary>
 	public void AnimateIn()
 	{
 		Tween tween = CreateTween();
@@ -282,6 +400,11 @@ public class NHandImage : Control
 		IsShown = true;
 	}
 
+	/// <summary>
+	/// Does a small tween: scale down if true, scale up if false.
+	/// Should be called when the left mouse button (local or remote) is pressed down.
+	/// </summary>
+	/// <param name="isDown"></param>
 	public void SetIsDown(bool isDown)
 	{
 		if (IsDown != isDown)
@@ -298,6 +421,10 @@ public class NHandImage : Control
 		}
 	}
 
+	/// <summary>
+	/// Shakes the hand very dramatically and fades it out.
+	/// </summary>
+	/// <param name="duration">The amount of time to shake and fade.</param>
 	public async Task DoLoseShake(float duration)
 	{
 		CreateTween().TweenProperty(this, "modulate", new Color(0.5f, 0.5f, 0.5f, 0.5f), duration * 0.333f).SetDelay(duration * 0.667f);
@@ -311,6 +438,11 @@ public class NHandImage : Control
 		_textureRect.Position = _originalPosition;
 	}
 
+	/// <summary>
+	/// Does a tween that looks like the hand is grabbing the holder.
+	/// After the tween is complete, the holder will be parented to the hand.
+	/// </summary>
+	/// <param name="holder">The relic holder to grab.</param>
 	public async Task GrabRelic(NTreasureRoomRelicHolder holder)
 	{
 		State oldState = _state;
@@ -329,11 +461,19 @@ public class NHandImage : Control
 		_state = oldState;
 	}
 
+	/// <summary>
+	/// Sets hand to fist.
+	/// </summary>
 	public void SetSkipped()
 	{
 		SetTextureToFightMove(RelicPickingFightMove.Rock);
 	}
 
+	/// <summary>
+	/// Sets the progress of the slide-in animation, from 0 to 1.
+	/// This should be used when the treasure room is opened for the first time, so that the hands do not immediately
+	/// spawn on-screen.
+	/// </summary>
 	public void SetAnimateInProgress(float animateInProgress)
 	{
 		_handAnimateInProgress = animateInProgress;
@@ -381,6 +521,11 @@ public class NHandImage : Control
 		}
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -427,6 +572,7 @@ public class NHandImage : Control
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -516,6 +662,7 @@ public class NHandImage : Control
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -578,6 +725,7 @@ public class NHandImage : Control
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -644,6 +792,7 @@ public class NHandImage : Control
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -713,6 +862,11 @@ public class NHandImage : Control
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -732,6 +886,7 @@ public class NHandImage : Control
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -750,6 +905,7 @@ public class NHandImage : Control
 		info.AddProperty(PropertyName._handAnimateInProgress, Variant.From(in _handAnimateInProgress));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

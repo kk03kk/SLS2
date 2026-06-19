@@ -47,8 +47,21 @@ public class CombatManager
 
 	private readonly List<Player> _playersTakingExtraTurn = new List<Player>();
 
+	/// <summary>
+	/// True while <see cref="M:MegaCrit.Sts2.Core.Combat.CombatManager.StartTurn(System.Func{System.Threading.Tasks.Task})" /> is setting up the player turn but has not yet moved to the Play phase.
+	/// Guarded by <see cref="F:MegaCrit.Sts2.Core.Combat.CombatManager._playerReadyLock" />.
+	/// </summary>
 	private bool _inPlayerTurnSetup;
 
+	/// <summary>
+	/// If a card ends the turn while <see cref="F:MegaCrit.Sts2.Core.Combat.CombatManager._inPlayerTurnSetup" /> is true (e.g. Void Form auto-played by
+	/// Whispering Earring during the AutoPrePlay phase), the end-of-turn transition is stored in this field and run
+	/// only once <see cref="M:MegaCrit.Sts2.Core.Combat.CombatManager.StartTurn(System.Func{System.Threading.Tasks.Task})" /> has caused us to move to the Play phase, so it never runs concurrently with
+	/// the end of StartTurn (this would be a race condition, and could leave the turn-transition sequence stuck
+	/// mid-way, never advancing to the next turn).
+	/// A normal end-turn happens after the Play phase has started, so it is never deferred.
+	/// Guarded by <see cref="F:MegaCrit.Sts2.Core.Combat.CombatManager._playerReadyLock" />.
+	/// </summary>
 	private Func<Task>? _deferredEndTurnTransition;
 
 	private CombatState? _state;
@@ -57,6 +70,9 @@ public class CombatManager
 
 	private PendingLossState? _pendingLoss;
 
+	/// <summary>
+	/// Set to true when the player should not be able to interact with their hand or any potions.
+	/// </summary>
 	private bool _playerActionsDisabled;
 
 	private readonly Dictionary<Player, int> _cardOrPotionEffectDepth = new Dictionary<Player, int>();
@@ -65,6 +81,10 @@ public class CombatManager
 
 	private CancellationToken CombatCt => _combatCts?.Token ?? default(CancellationToken);
 
+	/// <summary>
+	/// WARNING: ONLY USE THIS IN TESTS!
+	/// See <see cref="M:MegaCrit.Sts2.Core.Combat.CombatManager.DebugForceTopCardOnNextShuffle(MegaCrit.Sts2.Core.Models.CardModel)" />.
+	/// </summary>
 	public CardModel? DebugForcedTopCardOnNextShuffle { get; private set; }
 
 	public bool IsPaused { get; private set; }
@@ -85,6 +105,12 @@ public class CombatManager
 		}
 	}
 
+	/// <summary>
+	/// The list of players in the current turn that are taking an extra turn.
+	/// Normally empty; only non-empty if there are players that used extra-turn-taking effects like
+	/// <see cref="T:MegaCrit.Sts2.Core.Models.Relics.PaelsEye" />.
+	/// Returns a snapshot copy for thread safety.
+	/// </summary>
 	public IReadOnlyList<Player> PlayersTakingExtraTurn
 	{
 		get
@@ -96,22 +122,61 @@ public class CombatManager
 		}
 	}
 
+	/// <summary>
+	/// True when the enemy turn has started (TurnStarted has fired for the enemy side).
+	/// Set right before TurnStarted fires for enemy turns, cleared when switching to player turn.
+	/// </summary>
 	public bool IsEnemyTurnStarted { get; private set; }
 
+	/// <summary>
+	/// Set to true in the time between when all players are ready to begin the enemy turn and when the enemy turn begins.
+	/// </summary>
 	public bool EndingPlayerTurnPhaseTwo { get; private set; }
 
+	/// <summary>
+	/// Set to true in the time during phase one of the end of the player's turn.
+	/// </summary>
 	public bool EndingPlayerTurnPhaseOne { get; private set; }
 
 	public CombatStateTracker StateTracker { get; }
 
 	public CombatHistory History { get; }
 
+	/// <summary>
+	/// Is the combat currently in progress?
+	/// True when the combat is done being initialized and has fully started.
+	/// False when:
+	/// * The combat is first being initialized.
+	/// * The combat is ending (the last monster has been killed).
+	/// * We're in a non-combat room.
+	/// </summary>
 	public bool IsInProgress { get; private set; }
 
+	/// <summary>
+	/// Is a new combat currently being set up?
+	/// True from the start of <see cref="M:MegaCrit.Sts2.Core.Combat.CombatManager.SetUpCombat(MegaCrit.Sts2.Core.Combat.CombatState)" /> until <see cref="P:MegaCrit.Sts2.Core.Combat.CombatManager.IsInProgress" /> flips true in
+	/// <see cref="M:MegaCrit.Sts2.Core.Combat.CombatManager.StartCombatInternal" />. During this window <see cref="P:MegaCrit.Sts2.Core.Combat.CombatManager.IsInProgress" /> is still false, so it lets
+	/// callers distinguish "combat is starting" (where combat hooks that run during setup, like the initial deck
+	/// shuffle, must still fire) from "combat is over or ending".
+	/// </summary>
 	public bool IsStarting { get; private set; }
 
+	/// <summary>
+	/// Is combat about to end due to player death?
+	/// True when LoseCombat() has been called but the loss hasn't been processed yet.
+	/// This allows effects to bail out early while still letting the current action complete.
+	/// </summary>
 	public bool IsAboutToLose => _pendingLoss != null;
 
+	/// <summary>
+	/// Is the combat in the process of ending (but still in progress)?
+	/// True when combat is in progress but all the enemies are dead, and there is nothing stopping combat from ending
+	/// (e.g. Phrog Parasite spawning in new enemies).
+	/// Also true when a pending loss is waiting to be processed.
+	/// False when
+	/// * Combat is in progress and 1+ primary enemies are still alive.
+	/// * Combat is not in progress.
+	/// </summary>
 	public bool IsEnding
 	{
 		get
@@ -136,6 +201,12 @@ public class CombatManager
 		}
 	}
 
+	/// <summary>
+	/// Has this combat ended (or is it in the process of ending)?
+	/// When you want to skip/cancel an effect because combat is not in progress, you should usually use this instead of
+	/// <see cref="P:MegaCrit.Sts2.Core.Combat.CombatManager.IsEnding" /> or !<see cref="P:MegaCrit.Sts2.Core.Combat.CombatManager.IsInProgress" />, because they can return unexpected results at certain
+	/// boundary points.
+	/// </summary>
 	public bool IsOverOrEnding
 	{
 		get
@@ -148,31 +219,74 @@ public class CombatManager
 		}
 	}
 
+	/// <summary>
+	/// Fired after combat is set up.
+	/// Note that this happens a little bit before combat actually begins.
+	/// </summary>
 	public event Action<CombatState>? CombatSetUp;
 
+	/// <summary>
+	/// Fired when combat ends.
+	/// </summary>
 	public event Action<CombatRoom>? CombatEnded;
 
+	/// <summary>
+	/// Fired when combat is won.
+	/// </summary>
 	public event Action<CombatRoom>? CombatWon;
 
+	/// <summary>
+	/// Fired whenever the arrangement of creatures in the combat changes. Specifically, when:
+	/// * A creature is added.
+	/// * A creature is removed.
+	/// * A creature's position changes.
+	/// </summary>
 	public event Action<CombatState>? CreaturesChanged;
 
+	/// <summary>
+	/// Fired whenever a new turn starts.
+	/// </summary>
 	public event Action<CombatState>? TurnStarted;
 
+	/// <summary>
+	/// Fired whenever a turn ends.
+	/// </summary>
 	public event Action<CombatState>? TurnEnded;
 
+	/// <summary>
+	/// Fired whenever a player ends their turn. Remember that, in multiplayer, this is not the same as switching to the
+	/// enemy's turn.
+	/// </summary>
 	public event Action<Player, bool>? PlayerEndedTurn;
 
+	/// <summary>
+	/// Fired whenever a player un-does the end of their turn.
+	/// </summary>
 	public event Action<Player>? PlayerUnendedTurn;
 
+	/// <summary>
+	/// Fired when all players have fully committed to ending turn and all player actions are done (including end of turn
+	/// hooks like Well-Laid Plans), but before the player hand flush.
+	/// </summary>
 	public event Action<CombatState>? AboutToSwitchToEnemyTurn;
 
+	/// <summary>
+	/// Fired when the local player's actions become disabled or enabled.
+	/// </summary>
 	public event Action<CombatState>? PlayerActionsDisabledChanged;
 
+	/// <summary>
+	/// THIS IS TEMPORARY AND SHOULD ONLY BE USED IN TESTS
+	/// </summary>
+	/// <returns></returns>
 	public CombatState? DebugOnlyGetState()
 	{
 		return _state;
 	}
 
+	/// <summary>
+	/// Sets <see cref="P:MegaCrit.Sts2.Core.Entities.Players.PlayerCombatState.Phase" /> to the same value for all players.
+	/// </summary>
 	private void SetPhaseForAllPlayers(PlayerTurnPhase phase)
 	{
 		if (_state == null)
@@ -188,16 +302,32 @@ public class CombatManager
 		}
 	}
 
+	/// <summary>
+	/// True while a <see cref="M:MegaCrit.Sts2.Core.Models.CardModel.OnPlay(MegaCrit.Sts2.Core.GameActions.Multiplayer.PlayerChoiceContext,MegaCrit.Sts2.Core.Entities.Cards.CardPlay)" /> or a <see cref="M:MegaCrit.Sts2.Core.Models.PotionModel.OnUse(MegaCrit.Sts2.Core.GameActions.Multiplayer.PlayerChoiceContext,MegaCrit.Sts2.Core.Entities.Creatures.Creature)" /> effect body is currently
+	/// executing for <paramref name="player" />, including nested auto-plays (e.g. a Sly card auto-played when
+	/// discarded). Used to avoid premature hand-empty triggers while that player's effect is mid-resolution.
+	/// </summary>
 	public bool IsExecutingCardOrPotionEffect(Player player)
 	{
 		return _cardOrPotionEffectDepth.GetValueOrDefault(player) > 0;
 	}
 
+	/// <summary>
+	/// Marks the start of a <see cref="M:MegaCrit.Sts2.Core.Models.CardModel.OnPlay(MegaCrit.Sts2.Core.GameActions.Multiplayer.PlayerChoiceContext,MegaCrit.Sts2.Core.Entities.Cards.CardPlay)" /> or <see cref="M:MegaCrit.Sts2.Core.Models.PotionModel.OnUse(MegaCrit.Sts2.Core.GameActions.Multiplayer.PlayerChoiceContext,MegaCrit.Sts2.Core.Entities.Creatures.Creature)" /> effect body for
+	/// <paramref name="player" />, incrementing their effect-nesting depth. Must be paired with a
+	/// <see cref="M:MegaCrit.Sts2.Core.Combat.CombatManager.EndCardOrPotionEffect(MegaCrit.Sts2.Core.Entities.Players.Player)" /> in a finally block so the depth stays balanced even if the effect throws or
+	/// the player dies mid-play.
+	/// </summary>
 	public void BeginCardOrPotionEffect(Player player)
 	{
 		_cardOrPotionEffectDepth[player] = _cardOrPotionEffectDepth.GetValueOrDefault(player) + 1;
 	}
 
+	/// <summary>
+	/// Marks the end of a <see cref="M:MegaCrit.Sts2.Core.Models.CardModel.OnPlay(MegaCrit.Sts2.Core.GameActions.Multiplayer.PlayerChoiceContext,MegaCrit.Sts2.Core.Entities.Cards.CardPlay)" /> or <see cref="M:MegaCrit.Sts2.Core.Models.PotionModel.OnUse(MegaCrit.Sts2.Core.GameActions.Multiplayer.PlayerChoiceContext,MegaCrit.Sts2.Core.Entities.Creatures.Creature)" /> effect body for
+	/// <paramref name="player" />, decrementing their effect-nesting depth (and removing the entry once it reaches
+	/// zero). Pairs with <see cref="M:MegaCrit.Sts2.Core.Combat.CombatManager.BeginCardOrPotionEffect(MegaCrit.Sts2.Core.Entities.Players.Player)" />; call it from a finally block.
+	/// </summary>
 	public void EndCardOrPotionEffect(Player player)
 	{
 		int num = _cardOrPotionEffectDepth.GetValueOrDefault(player) - 1;
@@ -474,6 +604,12 @@ public class CombatManager
 		}
 	}
 
+	/// <summary>
+	/// Awaits the player's setup task, then runs the auto-pre-play hooks, transitioning the player's phase
+	/// from <see cref="F:MegaCrit.Sts2.Core.Combat.PlayerTurnPhase.Start" /> -&gt; <see cref="F:MegaCrit.Sts2.Core.Combat.PlayerTurnPhase.AutoPrePlay" /> -&gt; <see cref="F:MegaCrit.Sts2.Core.Combat.PlayerTurnPhase.Play" />.
+	/// The setup await ensures a player whose setup is paused (making a <see cref="T:MegaCrit.Sts2.Core.GameActions.Multiplayer.PlayerChoiceContext" />)
+	/// stays in <see cref="F:MegaCrit.Sts2.Core.Combat.PlayerTurnPhase.Start" /> until their setup actually completes.
+	/// </summary>
 	private async Task RunAutoPrePlayPhase(HookPlayerChoiceContext playerChoiceContext, Task setupPlayerTurnTask, Player player)
 	{
 		await setupPlayerTurnTask;
@@ -482,6 +618,14 @@ public class CombatManager
 		player.PlayerCombatState.Phase = PlayerTurnPhase.Play;
 	}
 
+	/// <summary>
+	/// Sets up a player's turn by resetting energy, drawing cards, and firing start-of-turn hooks.
+	/// If the player's turn start executes a player choice (e.g. Mayhem plays Cosmic Indifference), then the entire
+	/// sequence is paused for this player. However, other players' turn start sequences may continue, and they may
+	/// play cards while this is occuring.
+	/// </summary>
+	/// <param name="player">The player whose turn to setup.</param>
+	/// <param name="playerChoiceContext">The player choice context to pass to hooks that take it.</param>
 	private async Task SetupPlayerTurn(Player player, HookPlayerChoiceContext playerChoiceContext)
 	{
 		if (player.Creature.IsDead)
@@ -531,6 +675,12 @@ public class CombatManager
 		await Hook.AfterPlayerTurnStart(state, playerChoiceContext, player);
 	}
 
+	/// <summary>
+	/// Called in EndPlayerTurnAction to indicate that the player is ready to execute end-of-turn events.
+	/// </summary>
+	/// <param name="player">The player that readied up.</param>
+	/// <param name="canBackOut">In multiplayer, notes if the player is allowed to back out of ending their turn.</param>
+	/// <param name="actionDuringEnemyTurn">Optional action to execute during the enemy turn. This is useful for tests.</param>
 	public void SetReadyToEndTurn(Player player, bool canBackOut, Func<Task>? actionDuringEnemyTurn = null)
 	{
 		using (_playerReadyLock.EnterScope())
@@ -564,6 +714,11 @@ public class CombatManager
 		}
 	}
 
+	/// <summary>
+	/// Runs any end-of-turn transition that was deferred while the player turn was being set up (see
+	/// <see cref="M:MegaCrit.Sts2.Core.Combat.CombatManager.SetReadyToEndTurn(MegaCrit.Sts2.Core.Entities.Players.Player,System.Boolean,System.Func{System.Threading.Tasks.Task})" />). Must be called on every exit path of the player-turn setup in
+	/// <see cref="M:MegaCrit.Sts2.Core.Combat.CombatManager.StartTurn(System.Func{System.Threading.Tasks.Task})" /> so a deferred transition is never dropped.
+	/// </summary>
 	private void ReleaseDeferredEndTurnTransitionIfNeeded()
 	{
 		Func<Task> deferredEndTurnTransition;
@@ -592,11 +747,26 @@ public class CombatManager
 		this.PlayerUnendedTurn?.Invoke(player);
 	}
 
+	/// <summary>
+	/// Call this when the end turn button is pressed to disable local player actions until the start of the next turn.
+	/// In multiplayer, this prevents the player from playing cards after they have ended turn.
+	/// In both SP and MP, this prevents the player from playing cards before the AfterTurnStart hook has run.
+	/// It's important that we do this when the end turn button is pressed, instead of when the EndTurnAction is
+	/// processed, because the player might try to execute actions while the end turn action is waiting in the queue.
+	/// This is a little fragile; if actions do slip through in MP, it has the potential to cause a state divergence.
+	/// Revisit if needed - we might need to discard actions on the host side (which ends up being way more complicated).
+	/// </summary>
 	public void OnEndedTurnLocally()
 	{
 		PlayerActionsDisabled = true;
 	}
 
+	/// <summary>
+	/// Called in ReadyToBeginEnemyTurnAction to indicate that the player is ready to switch to the monster turn (or
+	/// extra player turn, if necessary). Note that this is called automatically, and is not player-driven.
+	/// </summary>
+	/// <param name="player">The player that is ready to switch sides.</param>
+	/// <param name="actionDuringEnemyTurn">Optional action to execute during the enemy turn. This is useful for tests.</param>
 	public void SetReadyToBeginEnemyTurn(Player player, Func<Task>? actionDuringEnemyTurn = null)
 	{
 		if (!IsInProgress)
@@ -615,6 +785,9 @@ public class CombatManager
 		}
 	}
 
+	/// <returns>
+	/// True if the passed player has hit the end turn button, and the next player turn has not yet begun.
+	/// </returns>
 	public bool IsPlayerReadyToEndTurn(Player player)
 	{
 		using (_playerReadyLock.EnterScope())
@@ -680,6 +853,10 @@ public class CombatManager
 		this.CreaturesChanged?.Invoke(_state);
 	}
 
+	/// <summary>
+	/// Called after both the Creature has been added to the room _and_ the NCreature is spawned.
+	/// </summary>
+	/// <param name="creature"></param>
 	public async Task AfterCreatureAdded(Creature creature)
 	{
 		await creature.AfterAddedToRoom();
@@ -689,6 +866,24 @@ public class CombatManager
 		}
 	}
 
+	/// <summary>
+	/// Check for the player's hand to be empty and run the appropriate hooks if it is.
+	///
+	/// We can't just do this check every time the hand size changes, because sometimes we're in the middle of a
+	/// sequence of effects and we want to wait to check until they're all done.
+	///
+	/// For example, if we have <see cref="T:MegaCrit.Sts2.Core.Models.Relics.UnceasingTop" /> and the last card in our hand is <see cref="T:MegaCrit.Sts2.Core.Models.Cards.PommelStrike" />
+	/// and we play it, we have to wait to check hand size until Pommel Strike is done being played, otherwise we'll
+	/// draw two cards (one when your hand becomes "empty" immediately after Pommel Strike moves to the Play pile, and
+	/// another after Pommel Strike's draw command executes).
+	///
+	/// So, instead of automatically doing this check every time the hand size changes, we manually check after a card
+	/// is played, and after a potion is used, since these are the two ways a player can manually interact with combat
+	/// state (besides ending turn, which should not trigger an empty hand check). If we ever add more ways, we should
+	/// add this check in those too, and update this comment.
+	/// </summary>
+	/// <param name="choiceContext">Object that keeps context of the action this is called from.</param>
+	/// <param name="player">Player whose hand we want to check.</param>
 	public async Task CheckForEmptyHand(PlayerChoiceContext choiceContext, Player player)
 	{
 		if (IsInProgress && !IsExecutingCardOrPotionEffect(player) && !PileType.Hand.GetPile(player).Cards.Any())
@@ -697,6 +892,10 @@ public class CombatManager
 		}
 	}
 
+	/// <summary>
+	/// Reset the combat manager to prepare for the next combat.
+	/// </summary>
+	/// <param name="graceful">Usually true. Only pass false if we're exiting the game completely.</param>
 	public void Reset(bool graceful)
 	{
 		_combatCts?.Cancel();
@@ -739,6 +938,10 @@ public class CombatManager
 		}
 	}
 
+	/// <summary>
+	/// Marks combat as pending loss. The actual loss processing happens at the next safe point
+	/// (in CheckWinCondition) to avoid race conditions where effects try to run after IsInProgress is false.
+	/// </summary>
 	public void LoseCombat()
 	{
 		if (!(_pendingLoss != null))
@@ -747,6 +950,9 @@ public class CombatManager
 		}
 	}
 
+	/// <summary>
+	/// Processes a pending combat loss. Called from CheckWinCondition at safe points.
+	/// </summary>
 	private void ProcessPendingLoss()
 	{
 		if (!(_pendingLoss == null))
@@ -758,6 +964,9 @@ public class CombatManager
 		}
 	}
 
+	/// <summary>
+	/// DO NOT CALL THIS unless you're in this class or ModelTest.
+	/// </summary>
 	public async Task EndCombatInternal()
 	{
 		CombatState combatState = _state;
@@ -927,6 +1136,10 @@ public class CombatManager
 		}
 	}
 
+	/// <summary>
+	/// DO NOT CALL THIS unless you're in this class or ModelTest.
+	/// This calls all end-of-turn hooks that could require player choices to be made.
+	/// </summary>
 	public async Task EndPlayerTurnPhaseOneInternal()
 	{
 		if (_state == null)
@@ -995,6 +1208,11 @@ public class CombatManager
 		await CheckWinCondition();
 	}
 
+	/// <summary>
+	/// Executes turn end hooks for a player.
+	/// If player choice occurs during this method, it uses the passed choice context. This way, each player's turn end
+	/// runs independently of all others.
+	/// </summary>
 	private async Task DoTurnEnd(Player player, PlayerChoiceContext choiceContext)
 	{
 		await player.PlayerCombatState.OrbQueue.BeforeTurnEnd(choiceContext);
@@ -1053,6 +1271,11 @@ public class CombatManager
 		}
 	}
 
+	/// <summary>
+	/// DO NOT CALL THIS unless you're in this class or ModelTest.
+	/// This does all the player state cleanup for the end of their turn. It must not call any hooks that might cause
+	/// player choices to occur.
+	/// </summary>
 	public async Task EndPlayerTurnPhaseTwoInternal()
 	{
 		if (_state.CurrentSide != CombatSide.Player)
@@ -1123,6 +1346,11 @@ public class CombatManager
 		player.PlayerCombatState.EndOfTurnCleanup();
 	}
 
+	/// <summary>
+	/// DO NOT CALL THIS unless you're in this class or ModelTest.
+	/// This switches from the player side to the enemy side, handling extra player turns if necessary.
+	/// </summary>
+	/// <param name="actionDuringEnemyTurn">Optional action to execute during the enemy turn. This is useful for tests.</param>
 	public async Task SwitchFromPlayerToEnemySide(Func<Task>? actionDuringEnemyTurn = null)
 	{
 		if (_state == null)
@@ -1196,6 +1424,9 @@ public class CombatManager
 		this.TurnEnded?.Invoke(_state);
 	}
 
+	/// <summary>
+	/// Pause combat.
+	/// </summary>
 	public void Pause()
 	{
 		if (!NonInteractiveMode.IsActive && IsInProgress)
@@ -1204,6 +1435,9 @@ public class CombatManager
 		}
 	}
 
+	/// <summary>
+	/// Un-pause combat.
+	/// </summary>
 	public void Unpause()
 	{
 		if (!NonInteractiveMode.IsActive)
@@ -1212,6 +1446,11 @@ public class CombatManager
 		}
 	}
 
+	/// <summary>
+	/// Returns true if the passed player is taking part in the current player turn.
+	/// Returns false if some player is taking an extra turn, and it's not us.
+	/// If it is not the player turn, then this returns false.
+	/// </summary>
 	public bool IsPartOfPlayerTurn(Player player)
 	{
 		CombatState? state = _state;
@@ -1237,12 +1476,23 @@ public class CombatManager
 		}
 	}
 
+	/// <summary>
+	/// WARNING: ONLY CALL THIS IN TESTS!
+	/// Force the specified card to be moved to the top of the next shuffle.
+	/// Useful for tests for shuffle tests where the first card drawn afterwards matters.
+	/// </summary>
+	/// <param name="card">Card to force to the top.</param>
 	public void DebugForceTopCardOnNextShuffle(CardModel card)
 	{
 		card.AssertMutable();
 		DebugForcedTopCardOnNextShuffle = card;
 	}
 
+	/// <summary>
+	/// WARNING: ONLY CALL THIS IN TESTS!
+	/// Clear the forced specified card to be moved to the top of the next shuffle.
+	/// Useful for tests for shuffle tests where the first card drawn afterwards matters.
+	/// </summary>
 	public void DebugClearForcedTopCardOnNextShuffle()
 	{
 		DebugForcedTopCardOnNextShuffle = null;

@@ -6,10 +6,16 @@ using MegaCrit.Sts2.Core.Saves;
 
 namespace MegaCrit.Sts2.Core.Models.Badges;
 
+/// <summary>
+/// The player won a run without ever resting.
+/// </summary>
 public class Restless : Badge
 {
 	public override BadgeRarity Rarity => BadgeRarity.Bronze;
 
+	/// <summary>
+	/// The player won a run without ever resting.
+	/// </summary>
 	public Restless(SerializableRun run, bool won, ulong playerId)
 		: base(run, won, playerId, "RESTLESS", requiresWin: true, multiplayerOnly: false)
 	{

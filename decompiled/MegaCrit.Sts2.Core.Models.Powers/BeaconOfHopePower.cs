@@ -16,6 +16,10 @@ public sealed class BeaconOfHopePower : PowerModel
 
 	public override PowerStackType StackType => PowerStackType.Single;
 
+	/// <summary>
+	/// Prevents Beacon of Hope from triggering if it already has triggered for this instance of block.
+	/// This is to prevent Beacon of Hope infinitely triggering against another player Beacon of Hope.
+	/// </summary>
 	private bool HasAlreadyBeenGivenBlock
 	{
 		get

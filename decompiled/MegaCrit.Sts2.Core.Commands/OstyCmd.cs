@@ -18,6 +18,21 @@ namespace MegaCrit.Sts2.Core.Commands;
 
 public static class OstyCmd
 {
+	/// <summary>
+	/// Summon Osty with the specified number of HP. If the specified creature already owns an instance of Osty, raise
+	/// Osty's max HP by the specified number instead.
+	/// </summary>
+	/// <param name="choiceContext">The context with which to handle player choices.</param>
+	/// <param name="summoner">The player who is summoning.</param>
+	/// <param name="amount">
+	/// The number of HP that Osty should be summoned with (or that should be added to the existing Osty instance).
+	/// </param>
+	/// <param name="source">
+	/// The model that this Summon came from. For example, <see cref="T:MegaCrit.Sts2.Core.Models.Cards.Bodyguard" /> and <see cref="T:MegaCrit.Sts2.Core.Models.Relics.BoundPhylactery" />
+	/// pass themselves here.
+	/// Null if the Summon did not come from any model (generally only relevant in tests).
+	/// </param>
+	/// <returns>The result of the summon.</returns>
 	public static async Task<SummonResult> Summon(PlayerChoiceContext choiceContext, Player summoner, decimal amount, AbstractModel? source)
 	{
 		ICombatState combatState = summoner.Creature.CombatState;

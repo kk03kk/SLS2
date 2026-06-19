@@ -67,6 +67,10 @@ public class NodePool<T> : INodePool where T : Node, IPoolable
 
 	private readonly HashSet<T> _usedObjects = new HashSet<T>();
 
+	/// <summary>
+	/// WARNING: ONLY USE THIS PROPERTY FOR DEBUGGING!
+	/// All of this pool's free objects.
+	/// </summary>
 	public IReadOnlyList<T> DebugFreeObjects => _freeObjects;
 
 	public NodePool(string scenePath, int prewarmCount = 0)

@@ -5,6 +5,9 @@ using MegaCrit.Sts2.Core.Saves;
 
 namespace MegaCrit.Sts2.Core.Timeline.Epochs;
 
+/// <summary>
+/// Anomalous Planet
+/// </summary>
 public class Regent1Epoch : EpochModel
 {
 	public override string Id => "REGENT1_EPOCH";

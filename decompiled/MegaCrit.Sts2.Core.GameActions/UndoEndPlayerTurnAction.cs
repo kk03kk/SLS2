@@ -8,6 +8,14 @@ using MegaCrit.Sts2.Core.Runs;
 
 namespace MegaCrit.Sts2.Core.GameActions;
 
+/// <summary>
+/// This action is enqueued when the player presses the "End Turn" button in the UI. It begins the process of ending a
+/// player's turn. Notes:
+/// * This action only marks the player as ready to end turn, and encapsulates only that action. It does not block
+///   the queue while turns are ending.
+/// * SwitchSidesAction is enqueued after this one, and acts as a synchronization point for players who are ready to
+///   enter phase 2 of turn ending.
+/// </summary>
 public class UndoEndPlayerTurnAction : GameAction
 {
 	private readonly Player _player;

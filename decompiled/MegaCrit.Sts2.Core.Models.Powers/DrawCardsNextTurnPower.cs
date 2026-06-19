@@ -9,6 +9,10 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 
 namespace MegaCrit.Sts2.Core.Models.Powers;
 
+/// <summary>
+/// Draw an extra N cards at the beginning of your next turn.
+/// This is distinct from <see cref="T:MegaCrit.Sts2.Core.Models.Powers.ClarityPower" /> due to its stacking behavior.
+/// </summary>
 public sealed class DrawCardsNextTurnPower : PowerModel
 {
 	public override PowerType Type => PowerType.Buff;

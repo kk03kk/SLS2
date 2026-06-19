@@ -14,6 +14,11 @@ using MegaCrit.Sts2.Core.Saves.Runs;
 
 namespace MegaCrit.Sts2.Core.Rewards;
 
+/// <summary>
+/// A reward that adds a specific card to the player's deck.
+/// Good for events like <see cref="T:MegaCrit.Sts2.Core.Models.Events.TheLanternKey" /> that give specific quest cards, and for other miscellaneous spots
+/// that offer specific cards as rewards (like <see cref="T:MegaCrit.Sts2.Core.Models.Monsters.ThievingHopper" /> giving you your stolen card back as a reward).
+/// </summary>
 public class SpecialCardReward : Reward
 {
 	private bool _wasTaken;
@@ -61,6 +66,10 @@ public class SpecialCardReward : Reward
 		_card = card;
 	}
 
+	/// <summary>
+	/// Set an encounter to use for this reward's description.
+	/// If this is not set, the default description will be used.
+	/// </summary>
 	public void SetCustomDescriptionEncounterSource(ModelId encounterId)
 	{
 		if (ModelDb.GetByIdOrNull<EncounterModel>(encounterId) == null)

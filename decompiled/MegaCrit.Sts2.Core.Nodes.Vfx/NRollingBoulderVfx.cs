@@ -26,28 +26,61 @@ public class NRollingBoulderVfx : Node2D
 	[Signal]
 	public delegate void FinishedEventHandler();
 
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : Node2D.MethodName
 	{
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the 'CleanUpBeforeEarlyExit' method.
+		/// </summary>
 		public static readonly StringName CleanUpBeforeEarlyExit = "CleanUpBeforeEarlyExit";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : Node2D.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the '_boulder' field.
+		/// </summary>
 		public static readonly StringName _boulder = "_boulder";
 
+		/// <summary>
+		/// Cached name for the '_shadow' field.
+		/// </summary>
 		public static readonly StringName _shadow = "_shadow";
 
+		/// <summary>
+		/// Cached name for the '_slamBehind' field.
+		/// </summary>
 		public static readonly StringName _slamBehind = "_slamBehind";
 
+		/// <summary>
+		/// Cached name for the '_slamFront' field.
+		/// </summary>
 		public static readonly StringName _slamFront = "_slamFront";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : Node2D.SignalName
 	{
+		/// <summary>
+		/// Cached name for the 'HitCreature' signal.
+		/// </summary>
 		public static readonly StringName HitCreature = "HitCreature";
 
+		/// <summary>
+		/// Cached name for the 'Finished' signal.
+		/// </summary>
 		public static readonly StringName Finished = "Finished";
 	}
 
@@ -89,6 +122,7 @@ public class NRollingBoulderVfx : Node2D
 
 	public static string[] AssetPaths => new string[1] { _scenePath };
 
+	/// <inheritdoc cref="T:MegaCrit.Sts2.Core.Nodes.Vfx.NRollingBoulderVfx.HitCreatureEventHandler" />
 	public event HitCreatureEventHandler HitCreature
 	{
 		add
@@ -101,6 +135,7 @@ public class NRollingBoulderVfx : Node2D
 		}
 	}
 
+	/// <inheritdoc cref="T:MegaCrit.Sts2.Core.Nodes.Vfx.NRollingBoulderVfx.FinishedEventHandler" />
 	public event FinishedEventHandler Finished
 	{
 		add
@@ -113,6 +148,15 @@ public class NRollingBoulderVfx : Node2D
 		}
 	}
 
+	/// <summary>
+	/// Creates VFX for rolling boulder.
+	/// </summary>
+	/// <param name="creatures">The creatures that will be hit by the boulder.</param>
+	/// <param name="damage">The amount of damage the boulder will do. Affects the size and speed of the boulder. This
+	/// class does _not_ deal this damage to the creatures.</param>
+	/// <param name="debugFinalPosition">If running in a test scene without NCombatRoom, this is where the creature to
+	/// hit is located.</param>
+	/// <returns>VFX, or null if in tests.</returns>
 	public static NRollingBoulderVfx? Create(IEnumerable<Creature> creatures, decimal damage, Vector2? debugFinalPosition = null)
 	{
 		if (TestMode.IsOn)
@@ -261,6 +305,11 @@ public class NRollingBoulderVfx : Node2D
 		this.QueueFreeSafely();
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotMethodList()
 	{
@@ -270,6 +319,7 @@ public class NRollingBoulderVfx : Node2D
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -288,6 +338,7 @@ public class NRollingBoulderVfx : Node2D
 		return base.InvokeGodotClassMethod(in method, args, out ret);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -302,6 +353,7 @@ public class NRollingBoulderVfx : Node2D
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -328,6 +380,7 @@ public class NRollingBoulderVfx : Node2D
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -354,6 +407,11 @@ public class NRollingBoulderVfx : Node2D
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -365,6 +423,7 @@ public class NRollingBoulderVfx : Node2D
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -377,6 +436,7 @@ public class NRollingBoulderVfx : Node2D
 		info.AddSignalEventDelegate(SignalName.Finished, backing_Finished);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{
@@ -407,6 +467,11 @@ public class NRollingBoulderVfx : Node2D
 		}
 	}
 
+	/// <summary>
+	/// Get the signal information for all the signals declared in this class.
+	/// This method is used by Godot to register the available signals in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal static List<MethodInfo> GetGodotSignalList()
 	{
@@ -429,6 +494,7 @@ public class NRollingBoulderVfx : Node2D
 		EmitSignal(SignalName.Finished);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RaiseGodotClassSignalCallbacks(in godot_string_name signal, NativeVariantPtrArgs args)
 	{
@@ -446,6 +512,7 @@ public class NRollingBoulderVfx : Node2D
 		}
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassSignal(in godot_string_name signal)
 	{

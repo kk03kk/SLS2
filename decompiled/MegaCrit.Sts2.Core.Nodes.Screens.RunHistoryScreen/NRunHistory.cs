@@ -36,89 +36,206 @@ using MegaCrit.Sts2.addons.mega_text;
 
 namespace MegaCrit.Sts2.Core.Nodes.Screens.RunHistoryScreen;
 
+/// <summary>
+/// Rename to NRunHistoryScreen someday.
+/// </summary>
 [ScriptPath("res://src/Core/Nodes/Screens/RunHistoryScreen/NRunHistory.cs")]
 public class NRunHistory : NSubmenu
 {
+	/// <summary>
+	/// Cached StringNames for the methods contained in this class, for fast lookup.
+	/// </summary>
 	public new class MethodName : NSubmenu.MethodName
 	{
+		/// <summary>
+		/// Cached name for the 'Create' method.
+		/// </summary>
 		public static readonly StringName Create = "Create";
 
+		/// <summary>
+		/// Cached name for the '_Ready' method.
+		/// </summary>
 		public new static readonly StringName _Ready = "_Ready";
 
+		/// <summary>
+		/// Cached name for the 'OnLeftButtonButtonReleased' method.
+		/// </summary>
 		public static readonly StringName OnLeftButtonButtonReleased = "OnLeftButtonButtonReleased";
 
+		/// <summary>
+		/// Cached name for the 'OnRightButtonButtonReleased' method.
+		/// </summary>
 		public static readonly StringName OnRightButtonButtonReleased = "OnRightButtonButtonReleased";
 
+		/// <summary>
+		/// Cached name for the 'CanBeShown' method.
+		/// </summary>
 		public static readonly StringName CanBeShown = "CanBeShown";
 
+		/// <summary>
+		/// Cached name for the 'OnSubmenuOpened' method.
+		/// </summary>
 		public new static readonly StringName OnSubmenuOpened = "OnSubmenuOpened";
 
+		/// <summary>
+		/// Cached name for the 'OnSubmenuShown' method.
+		/// </summary>
 		public new static readonly StringName OnSubmenuShown = "OnSubmenuShown";
 
+		/// <summary>
+		/// Cached name for the 'OnSubmenuHidden' method.
+		/// </summary>
 		public new static readonly StringName OnSubmenuHidden = "OnSubmenuHidden";
 
+		/// <summary>
+		/// Cached name for the '_Input' method.
+		/// </summary>
 		public new static readonly StringName _Input = "_Input";
 
+		/// <summary>
+		/// Cached name for the 'SelectPlayer' method.
+		/// </summary>
 		public static readonly StringName SelectPlayer = "SelectPlayer";
 
+		/// <summary>
+		/// Cached name for the 'LoadGoldHpAndPotionInfo' method.
+		/// </summary>
 		public static readonly StringName LoadGoldHpAndPotionInfo = "LoadGoldHpAndPotionInfo";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the properties and fields contained in this class, for fast lookup.
+	/// </summary>
 	public new class PropertyName : NSubmenu.PropertyName
 	{
+		/// <summary>
+		/// Cached name for the 'InitialFocusedControl' property.
+		/// </summary>
 		public new static readonly StringName InitialFocusedControl = "InitialFocusedControl";
 
+		/// <summary>
+		/// Cached name for the '_screenContents' field.
+		/// </summary>
 		public static readonly StringName _screenContents = "_screenContents";
 
+		/// <summary>
+		/// Cached name for the '_playerIconContainer' field.
+		/// </summary>
 		public static readonly StringName _playerIconContainer = "_playerIconContainer";
 
+		/// <summary>
+		/// Cached name for the '_hpLabel' field.
+		/// </summary>
 		public static readonly StringName _hpLabel = "_hpLabel";
 
+		/// <summary>
+		/// Cached name for the '_goldLabel' field.
+		/// </summary>
 		public static readonly StringName _goldLabel = "_goldLabel";
 
+		/// <summary>
+		/// Cached name for the '_potionHolder' field.
+		/// </summary>
 		public static readonly StringName _potionHolder = "_potionHolder";
 
+		/// <summary>
+		/// Cached name for the '_floorLabel' field.
+		/// </summary>
 		public static readonly StringName _floorLabel = "_floorLabel";
 
+		/// <summary>
+		/// Cached name for the '_timeLabel' field.
+		/// </summary>
 		public static readonly StringName _timeLabel = "_timeLabel";
 
+		/// <summary>
+		/// Cached name for the '_dateLabel' field.
+		/// </summary>
 		public static readonly StringName _dateLabel = "_dateLabel";
 
+		/// <summary>
+		/// Cached name for the '_seedLabel' field.
+		/// </summary>
 		public static readonly StringName _seedLabel = "_seedLabel";
 
+		/// <summary>
+		/// Cached name for the '_gameModeLabel' field.
+		/// </summary>
 		public static readonly StringName _gameModeLabel = "_gameModeLabel";
 
+		/// <summary>
+		/// Cached name for the '_buildLabel' field.
+		/// </summary>
 		public static readonly StringName _buildLabel = "_buildLabel";
 
+		/// <summary>
+		/// Cached name for the '_badgeContainer' field.
+		/// </summary>
 		public static readonly StringName _badgeContainer = "_badgeContainer";
 
+		/// <summary>
+		/// Cached name for the '_deathQuoteLabel' field.
+		/// </summary>
 		public static readonly StringName _deathQuoteLabel = "_deathQuoteLabel";
 
+		/// <summary>
+		/// Cached name for the '_mapPointHistory' field.
+		/// </summary>
 		public static readonly StringName _mapPointHistory = "_mapPointHistory";
 
+		/// <summary>
+		/// Cached name for the '_relicHistory' field.
+		/// </summary>
 		public static readonly StringName _relicHistory = "_relicHistory";
 
+		/// <summary>
+		/// Cached name for the '_deckHistory' field.
+		/// </summary>
 		public static readonly StringName _deckHistory = "_deckHistory";
 
+		/// <summary>
+		/// Cached name for the '_outOfDateVisual' field.
+		/// </summary>
 		public static readonly StringName _outOfDateVisual = "_outOfDateVisual";
 
+		/// <summary>
+		/// Cached name for the '_index' field.
+		/// </summary>
 		public static readonly StringName _index = "_index";
 
+		/// <summary>
+		/// Cached name for the '_prevButton' field.
+		/// </summary>
 		public static readonly StringName _prevButton = "_prevButton";
 
+		/// <summary>
+		/// Cached name for the '_nextButton' field.
+		/// </summary>
 		public static readonly StringName _nextButton = "_nextButton";
 
+		/// <summary>
+		/// Cached name for the '_selectedPlayerIcon' field.
+		/// </summary>
 		public static readonly StringName _selectedPlayerIcon = "_selectedPlayerIcon";
 
+		/// <summary>
+		/// Cached name for the '_screenTween' field.
+		/// </summary>
 		public static readonly StringName _screenTween = "_screenTween";
 	}
 
+	/// <summary>
+	/// Cached StringNames for the signals contained in this class, for fast lookup.
+	/// </summary>
 	public new class SignalName : NSubmenu.SignalName
 	{
 	}
 
 	private static readonly string _scenePath = SceneHelper.GetScenePath("screens/run_history_screen/run_history");
 
+	/// <summary>
+	/// Padding at the bottom of the screen so that the scrollbar shows up if the contents don't quite touch the bottom
+	/// </summary>
 	private const float _bottomScrollbarPadding = 25f;
 
 	public const string locTable = "run_history";
@@ -276,6 +393,9 @@ public class NRunHistory : NSubmenu
 		_screenTween?.Kill();
 	}
 
+	/// <summary>
+	/// Called whenever we want to load a run history file!
+	/// </summary>
 	private Task RefreshAndSelectRun(int index)
 	{
 		if (index < 0 || index >= _runNames.Count)
@@ -455,12 +575,21 @@ public class NRunHistory : NSubmenu
 		}
 	}
 
+	/// <summary>
+	/// Counts the total number of MapPointHistoryEntry objects.
+	/// This is how many floors the player has traversed I think.
+	/// </summary>
 	private void LoadPlayerFloor(RunHistory history)
 	{
 		int value = history.MapPointHistory.Sum((List<MapPointHistoryEntry> rooms) => rooms.Count);
 		_floorLabel.SetTextAutoSize($"{value}");
 	}
 
+	/// <summary>
+	/// Sets the text in the top right that is like Singleplayer: Standard or Multiplayer: Custom, etc.
+	/// </summary>
+	/// <param name="history"></param>
+	/// <exception cref="T:System.ArgumentOutOfRangeException"></exception>
 	private void LoadGameModeDetails(RunHistory history)
 	{
 		LocString locString = new LocString("run_history", "GAME_MODE.title");
@@ -490,6 +619,9 @@ public class NRunHistory : NSubmenu
 		_gameModeLabel.Text = locString.GetFormattedText() ?? "";
 	}
 
+	/// <summary>
+	/// Given a <see cref="T:MegaCrit.Sts2.Core.Runs.RunHistory" /> entry, returns how the run ended (aka the <see cref="T:MegaCrit.Sts2.Core.Nodes.Screens.RunHistoryScreen.GameOverType" />).
+	/// </summary>
 	public static GameOverType GetGameOverType(RunHistory history)
 	{
 		if (history.Win)
@@ -512,6 +644,9 @@ public class NRunHistory : NSubmenu
 		return GameOverType.None;
 	}
 
+	/// <summary>
+	/// Helper method to generate a death quote given a run history entry, characterId, and how they died.
+	/// </summary>
 	public static string GetDeathQuote(RunHistory history, ModelId characterId, GameOverType gameOverType)
 	{
 		CharacterModel characterModel = SaveUtil.CharacterOrDeprecated(characterId);
@@ -679,6 +814,11 @@ public class NRunHistory : NSubmenu
 		_timeLabel.SetTextAutoSize(TimeFormatting.Format(history.RunTime));
 	}
 
+	/// <summary>
+	/// Get the method information for all the methods declared in this class.
+	/// This method is used by Godot to register the available methods in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<MethodInfo> GetGodotMethodList()
 	{
@@ -712,6 +852,7 @@ public class NRunHistory : NSubmenu
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)
 	{
@@ -799,6 +940,7 @@ public class NRunHistory : NSubmenu
 		return false;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool HasGodotClassMethod(in godot_string_name method)
 	{
@@ -849,6 +991,7 @@ public class NRunHistory : NSubmenu
 		return base.HasGodotClassMethod(in method);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)
 	{
@@ -965,6 +1108,7 @@ public class NRunHistory : NSubmenu
 		return base.SetGodotClassPropertyValue(in name, in value);
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)
 	{
@@ -1086,6 +1230,11 @@ public class NRunHistory : NSubmenu
 		return base.GetGodotClassPropertyValue(in name, out value);
 	}
 
+	/// <summary>
+	/// Get the property information for all the properties declared in this class.
+	/// This method is used by Godot to register the available properties in the editor.
+	/// Do not call this method.
+	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	internal new static List<PropertyInfo> GetGodotPropertyList()
 	{
@@ -1116,6 +1265,7 @@ public class NRunHistory : NSubmenu
 		return list;
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void SaveGodotObjectData(GodotSerializationInfo info)
 	{
@@ -1144,6 +1294,7 @@ public class NRunHistory : NSubmenu
 		info.AddProperty(PropertyName._screenTween, Variant.From(in _screenTween));
 	}
 
+	/// <inheritdoc />
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	protected override void RestoreGodotObjectData(GodotSerializationInfo info)
 	{

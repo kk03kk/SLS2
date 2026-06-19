@@ -6,10 +6,16 @@ using MegaCrit.Sts2.Core.Saves;
 
 namespace MegaCrit.Sts2.Core.Models.Badges;
 
+/// <summary>
+/// The player rested at every rest site and won.
+/// </summary>
 public class Restful : Badge
 {
 	public override BadgeRarity Rarity => BadgeRarity.Bronze;
 
+	/// <summary>
+	/// The player rested at every rest site and won.
+	/// </summary>
 	public Restful(SerializableRun run, bool won, ulong playerId)
 		: base(run, won, playerId, "RESTFUL", requiresWin: true, multiplayerOnly: false)
 	{

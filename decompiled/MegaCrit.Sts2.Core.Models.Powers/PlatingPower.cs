@@ -35,6 +35,9 @@ public sealed class PlatingPower : PowerModel
 		return Task.CompletedTask;
 	}
 
+	/// <summary>
+	/// We want enemies that start with Plating to also start combat with block.
+	/// </summary>
 	public override Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
 	{
 		if (side != CombatSide.Player)
@@ -52,6 +55,9 @@ public sealed class PlatingPower : PowerModel
 		return CreatureCmd.GainBlock(base.Owner, base.Amount, ValueProp.Unpowered, null);
 	}
 
+	/// <summary>
+	/// We do this in early so that it triggers before end-of-turn damage effects.
+	/// </summary>
 	public override async Task BeforeSideTurnEndEarly(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
 	{
 		if (participants.Contains(base.Owner))
