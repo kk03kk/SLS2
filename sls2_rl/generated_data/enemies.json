@@ -1,0 +1,1193 @@
+[
+  {
+    "id": "Aeonglass",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 535, 512)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "EbbDamage",
+      "EyeLasersDamage, EyeLasersRepeat"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Aeonglass.cs"
+  },
+  {
+    "id": "Architect",
+    "min_hp_raw": "9999",
+    "max_hp_raw": "9999",
+    "intent_args": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Architect.cs"
+  },
+  {
+    "id": "AssassinRubyRaider",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 19, 18)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 24, 23)",
+    "intent_args": [
+      "KillshotDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\AssassinRubyRaider.cs"
+  },
+  {
+    "id": "AxeRubyRaider",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 21, 20)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 23, 22)",
+    "intent_args": [
+      "BigSwingDamage",
+      "SwingDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\AxeRubyRaider.cs"
+  },
+  {
+    "id": "Axebot",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 76, 70)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 86, 78)",
+    "intent_args": [
+      "",
+      "HammerUppercutDamage",
+      "OneTwoDamage, 2"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Axebot.cs"
+  },
+  {
+    "id": "BattleFriendV1",
+    "min_hp_raw": "75",
+    "max_hp_raw": "75",
+    "intent_args": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\BattleFriendV1.cs"
+  },
+  {
+    "id": "BattleFriendV2",
+    "min_hp_raw": "150",
+    "max_hp_raw": "150",
+    "intent_args": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\BattleFriendV2.cs"
+  },
+  {
+    "id": "BattleFriendV3",
+    "min_hp_raw": "300",
+    "max_hp_raw": "300",
+    "intent_args": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\BattleFriendV3.cs"
+  },
+  {
+    "id": "BigDummy",
+    "min_hp_raw": "9999",
+    "max_hp_raw": "9999",
+    "intent_args": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\BigDummy.cs"
+  },
+  {
+    "id": "BowlbugEgg",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 23, 21)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 24, 22)",
+    "intent_args": [
+      "BiteDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\BowlbugEgg.cs"
+  },
+  {
+    "id": "BowlbugNectar",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 36, 35)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 39, 38)",
+    "intent_args": [
+      "",
+      "ThrashDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\BowlbugNectar.cs"
+  },
+  {
+    "id": "BowlbugRock",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 46, 45)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 49, 48)",
+    "intent_args": [
+      "HeadbuttDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\BowlbugRock.cs"
+  },
+  {
+    "id": "BowlbugSilk",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 41, 40)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 44, 43)",
+    "intent_args": [
+      "",
+      "ThrashDamage, 2"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\BowlbugSilk.cs"
+  },
+  {
+    "id": "BruteRubyRaider",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 31, 30)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 34, 33)",
+    "intent_args": [
+      "",
+      "BeatDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\BruteRubyRaider.cs"
+  },
+  {
+    "id": "BygoneEffigy",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 132, 127)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "SlashDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\BygoneEffigy.cs"
+  },
+  {
+    "id": "Byrdonis",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 90, 81)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 90, 84)",
+    "intent_args": [
+      "PeckDamage, PeckRepeat",
+      "SwoopDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Byrdonis.cs"
+  },
+  {
+    "id": "Byrdpip",
+    "min_hp_raw": "9999",
+    "max_hp_raw": "9999",
+    "intent_args": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Byrdpip.cs"
+  },
+  {
+    "id": "CalcifiedCultist",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 39, 38)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 42, 41)",
+    "intent_args": [
+      "",
+      "DarkStrikeDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\CalcifiedCultist.cs"
+  },
+  {
+    "id": "CeremonialBeast",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 262, 252)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "CrushDamage",
+      "PlowDamage",
+      "StompDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\CeremonialBeast.cs"
+  },
+  {
+    "id": "Chomper",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 63, 60)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 67, 64)",
+    "intent_args": [
+      "ClampDamage, 2"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Chomper.cs"
+  },
+  {
+    "id": "CorpseSlug",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 27, 25)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 29, 27)",
+    "intent_args": [
+      "",
+      "GlompDamage",
+      "WhipSlapDamage, WhipSlapRepeat"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\CorpseSlug.cs"
+  },
+  {
+    "id": "CrossbowRubyRaider",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 19, 18)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 22, 21)",
+    "intent_args": [
+      "FireDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\CrossbowRubyRaider.cs"
+  },
+  {
+    "id": "Crusher",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 219, 209)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "BugStingDamage, BugStingTimes",
+      "EnlargingStrikeDamage",
+      "GuardedStrikeDamage",
+      "ThrashDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Crusher.cs"
+  },
+  {
+    "id": "CubexConstruct",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 70, 65)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "BlastDamage",
+      "ExpelDamage, 2"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\CubexConstruct.cs"
+  },
+  {
+    "id": "DampCultist",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 52, 51)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 54, 53)",
+    "intent_args": [
+      "",
+      "DarkStrikeDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\DampCultist.cs"
+  },
+  {
+    "id": "DeprecatedMonster",
+    "min_hp_raw": "0",
+    "max_hp_raw": "0",
+    "intent_args": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\DeprecatedMonster.cs"
+  },
+  {
+    "id": "DevotedSculptor",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 172, 162)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "SavageDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\DevotedSculptor.cs"
+  },
+  {
+    "id": "Entomancer",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 155, 145)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "BeesDamage, BeesRepeat",
+      "SpearMoveDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Entomancer.cs"
+  },
+  {
+    "id": "Exoskeleton",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 25, 24)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 29, 28)",
+    "intent_args": [
+      "",
+      "MandiblesDamage",
+      "SkitterDamage, SkitterRepeats"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Exoskeleton.cs"
+  },
+  {
+    "id": "EyeWithTeeth",
+    "min_hp_raw": "6",
+    "max_hp_raw": "",
+    "intent_args": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\EyeWithTeeth.cs"
+  },
+  {
+    "id": "Fabricator",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 155, 150)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "DisintegrateDamage",
+      "FabricatingStrikeDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Fabricator.cs"
+  },
+  {
+    "id": "FakeMerchantMonster",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 175, 165)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 175, 165)",
+    "intent_args": [
+      "",
+      "2, 8",
+      "SwipeDamage",
+      "ThrowRelicDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\FakeMerchantMonster.cs"
+  },
+  {
+    "id": "FatGremlin",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 14, 13)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 18, 17)",
+    "intent_args": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\FatGremlin.cs"
+  },
+  {
+    "id": "FlailKnight",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 108, 101)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "FlailDamage, 2",
+      "RamDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\FlailKnight.cs"
+  },
+  {
+    "id": "Flyconid",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 51, 47)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 53, 49)",
+    "intent_args": [
+      "",
+      "SmashDamage",
+      "SporeDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Flyconid.cs"
+  },
+  {
+    "id": "Fogmog",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 78, 74)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "HeadbuttDamage",
+      "SwipeDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Fogmog.cs"
+  },
+  {
+    "id": "FossilStalker",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 54, 51)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 56, 53)",
+    "intent_args": [
+      "",
+      "LashDamage, LashRepeat",
+      "LatchDamage",
+      "TackleDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\FossilStalker.cs"
+  },
+  {
+    "id": "FrogKnight",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 199, 191)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "BeetleChargeDamage",
+      "StrikeDownEvilDamage",
+      "TongueLashDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\FrogKnight.cs"
+  },
+  {
+    "id": "FuzzyWurmCrawler",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 58, 55)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 59, 57)",
+    "intent_args": [
+      "",
+      "AcidGoopDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\FuzzyWurmCrawler.cs"
+  },
+  {
+    "id": "GasBomb",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 8, 7)",
+    "max_hp_raw": "",
+    "intent_args": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\GasBomb.cs"
+  },
+  {
+    "id": "GlobeHead",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 158, 148)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "GalvanicBurstDamage",
+      "ShockingSlapDamage",
+      "ThunderStrikeDamage, 3"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\GlobeHead.cs"
+  },
+  {
+    "id": "GremlinMerc",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 51, 47)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 53, 49)",
+    "intent_args": [
+      "",
+      "DoubleSmashDamage, DoubleSmashRepeat",
+      "GimmeDamage, GimmeRepeat",
+      "HeheDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\GremlinMerc.cs"
+  },
+  {
+    "id": "Guardbot",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 17, 16)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 21, 20)",
+    "intent_args": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Guardbot.cs"
+  },
+  {
+    "id": "HauntedShip",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 67, 63)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "StompDamage, StompRepeat",
+      "SwipeDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\HauntedShip.cs"
+  },
+  {
+    "id": "HunterKiller",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 126, 121)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "BiteDamage",
+      "PunctureDamage, 3"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\HunterKiller.cs"
+  },
+  {
+    "id": "InfestedPrism",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 171, 161)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "JabDamage",
+      "PulsateDamage",
+      "RadiateDamage",
+      "WhirlwindDamage, WhirlwindRepeat"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\InfestedPrism.cs"
+  },
+  {
+    "id": "Inklet",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 12, 11)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 18, 17)",
+    "intent_args": [
+      "JabDamage",
+      "PiercingGazeDamage",
+      "WhirlwindDamage, 3"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Inklet.cs"
+  },
+  {
+    "id": "KinFollower",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 62, 58)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 63, 59)",
+    "intent_args": [
+      "",
+      "BoomerangDamage, 2",
+      "QuickSlashDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\KinFollower.cs"
+  },
+  {
+    "id": "KinPriest",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 199, 190)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "BeamDamage, 3",
+      "OrbOfFrailtyDamage",
+      "OrbOfWeaknessDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\KinPriest.cs"
+  },
+  {
+    "id": "KnowledgeDemon",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 399, 379)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "KnowledgeOverwhelmingDamage, 3",
+      "PonderDamage",
+      "SlapDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\KnowledgeDemon.cs"
+  },
+  {
+    "id": "LagavulinMatriarch",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 233, 222)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "DisembowelDamage, DisembowelRepeat",
+      "Slash2Damage",
+      "SlashDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\LagavulinMatriarch.cs"
+  },
+  {
+    "id": "LeafSlimeM",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 33, 32)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 36, 35)",
+    "intent_args": [
+      "ClumpDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\LeafSlimeM.cs"
+  },
+  {
+    "id": "LeafSlimeS",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 12, 11)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 16, 15)",
+    "intent_args": [
+      "TackleDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\LeafSlimeS.cs"
+  },
+  {
+    "id": "LivingFog",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 82, 80)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "AdvancedGasDamage",
+      "BloatDamage",
+      "SuperGasBlastDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\LivingFog.cs"
+  },
+  {
+    "id": "LivingShield",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 65, 55)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "ShieldSlamDamage",
+      "SmashDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\LivingShield.cs"
+  },
+  {
+    "id": "LouseProgenitor",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 138, 134)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 141, 136)",
+    "intent_args": [
+      "",
+      "PounceDamage",
+      "WebDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\LouseProgenitor.cs"
+  },
+  {
+    "id": "MagiKnight",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 89, 82)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "BombDamage",
+      "PowerShieldDamage",
+      "SpearDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\MagiKnight.cs"
+  },
+  {
+    "id": "Mawler",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 76, 72)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "ClawDamage, 2",
+      "RipAndTearDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Mawler.cs"
+  },
+  {
+    "id": "MechaKnight",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 320, 300)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "ChargeDamage",
+      "HeavyCleaveDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\MechaKnight.cs"
+  },
+  {
+    "id": "MultiAttackMoveMonster",
+    "min_hp_raw": "999",
+    "max_hp_raw": "999",
+    "intent_args": [
+      "1, 5"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\MultiAttackMoveMonster.cs"
+  },
+  {
+    "id": "Myte",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 64, 61)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 69, 67)",
+    "intent_args": [
+      "",
+      "BiteDamage",
+      "SuckDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Myte.cs"
+  },
+  {
+    "id": "Nibbit",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 44, 42)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 48, 46)",
+    "intent_args": [
+      "",
+      "ButtDamage",
+      "SliceDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Nibbit.cs"
+  },
+  {
+    "id": "Noisebot",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 19, 18)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 24, 23)",
+    "intent_args": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Noisebot.cs"
+  },
+  {
+    "id": "OneHpMonster",
+    "min_hp_raw": "1",
+    "max_hp_raw": "1",
+    "intent_args": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\OneHpMonster.cs"
+  },
+  {
+    "id": "Osty",
+    "min_hp_raw": "1",
+    "max_hp_raw": "1",
+    "intent_args": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Osty.cs"
+  },
+  {
+    "id": "Ovicopter",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 126, 124)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 132, 130)",
+    "intent_args": [
+      "",
+      "SmashDamage",
+      "TenderizerDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Ovicopter.cs"
+  },
+  {
+    "id": "OwlMagistrate",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 247, 231)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "PeckAssaultDamage, 6",
+      "ScrutinyDamage",
+      "VerdictDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\OwlMagistrate.cs"
+  },
+  {
+    "id": "PaelsLegion",
+    "min_hp_raw": "9999",
+    "max_hp_raw": "9999",
+    "intent_args": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\PaelsLegion.cs"
+  },
+  {
+    "id": "Parafright",
+    "min_hp_raw": "21",
+    "max_hp_raw": "",
+    "intent_args": [
+      "SlamDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Parafright.cs"
+  },
+  {
+    "id": "PhantasmalGardener",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 27, 26)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 32, 31)",
+    "intent_args": [
+      "",
+      "BiteDamage",
+      "FlailDamage, FlailRepeat",
+      "LashDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\PhantasmalGardener.cs"
+  },
+  {
+    "id": "PhrogParasite",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 66, 61)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 68, 64)",
+    "intent_args": [
+      "LashDamage, 4"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\PhrogParasite.cs"
+  },
+  {
+    "id": "PunchConstruct",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 60, 55)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "FastPunchDamage, FastPunchRepeat",
+      "StrongPunchDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\PunchConstruct.cs"
+  },
+  {
+    "id": "Queen",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 419, 400)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "ExecutionDamage",
+      "OffWithYourHeadDamage, 5"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Queen.cs"
+  },
+  {
+    "id": "Rocket",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 209, 199)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "LaserDamage",
+      "PrecisionBeamDamage",
+      "TargetingReticleDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Rocket.cs"
+  },
+  {
+    "id": "ScrollOfBiting",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 33, 30)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 39, 37)",
+    "intent_args": [
+      "",
+      "ChewDamage, 2",
+      "ChompDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\ScrollOfBiting.cs"
+  },
+  {
+    "id": "Seapunk",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 47, 44)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 49, 46)",
+    "intent_args": [
+      "",
+      "SeaKickDamage",
+      "SpinningKickDamage, SpinningKickRepeat"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Seapunk.cs"
+  },
+  {
+    "id": "SewerClam",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 58, 56)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "JetDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\SewerClam.cs"
+  },
+  {
+    "id": "ShrinkerBeetle",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 40, 38)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 42, 40)",
+    "intent_args": [
+      "ChompDamage",
+      "StompDamage",
+      "strong: true"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\ShrinkerBeetle.cs"
+  },
+  {
+    "id": "SingleAttackMoveMonster",
+    "min_hp_raw": "999",
+    "max_hp_raw": "999",
+    "intent_args": [
+      "1"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\SingleAttackMoveMonster.cs"
+  },
+  {
+    "id": "SkulkingColony",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 80, 75)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "InertiaDamage",
+      "PiercingStabsDamage, PiercingStabsRepeat",
+      "ZoomDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\SkulkingColony.cs"
+  },
+  {
+    "id": "SlimedBerserker",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 281, 261)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "PummelingDamage, 4",
+      "SmotherDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\SlimedBerserker.cs"
+  },
+  {
+    "id": "SlitheringStrangler",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 54, 53)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 56, 55)",
+    "intent_args": [
+      "",
+      "LashDamage",
+      "ThwackDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\SlitheringStrangler.cs"
+  },
+  {
+    "id": "SludgeSpinner",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 41, 37)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 42, 39)",
+    "intent_args": [
+      "",
+      "OilSprayDamage",
+      "RageDamage",
+      "SlamDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\SludgeSpinner.cs"
+  },
+  {
+    "id": "SlumberingBeetle",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 89, 86)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "RolloutDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\SlumberingBeetle.cs"
+  },
+  {
+    "id": "SnappingJaxfruit",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 34, 31)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 36, 33)",
+    "intent_args": [
+      "",
+      "EnergyDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\SnappingJaxfruit.cs"
+  },
+  {
+    "id": "SneakyGremlin",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 11, 10)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 15, 14)",
+    "intent_args": [
+      "TackleDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\SneakyGremlin.cs"
+  },
+  {
+    "id": "SoulFysh",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 221, 211)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "DeGasDamage",
+      "GazeDamage",
+      "ScreamDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\SoulFysh.cs"
+  },
+  {
+    "id": "SoulNexus",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 254, 234)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "DrainLifeDamage",
+      "MaelstromDamage, MaelstromRepeat",
+      "SoulBurnDamage",
+      "strong: true"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\SoulNexus.cs"
+  },
+  {
+    "id": "SpectralKnight",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 97, 93)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "SoulFlameDamage, 3",
+      "SoulSlashDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\SpectralKnight.cs"
+  },
+  {
+    "id": "SpinyToad",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 121, 116)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 124, 119)",
+    "intent_args": [
+      "",
+      "ExplosionDamage",
+      "LashDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\SpinyToad.cs"
+  },
+  {
+    "id": "Stabbot",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 19, 18)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 24, 23)",
+    "intent_args": [
+      "",
+      "StabDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Stabbot.cs"
+  },
+  {
+    "id": "TenHpMonster",
+    "min_hp_raw": "10",
+    "max_hp_raw": "10",
+    "intent_args": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\TenHpMonster.cs"
+  },
+  {
+    "id": "TerrorEel",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 150, 140)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "CrashDamage",
+      "ThrashDamage, ThrashRepeat"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\TerrorEel.cs"
+  },
+  {
+    "id": "TestSubject",
+    "min_hp_raw": "",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "BigPounceDamage",
+      "BiteDamage",
+      "MultiClawDamage, (",
+      "Phase3LacerateDamage, 3",
+      "SkullBashDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\TestSubject.cs"
+  },
+  {
+    "id": "TheAdversaryMkOne",
+    "min_hp_raw": "100",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "BarrageDamage, BarrageRepeat",
+      "BeamDamage",
+      "SmashDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\TheAdversaryMkOne.cs"
+  },
+  {
+    "id": "TheAdversaryMkThree",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 300, 300)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "BarrageDamage, BarrageRepeat",
+      "CrashDamage",
+      "FlameBeamDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\TheAdversaryMkThree.cs"
+  },
+  {
+    "id": "TheAdversaryMkTwo",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 200, 200)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "BarrageDamage, BarrageRepeat",
+      "BashDamage",
+      "FlameBeamDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\TheAdversaryMkTwo.cs"
+  },
+  {
+    "id": "TheForgotten",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 111, 106)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "("
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\TheForgotten.cs"
+  },
+  {
+    "id": "TheInsatiable",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 341, 321)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "BiteDamage",
+      "ThrashDamage, 2"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\TheInsatiable.cs"
+  },
+  {
+    "id": "TheLost",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 99, 93)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "EyeLasersDamage, 2"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\TheLost.cs"
+  },
+  {
+    "id": "TheObscura",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 129, 123)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "HardeningStrikeDamage",
+      "PiercingGazeDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\TheObscura.cs"
+  },
+  {
+    "id": "ThievingHopper",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 84, 79)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "HatTrickDamage",
+      "NabDamage",
+      "TheftDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\ThievingHopper.cs"
+  },
+  {
+    "id": "Toadpole",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 22, 21)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 26, 25)",
+    "intent_args": [
+      "",
+      "SpikeSpitDamage, SpikeSpitRepeat",
+      "WhirlDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Toadpole.cs"
+  },
+  {
+    "id": "TorchHeadAmalgam",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 211, 199)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "SoulBeamDamage, 3",
+      "TackleDamage",
+      "WeakTackleDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\TorchHeadAmalgam.cs"
+  },
+  {
+    "id": "ToughEgg",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 15, 14)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 19, 18)",
+    "intent_args": [
+      "NibbleDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\ToughEgg.cs"
+  },
+  {
+    "id": "TrackerRubyRaider",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 22, 21)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 26, 25)",
+    "intent_args": [
+      "",
+      "HoundsDamage, HoundsRepeat"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\TrackerRubyRaider.cs"
+  },
+  {
+    "id": "Tunneler",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 92, 87)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "BelowDamage",
+      "BiteDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Tunneler.cs"
+  },
+  {
+    "id": "TurretOperator",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 51, 41)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "FireDamage, 5"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\TurretOperator.cs"
+  },
+  {
+    "id": "TwigSlimeM",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 27, 26)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 29, 28)",
+    "intent_args": [
+      "ClumpDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\TwigSlimeM.cs"
+  },
+  {
+    "id": "TwigSlimeS",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 8, 7)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 12, 11)",
+    "intent_args": [
+      "TackleDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\TwigSlimeS.cs"
+  },
+  {
+    "id": "TwoTailedRat",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 18, 17)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 22, 21)",
+    "intent_args": [
+      "",
+      "DiseaseBiteDamage",
+      "ScratchDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\TwoTailedRat.cs"
+  },
+  {
+    "id": "Vantom",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 183, 173)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "DismemberDamage",
+      "InkBlotDamage",
+      "InkyLanceDamage, 2"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Vantom.cs"
+  },
+  {
+    "id": "VineShambler",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 64, 61)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "ChompDamage",
+      "GraspingVinesDamage",
+      "SwipeDamage, 2"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\VineShambler.cs"
+  },
+  {
+    "id": "WaterfallGiant",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 250, 240)",
+    "max_hp_raw": "",
+    "intent_args": [
+      "",
+      "(",
+      "PressureUpDamage",
+      "RamDamage",
+      "StompDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\WaterfallGiant.cs"
+  },
+  {
+    "id": "Wriggler",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 18, 17)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 22, 21)",
+    "intent_args": [
+      "",
+      "BiteDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Wriggler.cs"
+  },
+  {
+    "id": "Zapbot",
+    "min_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 19, 18)",
+    "max_hp_raw": "AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 24, 23)",
+    "intent_args": [
+      "ZapDamage"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Monsters\\Zapbot.cs"
+  }
+]

@@ -1,0 +1,831 @@
+[
+  {
+    "id": "AeonglassBoss",
+    "room_type": "Boss",
+    "is_weak": false,
+    "monsters": [
+      "Aeonglass"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\AeonglassBoss.cs"
+  },
+  {
+    "id": "AxebotsNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "Axebot"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\AxebotsNormal.cs"
+  },
+  {
+    "id": "BattlewornDummyEventEncounter",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "BattleFriendV1",
+      "BattleFriendV2",
+      "BattleFriendV3"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\BattlewornDummyEventEncounter.cs"
+  },
+  {
+    "id": "BowlbugsNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "BowlbugEgg",
+      "BowlbugNectar",
+      "BowlbugRock",
+      "BowlbugSilk"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\BowlbugsNormal.cs"
+  },
+  {
+    "id": "BowlbugsWeak",
+    "room_type": "Monster",
+    "is_weak": true,
+    "monsters": [
+      "BowlbugEgg",
+      "BowlbugNectar",
+      "BowlbugRock"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\BowlbugsWeak.cs"
+  },
+  {
+    "id": "BygoneEffigyElite",
+    "room_type": "Elite",
+    "is_weak": false,
+    "monsters": [
+      "BygoneEffigy"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\BygoneEffigyElite.cs"
+  },
+  {
+    "id": "ByrdonisElite",
+    "room_type": "Elite",
+    "is_weak": false,
+    "monsters": [
+      "Byrdonis"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\ByrdonisElite.cs"
+  },
+  {
+    "id": "CeremonialBeastBoss",
+    "room_type": "Boss",
+    "is_weak": false,
+    "monsters": [
+      "CeremonialBeast"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\CeremonialBeastBoss.cs"
+  },
+  {
+    "id": "ChompersNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "Chomper"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\ChompersNormal.cs"
+  },
+  {
+    "id": "ConstructMenagerieNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "CubexConstruct",
+      "PunchConstruct"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\ConstructMenagerieNormal.cs"
+  },
+  {
+    "id": "CorpseSlugsNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "CorpseSlug"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\CorpseSlugsNormal.cs"
+  },
+  {
+    "id": "CorpseSlugsWeak",
+    "room_type": "Monster",
+    "is_weak": true,
+    "monsters": [
+      "CorpseSlug"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\CorpseSlugsWeak.cs"
+  },
+  {
+    "id": "CubexConstructNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "CubexConstruct"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\CubexConstructNormal.cs"
+  },
+  {
+    "id": "CultistsNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "CalcifiedCultist",
+      "DampCultist"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\CultistsNormal.cs"
+  },
+  {
+    "id": "DecimillipedeElite",
+    "room_type": "Elite",
+    "is_weak": false,
+    "monsters": [
+      "DecimillipedeSegmentBack",
+      "DecimillipedeSegmentFront",
+      "DecimillipedeSegmentMiddle"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\DecimillipedeElite.cs"
+  },
+  {
+    "id": "DenseVegetationEventEncounter",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "Wriggler"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\DenseVegetationEventEncounter.cs"
+  },
+  {
+    "id": "DeprecatedEncounter",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\DeprecatedEncounter.cs"
+  },
+  {
+    "id": "DevotedSculptorWeak",
+    "room_type": "Monster",
+    "is_weak": true,
+    "monsters": [
+      "DevotedSculptor"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\DevotedSculptorWeak.cs"
+  },
+  {
+    "id": "EntomancerElite",
+    "room_type": "Elite",
+    "is_weak": false,
+    "monsters": [
+      "Entomancer"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\EntomancerElite.cs"
+  },
+  {
+    "id": "ExoskeletonsNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "Exoskeleton"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\ExoskeletonsNormal.cs"
+  },
+  {
+    "id": "ExoskeletonsWeak",
+    "room_type": "Monster",
+    "is_weak": true,
+    "monsters": [
+      "Exoskeleton"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\ExoskeletonsWeak.cs"
+  },
+  {
+    "id": "FabricatorNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "Fabricator"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\FabricatorNormal.cs"
+  },
+  {
+    "id": "FakeMerchantEventEncounter",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "FakeMerchantMonster"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\FakeMerchantEventEncounter.cs"
+  },
+  {
+    "id": "FlyconidNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "Flyconid",
+      "LeafSlimeM",
+      "TwigSlimeM"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\FlyconidNormal.cs"
+  },
+  {
+    "id": "FogmogNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "EyeWithTeeth",
+      "Fogmog"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\FogmogNormal.cs"
+  },
+  {
+    "id": "FossilStalkerNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "FossilStalker"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\FossilStalkerNormal.cs"
+  },
+  {
+    "id": "FrogKnightNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "FrogKnight"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\FrogKnightNormal.cs"
+  },
+  {
+    "id": "FuzzyWurmCrawlerWeak",
+    "room_type": "Monster",
+    "is_weak": true,
+    "monsters": [
+      "FuzzyWurmCrawler"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\FuzzyWurmCrawlerWeak.cs"
+  },
+  {
+    "id": "GlobeHeadNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "GlobeHead"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\GlobeHeadNormal.cs"
+  },
+  {
+    "id": "GremlinMercNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "FatGremlin",
+      "GremlinMerc",
+      "SneakyGremlin"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\GremlinMercNormal.cs"
+  },
+  {
+    "id": "HauntedShipNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "HauntedShip"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\HauntedShipNormal.cs"
+  },
+  {
+    "id": "HunterKillerNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "HunterKiller"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\HunterKillerNormal.cs"
+  },
+  {
+    "id": "InfestedPrismsElite",
+    "room_type": "Elite",
+    "is_weak": false,
+    "monsters": [
+      "InfestedPrism"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\InfestedPrismsElite.cs"
+  },
+  {
+    "id": "InkletsNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "Inklet"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\InkletsNormal.cs"
+  },
+  {
+    "id": "KaiserCrabBoss",
+    "room_type": "Boss",
+    "is_weak": false,
+    "monsters": [
+      "Crusher",
+      "Rocket"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\KaiserCrabBoss.cs"
+  },
+  {
+    "id": "KnightsElite",
+    "room_type": "Elite",
+    "is_weak": false,
+    "monsters": [
+      "FlailKnight",
+      "MagiKnight",
+      "SpectralKnight"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\KnightsElite.cs"
+  },
+  {
+    "id": "KnowledgeDemonBoss",
+    "room_type": "Boss",
+    "is_weak": false,
+    "monsters": [
+      "KnowledgeDemon"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\KnowledgeDemonBoss.cs"
+  },
+  {
+    "id": "LagavulinMatriarchBoss",
+    "room_type": "Boss",
+    "is_weak": false,
+    "monsters": [
+      "LagavulinMatriarch"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\LagavulinMatriarchBoss.cs"
+  },
+  {
+    "id": "LivingFogNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "GasBomb",
+      "LivingFog"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\LivingFogNormal.cs"
+  },
+  {
+    "id": "LouseProgenitorNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "LouseProgenitor"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\LouseProgenitorNormal.cs"
+  },
+  {
+    "id": "MawlerNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "Mawler"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\MawlerNormal.cs"
+  },
+  {
+    "id": "MechaKnightElite",
+    "room_type": "Elite",
+    "is_weak": false,
+    "monsters": [
+      "MechaKnight"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\MechaKnightElite.cs"
+  },
+  {
+    "id": "MysteriousKnightEventEncounter",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "MysteriousKnight"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\MysteriousKnightEventEncounter.cs"
+  },
+  {
+    "id": "MytesNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "Myte"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\MytesNormal.cs"
+  },
+  {
+    "id": "NibbitsNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "Nibbit"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\NibbitsNormal.cs"
+  },
+  {
+    "id": "NibbitsWeak",
+    "room_type": "Monster",
+    "is_weak": true,
+    "monsters": [
+      "Nibbit"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\NibbitsWeak.cs"
+  },
+  {
+    "id": "OvergrowthCrawlers",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "FuzzyWurmCrawler",
+      "ShrinkerBeetle"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\OvergrowthCrawlers.cs"
+  },
+  {
+    "id": "OvicopterNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "Ovicopter",
+      "ToughEgg"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\OvicopterNormal.cs"
+  },
+  {
+    "id": "OwlMagistrateNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "OwlMagistrate"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\OwlMagistrateNormal.cs"
+  },
+  {
+    "id": "PhantasmalGardenersElite",
+    "room_type": "Elite",
+    "is_weak": false,
+    "monsters": [
+      "PhantasmalGardener"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\PhantasmalGardenersElite.cs"
+  },
+  {
+    "id": "PhrogParasiteElite",
+    "room_type": "Elite",
+    "is_weak": false,
+    "monsters": [
+      "PhrogParasite",
+      "Wriggler"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\PhrogParasiteElite.cs"
+  },
+  {
+    "id": "PunchConstructNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "PunchConstruct"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\PunchConstructNormal.cs"
+  },
+  {
+    "id": "PunchOffEventEncounter",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "PunchConstruct"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\PunchOffEventEncounter.cs"
+  },
+  {
+    "id": "QueenBoss",
+    "room_type": "Boss",
+    "is_weak": false,
+    "monsters": [
+      "Queen",
+      "TorchHeadAmalgam"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\QueenBoss.cs"
+  },
+  {
+    "id": "RubyRaidersNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "AssassinRubyRaider",
+      "AxeRubyRaider",
+      "BruteRubyRaider",
+      "CrossbowRubyRaider",
+      "TrackerRubyRaider"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\RubyRaidersNormal.cs"
+  },
+  {
+    "id": "ScrollsOfBitingNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "ScrollOfBiting"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\ScrollsOfBitingNormal.cs"
+  },
+  {
+    "id": "ScrollsOfBitingWeak",
+    "room_type": "Monster",
+    "is_weak": true,
+    "monsters": [
+      "ScrollOfBiting"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\ScrollsOfBitingWeak.cs"
+  },
+  {
+    "id": "SeapunkNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "CalcifiedCultist",
+      "Seapunk"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\SeapunkNormal.cs"
+  },
+  {
+    "id": "SeapunkWeak",
+    "room_type": "Monster",
+    "is_weak": true,
+    "monsters": [
+      "Seapunk"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\SeapunkWeak.cs"
+  },
+  {
+    "id": "SewerClamNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "SewerClam"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\SewerClamNormal.cs"
+  },
+  {
+    "id": "ShrinkerBeetleWeak",
+    "room_type": "Monster",
+    "is_weak": true,
+    "monsters": [
+      "ShrinkerBeetle"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\ShrinkerBeetleWeak.cs"
+  },
+  {
+    "id": "SkulkingColonyElite",
+    "room_type": "Elite",
+    "is_weak": false,
+    "monsters": [
+      "SkulkingColony"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\SkulkingColonyElite.cs"
+  },
+  {
+    "id": "SlimedBerserkerNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "SlimedBerserker"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\SlimedBerserkerNormal.cs"
+  },
+  {
+    "id": "SlimesNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "LeafSlimeM",
+      "LeafSlimeS",
+      "TwigSlimeM",
+      "TwigSlimeS"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\SlimesNormal.cs"
+  },
+  {
+    "id": "SlimesWeak",
+    "room_type": "Monster",
+    "is_weak": true,
+    "monsters": [
+      "LeafSlimeM",
+      "LeafSlimeS",
+      "TwigSlimeM",
+      "TwigSlimeS"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\SlimesWeak.cs"
+  },
+  {
+    "id": "SlitheringStranglerNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "LeafSlimeM",
+      "LeafSlimeS",
+      "SlitheringStrangler",
+      "SnappingJaxfruit",
+      "TwigSlimeM",
+      "TwigSlimeS"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\SlitheringStranglerNormal.cs"
+  },
+  {
+    "id": "SludgeSpinnerWeak",
+    "room_type": "Monster",
+    "is_weak": true,
+    "monsters": [
+      "SludgeSpinner"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\SludgeSpinnerWeak.cs"
+  },
+  {
+    "id": "SlumberingBeetleNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "BowlbugRock",
+      "BowlbugSilk",
+      "SlumberingBeetle"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\SlumberingBeetleNormal.cs"
+  },
+  {
+    "id": "SnappingJaxfruitNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "Flyconid",
+      "SnappingJaxfruit"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\SnappingJaxfruitNormal.cs"
+  },
+  {
+    "id": "SoulFyshBoss",
+    "room_type": "Boss",
+    "is_weak": false,
+    "monsters": [
+      "SoulFysh"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\SoulFyshBoss.cs"
+  },
+  {
+    "id": "SoulNexusElite",
+    "room_type": "Elite",
+    "is_weak": false,
+    "monsters": [
+      "SoulNexus"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\SoulNexusElite.cs"
+  },
+  {
+    "id": "SpinyToadNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "SpinyToad"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\SpinyToadNormal.cs"
+  },
+  {
+    "id": "TerrorEelElite",
+    "room_type": "Elite",
+    "is_weak": false,
+    "monsters": [
+      "TerrorEel"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\TerrorEelElite.cs"
+  },
+  {
+    "id": "TestSubjectBoss",
+    "room_type": "Boss",
+    "is_weak": false,
+    "monsters": [
+      "TestSubject"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\TestSubjectBoss.cs"
+  },
+  {
+    "id": "TheInsatiableBoss",
+    "room_type": "Boss",
+    "is_weak": false,
+    "monsters": [
+      "TheInsatiable"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\TheInsatiableBoss.cs"
+  },
+  {
+    "id": "TheKinBoss",
+    "room_type": "Boss",
+    "is_weak": false,
+    "monsters": [
+      "KinFollower",
+      "KinPriest"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\TheKinBoss.cs"
+  },
+  {
+    "id": "TheLostAndForgottenNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "TheForgotten",
+      "TheLost"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\TheLostAndForgottenNormal.cs"
+  },
+  {
+    "id": "TheObscuraNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "Parafright",
+      "TheObscura"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\TheObscuraNormal.cs"
+  },
+  {
+    "id": "ThievingHopperWeak",
+    "room_type": "Monster",
+    "is_weak": true,
+    "monsters": [
+      "ThievingHopper"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\ThievingHopperWeak.cs"
+  },
+  {
+    "id": "ToadpolesWeak",
+    "room_type": "Monster",
+    "is_weak": true,
+    "monsters": [
+      "Toadpole"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\ToadpolesWeak.cs"
+  },
+  {
+    "id": "TunnelerNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "Chomper",
+      "Tunneler"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\TunnelerNormal.cs"
+  },
+  {
+    "id": "TunnelerWeak",
+    "room_type": "Monster",
+    "is_weak": true,
+    "monsters": [
+      "Tunneler"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\TunnelerWeak.cs"
+  },
+  {
+    "id": "TurretOperatorWeak",
+    "room_type": "Monster",
+    "is_weak": true,
+    "monsters": [
+      "LivingShield",
+      "TurretOperator"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\TurretOperatorWeak.cs"
+  },
+  {
+    "id": "TwoTailedRatsNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "TwoTailedRat"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\TwoTailedRatsNormal.cs"
+  },
+  {
+    "id": "VantomBoss",
+    "room_type": "Boss",
+    "is_weak": false,
+    "monsters": [
+      "Vantom"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\VantomBoss.cs"
+  },
+  {
+    "id": "VineShamblerNormal",
+    "room_type": "Monster",
+    "is_weak": false,
+    "monsters": [
+      "VineShambler"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\VineShamblerNormal.cs"
+  },
+  {
+    "id": "WaterfallGiantBoss",
+    "room_type": "Boss",
+    "is_weak": false,
+    "monsters": [
+      "WaterfallGiant"
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Encounters\\WaterfallGiantBoss.cs"
+  }
+]

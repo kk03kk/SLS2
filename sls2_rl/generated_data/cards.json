@@ -1,0 +1,7499 @@
+[
+  {
+    "id": "Alchemize",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Alchemize.cs"
+  },
+  {
+    "id": "Anointed",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Anointed.cs"
+  },
+  {
+    "id": "Automation",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Automation.cs"
+  },
+  {
+    "id": "BeaconOfHope",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\BeaconOfHope.cs"
+  },
+  {
+    "id": "BeatDown",
+    "cost": 3,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "RandomEnemy",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\BeatDown.cs"
+  },
+  {
+    "id": "BelieveInYou",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "AnyAlly",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\BelieveInYou.cs"
+  },
+  {
+    "id": "Bolas",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "colorless",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Bolas.cs"
+  },
+  {
+    "id": "Calamity",
+    "cost": 3,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Calamity.cs"
+  },
+  {
+    "id": "Catastrophe",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Catastrophe.cs"
+  },
+  {
+    "id": "Coordinate",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "AnyAlly",
+    "pool": "colorless",
+    "vars": [
+      {
+        "kind": "StrengthPower",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Coordinate.cs"
+  },
+  {
+    "id": "DarkShackles",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\DarkShackles.cs"
+  },
+  {
+    "id": "Discovery",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Discovery.cs"
+  },
+  {
+    "id": "DramaticEntrance",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AllEnemies",
+    "pool": "colorless",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 11.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\DramaticEntrance.cs"
+  },
+  {
+    "id": "Entropy",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Entropy.cs"
+  },
+  {
+    "id": "Equilibrium",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 13.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Equilibrium.cs"
+  },
+  {
+    "id": "EternalArmor",
+    "cost": 3,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [
+      {
+        "kind": "PlatingPower",
+        "value": 9.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\EternalArmor.cs"
+  },
+  {
+    "id": "Fasten",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Fasten.cs"
+  },
+  {
+    "id": "Finesse",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 4.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Finesse.cs"
+  },
+  {
+    "id": "Fisticuffs",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "colorless",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 7.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Fisticuffs.cs"
+  },
+  {
+    "id": "FlashOfSteel",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "colorless",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\FlashOfSteel.cs"
+  },
+  {
+    "id": "GangUp",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\GangUp.cs"
+  },
+  {
+    "id": "GoldAxe",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\GoldAxe.cs"
+  },
+  {
+    "id": "HandOfGreed",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "colorless",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 20.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\HandOfGreed.cs"
+  },
+  {
+    "id": "HiddenGem",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\HiddenGem.cs"
+  },
+  {
+    "id": "HuddleUp",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "AllAllies",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\HuddleUp.cs"
+  },
+  {
+    "id": "Impatience",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Impatience.cs"
+  },
+  {
+    "id": "Intercept",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "AnyAlly",
+    "pool": "colorless",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 9.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Intercept.cs"
+  },
+  {
+    "id": "JackOfAllTrades",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\JackOfAllTrades.cs"
+  },
+  {
+    "id": "Jackpot",
+    "cost": 3,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "colorless",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 25.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Jackpot.cs"
+  },
+  {
+    "id": "Knockdown",
+    "cost": 3,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "colorless",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 10.0
+      },
+      {
+        "kind": "KnockdownPower",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Knockdown.cs"
+  },
+  {
+    "id": "Lift",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "AnyAlly",
+    "pool": "colorless",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 11.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Lift.cs"
+  },
+  {
+    "id": "MasterOfStrategy",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\MasterOfStrategy.cs"
+  },
+  {
+    "id": "Mayhem",
+    "cost": 2,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Mayhem.cs"
+  },
+  {
+    "id": "Mimic",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "AnyAlly",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Mimic.cs"
+  },
+  {
+    "id": "MindBlast",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\MindBlast.cs"
+  },
+  {
+    "id": "Nostalgia",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Nostalgia.cs"
+  },
+  {
+    "id": "Omnislice",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "colorless",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 8.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Omnislice.cs"
+  },
+  {
+    "id": "Panache",
+    "cost": 0,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Panache.cs"
+  },
+  {
+    "id": "PanicButton",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 30.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\PanicButton.cs"
+  },
+  {
+    "id": "PrepTime",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [
+      {
+        "kind": "PrepTimePower",
+        "value": 4.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\PrepTime.cs"
+  },
+  {
+    "id": "Production",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Production.cs"
+  },
+  {
+    "id": "Prolong",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Prolong.cs"
+  },
+  {
+    "id": "Prowess",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [
+      {
+        "kind": "StrengthPower",
+        "value": 1.0
+      },
+      {
+        "kind": "DexterityPower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Prowess.cs"
+  },
+  {
+    "id": "Purity",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Purity.cs"
+  },
+  {
+    "id": "Rally",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "AllAllies",
+    "pool": "colorless",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 12.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Rally.cs"
+  },
+  {
+    "id": "Rend",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Rend.cs"
+  },
+  {
+    "id": "Restlessness",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Restlessness.cs"
+  },
+  {
+    "id": "RollingBoulder",
+    "cost": 3,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [
+      {
+        "kind": "RollingBoulderPower",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\RollingBoulder.cs"
+  },
+  {
+    "id": "Salvo",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "colorless",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 12.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Salvo.cs"
+  },
+  {
+    "id": "Scrawl",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Scrawl.cs"
+  },
+  {
+    "id": "SecretTechnique",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\SecretTechnique.cs"
+  },
+  {
+    "id": "SecretWeapon",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\SecretWeapon.cs"
+  },
+  {
+    "id": "SeekerStrike",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "colorless",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 9.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\SeekerStrike.cs"
+  },
+  {
+    "id": "Shockwave",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "AllEnemies",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Shockwave.cs"
+  },
+  {
+    "id": "Splash",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Splash.cs"
+  },
+  {
+    "id": "Stratagem",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Stratagem.cs"
+  },
+  {
+    "id": "TagTeam",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "colorless",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 11.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\TagTeam.cs"
+  },
+  {
+    "id": "TheBomb",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\TheBomb.cs"
+  },
+  {
+    "id": "TheGambit",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 50.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\TheGambit.cs"
+  },
+  {
+    "id": "ThinkingAhead",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\ThinkingAhead.cs"
+  },
+  {
+    "id": "ThrummingHatchet",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "colorless",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 11.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\ThrummingHatchet.cs"
+  },
+  {
+    "id": "UltimateDefend",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "colorless",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 11.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\UltimateDefend.cs"
+  },
+  {
+    "id": "UltimateStrike",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "colorless",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 14.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\UltimateStrike.cs"
+  },
+  {
+    "id": "Volley",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "RandomEnemy",
+    "pool": "colorless",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 10.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Volley.cs"
+  },
+  {
+    "id": "BadLuck",
+    "cost": -1,
+    "type": "Curse",
+    "rarity": "Curse",
+    "target": "None",
+    "pool": "curse",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\BadLuck.cs"
+  },
+  {
+    "id": "Clumsy",
+    "cost": -1,
+    "type": "Curse",
+    "rarity": "Curse",
+    "target": "None",
+    "pool": "curse",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Clumsy.cs"
+  },
+  {
+    "id": "CurseOfTheBell",
+    "cost": -1,
+    "type": "Curse",
+    "rarity": "Curse",
+    "target": "None",
+    "pool": "curse",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\CurseOfTheBell.cs"
+  },
+  {
+    "id": "Debt",
+    "cost": -1,
+    "type": "Curse",
+    "rarity": "Curse",
+    "target": "None",
+    "pool": "curse",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Debt.cs"
+  },
+  {
+    "id": "Decay",
+    "cost": -1,
+    "type": "Curse",
+    "rarity": "Curse",
+    "target": "None",
+    "pool": "curse",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Decay.cs"
+  },
+  {
+    "id": "Doubt",
+    "cost": -1,
+    "type": "Curse",
+    "rarity": "Curse",
+    "target": "None",
+    "pool": "curse",
+    "vars": [
+      {
+        "kind": "WeakPower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Doubt.cs"
+  },
+  {
+    "id": "Enthralled",
+    "cost": 2,
+    "type": "Curse",
+    "rarity": "Curse",
+    "target": "None",
+    "pool": "curse",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Enthralled.cs"
+  },
+  {
+    "id": "Folly",
+    "cost": -1,
+    "type": "Curse",
+    "rarity": "Curse",
+    "target": "None",
+    "pool": "curse",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Folly.cs"
+  },
+  {
+    "id": "Guilty",
+    "cost": -1,
+    "type": "Curse",
+    "rarity": "Curse",
+    "target": "None",
+    "pool": "curse",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Guilty.cs"
+  },
+  {
+    "id": "Injury",
+    "cost": -1,
+    "type": "Curse",
+    "rarity": "Curse",
+    "target": "None",
+    "pool": "curse",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Injury.cs"
+  },
+  {
+    "id": "Normality",
+    "cost": -1,
+    "type": "Curse",
+    "rarity": "Curse",
+    "target": "None",
+    "pool": "curse",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Normality.cs"
+  },
+  {
+    "id": "PoorSleep",
+    "cost": -1,
+    "type": "Curse",
+    "rarity": "Curse",
+    "target": "None",
+    "pool": "curse",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\PoorSleep.cs"
+  },
+  {
+    "id": "Regret",
+    "cost": -1,
+    "type": "Curse",
+    "rarity": "Curse",
+    "target": "None",
+    "pool": "curse",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Regret.cs"
+  },
+  {
+    "id": "Shame",
+    "cost": -1,
+    "type": "Curse",
+    "rarity": "Curse",
+    "target": "None",
+    "pool": "curse",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Shame.cs"
+  },
+  {
+    "id": "SporeMind",
+    "cost": 1,
+    "type": "Curse",
+    "rarity": "Curse",
+    "target": "None",
+    "pool": "curse",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\SporeMind.cs"
+  },
+  {
+    "id": "Writhe",
+    "cost": -1,
+    "type": "Curse",
+    "rarity": "Curse",
+    "target": "None",
+    "pool": "curse",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Writhe.cs"
+  },
+  {
+    "id": "AdaptiveStrike",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 18.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\AdaptiveStrike.cs"
+  },
+  {
+    "id": "AllForOne",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 10.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\AllForOne.cs"
+  },
+  {
+    "id": "BallLightning",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 7.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\BallLightning.cs"
+  },
+  {
+    "id": "Barrage",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Barrage.cs"
+  },
+  {
+    "id": "BeamCell",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 3.0
+      },
+      {
+        "kind": "VulnerablePower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\BeamCell.cs"
+  },
+  {
+    "id": "BiasedCognition",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Ancient",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "FocusPower",
+        "value": 4.0
+      },
+      {
+        "kind": "BiasedCognitionPower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\BiasedCognition.cs"
+  },
+  {
+    "id": "BoostAway",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\BoostAway.cs"
+  },
+  {
+    "id": "BootSequence",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 10.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\BootSequence.cs"
+  },
+  {
+    "id": "Buffer",
+    "cost": 2,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "BufferPower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Buffer.cs"
+  },
+  {
+    "id": "BulkUp",
+    "cost": 2,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "StrengthPower",
+        "value": 2.0
+      },
+      {
+        "kind": "DexterityPower",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\BulkUp.cs"
+  },
+  {
+    "id": "Capacitor",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Capacitor.cs"
+  },
+  {
+    "id": "Chaos",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Chaos.cs"
+  },
+  {
+    "id": "ChargeBattery",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 7.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\ChargeBattery.cs"
+  },
+  {
+    "id": "Chill",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Chill.cs"
+  },
+  {
+    "id": "Claw",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Claw.cs"
+  },
+  {
+    "id": "ColdSnap",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\ColdSnap.cs"
+  },
+  {
+    "id": "Compact",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Compact.cs"
+  },
+  {
+    "id": "CompileDriver",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 7.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\CompileDriver.cs"
+  },
+  {
+    "id": "ConsumingShadow",
+    "cost": 2,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "ConsumingShadowPower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\ConsumingShadow.cs"
+  },
+  {
+    "id": "Coolant",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "CoolantPower",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Coolant.cs"
+  },
+  {
+    "id": "Coolheaded",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Coolheaded.cs"
+  },
+  {
+    "id": "CreativeAi",
+    "cost": 3,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\CreativeAi.cs"
+  },
+  {
+    "id": "Darkness",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Darkness.cs"
+  },
+  {
+    "id": "DefendDefect",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Basic",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\DefendDefect.cs"
+  },
+  {
+    "id": "Defragment",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "FocusPower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Defragment.cs"
+  },
+  {
+    "id": "DoubleEnergy",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\DoubleEnergy.cs"
+  },
+  {
+    "id": "Dualcast",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Basic",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Dualcast.cs"
+  },
+  {
+    "id": "EchoForm",
+    "cost": 3,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\EchoForm.cs"
+  },
+  {
+    "id": "EnergySurge",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "AllAllies",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\EnergySurge.cs"
+  },
+  {
+    "id": "Feral",
+    "cost": 2,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "FeralPower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Feral.cs"
+  },
+  {
+    "id": "FightThrough",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 13.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\FightThrough.cs"
+  },
+  {
+    "id": "FlakCannon",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "RandomEnemy",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 8.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\FlakCannon.cs"
+  },
+  {
+    "id": "FocusedStrike",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 9.0
+      },
+      {
+        "kind": "FocusPower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\FocusedStrike.cs"
+  },
+  {
+    "id": "Ftl",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Ftl.cs"
+  },
+  {
+    "id": "Fusion",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Fusion.cs"
+  },
+  {
+    "id": "GeneticAlgorithm",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\GeneticAlgorithm.cs"
+  },
+  {
+    "id": "Glacier",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Glacier.cs"
+  },
+  {
+    "id": "Glasswork",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Glasswork.cs"
+  },
+  {
+    "id": "GoForTheEyes",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 3.0
+      },
+      {
+        "kind": "WeakPower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\GoForTheEyes.cs"
+  },
+  {
+    "id": "GunkUp",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 4.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\GunkUp.cs"
+  },
+  {
+    "id": "Hailstorm",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "HailstormPower",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Hailstorm.cs"
+  },
+  {
+    "id": "HelixDrill",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\HelixDrill.cs"
+  },
+  {
+    "id": "Hologram",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Hologram.cs"
+  },
+  {
+    "id": "Hotfix",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "FocusPower",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Hotfix.cs"
+  },
+  {
+    "id": "Hyperbeam",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AllEnemies",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 28.0
+      },
+      {
+        "kind": "FocusPower",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Hyperbeam.cs"
+  },
+  {
+    "id": "IceLance",
+    "cost": 3,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 19.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\IceLance.cs"
+  },
+  {
+    "id": "Ignition",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "AnyAlly",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Ignition.cs"
+  },
+  {
+    "id": "Iteration",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "IterationPower",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Iteration.cs"
+  },
+  {
+    "id": "Leap",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 9.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Leap.cs"
+  },
+  {
+    "id": "LightningRod",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 4.0
+      },
+      {
+        "kind": "LightningRodPower",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\LightningRod.cs"
+  },
+  {
+    "id": "Loop",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Loop.cs"
+  },
+  {
+    "id": "MachineLearning",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\MachineLearning.cs"
+  },
+  {
+    "id": "MeteorStrike",
+    "cost": 5,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 24.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\MeteorStrike.cs"
+  },
+  {
+    "id": "Modded",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Modded.cs"
+  },
+  {
+    "id": "MomentumStrike",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 10.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\MomentumStrike.cs"
+  },
+  {
+    "id": "MultiCast",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\MultiCast.cs"
+  },
+  {
+    "id": "Null",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 10.0
+      },
+      {
+        "kind": "WeakPower",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Null.cs"
+  },
+  {
+    "id": "Overclock",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Overclock.cs"
+  },
+  {
+    "id": "Quadcast",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Ancient",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Quadcast.cs"
+  },
+  {
+    "id": "Rainbow",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Rainbow.cs"
+  },
+  {
+    "id": "Reboot",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Reboot.cs"
+  },
+  {
+    "id": "Refract",
+    "cost": 3,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 9.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Refract.cs"
+  },
+  {
+    "id": "RocketPunch",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 13.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\RocketPunch.cs"
+  },
+  {
+    "id": "Scavenge",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Scavenge.cs"
+  },
+  {
+    "id": "Scrape",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 7.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Scrape.cs"
+  },
+  {
+    "id": "ShadowShield",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 11.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\ShadowShield.cs"
+  },
+  {
+    "id": "Shatter",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AllEnemies",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 7.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Shatter.cs"
+  },
+  {
+    "id": "SignalBoost",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "SignalBoostPower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\SignalBoost.cs"
+  },
+  {
+    "id": "Skim",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Skim.cs"
+  },
+  {
+    "id": "Smokestack",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "SmokestackPower",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Smokestack.cs"
+  },
+  {
+    "id": "Spinner",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "SpinnerPower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Spinner.cs"
+  },
+  {
+    "id": "Storm",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "StormPower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Storm.cs"
+  },
+  {
+    "id": "StrikeDefect",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Basic",
+    "target": "AnyEnemy",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\StrikeDefect.cs"
+  },
+  {
+    "id": "Subroutine",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Subroutine.cs"
+  },
+  {
+    "id": "Sunder",
+    "cost": 3,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 24.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Sunder.cs"
+  },
+  {
+    "id": "Supercritical",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Supercritical.cs"
+  },
+  {
+    "id": "SweepingBeam",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AllEnemies",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\SweepingBeam.cs"
+  },
+  {
+    "id": "Synchronize",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Synchronize.cs"
+  },
+  {
+    "id": "Synthesis",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 14.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Synthesis.cs"
+  },
+  {
+    "id": "Tempest",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Tempest.cs"
+  },
+  {
+    "id": "TeslaCoil",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\TeslaCoil.cs"
+  },
+  {
+    "id": "Thunder",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "ThunderPower",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Thunder.cs"
+  },
+  {
+    "id": "TrashToTreasure",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\TrashToTreasure.cs"
+  },
+  {
+    "id": "Turbo",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Turbo.cs"
+  },
+  {
+    "id": "Uproar",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "defect",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Uproar.cs"
+  },
+  {
+    "id": "Voltaic",
+    "cost": 3,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Voltaic.cs"
+  },
+  {
+    "id": "WhiteNoise",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\WhiteNoise.cs"
+  },
+  {
+    "id": "Zap",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Basic",
+    "target": "Self",
+    "pool": "defect",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Zap.cs"
+  },
+  {
+    "id": "Apotheosis",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Ancient",
+    "target": "Self",
+    "pool": "event",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Apotheosis.cs"
+  },
+  {
+    "id": "Apparition",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Ancient",
+    "target": "Self",
+    "pool": "event",
+    "vars": [
+      {
+        "kind": "IntangiblePower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Apparition.cs"
+  },
+  {
+    "id": "BrightestFlame",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Ancient",
+    "target": "Self",
+    "pool": "event",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\BrightestFlame.cs"
+  },
+  {
+    "id": "ByrdSwoop",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Event",
+    "target": "AnyEnemy",
+    "pool": "event",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 14.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\ByrdSwoop.cs"
+  },
+  {
+    "id": "Caltrops",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Event",
+    "target": "Self",
+    "pool": "event",
+    "vars": [
+      {
+        "kind": "ThornsPower",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Caltrops.cs"
+  },
+  {
+    "id": "Clash",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Event",
+    "target": "AnyEnemy",
+    "pool": "event",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 14.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Clash.cs"
+  },
+  {
+    "id": "Distraction",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Event",
+    "target": "Self",
+    "pool": "event",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Distraction.cs"
+  },
+  {
+    "id": "DualWield",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Event",
+    "target": "Self",
+    "pool": "event",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\DualWield.cs"
+  },
+  {
+    "id": "Enlightenment",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Event",
+    "target": "Self",
+    "pool": "event",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Enlightenment.cs"
+  },
+  {
+    "id": "Entrench",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Event",
+    "target": "Self",
+    "pool": "event",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Entrench.cs"
+  },
+  {
+    "id": "Exterminate",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Event",
+    "target": "AllEnemies",
+    "pool": "event",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Exterminate.cs"
+  },
+  {
+    "id": "FeedingFrenzy",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Event",
+    "target": "Self",
+    "pool": "event",
+    "vars": [
+      {
+        "kind": "StrengthPower",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\FeedingFrenzy.cs"
+  },
+  {
+    "id": "HelloWorld",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Event",
+    "target": "Self",
+    "pool": "event",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\HelloWorld.cs"
+  },
+  {
+    "id": "Maul",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Ancient",
+    "target": "AnyEnemy",
+    "pool": "event",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Maul.cs"
+  },
+  {
+    "id": "Metamorphosis",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Event",
+    "target": "Self",
+    "pool": "event",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Metamorphosis.cs"
+  },
+  {
+    "id": "NeowsFury",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Ancient",
+    "target": "AnyEnemy",
+    "pool": "event",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 10.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\NeowsFury.cs"
+  },
+  {
+    "id": "Outmaneuver",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Event",
+    "target": "Self",
+    "pool": "event",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Outmaneuver.cs"
+  },
+  {
+    "id": "Peck",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Event",
+    "target": "AnyEnemy",
+    "pool": "event",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Peck.cs"
+  },
+  {
+    "id": "Rebound",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Event",
+    "target": "AnyEnemy",
+    "pool": "event",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 9.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Rebound.cs"
+  },
+  {
+    "id": "Relax",
+    "cost": 3,
+    "type": "Skill",
+    "rarity": "Ancient",
+    "target": "Self",
+    "pool": "event",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 15.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Relax.cs"
+  },
+  {
+    "id": "RipAndTear",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Event",
+    "target": "RandomEnemy",
+    "pool": "event",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 7.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\RipAndTear.cs"
+  },
+  {
+    "id": "Squash",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Event",
+    "target": "AnyEnemy",
+    "pool": "event",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 10.0
+      },
+      {
+        "kind": "VulnerablePower",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Squash.cs"
+  },
+  {
+    "id": "Stack",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Event",
+    "target": "Self",
+    "pool": "event",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Stack.cs"
+  },
+  {
+    "id": "ToricToughness",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Event",
+    "target": "Self",
+    "pool": "event",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\ToricToughness.cs"
+  },
+  {
+    "id": "Whistle",
+    "cost": 3,
+    "type": "Attack",
+    "rarity": "Ancient",
+    "target": "AnyEnemy",
+    "pool": "event",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 33.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Whistle.cs"
+  },
+  {
+    "id": "Wish",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Ancient",
+    "target": "Self",
+    "pool": "event",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Wish.cs"
+  },
+  {
+    "id": "Aggression",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Aggression.cs"
+  },
+  {
+    "id": "Anger",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Anger.cs"
+  },
+  {
+    "id": "Armaments",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Armaments.cs"
+  },
+  {
+    "id": "AshenStrike",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\AshenStrike.cs"
+  },
+  {
+    "id": "Barricade",
+    "cost": 3,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Barricade.cs"
+  },
+  {
+    "id": "Bash",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Basic",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 8.0
+      },
+      {
+        "kind": "VulnerablePower",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Bash.cs"
+  },
+  {
+    "id": "BattleTrance",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\BattleTrance.cs"
+  },
+  {
+    "id": "BloodWall",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 16.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\BloodWall.cs"
+  },
+  {
+    "id": "Bloodletting",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Bloodletting.cs"
+  },
+  {
+    "id": "Bludgeon",
+    "cost": 3,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 32.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Bludgeon.cs"
+  },
+  {
+    "id": "BodySlam",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\BodySlam.cs"
+  },
+  {
+    "id": "Brand",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "StrengthPower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Brand.cs"
+  },
+  {
+    "id": "Break",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Ancient",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 20.0
+      },
+      {
+        "kind": "VulnerablePower",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Break.cs"
+  },
+  {
+    "id": "Breakthrough",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AllEnemies",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 9.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Breakthrough.cs"
+  },
+  {
+    "id": "Bully",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Bully.cs"
+  },
+  {
+    "id": "BurningPact",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\BurningPact.cs"
+  },
+  {
+    "id": "Cascade",
+    "cost": -1,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Cascade.cs"
+  },
+  {
+    "id": "Cinder",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 18.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Cinder.cs"
+  },
+  {
+    "id": "Colossus",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Colossus.cs"
+  },
+  {
+    "id": "Conflagration",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AllEnemies",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Conflagration.cs"
+  },
+  {
+    "id": "Corruption",
+    "cost": 3,
+    "type": "Power",
+    "rarity": "Ancient",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Corruption.cs"
+  },
+  {
+    "id": "CrimsonMantle",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "CrimsonMantlePower",
+        "value": 8.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\CrimsonMantle.cs"
+  },
+  {
+    "id": "Cruelty",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "CrueltyPower",
+        "value": 25.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Cruelty.cs"
+  },
+  {
+    "id": "DarkEmbrace",
+    "cost": 2,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\DarkEmbrace.cs"
+  },
+  {
+    "id": "DefendIronclad",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Basic",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\DefendIronclad.cs"
+  },
+  {
+    "id": "DemonForm",
+    "cost": 3,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "StrengthPower",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\DemonForm.cs"
+  },
+  {
+    "id": "DemonicShield",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "AnyAlly",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\DemonicShield.cs"
+  },
+  {
+    "id": "Dismantle",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 8.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Dismantle.cs"
+  },
+  {
+    "id": "Dominate",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "VulnerablePower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Dominate.cs"
+  },
+  {
+    "id": "DrumOfBattle",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\DrumOfBattle.cs"
+  },
+  {
+    "id": "EvilEye",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 8.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\EvilEye.cs"
+  },
+  {
+    "id": "ExpectAFight",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\ExpectAFight.cs"
+  },
+  {
+    "id": "Feed",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 10.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Feed.cs"
+  },
+  {
+    "id": "FeelNoPain",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\FeelNoPain.cs"
+  },
+  {
+    "id": "FiendFire",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 7.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\FiendFire.cs"
+  },
+  {
+    "id": "FightMe",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 5.0
+      },
+      {
+        "kind": "StrengthPower",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\FightMe.cs"
+  },
+  {
+    "id": "FlameBarrier",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 12.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\FlameBarrier.cs"
+  },
+  {
+    "id": "ForgottenRitual",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\ForgottenRitual.cs"
+  },
+  {
+    "id": "Havoc",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Havoc.cs"
+  },
+  {
+    "id": "Headbutt",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 9.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Headbutt.cs"
+  },
+  {
+    "id": "Hellraiser",
+    "cost": 2,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Hellraiser.cs"
+  },
+  {
+    "id": "Hemokinesis",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 15.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Hemokinesis.cs"
+  },
+  {
+    "id": "HowlFromBeyond",
+    "cost": 3,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AllEnemies",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 16.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\HowlFromBeyond.cs"
+  },
+  {
+    "id": "Impervious",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 30.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Impervious.cs"
+  },
+  {
+    "id": "InfernalBlade",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\InfernalBlade.cs"
+  },
+  {
+    "id": "Inferno",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "InfernoPower",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Inferno.cs"
+  },
+  {
+    "id": "Inflame",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "StrengthPower",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Inflame.cs"
+  },
+  {
+    "id": "IronWave",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 5.0
+      },
+      {
+        "kind": "Block",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\IronWave.cs"
+  },
+  {
+    "id": "Juggernaut",
+    "cost": 2,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "JuggernautPower",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Juggernaut.cs"
+  },
+  {
+    "id": "Juggling",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Juggling.cs"
+  },
+  {
+    "id": "Mangle",
+    "cost": 3,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 15.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Mangle.cs"
+  },
+  {
+    "id": "MoltenFist",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 10.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\MoltenFist.cs"
+  },
+  {
+    "id": "NotYet",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\NotYet.cs"
+  },
+  {
+    "id": "Offering",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Offering.cs"
+  },
+  {
+    "id": "OneTwoPunch",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\OneTwoPunch.cs"
+  },
+  {
+    "id": "PactsEnd",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AllEnemies",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 17.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\PactsEnd.cs"
+  },
+  {
+    "id": "PerfectedStrike",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\PerfectedStrike.cs"
+  },
+  {
+    "id": "Pillage",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Pillage.cs"
+  },
+  {
+    "id": "PommelStrike",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 9.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\PommelStrike.cs"
+  },
+  {
+    "id": "PrimalForce",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\PrimalForce.cs"
+  },
+  {
+    "id": "Pyre",
+    "cost": 2,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Pyre.cs"
+  },
+  {
+    "id": "Rage",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Rage.cs"
+  },
+  {
+    "id": "Rampage",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 9.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Rampage.cs"
+  },
+  {
+    "id": "Rupture",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "StrengthPower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Rupture.cs"
+  },
+  {
+    "id": "SecondWind",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\SecondWind.cs"
+  },
+  {
+    "id": "SetupStrike",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 7.0
+      },
+      {
+        "kind": "StrengthPower",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\SetupStrike.cs"
+  },
+  {
+    "id": "ShrugItOff",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 8.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\ShrugItOff.cs"
+  },
+  {
+    "id": "Spite",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Spite.cs"
+  },
+  {
+    "id": "Stampede",
+    "cost": 2,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Stampede.cs"
+  },
+  {
+    "id": "Stoke",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Stoke.cs"
+  },
+  {
+    "id": "Stomp",
+    "cost": 3,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AllEnemies",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 12.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Stomp.cs"
+  },
+  {
+    "id": "StoneArmor",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "PlatingPower",
+        "value": 4.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\StoneArmor.cs"
+  },
+  {
+    "id": "StrikeIronclad",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Basic",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\StrikeIronclad.cs"
+  },
+  {
+    "id": "SwordBoomerang",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "RandomEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\SwordBoomerang.cs"
+  },
+  {
+    "id": "Tank",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Tank.cs"
+  },
+  {
+    "id": "Taunt",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 7.0
+      },
+      {
+        "kind": "VulnerablePower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Taunt.cs"
+  },
+  {
+    "id": "TearAsunder",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\TearAsunder.cs"
+  },
+  {
+    "id": "Thrash",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 4.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Thrash.cs"
+  },
+  {
+    "id": "Thunderclap",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AllEnemies",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 4.0
+      },
+      {
+        "kind": "VulnerablePower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Thunderclap.cs"
+  },
+  {
+    "id": "Tremble",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "VulnerablePower",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Tremble.cs"
+  },
+  {
+    "id": "TrueGrit",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 7.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\TrueGrit.cs"
+  },
+  {
+    "id": "TwinStrike",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\TwinStrike.cs"
+  },
+  {
+    "id": "Unmovable",
+    "cost": 2,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Unmovable.cs"
+  },
+  {
+    "id": "Unrelenting",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 14.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Unrelenting.cs"
+  },
+  {
+    "id": "Uppercut",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 13.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Uppercut.cs"
+  },
+  {
+    "id": "Vicious",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "ironclad",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Vicious.cs"
+  },
+  {
+    "id": "Whirlwind",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AllEnemies",
+    "pool": "ironclad",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Whirlwind.cs"
+  },
+  {
+    "id": "Afterlife",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Afterlife.cs"
+  },
+  {
+    "id": "BansheesCry",
+    "cost": 9,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AllEnemies",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 33.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\BansheesCry.cs"
+  },
+  {
+    "id": "BlightStrike",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 8.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\BlightStrike.cs"
+  },
+  {
+    "id": "Bodyguard",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Basic",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Bodyguard.cs"
+  },
+  {
+    "id": "BoneShards",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AllEnemies",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 9.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\BoneShards.cs"
+  },
+  {
+    "id": "BorrowedTime",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\BorrowedTime.cs"
+  },
+  {
+    "id": "Bury",
+    "cost": 4,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 52.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Bury.cs"
+  },
+  {
+    "id": "Calcify",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "CalcifyPower",
+        "value": 4.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Calcify.cs"
+  },
+  {
+    "id": "CallOfTheVoid",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\CallOfTheVoid.cs"
+  },
+  {
+    "id": "CaptureSpirit",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\CaptureSpirit.cs"
+  },
+  {
+    "id": "Cleanse",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Cleanse.cs"
+  },
+  {
+    "id": "Countdown",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "CountdownPower",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Countdown.cs"
+  },
+  {
+    "id": "DanseMacabre",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "DanseMacabrePower",
+        "value": 4.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\DanseMacabre.cs"
+  },
+  {
+    "id": "DeathMarch",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\DeathMarch.cs"
+  },
+  {
+    "id": "Deathbringer",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "AllEnemies",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "DoomPower",
+        "value": 21.0
+      },
+      {
+        "kind": "WeakPower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Deathbringer.cs"
+  },
+  {
+    "id": "DeathsDoor",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\DeathsDoor.cs"
+  },
+  {
+    "id": "Debilitate",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 10.0
+      },
+      {
+        "kind": "DebilitatePower",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Debilitate.cs"
+  },
+  {
+    "id": "DefendNecrobinder",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Basic",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\DefendNecrobinder.cs"
+  },
+  {
+    "id": "Defile",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 13.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Defile.cs"
+  },
+  {
+    "id": "Defy",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 6.0
+      },
+      {
+        "kind": "WeakPower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Defy.cs"
+  },
+  {
+    "id": "Delay",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 11.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Delay.cs"
+  },
+  {
+    "id": "Demesne",
+    "cost": 3,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Demesne.cs"
+  },
+  {
+    "id": "DevourLife",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "DevourLifePower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\DevourLife.cs"
+  },
+  {
+    "id": "Dirge",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Dirge.cs"
+  },
+  {
+    "id": "DrainPower",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 10.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\DrainPower.cs"
+  },
+  {
+    "id": "Dredge",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Dredge.cs"
+  },
+  {
+    "id": "Eidolon",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Eidolon.cs"
+  },
+  {
+    "id": "EndOfDays",
+    "cost": 3,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "AllEnemies",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "DoomPower",
+        "value": 29.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\EndOfDays.cs"
+  },
+  {
+    "id": "EnfeeblingTouch",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\EnfeeblingTouch.cs"
+  },
+  {
+    "id": "Eradicate",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 11.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Eradicate.cs"
+  },
+  {
+    "id": "Fear",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 7.0
+      },
+      {
+        "kind": "VulnerablePower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Fear.cs"
+  },
+  {
+    "id": "Fetch",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Fetch.cs"
+  },
+  {
+    "id": "Flatten",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Flatten.cs"
+  },
+  {
+    "id": "ForbiddenGrimoire",
+    "cost": 2,
+    "type": "Power",
+    "rarity": "Ancient",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\ForbiddenGrimoire.cs"
+  },
+  {
+    "id": "Friendship",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "StrengthPower",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Friendship.cs"
+  },
+  {
+    "id": "GlimpseBeyond",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "AllAllies",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\GlimpseBeyond.cs"
+  },
+  {
+    "id": "GraveWarden",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 8.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\GraveWarden.cs"
+  },
+  {
+    "id": "Graveblast",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 4.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Graveblast.cs"
+  },
+  {
+    "id": "Hang",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 10.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Hang.cs"
+  },
+  {
+    "id": "Haunt",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Haunt.cs"
+  },
+  {
+    "id": "HighFive",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AllEnemies",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "VulnerablePower",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\HighFive.cs"
+  },
+  {
+    "id": "Invoke",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Invoke.cs"
+  },
+  {
+    "id": "LegionOfBone",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "AllAllies",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\LegionOfBone.cs"
+  },
+  {
+    "id": "Lethality",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "LethalityPower",
+        "value": 50.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Lethality.cs"
+  },
+  {
+    "id": "Melancholy",
+    "cost": 3,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 13.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Melancholy.cs"
+  },
+  {
+    "id": "Misery",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 7.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Misery.cs"
+  },
+  {
+    "id": "NecroMastery",
+    "cost": 2,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\NecroMastery.cs"
+  },
+  {
+    "id": "NegativePulse",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "AllEnemies",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 5.0
+      },
+      {
+        "kind": "DoomPower",
+        "value": 7.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\NegativePulse.cs"
+  },
+  {
+    "id": "Neurosurge",
+    "cost": 0,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "NeurosurgePower",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Neurosurge.cs"
+  },
+  {
+    "id": "NoEscape",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\NoEscape.cs"
+  },
+  {
+    "id": "Oblivion",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "DoomPower",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Oblivion.cs"
+  },
+  {
+    "id": "Pagestorm",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Pagestorm.cs"
+  },
+  {
+    "id": "Parse",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Parse.cs"
+  },
+  {
+    "id": "Poke",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Poke.cs"
+  },
+  {
+    "id": "Protector",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Ancient",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Protector.cs"
+  },
+  {
+    "id": "PullAggro",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 7.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\PullAggro.cs"
+  },
+  {
+    "id": "PullFromBelow",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\PullFromBelow.cs"
+  },
+  {
+    "id": "Putrefy",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Putrefy.cs"
+  },
+  {
+    "id": "Rattle",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Rattle.cs"
+  },
+  {
+    "id": "Reanimate",
+    "cost": 3,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Reanimate.cs"
+  },
+  {
+    "id": "Reap",
+    "cost": 3,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 27.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Reap.cs"
+  },
+  {
+    "id": "ReaperForm",
+    "cost": 3,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\ReaperForm.cs"
+  },
+  {
+    "id": "Reave",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 9.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Reave.cs"
+  },
+  {
+    "id": "RightHandHand",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\RightHandHand.cs"
+  },
+  {
+    "id": "Sacrifice",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Sacrifice.cs"
+  },
+  {
+    "id": "Scourge",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "DoomPower",
+        "value": 13.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Scourge.cs"
+  },
+  {
+    "id": "SculptingStrike",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 9.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\SculptingStrike.cs"
+  },
+  {
+    "id": "Seance",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Seance.cs"
+  },
+  {
+    "id": "SentryMode",
+    "cost": 2,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "SentryModePower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\SentryMode.cs"
+  },
+  {
+    "id": "Severance",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 13.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Severance.cs"
+  },
+  {
+    "id": "SharedFate",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\SharedFate.cs"
+  },
+  {
+    "id": "Shroud",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Shroud.cs"
+  },
+  {
+    "id": "SicEm",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "SicEmPower",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\SicEm.cs"
+  },
+  {
+    "id": "SleightOfFlesh",
+    "cost": 2,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "SleightOfFleshPower",
+        "value": 9.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\SleightOfFlesh.cs"
+  },
+  {
+    "id": "Snap",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Snap.cs"
+  },
+  {
+    "id": "SoulStorm",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\SoulStorm.cs"
+  },
+  {
+    "id": "Sow",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AllEnemies",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 8.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Sow.cs"
+  },
+  {
+    "id": "SpiritOfAsh",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\SpiritOfAsh.cs"
+  },
+  {
+    "id": "Spur",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Spur.cs"
+  },
+  {
+    "id": "Squeeze",
+    "cost": 3,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Squeeze.cs"
+  },
+  {
+    "id": "StrikeNecrobinder",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Basic",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\StrikeNecrobinder.cs"
+  },
+  {
+    "id": "TheScythe",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\TheScythe.cs"
+  },
+  {
+    "id": "TimesUp",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\TimesUp.cs"
+  },
+  {
+    "id": "Transfigure",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Transfigure.cs"
+  },
+  {
+    "id": "Undeath",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 7.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Undeath.cs"
+  },
+  {
+    "id": "Unleash",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Basic",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Unleash.cs"
+  },
+  {
+    "id": "Veilpiercer",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "necrobinder",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 10.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Veilpiercer.cs"
+  },
+  {
+    "id": "Wisp",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "necrobinder",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Wisp.cs"
+  },
+  {
+    "id": "ByrdonisEgg",
+    "cost": -1,
+    "type": "Quest",
+    "rarity": "Quest",
+    "target": "None",
+    "pool": "quest",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\ByrdonisEgg.cs"
+  },
+  {
+    "id": "LanternKey",
+    "cost": -1,
+    "type": "Quest",
+    "rarity": "Quest",
+    "target": "Self",
+    "pool": "quest",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\LanternKey.cs"
+  },
+  {
+    "id": "SpoilsMap",
+    "cost": -1,
+    "type": "Quest",
+    "rarity": "Quest",
+    "target": "Self",
+    "pool": "quest",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\SpoilsMap.cs"
+  },
+  {
+    "id": "Alignment",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Alignment.cs"
+  },
+  {
+    "id": "Arsenal",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "ArsenalPower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Arsenal.cs"
+  },
+  {
+    "id": "AstralPulse",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AllEnemies",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\AstralPulse.cs"
+  },
+  {
+    "id": "BeatIntoShape",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\BeatIntoShape.cs"
+  },
+  {
+    "id": "Begone",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Begone.cs"
+  },
+  {
+    "id": "BigBang",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\BigBang.cs"
+  },
+  {
+    "id": "BlackHole",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "BlackHolePower",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\BlackHole.cs"
+  },
+  {
+    "id": "Bombardment",
+    "cost": 3,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 18.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Bombardment.cs"
+  },
+  {
+    "id": "Bulwark",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 12.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Bulwark.cs"
+  },
+  {
+    "id": "BundleOfJoy",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\BundleOfJoy.cs"
+  },
+  {
+    "id": "CelestialMight",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\CelestialMight.cs"
+  },
+  {
+    "id": "Charge",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Charge.cs"
+  },
+  {
+    "id": "ChildOfTheStars",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\ChildOfTheStars.cs"
+  },
+  {
+    "id": "CloakOfStars",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 7.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\CloakOfStars.cs"
+  },
+  {
+    "id": "CollisionCourse",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 11.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\CollisionCourse.cs"
+  },
+  {
+    "id": "Comet",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 33.0
+      },
+      {
+        "kind": "VulnerablePower",
+        "value": 3.0
+      },
+      {
+        "kind": "WeakPower",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Comet.cs"
+  },
+  {
+    "id": "Conqueror",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Conqueror.cs"
+  },
+  {
+    "id": "Convergence",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Convergence.cs"
+  },
+  {
+    "id": "CosmicIndifference",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\CosmicIndifference.cs"
+  },
+  {
+    "id": "CrashLanding",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AllEnemies",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 21.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\CrashLanding.cs"
+  },
+  {
+    "id": "CrescentSpear",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\CrescentSpear.cs"
+  },
+  {
+    "id": "CrushUnder",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AllEnemies",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 7.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\CrushUnder.cs"
+  },
+  {
+    "id": "DecisionsDecisions",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\DecisionsDecisions.cs"
+  },
+  {
+    "id": "DefendRegent",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Basic",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\DefendRegent.cs"
+  },
+  {
+    "id": "Devastate",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 30.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Devastate.cs"
+  },
+  {
+    "id": "DyingStar",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AllEnemies",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 9.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\DyingStar.cs"
+  },
+  {
+    "id": "FallingStar",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Basic",
+    "target": "AnyEnemy",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 8.0
+      },
+      {
+        "kind": "VulnerablePower",
+        "value": 1.0
+      },
+      {
+        "kind": "WeakPower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\FallingStar.cs"
+  },
+  {
+    "id": "ForegoneConclusion",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\ForegoneConclusion.cs"
+  },
+  {
+    "id": "Furnace",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Furnace.cs"
+  },
+  {
+    "id": "GammaBlast",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 13.0
+      },
+      {
+        "kind": "VulnerablePower",
+        "value": 2.0
+      },
+      {
+        "kind": "WeakPower",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\GammaBlast.cs"
+  },
+  {
+    "id": "GatherLight",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 8.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\GatherLight.cs"
+  },
+  {
+    "id": "Genesis",
+    "cost": 2,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Genesis.cs"
+  },
+  {
+    "id": "Glimmer",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Glimmer.cs"
+  },
+  {
+    "id": "Glitterstream",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 11.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Glitterstream.cs"
+  },
+  {
+    "id": "Glow",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Glow.cs"
+  },
+  {
+    "id": "Guards",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Guards.cs"
+  },
+  {
+    "id": "GuidingStar",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 12.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\GuidingStar.cs"
+  },
+  {
+    "id": "HammerTime",
+    "cost": 2,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\HammerTime.cs"
+  },
+  {
+    "id": "HeavenlyDrill",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 8.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\HeavenlyDrill.cs"
+  },
+  {
+    "id": "Hegemony",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 15.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Hegemony.cs"
+  },
+  {
+    "id": "HeirloomHammer",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 20.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\HeirloomHammer.cs"
+  },
+  {
+    "id": "HiddenCache",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "StarNextTurnPower",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\HiddenCache.cs"
+  },
+  {
+    "id": "IAmInvincible",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 10.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\IAmInvincible.cs"
+  },
+  {
+    "id": "KinglyKick",
+    "cost": 4,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 27.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\KinglyKick.cs"
+  },
+  {
+    "id": "KinglyPunch",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 8.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\KinglyPunch.cs"
+  },
+  {
+    "id": "KnockoutBlow",
+    "cost": 3,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 30.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\KnockoutBlow.cs"
+  },
+  {
+    "id": "KnowThyPlace",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "WeakPower",
+        "value": 1.0
+      },
+      {
+        "kind": "VulnerablePower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\KnowThyPlace.cs"
+  },
+  {
+    "id": "Largesse",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "AnyAlly",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Largesse.cs"
+  },
+  {
+    "id": "LunarBlast",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 4.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\LunarBlast.cs"
+  },
+  {
+    "id": "MakeItSo",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\MakeItSo.cs"
+  },
+  {
+    "id": "ManifestAuthority",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 7.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\ManifestAuthority.cs"
+  },
+  {
+    "id": "MeteorShower",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Ancient",
+    "target": "AllEnemies",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 14.0
+      },
+      {
+        "kind": "VulnerablePower",
+        "value": 2.0
+      },
+      {
+        "kind": "WeakPower",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\MeteorShower.cs"
+  },
+  {
+    "id": "MonarchsGaze",
+    "cost": 2,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\MonarchsGaze.cs"
+  },
+  {
+    "id": "Monologue",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Monologue.cs"
+  },
+  {
+    "id": "NeutronAegis",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "PlatingPower",
+        "value": 8.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\NeutronAegis.cs"
+  },
+  {
+    "id": "Orbit",
+    "cost": 2,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Orbit.cs"
+  },
+  {
+    "id": "PaleBlueDot",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\PaleBlueDot.cs"
+  },
+  {
+    "id": "Parry",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "ParryPower",
+        "value": 10.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Parry.cs"
+  },
+  {
+    "id": "ParticleWall",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 9.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\ParticleWall.cs"
+  },
+  {
+    "id": "Patter",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 8.0
+      },
+      {
+        "kind": "VigorPower",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Patter.cs"
+  },
+  {
+    "id": "PhotonCut",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 10.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\PhotonCut.cs"
+  },
+  {
+    "id": "PillarOfCreation",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\PillarOfCreation.cs"
+  },
+  {
+    "id": "Prophesize",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Prophesize.cs"
+  },
+  {
+    "id": "Quasar",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Quasar.cs"
+  },
+  {
+    "id": "Radiate",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AllEnemies",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Radiate.cs"
+  },
+  {
+    "id": "RefineBlade",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\RefineBlade.cs"
+  },
+  {
+    "id": "Reflect",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 15.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Reflect.cs"
+  },
+  {
+    "id": "Resonance",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "AllEnemies",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "StrengthPower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Resonance.cs"
+  },
+  {
+    "id": "RoyalGamble",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\RoyalGamble.cs"
+  },
+  {
+    "id": "Royalties",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Royalties.cs"
+  },
+  {
+    "id": "SeekingEdge",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\SeekingEdge.cs"
+  },
+  {
+    "id": "SevenStars",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AllEnemies",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 7.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\SevenStars.cs"
+  },
+  {
+    "id": "ShiningStrike",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 8.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\ShiningStrike.cs"
+  },
+  {
+    "id": "SolarStrike",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 9.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\SolarStrike.cs"
+  },
+  {
+    "id": "SpectrumShift",
+    "cost": 2,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\SpectrumShift.cs"
+  },
+  {
+    "id": "SpoilsOfBattle",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\SpoilsOfBattle.cs"
+  },
+  {
+    "id": "Stardust",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "RandomEnemy",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Stardust.cs"
+  },
+  {
+    "id": "StrikeRegent",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Basic",
+    "target": "AnyEnemy",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\StrikeRegent.cs"
+  },
+  {
+    "id": "SummonForth",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\SummonForth.cs"
+  },
+  {
+    "id": "Supermassive",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Supermassive.cs"
+  },
+  {
+    "id": "SwordSage",
+    "cost": 2,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "SwordSagePower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\SwordSage.cs"
+  },
+  {
+    "id": "Terraforming",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "VigorPower",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Terraforming.cs"
+  },
+  {
+    "id": "TheSealedThrone",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Ancient",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\TheSealedThrone.cs"
+  },
+  {
+    "id": "TheSmith",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\TheSmith.cs"
+  },
+  {
+    "id": "Tyranny",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Tyranny.cs"
+  },
+  {
+    "id": "Venerate",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Basic",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Venerate.cs"
+  },
+  {
+    "id": "VoidForm",
+    "cost": 3,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "VoidFormPower",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\VoidForm.cs"
+  },
+  {
+    "id": "WroughtInWar",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "regent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 7.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\WroughtInWar.cs"
+  },
+  {
+    "id": "Abrasive",
+    "cost": 3,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "ThornsPower",
+        "value": 4.0
+      },
+      {
+        "kind": "DexterityPower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Abrasive.cs"
+  },
+  {
+    "id": "Accelerant",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Accelerant.cs"
+  },
+  {
+    "id": "Accuracy",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "AccuracyPower",
+        "value": 4.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Accuracy.cs"
+  },
+  {
+    "id": "Acrobatics",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Acrobatics.cs"
+  },
+  {
+    "id": "Adrenaline",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Adrenaline.cs"
+  },
+  {
+    "id": "Afterimage",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "AfterimagePower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Afterimage.cs"
+  },
+  {
+    "id": "Anticipate",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "DexterityPower",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Anticipate.cs"
+  },
+  {
+    "id": "Assassinate",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 10.0
+      },
+      {
+        "kind": "VulnerablePower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Assassinate.cs"
+  },
+  {
+    "id": "Backflip",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Backflip.cs"
+  },
+  {
+    "id": "Backstab",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 11.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Backstab.cs"
+  },
+  {
+    "id": "BladeDance",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\BladeDance.cs"
+  },
+  {
+    "id": "BladeOfInk",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\BladeOfInk.cs"
+  },
+  {
+    "id": "Blur",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Blur.cs"
+  },
+  {
+    "id": "BouncingFlask",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "RandomEnemy",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "PoisonPower",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\BouncingFlask.cs"
+  },
+  {
+    "id": "BubbleBubble",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "PoisonPower",
+        "value": 9.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\BubbleBubble.cs"
+  },
+  {
+    "id": "BulletTime",
+    "cost": 3,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\BulletTime.cs"
+  },
+  {
+    "id": "Burst",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Burst.cs"
+  },
+  {
+    "id": "CalculatedGamble",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\CalculatedGamble.cs"
+  },
+  {
+    "id": "CloakAndDagger",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\CloakAndDagger.cs"
+  },
+  {
+    "id": "CorrosiveWave",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\CorrosiveWave.cs"
+  },
+  {
+    "id": "DaggerSpray",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AllEnemies",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 4.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\DaggerSpray.cs"
+  },
+  {
+    "id": "DaggerThrow",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 9.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\DaggerThrow.cs"
+  },
+  {
+    "id": "Dash",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 10.0
+      },
+      {
+        "kind": "Block",
+        "value": 10.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Dash.cs"
+  },
+  {
+    "id": "DeadlyPoison",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "PoisonPower",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\DeadlyPoison.cs"
+  },
+  {
+    "id": "DefendSilent",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Basic",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\DefendSilent.cs"
+  },
+  {
+    "id": "Deflect",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 4.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Deflect.cs"
+  },
+  {
+    "id": "DodgeAndRoll",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 4.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\DodgeAndRoll.cs"
+  },
+  {
+    "id": "EchoingSlash",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AllEnemies",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 10.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\EchoingSlash.cs"
+  },
+  {
+    "id": "Envenom",
+    "cost": 2,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "EnvenomPower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Envenom.cs"
+  },
+  {
+    "id": "EscapePlan",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\EscapePlan.cs"
+  },
+  {
+    "id": "Expertise",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Expertise.cs"
+  },
+  {
+    "id": "Expose",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Expose.cs"
+  },
+  {
+    "id": "FanOfKnives",
+    "cost": 2,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\FanOfKnives.cs"
+  },
+  {
+    "id": "Finisher",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Finisher.cs"
+  },
+  {
+    "id": "Flanking",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Flanking.cs"
+  },
+  {
+    "id": "Flechettes",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Flechettes.cs"
+  },
+  {
+    "id": "FlickFlack",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AllEnemies",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\FlickFlack.cs"
+  },
+  {
+    "id": "Footwork",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "DexterityPower",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Footwork.cs"
+  },
+  {
+    "id": "GrandFinale",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AllEnemies",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 60.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\GrandFinale.cs"
+  },
+  {
+    "id": "HandTrick",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 7.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\HandTrick.cs"
+  },
+  {
+    "id": "Haze",
+    "cost": 3,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "AllEnemies",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "PoisonPower",
+        "value": 4.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Haze.cs"
+  },
+  {
+    "id": "HiddenDaggers",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\HiddenDaggers.cs"
+  },
+  {
+    "id": "InfiniteBlades",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\InfiniteBlades.cs"
+  },
+  {
+    "id": "KnifeTrap",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\KnifeTrap.cs"
+  },
+  {
+    "id": "LeadingStrike",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\LeadingStrike.cs"
+  },
+  {
+    "id": "LegSweep",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 11.0
+      },
+      {
+        "kind": "WeakPower",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\LegSweep.cs"
+  },
+  {
+    "id": "Malaise",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Malaise.cs"
+  },
+  {
+    "id": "MasterPlanner",
+    "cost": 2,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\MasterPlanner.cs"
+  },
+  {
+    "id": "MementoMori",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\MementoMori.cs"
+  },
+  {
+    "id": "Mirage",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Mirage.cs"
+  },
+  {
+    "id": "Murder",
+    "cost": 3,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Murder.cs"
+  },
+  {
+    "id": "Neutralize",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Basic",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 3.0
+      },
+      {
+        "kind": "WeakPower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Neutralize.cs"
+  },
+  {
+    "id": "Nightmare",
+    "cost": 3,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Nightmare.cs"
+  },
+  {
+    "id": "NoxiousFumes",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\NoxiousFumes.cs"
+  },
+  {
+    "id": "Outbreak",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "OutbreakPower",
+        "value": 11.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Outbreak.cs"
+  },
+  {
+    "id": "PhantomBlades",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "PhantomBladesPower",
+        "value": 9.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\PhantomBlades.cs"
+  },
+  {
+    "id": "PiercingWail",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "AllEnemies",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\PiercingWail.cs"
+  },
+  {
+    "id": "Pinpoint",
+    "cost": 3,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 15.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Pinpoint.cs"
+  },
+  {
+    "id": "PoisonedStab",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 6.0
+      },
+      {
+        "kind": "PoisonPower",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\PoisonedStab.cs"
+  },
+  {
+    "id": "Pounce",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 14.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Pounce.cs"
+  },
+  {
+    "id": "PreciseCut",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\PreciseCut.cs"
+  },
+  {
+    "id": "Predator",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 15.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Predator.cs"
+  },
+  {
+    "id": "Prepared",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Prepared.cs"
+  },
+  {
+    "id": "Reflex",
+    "cost": 3,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Reflex.cs"
+  },
+  {
+    "id": "Ricochet",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "RandomEnemy",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Ricochet.cs"
+  },
+  {
+    "id": "Scare",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "AllEnemies",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Scare.cs"
+  },
+  {
+    "id": "SerpentForm",
+    "cost": 3,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "SerpentFormPower",
+        "value": 4.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\SerpentForm.cs"
+  },
+  {
+    "id": "ShadowStep",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\ShadowStep.cs"
+  },
+  {
+    "id": "Shadowmeld",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Shadowmeld.cs"
+  },
+  {
+    "id": "Skewer",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 8.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Skewer.cs"
+  },
+  {
+    "id": "Slice",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Slice.cs"
+  },
+  {
+    "id": "Snakebite",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "PoisonPower",
+        "value": 7.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Snakebite.cs"
+  },
+  {
+    "id": "Sneaky",
+    "cost": 2,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "SneakyPower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Sneaky.cs"
+  },
+  {
+    "id": "Speedster",
+    "cost": 2,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "SpeedsterPower",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Speedster.cs"
+  },
+  {
+    "id": "StormOfSteel",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\StormOfSteel.cs"
+  },
+  {
+    "id": "Strangle",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Uncommon",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 8.0
+      },
+      {
+        "kind": "StranglePower",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Strangle.cs"
+  },
+  {
+    "id": "StrikeSilent",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Basic",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\StrikeSilent.cs"
+  },
+  {
+    "id": "SuckerPunch",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Common",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 8.0
+      },
+      {
+        "kind": "WeakPower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\SuckerPunch.cs"
+  },
+  {
+    "id": "Suppress",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Ancient",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 11.0
+      },
+      {
+        "kind": "WeakPower",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Suppress.cs"
+  },
+  {
+    "id": "Survivor",
+    "cost": 1,
+    "type": "Skill",
+    "rarity": "Basic",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 8.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Survivor.cs"
+  },
+  {
+    "id": "Tactician",
+    "cost": 3,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Tactician.cs"
+  },
+  {
+    "id": "TheHunt",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Rare",
+    "target": "AnyEnemy",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 10.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\TheHunt.cs"
+  },
+  {
+    "id": "ToolsOfTheTrade",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\ToolsOfTheTrade.cs"
+  },
+  {
+    "id": "Tracking",
+    "cost": 2,
+    "type": "Power",
+    "rarity": "Rare",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Tracking.cs"
+  },
+  {
+    "id": "Untouchable",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Common",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Untouchable.cs"
+  },
+  {
+    "id": "UpMySleeve",
+    "cost": 2,
+    "type": "Skill",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\UpMySleeve.cs"
+  },
+  {
+    "id": "WellLaidPlans",
+    "cost": 1,
+    "type": "Power",
+    "rarity": "Uncommon",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\WellLaidPlans.cs"
+  },
+  {
+    "id": "WraithForm",
+    "cost": 3,
+    "type": "Power",
+    "rarity": "Ancient",
+    "target": "Self",
+    "pool": "silent",
+    "vars": [
+      {
+        "kind": "IntangiblePower",
+        "value": 2.0
+      },
+      {
+        "kind": "WraithFormPower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\WraithForm.cs"
+  },
+  {
+    "id": "Beckon",
+    "cost": 1,
+    "type": "Status",
+    "rarity": "Status",
+    "target": "None",
+    "pool": "status",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Beckon.cs"
+  },
+  {
+    "id": "Burn",
+    "cost": -1,
+    "type": "Status",
+    "rarity": "Status",
+    "target": "None",
+    "pool": "status",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 2.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Burn.cs"
+  },
+  {
+    "id": "Dazed",
+    "cost": -1,
+    "type": "Status",
+    "rarity": "Status",
+    "target": "None",
+    "pool": "status",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Dazed.cs"
+  },
+  {
+    "id": "Debris",
+    "cost": 1,
+    "type": "Status",
+    "rarity": "Status",
+    "target": "None",
+    "pool": "status",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Debris.cs"
+  },
+  {
+    "id": "FranticEscape",
+    "cost": 1,
+    "type": "Status",
+    "rarity": "Status",
+    "target": "Self",
+    "pool": "status",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\FranticEscape.cs"
+  },
+  {
+    "id": "Infection",
+    "cost": -1,
+    "type": "Status",
+    "rarity": "Status",
+    "target": "None",
+    "pool": "status",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Infection.cs"
+  },
+  {
+    "id": "Slimed",
+    "cost": 1,
+    "type": "Status",
+    "rarity": "Status",
+    "target": "None",
+    "pool": "status",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Slimed.cs"
+  },
+  {
+    "id": "Soot",
+    "cost": -1,
+    "type": "Status",
+    "rarity": "Status",
+    "target": "None",
+    "pool": "status",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Soot.cs"
+  },
+  {
+    "id": "Toxic",
+    "cost": 1,
+    "type": "Status",
+    "rarity": "Status",
+    "target": "None",
+    "pool": "status",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 5.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Toxic.cs"
+  },
+  {
+    "id": "Void",
+    "cost": -1,
+    "type": "Status",
+    "rarity": "Status",
+    "target": "None",
+    "pool": "status",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Void.cs"
+  },
+  {
+    "id": "Wither",
+    "cost": -1,
+    "type": "Status",
+    "rarity": "Status",
+    "target": "None",
+    "pool": "status",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Wither.cs"
+  },
+  {
+    "id": "Wound",
+    "cost": -1,
+    "type": "Status",
+    "rarity": "Status",
+    "target": "None",
+    "pool": "status",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Wound.cs"
+  },
+  {
+    "id": "Disintegration",
+    "cost": -1,
+    "type": "Status",
+    "rarity": "Status",
+    "target": "None",
+    "pool": "token",
+    "vars": [
+      {
+        "kind": "DisintegrationPower",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Disintegration.cs"
+  },
+  {
+    "id": "Fuel",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Token",
+    "target": "Self",
+    "pool": "token",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Fuel.cs"
+  },
+  {
+    "id": "GiantRock",
+    "cost": 1,
+    "type": "Attack",
+    "rarity": "Token",
+    "target": "AnyEnemy",
+    "pool": "token",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 16.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\GiantRock.cs"
+  },
+  {
+    "id": "Luminesce",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Token",
+    "target": "Self",
+    "pool": "token",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Luminesce.cs"
+  },
+  {
+    "id": "MindRot",
+    "cost": -1,
+    "type": "Status",
+    "rarity": "Status",
+    "target": "None",
+    "pool": "token",
+    "vars": [
+      {
+        "kind": "MindRotPower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\MindRot.cs"
+  },
+  {
+    "id": "MinionDiveBomb",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Token",
+    "target": "AnyEnemy",
+    "pool": "token",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 13.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\MinionDiveBomb.cs"
+  },
+  {
+    "id": "MinionSacrifice",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Token",
+    "target": "Self",
+    "pool": "token",
+    "vars": [
+      {
+        "kind": "Block",
+        "value": 8.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\MinionSacrifice.cs"
+  },
+  {
+    "id": "MinionStrike",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Token",
+    "target": "AnyEnemy",
+    "pool": "token",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 6.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\MinionStrike.cs"
+  },
+  {
+    "id": "Shiv",
+    "cost": 0,
+    "type": "Attack",
+    "rarity": "Token",
+    "target": "AnyEnemy",
+    "pool": "token",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 4.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Shiv.cs"
+  },
+  {
+    "id": "Sloth",
+    "cost": -1,
+    "type": "Status",
+    "rarity": "Status",
+    "target": "None",
+    "pool": "token",
+    "vars": [
+      {
+        "kind": "SlothPower",
+        "value": 3.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Sloth.cs"
+  },
+  {
+    "id": "Soul",
+    "cost": 0,
+    "type": "Skill",
+    "rarity": "Token",
+    "target": "Self",
+    "pool": "token",
+    "vars": [],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\Soul.cs"
+  },
+  {
+    "id": "SovereignBlade",
+    "cost": 2,
+    "type": "Attack",
+    "rarity": "Token",
+    "target": "AnyEnemy",
+    "pool": "token",
+    "vars": [
+      {
+        "kind": "Damage",
+        "value": 10.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\SovereignBlade.cs"
+  },
+  {
+    "id": "WasteAway",
+    "cost": -1,
+    "type": "Status",
+    "rarity": "Status",
+    "target": "None",
+    "pool": "token",
+    "vars": [
+      {
+        "kind": "WasteAwayPower",
+        "value": 1.0
+      }
+    ],
+    "source": "decompiled\\MegaCrit.Sts2.Core.Models.Cards\\WasteAway.cs"
+  }
+]
